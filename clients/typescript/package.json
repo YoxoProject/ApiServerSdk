@@ -1,6 +1,6 @@
 {
   "name": "@yoxoproject/client",
-  "version": "0.0.1-SNAPSHOT.202512222007",
+  "version": "1.0-SNAPSHOT.202512222059",
   "description": "OpenAPI client for @yoxoproject/client",
   "author": "OpenAPI-Generator Contributors",
   "repository": {

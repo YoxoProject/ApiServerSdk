@@ -2,7 +2,7 @@ lazy val root = (project in file(".")).
   settings(
     organization := "software.yoxo",
     name := "client",
-    version := "0.0.1-SNAPSHOT",
+    version := "1.0-SNAPSHOT",
     scalaVersion := "2.11.12",
     scalacOptions ++= Seq("-feature"),
     compile / javacOptions ++= Seq("-Xlint:deprecation"),

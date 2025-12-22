@@ -69,7 +69,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>software.yoxo</groupId>
   <artifactId>client</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -85,7 +85,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "software.yoxo:client:0.0.1-SNAPSHOT"
+     implementation "software.yoxo:client:1.0-SNAPSHOT"
   }
 ```
 
@@ -99,7 +99,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/client-0.0.1-SNAPSHOT.jar`
+* `target/client-1.0-SNAPSHOT.jar`
 * `target/lib/*.jar`
 
 ## Getting Started

@@ -1,4 +1,4 @@
-## @yoxoproject/client@0.0.1-SNAPSHOT.202512222007
+## @yoxoproject/client@1.0-SNAPSHOT.202512222059
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @yoxoproject/client@0.0.1-SNAPSHOT.202512222007 --save
+npm install @yoxoproject/client@1.0-SNAPSHOT.202512222059 --save
 ```
 
 _unPublished (not recommended):_

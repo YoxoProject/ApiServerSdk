@@ -1,6 +1,6 @@
 [project]
 name = "yoxo_client"
-version = "0.0.1"
+version = "1.0"
 description = "Yoxo API Server"
 authors = [
   {name = "OpenAPI Generator Community",email = "team@openapitools.org"},

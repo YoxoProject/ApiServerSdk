@@ -41,10 +41,10 @@ Name | Type | Description | Notes
 **actions** | [**CountryActionsEntry**](CountryActionsEntry.md) |  | [optional] [default to undefined]
 **settings** | [**CountrySettingsEntry**](CountrySettingsEntry.md) |  | [optional] [default to undefined]
 **empire** | **boolean** |  | [optional] [default to undefined]
-**referent** | **boolean** |  | [optional] [default to undefined]
-**topWarzone** | **boolean** |  | [optional] [default to undefined]
 **restrictAssault** | **boolean** |  | [optional] [default to undefined]
 **restrictMissile** | **boolean** |  | [optional] [default to undefined]
+**topWarzone** | **boolean** |  | [optional] [default to undefined]
+**referent** | **boolean** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -87,10 +87,10 @@ const instance: CountryEntry = {
     actions,
     settings,
     empire,
-    referent,
-    topWarzone,
     restrictAssault,
     restrictMissile,
+    topWarzone,
+    referent,
 };
 ```
 

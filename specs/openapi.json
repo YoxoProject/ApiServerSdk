@@ -3224,16 +3224,16 @@
           "empire": {
             "type": "boolean"
           },
-          "referent": {
+          "restrictAssault": {
+            "type": "boolean"
+          },
+          "restrictMissile": {
             "type": "boolean"
           },
           "topWarzone": {
             "type": "boolean"
           },
-          "restrictAssault": {
-            "type": "boolean"
-          },
-          "restrictMissile": {
+          "referent": {
             "type": "boolean"
           }
         },

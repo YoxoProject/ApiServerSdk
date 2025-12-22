@@ -43,10 +43,10 @@ Données d'un pays
 |**actions** | [**CountryActionsEntry**](CountryActionsEntry.md) |  |  [optional] |
 |**settings** | [**CountrySettingsEntry**](CountrySettingsEntry.md) |  |  [optional] |
 |**empire** | **Boolean** |  |  [optional] |
-|**referent** | **Boolean** |  |  [optional] |
-|**topWarzone** | **Boolean** |  |  [optional] |
 |**restrictAssault** | **Boolean** |  |  [optional] |
 |**restrictMissile** | **Boolean** |  |  [optional] |
+|**topWarzone** | **Boolean** |  |  [optional] |
+|**referent** | **Boolean** |  |  [optional] |
 
 
 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from yoxo-api_client.models.bank_log_entry import BankLogEntry
+from yoxo_api_client.models.bank_log_entry import BankLogEntry
 
 # TODO update the JSON string below
 json = "{}"

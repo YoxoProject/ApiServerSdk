@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from yoxo-api_client.models.post_query_body import PostQueryBody
+from yoxo_api_client.models.post_query_body import PostQueryBody
 
 # TODO update the JSON string below
 json = "{}"

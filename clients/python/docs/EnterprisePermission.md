@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from yoxo-api_client.models.enterprise_permission import EnterprisePermission
+from yoxo_api_client.models.enterprise_permission import EnterprisePermission
 
 # TODO update the JSON string below
 json = "{}"

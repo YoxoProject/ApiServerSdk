@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from yoxo-api_client.models.coords import Coords
+from yoxo_api_client.models.coords import Coords
 
 # TODO update the JSON string below
 json = "{}"

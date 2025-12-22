@@ -158,9 +158,9 @@ export interface CountryEntry {
     'actions'?: CountryActionsEntry;
     'settings'?: CountrySettingsEntry;
     'empire'?: boolean;
+    'referent'?: boolean;
+    'topWarzone'?: boolean;
     'restrictAssault'?: boolean;
     'restrictMissile'?: boolean;
-    'topWarzone'?: boolean;
-    'referent'?: boolean;
 }
 

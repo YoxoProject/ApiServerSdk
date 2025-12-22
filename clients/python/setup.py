@@ -20,7 +20,7 @@ from setuptools import setup, find_packages  # noqa: H301
 #
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
-NAME = "yoxo-api-client"
+NAME = "yoxo_api_client"
 VERSION = "1.0"
 PYTHON_REQUIRES = ">= 3.9"
 REQUIRES = [
@@ -45,5 +45,5 @@ setup(
     long_description="""\
     API REST exposant diverses données liées aux serveurs de NationsGlory.  ## À propos Cette API centralise et expose différents types de données relatives aux serveurs de NationsGlory : - **Routes &#x60;/v2/java/*&#x60;** : Données collectées par scraping direct sur les serveurs Java de NationsGlory. Pour cela, le protocole 78 (Minecraft 1.6.4) est pleinement utilisé. - **Autres routes** (à venir) : Données obtenues par d&#39;autres méthodes (API officielles, DynMap, etc.)  ## Authentification L&#39;API utilise le flux OAuth2 Client Credentials. Pour vous authentifier : 1. Obtenez vos identifiants client (client_id et client_secret) depuis le serveur d&#39;authentification de Yoxo 2. Demandez un jeton d&#39;accès : &#x60;POST https://auth.yoxo.software/oauth2/token&#x60;    &#x60;&#x60;&#x60;    grant_type&#x3D;client_credentials    &amp;client_id&#x3D;votre_client_id    &amp;client_secret&#x3D;votre_client_secret    &amp;scope&#x3D;api_access    &#x60;&#x60;&#x60; 3. Incluez le jeton dans l&#39;en-tête Authorization : &#x60;Bearer &lt;token&gt;&#x60;  ## Filtrage RSQL Utilisez le paramètre de requête &#x60;filter&#x60; avec la syntaxe RSQL : - **Opérateurs** : &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x60;, &#x60;&lt;&#x3D;&#x60; - **Logique** : &#x60;;&#x60; (ET), &#x60;,&#x60; (OU), &#x60;()&#x60; pour grouper - **Wildcards** : &#x60;*&#x60; pour contains/startsWith/endsWith - **Exemples** :   - &#x60;b&gt;100000&#x60; : niveau global &gt; 100000   - &#x60;u&#x3D;&#x3D;*Romain*&#x60; : nom d&#39;utilisateur contenant \&quot;Romain\&quot;   - &#x60;b&gt;500000;bP&lt;100&#x60; : niveau &gt; 500000 ET position &lt; 100   - &#x60;(u&#x3D;&#x3D;*35*,u&#x3D;&#x3D;*76*)&#x60; : nom contenant \&quot;35\&quot; OU \&quot;76\&quot; 
     """,  # noqa: E501
-    package_data={"yoxo-api_client": ["py.typed"]},
+    package_data={"yoxo_api_client": ["py.typed"]},
 )

@@ -233,6 +233,16 @@ public class CountryEntry {
   @javax.annotation.Nullable
   private Boolean empire;
 
+  public static final String SERIALIZED_NAME_REFERENT = "referent";
+  @SerializedName(SERIALIZED_NAME_REFERENT)
+  @javax.annotation.Nullable
+  private Boolean referent;
+
+  public static final String SERIALIZED_NAME_TOP_WARZONE = "topWarzone";
+  @SerializedName(SERIALIZED_NAME_TOP_WARZONE)
+  @javax.annotation.Nullable
+  private Boolean topWarzone;
+
   public static final String SERIALIZED_NAME_RESTRICT_ASSAULT = "restrictAssault";
   @SerializedName(SERIALIZED_NAME_RESTRICT_ASSAULT)
   @javax.annotation.Nullable
@@ -242,16 +252,6 @@ public class CountryEntry {
   @SerializedName(SERIALIZED_NAME_RESTRICT_MISSILE)
   @javax.annotation.Nullable
   private Boolean restrictMissile;
-
-  public static final String SERIALIZED_NAME_TOP_WARZONE = "topWarzone";
-  @SerializedName(SERIALIZED_NAME_TOP_WARZONE)
-  @javax.annotation.Nullable
-  private Boolean topWarzone;
-
-  public static final String SERIALIZED_NAME_REFERENT = "referent";
-  @SerializedName(SERIALIZED_NAME_REFERENT)
-  @javax.annotation.Nullable
-  private Boolean referent;
 
   public CountryEntry() {
   }
@@ -969,6 +969,44 @@ public class CountryEntry {
   }
 
 
+  public CountryEntry referent(@javax.annotation.Nullable Boolean referent) {
+    this.referent = referent;
+    return this;
+  }
+
+  /**
+   * Get referent
+   * @return referent
+   */
+  @javax.annotation.Nullable
+  public Boolean getReferent() {
+    return referent;
+  }
+
+  public void setReferent(@javax.annotation.Nullable Boolean referent) {
+    this.referent = referent;
+  }
+
+
+  public CountryEntry topWarzone(@javax.annotation.Nullable Boolean topWarzone) {
+    this.topWarzone = topWarzone;
+    return this;
+  }
+
+  /**
+   * Get topWarzone
+   * @return topWarzone
+   */
+  @javax.annotation.Nullable
+  public Boolean getTopWarzone() {
+    return topWarzone;
+  }
+
+  public void setTopWarzone(@javax.annotation.Nullable Boolean topWarzone) {
+    this.topWarzone = topWarzone;
+  }
+
+
   public CountryEntry restrictAssault(@javax.annotation.Nullable Boolean restrictAssault) {
     this.restrictAssault = restrictAssault;
     return this;
@@ -1004,44 +1042,6 @@ public class CountryEntry {
 
   public void setRestrictMissile(@javax.annotation.Nullable Boolean restrictMissile) {
     this.restrictMissile = restrictMissile;
-  }
-
-
-  public CountryEntry topWarzone(@javax.annotation.Nullable Boolean topWarzone) {
-    this.topWarzone = topWarzone;
-    return this;
-  }
-
-  /**
-   * Get topWarzone
-   * @return topWarzone
-   */
-  @javax.annotation.Nullable
-  public Boolean getTopWarzone() {
-    return topWarzone;
-  }
-
-  public void setTopWarzone(@javax.annotation.Nullable Boolean topWarzone) {
-    this.topWarzone = topWarzone;
-  }
-
-
-  public CountryEntry referent(@javax.annotation.Nullable Boolean referent) {
-    this.referent = referent;
-    return this;
-  }
-
-  /**
-   * Get referent
-   * @return referent
-   */
-  @javax.annotation.Nullable
-  public Boolean getReferent() {
-    return referent;
-  }
-
-  public void setReferent(@javax.annotation.Nullable Boolean referent) {
-    this.referent = referent;
   }
 
 
@@ -1090,15 +1090,15 @@ public class CountryEntry {
         Objects.equals(this.actions, countryEntry.actions) &&
         Objects.equals(this.settings, countryEntry.settings) &&
         Objects.equals(this.empire, countryEntry.empire) &&
-        Objects.equals(this.restrictAssault, countryEntry.restrictAssault) &&
-        Objects.equals(this.restrictMissile, countryEntry.restrictMissile) &&
+        Objects.equals(this.referent, countryEntry.referent) &&
         Objects.equals(this.topWarzone, countryEntry.topWarzone) &&
-        Objects.equals(this.referent, countryEntry.referent);
+        Objects.equals(this.restrictAssault, countryEntry.restrictAssault) &&
+        Objects.equals(this.restrictMissile, countryEntry.restrictMissile);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, motd, entryMsg, age, countMembers, countNewMembers, fhomeCoord, level, progress, notationsPosition, tags, discord, allianceName, mmr, claims, power, maxPower, powerboostFixed, powerboostWarzone, powerboostUnesco, powerboostNewMember, powerboostMalusAssault, flag, leader, officers, members, recruits, newMembers, researchesLevel, wars, bank, actions, settings, empire, restrictAssault, restrictMissile, topWarzone, referent);
+    return Objects.hash(name, description, motd, entryMsg, age, countMembers, countNewMembers, fhomeCoord, level, progress, notationsPosition, tags, discord, allianceName, mmr, claims, power, maxPower, powerboostFixed, powerboostWarzone, powerboostUnesco, powerboostNewMember, powerboostMalusAssault, flag, leader, officers, members, recruits, newMembers, researchesLevel, wars, bank, actions, settings, empire, referent, topWarzone, restrictAssault, restrictMissile);
   }
 
   @Override
@@ -1140,10 +1140,10 @@ public class CountryEntry {
     sb.append("    actions: ").append(toIndentedString(actions)).append("\n");
     sb.append("    settings: ").append(toIndentedString(settings)).append("\n");
     sb.append("    empire: ").append(toIndentedString(empire)).append("\n");
+    sb.append("    referent: ").append(toIndentedString(referent)).append("\n");
+    sb.append("    topWarzone: ").append(toIndentedString(topWarzone)).append("\n");
     sb.append("    restrictAssault: ").append(toIndentedString(restrictAssault)).append("\n");
     sb.append("    restrictMissile: ").append(toIndentedString(restrictMissile)).append("\n");
-    sb.append("    topWarzone: ").append(toIndentedString(topWarzone)).append("\n");
-    sb.append("    referent: ").append(toIndentedString(referent)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1165,7 +1165,7 @@ public class CountryEntry {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("name", "description", "motd", "entryMsg", "age", "countMembers", "countNewMembers", "fhomeCoord", "level", "progress", "notationsPosition", "tags", "discord", "allianceName", "mmr", "claims", "power", "maxPower", "powerboostFixed", "powerboostWarzone", "powerboostUnesco", "powerboostNewMember", "powerboostMalusAssault", "flag", "leader", "officers", "members", "recruits", "newMembers", "researchesLevel", "wars", "bank", "actions", "settings", "empire", "restrictAssault", "restrictMissile", "topWarzone", "referent"));
+    openapiFields = new HashSet<String>(Arrays.asList("name", "description", "motd", "entryMsg", "age", "countMembers", "countNewMembers", "fhomeCoord", "level", "progress", "notationsPosition", "tags", "discord", "allianceName", "mmr", "claims", "power", "maxPower", "powerboostFixed", "powerboostWarzone", "powerboostUnesco", "powerboostNewMember", "powerboostMalusAssault", "flag", "leader", "officers", "members", "recruits", "newMembers", "researchesLevel", "wars", "bank", "actions", "settings", "empire", "referent", "topWarzone", "restrictAssault", "restrictMissile"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

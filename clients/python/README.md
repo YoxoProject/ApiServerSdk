@@ -1,4 +1,4 @@
-# yoxo-api-client
+# yoxo_api_client
 API REST exposant diverses données liées aux serveurs de NationsGlory.
 
 ## À propos
@@ -53,7 +53,7 @@ pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
 
 Then import the package:
 ```python
-import yoxo-api_client
+import yoxo_api_client
 ```
 
 ### Setuptools
@@ -67,7 +67,7 @@ python setup.py install --user
 
 Then import the package:
 ```python
-import yoxo-api_client
+import yoxo_api_client
 ```
 
 ### Tests
@@ -80,13 +80,13 @@ Please follow the [installation procedure](#installation--usage) and then run th
 
 ```python
 
-import yoxo-api_client
-from yoxo-api_client.rest import ApiException
+import yoxo_api_client
+from yoxo_api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo-api_client.Configuration(
+configuration = yoxo_api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -99,9 +99,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 
 # Enter a context with an instance of the API client
-with yoxo-api_client.ApiClient(configuration) as api_client:
+with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo-api_client.APIJavaApi(api_client)
+    api_instance = yoxo_api_client.APIJavaApi(api_client)
     var_date = '2025-10-28' # date | La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd)
     java_server = 'red' # str | Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
 

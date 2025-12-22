@@ -1,5 +1,5 @@
 [project]
-name = "yoxo-api_client"
+name = "yoxo_api_client"
 version = "1.0"
 description = "Yoxo API Server"
 authors = [
@@ -40,7 +40,7 @@ extension-pkg-whitelist = "pydantic"
 
 [tool.mypy]
 files = [
-  "yoxo-api_client",
+  "yoxo_api_client",
   #"test",  # auto-generated tests
   "tests", # hand-written tests
 ]
@@ -78,7 +78,7 @@ disallow_any_generics = true
 
 [[tool.mypy.overrides]]
 module = [
-  "yoxo-api_client.configuration",
+  "yoxo_api_client.configuration",
 ]
 warn_unused_ignores = true
 strict_equality = true

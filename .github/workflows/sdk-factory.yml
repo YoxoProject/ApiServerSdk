@@ -82,7 +82,7 @@ jobs:
         with:
           node-version: '20'
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@yoxo'
+          scope: '@yoxoproject'
 
       - name: Build & Publish
         working-directory: ./clients/typescript

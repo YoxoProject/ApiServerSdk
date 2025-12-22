@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   # ------------------------------------------------------------------
-  # JOB 1 : Mise à jour du Code Source (Centralisé)
+  # JOB 1 : Mise à jour du Code Source (Branche Main)
   # ------------------------------------------------------------------
   update-repo:
     runs-on: ubuntu-latest
@@ -34,45 +34,36 @@ jobs:
       - name: Check for Changes & Generate
         id: auto-commit
         run: |
-          # 1. Vérification des changements de spec OU trigger manuel
+          # On vérifie les changements (ou force trigger)
           if [ "${{ github.event_name }}" == "workflow_dispatch" ] || [ "${{ github.event_name }}" == "repository_dispatch" ] || ! git diff --quiet specs/openapi.json; then
-            echo "🔄 Changements détectés ou forcés. Lancement de la génération..."
+            echo "🔄 Changements détectés. Lancement de la génération..."
             
-            # 2. Génération complète
             npm run generate:all
             
-            # 3. Commit & Push
-            # Configuration Git
             git config --global user.name 'Yoxo SDK'
             git config --global user.email 'sdk@yoxo.software'
-            
-            # On ajoute tout
             git add .
             
-            # On vérifie s'il y a vraiment quelque chose à commiter
             if ! git diff --cached --quiet; then
               git commit -m "chore(sdk): update clients based on new OpenAPI spec [skip ci]"
               git push
               echo "changes_detected=true" >> $GITHUB_OUTPUT
-              echo "✅ Code mis à jour et poussé."
+              echo "✅ Code main mis à jour."
             else
-              echo "⚠️ Aucune modification de fichier concrète après génération."
               echo "changes_detected=false" >> $GITHUB_OUTPUT
             fi
           else
-            echo "😴 Aucun changement dans la spécification API."
             echo "changes_detected=false" >> $GITHUB_OUTPUT
           fi
 
   # ------------------------------------------------------------------
-  # JOB 2 : Publication TypeScript
+  # JOB 2 : Publication TypeScript (Branche release/typescript)
   # ------------------------------------------------------------------
   publish-typescript:
     needs: update-repo
     if: needs.update-repo.outputs.changes_detected == 'true'
     runs-on: ubuntu-latest
     steps:
-      # IMPORTANT : On checkout la branche actuelle (mise à jour par le job précédent)
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.ref_name }}
@@ -81,21 +72,54 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@yoxoproject'
 
-      - name: Build & Publish
+      - name: Build TypeScript
         working-directory: ./clients/typescript
         run: |
           npm install
           npm run build
-          npm version patch --no-git-tag-version
-          npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # On nettoie pour ne publier que le nécessaire
+          rm -rf node_modules
+          # On garde package.json, dist/, README, etc.
+
+      - name: Deploy to Branch release/typescript
+        working-directory: ./clients/typescript
+        run: |
+          git init
+          git config user.name "SDK Bot"
+          git config user.email "bot@yoxo.software"
+          git checkout -b release/typescript
+          git add .
+          git commit -m "New TypeScript Release form ${{ github.sha }}"
+          # Force push sur la branche release/typescript
+          git push -f https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git release/typescript
 
   # ------------------------------------------------------------------
-  # JOB 3 : Publication Java
+  # JOB 3 : Publication Python (Branche release/python)
+  # ------------------------------------------------------------------
+  publish-python:
+    needs: update-repo
+    if: needs.update-repo.outputs.changes_detected == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Deploy to Branch release/python
+        working-directory: ./clients/python
+        run: |
+          git init
+          git config user.name "SDK Bot"
+          git config user.email "bot@yoxo.software"
+          git checkout -b release/python
+          git add .
+          git commit -m "New Python Release from ${{ github.sha }}"
+          # Force push sur la branche release/python
+          git push -f https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git release/python
+
+  # ------------------------------------------------------------------
+  # JOB 4 : Publication Java (Maven Privé)
   # ------------------------------------------------------------------
   publish-java:
     needs: update-repo
@@ -111,35 +135,14 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          server-id: github
 
-      - name: Deploy Maven
+      - name: Create Maven Settings
+        # Création d'un settings.xml à la volée pour l'authentification
+        run: |
+          mkdir -p ~/.m2
+          echo "<settings><servers><server><id>romaindu35Releases</id><username>${{ secrets.MAVEN_REPO_USER }}</username><password>${{ secrets.MAVEN_REPO_PASSWORD }}</password></server></servers></settings>" > ~/.m2/settings.xml
+
+      - name: Deploy to maven.romaindu35.fr
         working-directory: ./clients/java
         run: |
-          mvn deploy -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/${{ github.repository }}/
-        env:
-          GITHUB_ACTOR: ${{ github.actor }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  # ------------------------------------------------------------------
-  # JOB 4 : Publication Python
-  # ------------------------------------------------------------------
-  publish-python:
-    needs: update-repo
-    if: needs.update-repo.outputs.changes_detected == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.ref_name }}
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Build Wheel
-        working-directory: ./clients/python
-        run: |
-          pip install setuptools wheel
-          python setup.py sdist bdist_wheel
+          mvn deploy -DaltDeploymentRepository=romaindu35Releases::default::https://maven.romaindu35.fr/releases

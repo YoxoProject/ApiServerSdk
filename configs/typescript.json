@@ -1,5 +1,5 @@
 {
-  "npmName": "@yoxoproject/client",
+  "npmName": "@yoxoproject/yoxo-api-client",
   "npmVersion": "1.0",
   "snapshot": true,
   "supportsES6": true,

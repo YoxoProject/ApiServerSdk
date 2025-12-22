@@ -1,6 +1,6 @@
 {
   "groupId": "software.yoxo",
-  "artifactId": "client",
+  "artifactId": "yoxo-api-client",
   "artifactVersion": "1.0-SNAPSHOT",
   "library": "okhttp-gson",
   "apiPackage": "software.yoxo.client.api",

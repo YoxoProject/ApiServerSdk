@@ -1,6 +1,6 @@
 {
   "npmName": "@yoxoproject/client",
-  "npmVersion": "0.0.1",
+  "npmVersion": "1.0",
   "snapshot": true,
   "supportsES6": true,
   "withSeparateModelsAndApi": true,

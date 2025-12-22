@@ -35,11 +35,11 @@ console.log('Enhancing Python Client...');
 copyRecursiveSync(path.join(overlaysDir, 'python'), path.join(clientsDir, 'python'));
 
 // Python __init__.py patch
-const pyInitPath = path.join(clientsDir, 'python', 'yoxo_client', '__init__.py');
+const pyInitPath = path.join(clientsDir, 'python', 'yoxo_api_client', '__init__.py');
 if (fs.existsSync(pyInitPath)) {
     let content = fs.readFileSync(pyInitPath, 'utf8');
-    if (!content.includes('from yoxo_client.client import YoxoClient')) {
-        content += '\nfrom yoxo_client.client import YoxoClient\n';
+    if (!content.includes('from yoxo_api_client.client import YoxoClient')) {
+        content += '\nfrom yoxo_api_client.client import YoxoClient\n';
         fs.writeFileSync(pyInitPath, content);
         console.log('Patched Python __init__.py');
     }

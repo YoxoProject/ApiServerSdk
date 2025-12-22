@@ -1,9 +1,9 @@
 import time
 import urllib3
 import json
-from yoxo_client.configuration import Configuration
-from yoxo_client.api.api_java_api import APIJavaApi
-from yoxo_client.api_client import ApiClient
+from yoxo_api_client.configuration import Configuration
+from yoxo_api_client.api.api_java_api import APIJavaApi
+from yoxo_api_client.api_client import ApiClient
 
 class AutoRefreshingConfiguration(Configuration):
     def __init__(self, client_id, client_secret, **kwargs):

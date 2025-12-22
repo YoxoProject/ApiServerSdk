@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { EnterpriseCasino } from '@yoxo/client';
+import { EnterpriseCasino } from '@yoxoproject/client';
 
 const instance: EnterpriseCasino = {
     type,

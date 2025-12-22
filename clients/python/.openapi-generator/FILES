@@ -69,7 +69,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_enterprise_base.py
 tox.ini
 yoxo_client/__init__.py
 yoxo_client/api/__init__.py

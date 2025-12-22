@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PermissionEntry } from '@yoxo/client';
+import { PermissionEntry } from '@yoxoproject/client';
 
 const instance: PermissionEntry = {
     name,

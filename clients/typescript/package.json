@@ -1,7 +1,7 @@
 {
-  "name": "@yoxo/client",
-  "version": "0.0.1-SNAPSHOT.202512221957",
-  "description": "OpenAPI client for @yoxo/client",
+  "name": "@yoxoproject/client",
+  "version": "0.0.1-SNAPSHOT.202512222007",
+  "description": "OpenAPI client for @yoxoproject/client",
   "author": "OpenAPI-Generator Contributors",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
     "typescript",
     "openapi-client",
     "openapi-generator",
-    "@yoxo/client"
+    "@yoxoproject/client"
   ],
   "license": "Unlicense",
   "main": "./dist/index.js",

@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { EnterpriseTrader } from '@yoxo/client';
+import { EnterpriseTrader } from '@yoxoproject/client';
 
 const instance: EnterpriseTrader = {
     type,

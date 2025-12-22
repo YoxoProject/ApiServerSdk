@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { SettingLogEntry } from '@yoxo/client';
+import { SettingLogEntry } from '@yoxoproject/client';
 
 const instance: SettingLogEntry = {
     user,

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ActionEntry } from '@yoxo/client';
+import { ActionEntry } from '@yoxoproject/client';
 
 const instance: ActionEntry = {
     owner,

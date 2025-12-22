@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { WarRewards } from '@yoxo/client';
+import { WarRewards } from '@yoxoproject/client';
 
 const instance: WarRewards = {
     dollars,

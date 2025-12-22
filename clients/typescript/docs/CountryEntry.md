@@ -49,7 +49,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CountryEntry } from '@yoxo/client';
+import { CountryEntry } from '@yoxoproject/client';
 
 const instance: CountryEntry = {
     name,

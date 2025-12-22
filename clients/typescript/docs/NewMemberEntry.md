@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { NewMemberEntry } from '@yoxo/client';
+import { NewMemberEntry } from '@yoxoproject/client';
 
 const instance: NewMemberEntry = {
     pseudo,

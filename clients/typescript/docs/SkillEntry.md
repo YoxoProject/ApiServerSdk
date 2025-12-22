@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { SkillEntry } from '@yoxo/client';
+import { SkillEntry } from '@yoxoproject/client';
 
 const instance: SkillEntry = {
     username,

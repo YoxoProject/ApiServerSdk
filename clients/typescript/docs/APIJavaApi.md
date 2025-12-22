@@ -39,7 +39,7 @@ Permet d\'obtenir les données du marché global des céréales pour un serveur 
 import {
     APIJavaApi,
     Configuration
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -93,7 +93,7 @@ Permet d\'obtenir la liste et les détails complets de tous les pays d\'un serve
 import {
     APIJavaApi,
     Configuration
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -147,7 +147,7 @@ Permet d\'obtenir la liste et les détails complets de tous les pays d\'un serve
 import {
     APIJavaApi,
     Configuration
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -204,7 +204,7 @@ Permet d\'obtenir la liste de toutes les entreprises sur un serveur à une date 
 import {
     APIJavaApi,
     Configuration
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -261,7 +261,7 @@ Permet d\'obtenir la liste de toutes les entreprises sur un serveur à une date 
 import {
     APIJavaApi,
     Configuration
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -321,7 +321,7 @@ Permet d\'obtenir les statistiques des joueurs du top 50 de l\'événement Hallo
 import {
     APIJavaApi,
     Configuration
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -372,7 +372,7 @@ Permet d\'obtenir les données des tirages du Mega Cadeau de l\'événement \"Th
 import {
     APIJavaApi,
     Configuration
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -416,7 +416,7 @@ Permet d\'obtenir les données des tirages du Mega Cadeau de l\'événement de N
 import {
     APIJavaApi,
     Configuration
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -467,7 +467,7 @@ Permet d\'obtenir la liste des joueurs s\'étant connectés au moins une fois au
 import {
     APIJavaApi,
     Configuration
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -521,7 +521,7 @@ Permet d\'obtenir la configuration globale de tous les domaines de recherche dis
 import {
     APIJavaApi,
     Configuration
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -572,7 +572,7 @@ Permet d\'obtenir les niveaux de recherche actuels de tous les pays d\'un serveu
 import {
     APIJavaApi,
     Configuration
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -626,7 +626,7 @@ Permet d\'obtenir les compétences des joueurs présents dans au moins 1 top 50 
 import {
     APIJavaApi,
     Configuration
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -680,7 +680,7 @@ Permet d\'obtenir la liste des guerres (en cours ou terminées) d\'un serveur à
 import {
     APIJavaApi,
     Configuration
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -734,7 +734,7 @@ Permet d\'obtenir la liste des guerres (en cours ou terminées) d\'un serveur à
 import {
     APIJavaApi,
     Configuration
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -792,7 +792,7 @@ import {
     APIJavaApi,
     Configuration,
     PostQueryBody
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -850,7 +850,7 @@ import {
     APIJavaApi,
     Configuration,
     PostQueryBody
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -908,7 +908,7 @@ import {
     APIJavaApi,
     Configuration,
     PostQueryBody
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -963,7 +963,7 @@ import {
     APIJavaApi,
     Configuration,
     PostQueryBody
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -1015,7 +1015,7 @@ import {
     APIJavaApi,
     Configuration,
     PostQueryBody
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -1070,7 +1070,7 @@ import {
     APIJavaApi,
     Configuration,
     PostQueryBody
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -1128,7 +1128,7 @@ import {
     APIJavaApi,
     Configuration,
     PostQueryBody
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -1186,7 +1186,7 @@ import {
     APIJavaApi,
     Configuration,
     PostQueryBody
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
@@ -1244,7 +1244,7 @@ import {
     APIJavaApi,
     Configuration,
     PostQueryBody
-} from '@yoxo/client';
+} from '@yoxoproject/client';
 
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);

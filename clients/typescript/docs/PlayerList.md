@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PlayerList } from '@yoxo/client';
+import { PlayerList } from '@yoxoproject/client';
 
 const instance: PlayerList = {
     data,

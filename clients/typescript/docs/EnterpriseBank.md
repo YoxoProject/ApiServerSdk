@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { EnterpriseBank } from '@yoxo/client';
+import { EnterpriseBank } from '@yoxoproject/client';
 
 const instance: EnterpriseBank = {
     bank,

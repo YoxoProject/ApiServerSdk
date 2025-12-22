@@ -61,14 +61,6 @@ class EnterpriseEntry(BaseModel):
 
 
     discriminator_value_class_map: Dict[str, str] = {
-        'EnterpriseBasic': 'EnterpriseBasic',
-        'EnterpriseBet': 'EnterpriseBet',
-        'EnterpriseCasino': 'EnterpriseCasino',
-        'EnterpriseElectric': 'EnterpriseElectric',
-        'EnterpriseFarm': 'EnterpriseFarm',
-        'EnterprisePetrol': 'EnterprisePetrol',
-        'EnterpriseRealEstate': 'EnterpriseRealEstate',
-        'EnterpriseTrader': 'EnterpriseTrader'
     }
 
     def __init__(self, *args, **kwargs) -> None:

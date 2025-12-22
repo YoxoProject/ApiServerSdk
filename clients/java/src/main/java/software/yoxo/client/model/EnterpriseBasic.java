@@ -22,14 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import software.yoxo.client.model.EnterpriseBank;
-import software.yoxo.client.model.EnterpriseBetItem;
-import software.yoxo.client.model.EnterpriseEntry;
 import software.yoxo.client.model.EnterprisePermission;
-import software.yoxo.client.model.Parcelle;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -58,10 +53,471 @@ import software.yoxo.client.invoker.JSON;
  * Entreprise basique (sans données spécifiques)
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
-public class EnterpriseBasic extends EnterpriseEntry {
-  public EnterpriseBasic() {
+public class EnterpriseBasic {
+  /**
+   * Type d&#39;entreprise
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    BUILD("build"),
+    
+    ENGINEER("engineer"),
+    
+    TERRAFORM("terraform"),
+    
+    JOURNALIST("journalist"),
+    
+    CASINO("casino"),
+    
+    PVP("pvp"),
+    
+    LOAN("loan"),
+    
+    REALESTATE("realestate"),
+    
+    TRADER("trader"),
+    
+    BET("bet"),
+    
+    REPAIR("repair"),
+    
+    LAWYER("lawyer"),
+    
+    ELECTRIC("electric"),
+    
+    PETROL("petrol"),
+    
+    FARM("farm");
 
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      TypeEnum.fromValue(value);
+    }
   }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
+  private TypeEnum type;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
+  private String name;
+
+  public static final String SERIALIZED_NAME_AGE = "age";
+  @SerializedName(SERIALIZED_NAME_AGE)
+  @javax.annotation.Nullable
+  private Integer age;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
+  private String description;
+
+  public static final String SERIALIZED_NAME_SERVICES = "services";
+  @SerializedName(SERIALIZED_NAME_SERVICES)
+  @javax.annotation.Nullable
+  private String services;
+
+  public static final String SERIALIZED_NAME_OWNER = "owner";
+  @SerializedName(SERIALIZED_NAME_OWNER)
+  @javax.annotation.Nullable
+  private String owner;
+
+  public static final String SERIALIZED_NAME_FLAG = "flag";
+  @SerializedName(SERIALIZED_NAME_FLAG)
+  @javax.annotation.Nullable
+  private String flag;
+
+  public static final String SERIALIZED_NAME_CADRES = "cadres";
+  @SerializedName(SERIALIZED_NAME_CADRES)
+  @javax.annotation.Nullable
+  private List<String> cadres = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_EMPLOYEES = "employees";
+  @SerializedName(SERIALIZED_NAME_EMPLOYEES)
+  @javax.annotation.Nullable
+  private List<String> employees = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_CONTRACTS_DONE = "contractsDone";
+  @SerializedName(SERIALIZED_NAME_CONTRACTS_DONE)
+  @javax.annotation.Nullable
+  private Integer contractsDone;
+
+  public static final String SERIALIZED_NAME_DISPUTES = "disputes";
+  @SerializedName(SERIALIZED_NAME_DISPUTES)
+  @javax.annotation.Nullable
+  private Integer disputes;
+
+  public static final String SERIALIZED_NAME_CONTRACTS_SUCCESS = "contractsSuccess";
+  @SerializedName(SERIALIZED_NAME_CONTRACTS_SUCCESS)
+  @javax.annotation.Nullable
+  private Double contractsSuccess;
+
+  public static final String SERIALIZED_NAME_TURNOVER = "turnover";
+  @SerializedName(SERIALIZED_NAME_TURNOVER)
+  @javax.annotation.Nullable
+  private Integer turnover;
+
+  public static final String SERIALIZED_NAME_PERMISSIONS = "permissions";
+  @SerializedName(SERIALIZED_NAME_PERMISSIONS)
+  @javax.annotation.Nullable
+  private List<EnterprisePermission> permissions = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_BANK = "bank";
+  @SerializedName(SERIALIZED_NAME_BANK)
+  @javax.annotation.Nullable
+  private EnterpriseBank bank;
+
+  public EnterpriseBasic() {
+  }
+
+  public EnterpriseBasic type(@javax.annotation.Nullable TypeEnum type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Type d&#39;entreprise
+   * @return type
+   */
+  @javax.annotation.Nullable
+  public TypeEnum getType() {
+    return type;
+  }
+
+  public void setType(@javax.annotation.Nullable TypeEnum type) {
+    this.type = type;
+  }
+
+
+  public EnterpriseBasic name(@javax.annotation.Nullable String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Nom de l&#39;entreprise
+   * @return name
+   */
+  @javax.annotation.Nullable
+  public String getName() {
+    return name;
+  }
+
+  public void setName(@javax.annotation.Nullable String name) {
+    this.name = name;
+  }
+
+
+  public EnterpriseBasic age(@javax.annotation.Nullable Integer age) {
+    this.age = age;
+    return this;
+  }
+
+  /**
+   * Âge de l&#39;entreprise en jours
+   * @return age
+   */
+  @javax.annotation.Nullable
+  public Integer getAge() {
+    return age;
+  }
+
+  public void setAge(@javax.annotation.Nullable Integer age) {
+    this.age = age;
+  }
+
+
+  public EnterpriseBasic description(@javax.annotation.Nullable String description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Description de l&#39;entreprise
+   * @return description
+   */
+  @javax.annotation.Nullable
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(@javax.annotation.Nullable String description) {
+    this.description = description;
+  }
+
+
+  public EnterpriseBasic services(@javax.annotation.Nullable String services) {
+    this.services = services;
+    return this;
+  }
+
+  /**
+   * Services proposés
+   * @return services
+   */
+  @javax.annotation.Nullable
+  public String getServices() {
+    return services;
+  }
+
+  public void setServices(@javax.annotation.Nullable String services) {
+    this.services = services;
+  }
+
+
+  public EnterpriseBasic owner(@javax.annotation.Nullable String owner) {
+    this.owner = owner;
+    return this;
+  }
+
+  /**
+   * Propriétaire de l&#39;entreprise
+   * @return owner
+   */
+  @javax.annotation.Nullable
+  public String getOwner() {
+    return owner;
+  }
+
+  public void setOwner(@javax.annotation.Nullable String owner) {
+    this.owner = owner;
+  }
+
+
+  public EnterpriseBasic flag(@javax.annotation.Nullable String flag) {
+    this.flag = flag;
+    return this;
+  }
+
+  /**
+   * Drapeau de l&#39;entreprise, sous la forme d&#39;image en Base64
+   * @return flag
+   */
+  @javax.annotation.Nullable
+  public String getFlag() {
+    return flag;
+  }
+
+  public void setFlag(@javax.annotation.Nullable String flag) {
+    this.flag = flag;
+  }
+
+
+  public EnterpriseBasic cadres(@javax.annotation.Nullable List<String> cadres) {
+    this.cadres = cadres;
+    return this;
+  }
+
+  public EnterpriseBasic addCadresItem(String cadresItem) {
+    if (this.cadres == null) {
+      this.cadres = new ArrayList<>();
+    }
+    this.cadres.add(cadresItem);
+    return this;
+  }
+
+  /**
+   * Liste des cadres de l&#39;entreprise
+   * @return cadres
+   */
+  @javax.annotation.Nullable
+  public List<String> getCadres() {
+    return cadres;
+  }
+
+  public void setCadres(@javax.annotation.Nullable List<String> cadres) {
+    this.cadres = cadres;
+  }
+
+
+  public EnterpriseBasic employees(@javax.annotation.Nullable List<String> employees) {
+    this.employees = employees;
+    return this;
+  }
+
+  public EnterpriseBasic addEmployeesItem(String employeesItem) {
+    if (this.employees == null) {
+      this.employees = new ArrayList<>();
+    }
+    this.employees.add(employeesItem);
+    return this;
+  }
+
+  /**
+   * Liste des employés de l&#39;entreprise
+   * @return employees
+   */
+  @javax.annotation.Nullable
+  public List<String> getEmployees() {
+    return employees;
+  }
+
+  public void setEmployees(@javax.annotation.Nullable List<String> employees) {
+    this.employees = employees;
+  }
+
+
+  public EnterpriseBasic contractsDone(@javax.annotation.Nullable Integer contractsDone) {
+    this.contractsDone = contractsDone;
+    return this;
+  }
+
+  /**
+   * Nombre de contrats réalisés
+   * @return contractsDone
+   */
+  @javax.annotation.Nullable
+  public Integer getContractsDone() {
+    return contractsDone;
+  }
+
+  public void setContractsDone(@javax.annotation.Nullable Integer contractsDone) {
+    this.contractsDone = contractsDone;
+  }
+
+
+  public EnterpriseBasic disputes(@javax.annotation.Nullable Integer disputes) {
+    this.disputes = disputes;
+    return this;
+  }
+
+  /**
+   * Nombre de litiges
+   * @return disputes
+   */
+  @javax.annotation.Nullable
+  public Integer getDisputes() {
+    return disputes;
+  }
+
+  public void setDisputes(@javax.annotation.Nullable Integer disputes) {
+    this.disputes = disputes;
+  }
+
+
+  public EnterpriseBasic contractsSuccess(@javax.annotation.Nullable Double contractsSuccess) {
+    this.contractsSuccess = contractsSuccess;
+    return this;
+  }
+
+  /**
+   * Taux de réussite des contrats (pourcentage)
+   * @return contractsSuccess
+   */
+  @javax.annotation.Nullable
+  public Double getContractsSuccess() {
+    return contractsSuccess;
+  }
+
+  public void setContractsSuccess(@javax.annotation.Nullable Double contractsSuccess) {
+    this.contractsSuccess = contractsSuccess;
+  }
+
+
+  public EnterpriseBasic turnover(@javax.annotation.Nullable Integer turnover) {
+    this.turnover = turnover;
+    return this;
+  }
+
+  /**
+   * Chiffre d&#39;affaires total
+   * @return turnover
+   */
+  @javax.annotation.Nullable
+  public Integer getTurnover() {
+    return turnover;
+  }
+
+  public void setTurnover(@javax.annotation.Nullable Integer turnover) {
+    this.turnover = turnover;
+  }
+
+
+  public EnterpriseBasic permissions(@javax.annotation.Nullable List<EnterprisePermission> permissions) {
+    this.permissions = permissions;
+    return this;
+  }
+
+  public EnterpriseBasic addPermissionsItem(EnterprisePermission permissionsItem) {
+    if (this.permissions == null) {
+      this.permissions = new ArrayList<>();
+    }
+    this.permissions.add(permissionsItem);
+    return this;
+  }
+
+  /**
+   * Permissions de l&#39;entreprise
+   * @return permissions
+   */
+  @javax.annotation.Nullable
+  public List<EnterprisePermission> getPermissions() {
+    return permissions;
+  }
+
+  public void setPermissions(@javax.annotation.Nullable List<EnterprisePermission> permissions) {
+    this.permissions = permissions;
+  }
+
+
+  public EnterpriseBasic bank(@javax.annotation.Nullable EnterpriseBank bank) {
+    this.bank = bank;
+    return this;
+  }
+
+  /**
+   * Get bank
+   * @return bank
+   */
+  @javax.annotation.Nullable
+  public EnterpriseBank getBank() {
+    return bank;
+  }
+
+  public void setBank(@javax.annotation.Nullable EnterpriseBank bank) {
+    this.bank = bank;
+  }
+
 
 
   @Override
@@ -72,19 +528,48 @@ public class EnterpriseBasic extends EnterpriseEntry {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return super.equals(o);
+    EnterpriseBasic enterpriseBasic = (EnterpriseBasic) o;
+    return Objects.equals(this.type, enterpriseBasic.type) &&
+        Objects.equals(this.name, enterpriseBasic.name) &&
+        Objects.equals(this.age, enterpriseBasic.age) &&
+        Objects.equals(this.description, enterpriseBasic.description) &&
+        Objects.equals(this.services, enterpriseBasic.services) &&
+        Objects.equals(this.owner, enterpriseBasic.owner) &&
+        Objects.equals(this.flag, enterpriseBasic.flag) &&
+        Objects.equals(this.cadres, enterpriseBasic.cadres) &&
+        Objects.equals(this.employees, enterpriseBasic.employees) &&
+        Objects.equals(this.contractsDone, enterpriseBasic.contractsDone) &&
+        Objects.equals(this.disputes, enterpriseBasic.disputes) &&
+        Objects.equals(this.contractsSuccess, enterpriseBasic.contractsSuccess) &&
+        Objects.equals(this.turnover, enterpriseBasic.turnover) &&
+        Objects.equals(this.permissions, enterpriseBasic.permissions) &&
+        Objects.equals(this.bank, enterpriseBasic.bank);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
+    return Objects.hash(type, name, age, description, services, owner, flag, cadres, employees, contractsDone, disputes, contractsSuccess, turnover, permissions, bank);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EnterpriseBasic {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    age: ").append(toIndentedString(age)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    services: ").append(toIndentedString(services)).append("\n");
+    sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
+    sb.append("    flag: ").append(toIndentedString(flag)).append("\n");
+    sb.append("    cadres: ").append(toIndentedString(cadres)).append("\n");
+    sb.append("    employees: ").append(toIndentedString(employees)).append("\n");
+    sb.append("    contractsDone: ").append(toIndentedString(contractsDone)).append("\n");
+    sb.append("    disputes: ").append(toIndentedString(disputes)).append("\n");
+    sb.append("    contractsSuccess: ").append(toIndentedString(contractsSuccess)).append("\n");
+    sb.append("    turnover: ").append(toIndentedString(turnover)).append("\n");
+    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
+    sb.append("    bank: ").append(toIndentedString(bank)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -106,7 +591,7 @@ public class EnterpriseBasic extends EnterpriseEntry {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(0);
+    openapiFields = new HashSet<String>(Arrays.asList("type", "name", "age", "description", "services", "owner", "flag", "cadres", "employees", "contractsDone", "disputes", "contractsSuccess", "turnover", "permissions", "bank"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -131,6 +616,55 @@ public class EnterpriseBasic extends EnterpriseEntry {
         if (!EnterpriseBasic.openapiFields.contains(entry.getKey())) {
           throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `EnterpriseBasic` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      // validate the optional field `type`
+      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
+        TypeEnum.validateJsonElement(jsonObj.get("type"));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if ((jsonObj.get("services") != null && !jsonObj.get("services").isJsonNull()) && !jsonObj.get("services").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `services` to be a primitive type in the JSON string but got `%s`", jsonObj.get("services").toString()));
+      }
+      if ((jsonObj.get("owner") != null && !jsonObj.get("owner").isJsonNull()) && !jsonObj.get("owner").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `owner` to be a primitive type in the JSON string but got `%s`", jsonObj.get("owner").toString()));
+      }
+      if ((jsonObj.get("flag") != null && !jsonObj.get("flag").isJsonNull()) && !jsonObj.get("flag").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `flag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("flag").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("cadres") != null && !jsonObj.get("cadres").isJsonNull() && !jsonObj.get("cadres").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `cadres` to be an array in the JSON string but got `%s`", jsonObj.get("cadres").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("employees") != null && !jsonObj.get("employees").isJsonNull() && !jsonObj.get("employees").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `employees` to be an array in the JSON string but got `%s`", jsonObj.get("employees").toString()));
+      }
+      if (jsonObj.get("permissions") != null && !jsonObj.get("permissions").isJsonNull()) {
+        JsonArray jsonArraypermissions = jsonObj.getAsJsonArray("permissions");
+        if (jsonArraypermissions != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("permissions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `permissions` to be an array in the JSON string but got `%s`", jsonObj.get("permissions").toString()));
+          }
+
+          // validate the optional field `permissions` (array)
+          for (int i = 0; i < jsonArraypermissions.size(); i++) {
+            EnterprisePermission.validateJsonElement(jsonArraypermissions.get(i));
+          };
+        }
+      }
+      // validate the optional field `bank`
+      if (jsonObj.get("bank") != null && !jsonObj.get("bank").isJsonNull()) {
+        EnterpriseBank.validateJsonElement(jsonObj.get("bank"));
       }
   }
 

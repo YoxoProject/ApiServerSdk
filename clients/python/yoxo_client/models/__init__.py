@@ -30,6 +30,7 @@ from yoxo_client.models.dividende_history_entry import DividendeHistoryEntry
 from yoxo_client.models.enterprise import Enterprise
 from yoxo_client.models.enterprise_bank import EnterpriseBank
 from yoxo_client.models.enterprise_bank_log import EnterpriseBankLog
+from yoxo_client.models.enterprise_base import EnterpriseBase
 from yoxo_client.models.enterprise_basic import EnterpriseBasic
 from yoxo_client.models.enterprise_bet import EnterpriseBet
 from yoxo_client.models.enterprise_bet_item import EnterpriseBetItem

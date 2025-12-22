@@ -2844,20 +2844,37 @@ components:
         data:
         - owner: Romaindu35
           flag: flag
+          betActive: 5
           description: Entreprise de pétrole de la papouasie !
           services: "######Poser des contrats si vous voulez##50k max, binance ré\
             cupère 50% du bénéfice##si le contrat vas a 100k vous récupérer ##75k######################"
           type: petrol
+          bets:
+          - numberOfPlayers: 42
+            deadlineTime: 1766837968789
+            minBet: 100
+            option1: France
+            option2: Espagne
+            title: Qui gagnera la coupe du monde ?
+            status: done
+          - numberOfPlayers: 42
+            deadlineTime: 1766837968789
+            minBet: 100
+            option1: France
+            option2: Espagne
+            title: Qui gagnera la coupe du monde ?
+            status: done
           disputes: 3
           cadres:
           - PingouinMaxIV
           - random20
+          betsRewardRedistributed: 225208
           bank:
-            bank: 325331.0
-            flux14Days: 142595.0
+            bank: 325331
+            flux14Days: 142595
             taxes14Days: -97.7
-            salaries14Days: -71785.0
-            inProgressContracts: 136856.0
+            salaries14Days: -71785
+            inProgressContracts: 136856
             logs:
             - amount: 74.5
               name: tax
@@ -2881,23 +2898,41 @@ components:
           - Zerlow__
           - Trigun0169
           turnover: 995177
+          betTotal: 50
           age: 997
         - owner: Romaindu35
           flag: flag
+          betActive: 5
           description: Entreprise de pétrole de la papouasie !
           services: "######Poser des contrats si vous voulez##50k max, binance ré\
             cupère 50% du bénéfice##si le contrat vas a 100k vous récupérer ##75k######################"
           type: petrol
+          bets:
+          - numberOfPlayers: 42
+            deadlineTime: 1766837968789
+            minBet: 100
+            option1: France
+            option2: Espagne
+            title: Qui gagnera la coupe du monde ?
+            status: done
+          - numberOfPlayers: 42
+            deadlineTime: 1766837968789
+            minBet: 100
+            option1: France
+            option2: Espagne
+            title: Qui gagnera la coupe du monde ?
+            status: done
           disputes: 3
           cadres:
           - PingouinMaxIV
           - random20
+          betsRewardRedistributed: 225208
           bank:
-            bank: 325331.0
-            flux14Days: 142595.0
+            bank: 325331
+            flux14Days: 142595
             taxes14Days: -97.7
-            salaries14Days: -71785.0
-            inProgressContracts: 136856.0
+            salaries14Days: -71785
+            inProgressContracts: 136856
             logs:
             - amount: 74.5
               name: tax
@@ -2921,6 +2956,7 @@ components:
           - Zerlow__
           - Trigun0169
           turnover: 995177
+          betTotal: 50
           age: 997
       properties:
         data:
@@ -2933,11 +2969,11 @@ components:
     EnterpriseBank:
       description: Informations bancaires d'une entreprise
       example:
-        bank: 325331.0
-        flux14Days: 142595.0
+        bank: 325331
+        flux14Days: 142595
         taxes14Days: -97.7
-        salaries14Days: -71785.0
-        inProgressContracts: 136856.0
+        salaries14Days: -71785
+        inProgressContracts: 136856
         logs:
         - amount: 74.5
           name: tax
@@ -2948,22 +2984,22 @@ components:
       properties:
         bank:
           description: Solde bancaire actuel (positif ou nul)
-          example: 325331.0
+          example: 325331
           format: double
           type: number
         flux14Days:
           description: Flux bancaire des 14 derniers jours
-          example: 142595.0
+          example: 142595
           format: double
           type: number
         inProgressContracts:
           description: Montant des contrats en cours (positif ou nul)
-          example: 136856.0
+          example: 136856
           format: double
           type: number
         salaries14Days:
           description: Salaires versés sur 14 jours (négatif ou nul)
-          example: -71785.0
+          example: -71785
           format: double
           type: number
         taxes14Days:
@@ -3002,12 +3038,12 @@ components:
       type: object
     EnterpriseBasic:
       allOf:
-      - $ref: "#/components/schemas/EnterpriseEntry"
+      - $ref: "#/components/schemas/EnterpriseBase"
       description: Entreprise basique (sans données spécifiques)
       type: object
     EnterpriseBet:
       allOf:
-      - $ref: "#/components/schemas/EnterpriseEntry"
+      - $ref: "#/components/schemas/EnterpriseBase"
       - properties:
           bets:
             description: Liste des paris actifs
@@ -3031,9 +3067,76 @@ components:
             type: integer
         type: object
       description: Entreprise de paris
+      example:
+        owner: Romaindu35
+        flag: flag
+        betActive: 5
+        description: Entreprise de pétrole de la papouasie !
+        services: "######Poser des contrats si vous voulez##50k max, binance récupè\
+          re 50% du bénéfice##si le contrat vas a 100k vous récupérer ##75k######################"
+        type: petrol
+        bets:
+        - numberOfPlayers: 42
+          deadlineTime: 1766837968789
+          minBet: 100
+          option1: France
+          option2: Espagne
+          title: Qui gagnera la coupe du monde ?
+          status: done
+        - numberOfPlayers: 42
+          deadlineTime: 1766837968789
+          minBet: 100
+          option1: France
+          option2: Espagne
+          title: Qui gagnera la coupe du monde ?
+          status: done
+        disputes: 3
+        cadres:
+        - PingouinMaxIV
+        - random20
+        betsRewardRedistributed: 225208
+        bank:
+          bank: 325331
+          flux14Days: 142595
+          taxes14Days: -97.7
+          salaries14Days: -71785
+          inProgressContracts: 136856
+          logs:
+          - amount: 74.5
+            name: tax
+            timestamp: 1763258552178
+          - amount: 74.5
+            name: tax
+            timestamp: 1763258552178
+        permissions:
+        - owner: true
+          name: exclude
+          cadre: true
+          employee: false
+        - owner: true
+          name: exclude
+          cadre: true
+          employee: false
+        name: Pompouasie
+        contractsDone: 12
+        contractsSuccess: 80
+        employees:
+        - Zerlow__
+        - Trigun0169
+        turnover: 995177
+        betTotal: 50
+        age: 997
       type: object
     EnterpriseBetItem:
       description: Pari proposé par une entreprise
+      example:
+        numberOfPlayers: 42
+        deadlineTime: 1766837968789
+        minBet: 100
+        option1: France
+        option2: Espagne
+        title: Qui gagnera la coupe du monde ?
+        status: done
       properties:
         deadlineTime:
           description: Timestamp de fin du pari
@@ -3069,7 +3172,7 @@ components:
       type: object
     EnterpriseCasino:
       allOf:
-      - $ref: "#/components/schemas/EnterpriseEntry"
+      - $ref: "#/components/schemas/EnterpriseBase"
       - properties:
           history:
             additionalProperties:
@@ -3080,12 +3183,12 @@ components:
             type: object
           benefAverage:
             description: Bénéfice moyen (par jours)
-            example: 5000.0
+            example: 5000
             format: double
             type: number
           totalPlay:
             description: Sommes totale jouée
-            example: 704636.0
+            example: 704636
             format: double
             type: number
           winPercent:
@@ -3095,7 +3198,7 @@ components:
             type: number
           totalWin:
             description: Somme totale des gains distribuées aux joueurs
-            example: 121250.0
+            example: 121250
             format: double
             type: number
         type: object
@@ -3103,11 +3206,11 @@ components:
       type: object
     EnterpriseElectric:
       allOf:
-      - $ref: "#/components/schemas/EnterpriseEntry"
+      - $ref: "#/components/schemas/EnterpriseBase"
       - properties:
           total:
             description: Électricité totale distribué (MJ)
-            example: 785492.0
+            example: 785492
             format: double
             type: number
           available:
@@ -3138,7 +3241,7 @@ components:
             type: number
           priceAverage:
             description: "Prix moyen, à l'échelle du serveur ($/GJ)"
-            example: 8709.0
+            example: 8709
             format: double
             type: number
           countriesSell:
@@ -3169,47 +3272,6 @@ components:
       description: Données d'une entreprise (différentes versions selon le type)
       discriminator:
         propertyName: type
-      example:
-        owner: Romaindu35
-        flag: flag
-        description: Entreprise de pétrole de la papouasie !
-        services: "######Poser des contrats si vous voulez##50k max, binance récupè\
-          re 50% du bénéfice##si le contrat vas a 100k vous récupérer ##75k######################"
-        type: petrol
-        disputes: 3
-        cadres:
-        - PingouinMaxIV
-        - random20
-        bank:
-          bank: 325331.0
-          flux14Days: 142595.0
-          taxes14Days: -97.7
-          salaries14Days: -71785.0
-          inProgressContracts: 136856.0
-          logs:
-          - amount: 74.5
-            name: tax
-            timestamp: 1763258552178
-          - amount: 74.5
-            name: tax
-            timestamp: 1763258552178
-        permissions:
-        - owner: true
-          name: exclude
-          cadre: true
-          employee: false
-        - owner: true
-          name: exclude
-          cadre: true
-          employee: false
-        name: Pompouasie
-        contractsDone: 12
-        contractsSuccess: 80
-        employees:
-        - Zerlow__
-        - Trigun0169
-        turnover: 995177
-        age: 997
       oneOf:
       - $ref: "#/components/schemas/EnterpriseBet"
       - $ref: "#/components/schemas/EnterpriseCasino"
@@ -3219,103 +3281,10 @@ components:
       - $ref: "#/components/schemas/EnterprisePetrol"
       - $ref: "#/components/schemas/EnterpriseTrader"
       - $ref: "#/components/schemas/EnterpriseBasic"
-      properties:
-        type:
-          description: Type d'entreprise
-          enum:
-          - build
-          - engineer
-          - terraform
-          - journalist
-          - casino
-          - pvp
-          - loan
-          - realestate
-          - trader
-          - bet
-          - repair
-          - lawyer
-          - electric
-          - petrol
-          - farm
-          example: petrol
-          type: string
-        name:
-          description: Nom de l'entreprise
-          example: Pompouasie
-          type: string
-        age:
-          description: Âge de l'entreprise en jours
-          example: 997
-          format: int32
-          type: integer
-        description:
-          description: Description de l'entreprise
-          example: Entreprise de pétrole de la papouasie !
-          type: string
-        services:
-          description: Services proposés
-          example: "######Poser des contrats si vous voulez##50k max, binance récupè\
-            re 50% du bénéfice##si le contrat vas a 100k vous récupérer ##75k######################"
-          type: string
-        owner:
-          description: Propriétaire de l'entreprise
-          example: Romaindu35
-          type: string
-        flag:
-          description: "Drapeau de l'entreprise, sous la forme d'image en Base64"
-          type: string
-        cadres:
-          description: Liste des cadres de l'entreprise
-          example:
-          - PingouinMaxIV
-          - random20
-          items:
-            description: Liste des cadres de l'entreprise
-            example: "[\"PingouinMaxIV\",\"random20\"]"
-            type: string
-          type: array
-        employees:
-          description: Liste des employés de l'entreprise
-          example:
-          - Zerlow__
-          - Trigun0169
-          items:
-            description: Liste des employés de l'entreprise
-            example: "[\"Zerlow__\",\"Trigun0169\"]"
-            type: string
-          type: array
-        contractsDone:
-          description: Nombre de contrats réalisés
-          example: 12
-          format: int32
-          type: integer
-        disputes:
-          description: Nombre de litiges
-          example: 3
-          format: int32
-          type: integer
-        contractsSuccess:
-          description: Taux de réussite des contrats (pourcentage)
-          example: 80
-          format: double
-          type: number
-        turnover:
-          description: Chiffre d'affaires total
-          example: 995177
-          format: int32
-          type: integer
-        permissions:
-          description: Permissions de l'entreprise
-          items:
-            $ref: "#/components/schemas/EnterprisePermission"
-          type: array
-        bank:
-          $ref: "#/components/schemas/EnterpriseBank"
       type: object
     EnterpriseFarm:
       allOf:
-      - $ref: "#/components/schemas/EnterpriseEntry"
+      - $ref: "#/components/schemas/EnterpriseBase"
       - properties:
           histories:
             additionalProperties:
@@ -3370,7 +3339,7 @@ components:
       type: object
     EnterprisePetrol:
       allOf:
-      - $ref: "#/components/schemas/EnterpriseEntry"
+      - $ref: "#/components/schemas/EnterpriseBase"
       - properties:
           historyGenerated:
             additionalProperties:
@@ -3427,7 +3396,7 @@ components:
       type: object
     EnterpriseRealEstate:
       allOf:
-      - $ref: "#/components/schemas/EnterpriseEntry"
+      - $ref: "#/components/schemas/EnterpriseBase"
       - properties:
           parcelles:
             description: Liste des parcelles de l'entreprise
@@ -3439,7 +3408,7 @@ components:
       type: object
     EnterpriseTrader:
       allOf:
-      - $ref: "#/components/schemas/EnterpriseEntry"
+      - $ref: "#/components/schemas/EnterpriseBase"
       - properties:
           history:
             additionalProperties:
@@ -4949,6 +4918,102 @@ components:
             sunflower: 1050
             rye: 950
           type: object
+      type: object
+    EnterpriseBase:
+      description: Champs communs à toutes les entreprises
+      properties:
+        type:
+          description: Type d'entreprise
+          enum:
+          - build
+          - engineer
+          - terraform
+          - journalist
+          - casino
+          - pvp
+          - loan
+          - realestate
+          - trader
+          - bet
+          - repair
+          - lawyer
+          - electric
+          - petrol
+          - farm
+          example: petrol
+          type: string
+        name:
+          description: Nom de l'entreprise
+          example: Pompouasie
+          type: string
+        age:
+          description: Âge de l'entreprise en jours
+          example: 997
+          format: int32
+          type: integer
+        description:
+          description: Description de l'entreprise
+          example: Entreprise de pétrole de la papouasie !
+          type: string
+        services:
+          description: Services proposés
+          example: "######Poser des contrats si vous voulez##50k max, binance récupè\
+            re 50% du bénéfice##si le contrat vas a 100k vous récupérer ##75k######################"
+          type: string
+        owner:
+          description: Propriétaire de l'entreprise
+          example: Romaindu35
+          type: string
+        flag:
+          description: "Drapeau de l'entreprise, sous la forme d'image en Base64"
+          type: string
+        cadres:
+          description: Liste des cadres de l'entreprise
+          example:
+          - PingouinMaxIV
+          - random20
+          items:
+            description: Liste des cadres de l'entreprise
+            example: "[\"PingouinMaxIV\",\"random20\"]"
+            type: string
+          type: array
+        employees:
+          description: Liste des employés de l'entreprise
+          example:
+          - Zerlow__
+          - Trigun0169
+          items:
+            description: Liste des employés de l'entreprise
+            example: "[\"Zerlow__\",\"Trigun0169\"]"
+            type: string
+          type: array
+        contractsDone:
+          description: Nombre de contrats réalisés
+          example: 12
+          format: int32
+          type: integer
+        disputes:
+          description: Nombre de litiges
+          example: 3
+          format: int32
+          type: integer
+        contractsSuccess:
+          description: Taux de réussite des contrats (pourcentage)
+          example: 80
+          format: double
+          type: number
+        turnover:
+          description: Chiffre d'affaires total
+          example: 995177
+          format: int32
+          type: integer
+        permissions:
+          description: Permissions de l'entreprise
+          items:
+            $ref: "#/components/schemas/EnterprisePermission"
+          type: array
+        bank:
+          $ref: "#/components/schemas/EnterpriseBank"
       type: object
   securitySchemes:
     oauth2_client_credentials:

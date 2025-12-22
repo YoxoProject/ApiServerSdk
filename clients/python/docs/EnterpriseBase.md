@@ -1,6 +1,6 @@
-# EnterpriseRealEstate
+# EnterpriseBase
 
-Entreprise immobilière
+Champs communs à toutes les entreprises
 
 ## Properties
 
@@ -21,24 +21,23 @@ Name | Type | Description | Notes
 **turnover** | **int** | Chiffre d&#39;affaires total | [optional] 
 **permissions** | [**List[EnterprisePermission]**](EnterprisePermission.md) | Permissions de l&#39;entreprise | [optional] 
 **bank** | [**EnterpriseBank**](EnterpriseBank.md) |  | [optional] 
-**parcelles** | [**List[Parcelle]**](Parcelle.md) | Liste des parcelles de l&#39;entreprise | [optional] 
 
 ## Example
 
 ```python
-from yoxo_client.models.enterprise_real_estate import EnterpriseRealEstate
+from yoxo_client.models.enterprise_base import EnterpriseBase
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of EnterpriseRealEstate from a JSON string
-enterprise_real_estate_instance = EnterpriseRealEstate.from_json(json)
+# create an instance of EnterpriseBase from a JSON string
+enterprise_base_instance = EnterpriseBase.from_json(json)
 # print the JSON string representation of the object
-print(EnterpriseRealEstate.to_json())
+print(EnterpriseBase.to_json())
 
 # convert the object into a dict
-enterprise_real_estate_dict = enterprise_real_estate_instance.to_dict()
-# create an instance of EnterpriseRealEstate from a dict
-enterprise_real_estate_from_dict = EnterpriseRealEstate.from_dict(enterprise_real_estate_dict)
+enterprise_base_dict = enterprise_base_instance.to_dict()
+# create an instance of EnterpriseBase from a dict
+enterprise_base_from_dict = EnterpriseBase.from_dict(enterprise_base_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

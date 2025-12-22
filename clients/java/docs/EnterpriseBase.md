@@ -1,8 +1,8 @@
 
 
-# EnterpriseBasic
+# EnterpriseBase
 
-Entreprise basique (sans données spécifiques)
+Champs communs à toutes les entreprises
 
 ## Properties
 

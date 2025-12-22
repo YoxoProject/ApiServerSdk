@@ -61,42 +61,6 @@ public class JSON {
     @SuppressWarnings("unchecked")
     public static GsonBuilder createGson() {
         GsonFireBuilder fireBuilder = new GsonFireBuilder()
-                .registerTypeSelector(software.yoxo.client.model.EnterpriseBasic.class, new TypeSelector<software.yoxo.client.model.EnterpriseBasic>() {
-                    @Override
-                    public Class<? extends software.yoxo.client.model.EnterpriseBasic> getClassForElement(JsonElement readElement) {
-                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("EnterpriseBasic", software.yoxo.client.model.EnterpriseBasic.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "type"));
-                    }
-          })
-                .registerTypeSelector(software.yoxo.client.model.EnterpriseBet.class, new TypeSelector<software.yoxo.client.model.EnterpriseBet>() {
-                    @Override
-                    public Class<? extends software.yoxo.client.model.EnterpriseBet> getClassForElement(JsonElement readElement) {
-                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("EnterpriseBet", software.yoxo.client.model.EnterpriseBet.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "type"));
-                    }
-          })
-                .registerTypeSelector(software.yoxo.client.model.EnterpriseCasino.class, new TypeSelector<software.yoxo.client.model.EnterpriseCasino>() {
-                    @Override
-                    public Class<? extends software.yoxo.client.model.EnterpriseCasino> getClassForElement(JsonElement readElement) {
-                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("EnterpriseCasino", software.yoxo.client.model.EnterpriseCasino.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "type"));
-                    }
-          })
-                .registerTypeSelector(software.yoxo.client.model.EnterpriseElectric.class, new TypeSelector<software.yoxo.client.model.EnterpriseElectric>() {
-                    @Override
-                    public Class<? extends software.yoxo.client.model.EnterpriseElectric> getClassForElement(JsonElement readElement) {
-                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("EnterpriseElectric", software.yoxo.client.model.EnterpriseElectric.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "type"));
-                    }
-          })
                 .registerTypeSelector(software.yoxo.client.model.EnterpriseEntry.class, new TypeSelector<software.yoxo.client.model.EnterpriseEntry>() {
                     @Override
                     public Class<? extends software.yoxo.client.model.EnterpriseEntry> getClassForElement(JsonElement readElement) {
@@ -110,42 +74,6 @@ public class JSON {
                         classByDiscriminatorValue.put("EnterpriseRealEstate", software.yoxo.client.model.EnterpriseRealEstate.class);
                         classByDiscriminatorValue.put("EnterpriseTrader", software.yoxo.client.model.EnterpriseTrader.class);
                         classByDiscriminatorValue.put("EnterpriseEntry", software.yoxo.client.model.EnterpriseEntry.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "type"));
-                    }
-          })
-                .registerTypeSelector(software.yoxo.client.model.EnterpriseFarm.class, new TypeSelector<software.yoxo.client.model.EnterpriseFarm>() {
-                    @Override
-                    public Class<? extends software.yoxo.client.model.EnterpriseFarm> getClassForElement(JsonElement readElement) {
-                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("EnterpriseFarm", software.yoxo.client.model.EnterpriseFarm.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "type"));
-                    }
-          })
-                .registerTypeSelector(software.yoxo.client.model.EnterprisePetrol.class, new TypeSelector<software.yoxo.client.model.EnterprisePetrol>() {
-                    @Override
-                    public Class<? extends software.yoxo.client.model.EnterprisePetrol> getClassForElement(JsonElement readElement) {
-                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("EnterprisePetrol", software.yoxo.client.model.EnterprisePetrol.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "type"));
-                    }
-          })
-                .registerTypeSelector(software.yoxo.client.model.EnterpriseRealEstate.class, new TypeSelector<software.yoxo.client.model.EnterpriseRealEstate>() {
-                    @Override
-                    public Class<? extends software.yoxo.client.model.EnterpriseRealEstate> getClassForElement(JsonElement readElement) {
-                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("EnterpriseRealEstate", software.yoxo.client.model.EnterpriseRealEstate.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "type"));
-                    }
-          })
-                .registerTypeSelector(software.yoxo.client.model.EnterpriseTrader.class, new TypeSelector<software.yoxo.client.model.EnterpriseTrader>() {
-                    @Override
-                    public Class<? extends software.yoxo.client.model.EnterpriseTrader> getClassForElement(JsonElement readElement) {
-                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("EnterpriseTrader", software.yoxo.client.model.EnterpriseTrader.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "type"));
                     }
@@ -202,11 +130,13 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.Enterprise.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.EnterpriseBank.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.EnterpriseBankLog.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.EnterpriseBase.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.EnterpriseBasic.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.EnterpriseBet.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.EnterpriseBetItem.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.EnterpriseCasino.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.EnterpriseElectric.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.EnterpriseEntry.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.EnterpriseFarm.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.EnterprisePermission.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.EnterprisePetrol.CustomTypeAdapterFactory());

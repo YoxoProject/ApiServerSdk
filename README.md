@@ -1,57 +1,97 @@
-# Yoxo API Server SDK Factory
+# Yoxo API Server SDKs
 
-Ce dépôt contient l'usine logicielle permettant de générer automatiquement les SDKs (Java, Python, TypeScript) pour l'API Yoxo.
+Ce dépôt permet de générer et distribuer automatiquement les SDKs (Java, Python, TypeScript) pour l'API Yoxo.
 
-## Architecture
+## 🚀 Installation & Utilisation
 
-Le projet utilise **OpenAPI Generator** combiné à un pattern d'**Overlay** pour injecter proprement la logique d'authentification OAuth2 (`client_credentials`) sans modifier les templates du générateur.
+### 📦 TypeScript / Node.js
+Le SDK TypeScript est distribué via une branche dédiée.
 
-- `specs/` : Contient la spécification OpenAPI (`openapi.json`).
-- `configs/` : Fichiers de configuration pour chaque langage.
-- `overlays/` : Code manuel (Wrappers, Interceptors) injecté après la génération.
-- `clients/` : Dossier de sortie (ignoré par git sauf pour le déploiement).
-- `scripts/` : Scripts d'automatisation.
-
-## Commandes
-
-*   **Installer les dépendances** : `npm install`
-*   **Récupérer la dernière spec** : `npm run fetch-spec`
-*   **Générer les SDKs** : `npm run generate:all` (Inclut la phase `enhance`)
-
-## Authentification Automatique
-
-Les SDKs générés incluent une surcouche `YoxoClient` qui gère automatiquement :
-1.  L'obtention du token via `client_id` et `client_secret`.
-2.  Le stockage et la vérification de l'expiration.
-3.  Le rafraîchissement transparent du token.
-
-### Exemple d'utilisation (TypeScript)
-```typescript
-import { YoxoClient } from '@yoxo/client';
-
-const client = new YoxoClient('mon_id', 'mon_secret');
-const data = await client.java.getCountry('fr');
+**Installation :**
+```bash
+npm install github:YoxoProject/ApiServerSdk#release/typescript
 ```
 
-### Exemple d'utilisation (Java)
+**Utilisation :**
+```typescript
+import { YoxoClient } from '@yoxoproject/yoxo-api-client';
+
+// L'authentification OAuth2 est gérée automatiquement
+const client = new YoxoClient('CLIENT_ID', 'CLIENT_SECRET');
+
+async function demo() {
+    const response = await client.java.getCountry('2025-12-25', 'red');
+    console.log(response.data.data[0]);
+}
+```
+
+---
+
+### ☕ Java
+Le SDK Java est publié sur un repo maven
+
+**Configuration Gradle (`build.gradle`) :**
+```groovy
+repositories {
+    mavenCentral()
+    maven {
+        url "https://maven.romaindu35.fr/releases"
+    }
+}
+
+dependencies {
+    implementation 'software.yoxo:yoxo-api-client:1.0-SNAPSHOT' // Remplacez par la version actuelle
+}
+```
+
+**Utilisation :**
 ```java
 import software.yoxo.client.YoxoClient;
+import software.yoxo.client.invoker.ApiException;
+import java.time.LocalDate;
 
-YoxoClient client = new YoxoClient("mon_id", "mon_secret");
-var data = client.java().getCountry("fr");
+public class Main {
+    public static void main(String[] args) throws ApiException {
+        YoxoClient client = new YoxoClient("CLIENT_ID", "CLIENT_SECRET");
+        var response = client.java().getCountry(LocalDate.now(), "red");
+        assert response.getData() != null;
+        System.out.println(response.getData().getFirst());
+    }
+}
 ```
 
-### Exemple d'utilisation (Python)
+---
+
+### 🐍 Python
+Le SDK Python est disponible directement via Git sur une branche dédiée.
+
+**Installation :**
+```bash
+pip install git+https://github.com/YoxoProject/ApiServerSdk.git@release/python
+```
+
+**Utilisation :**
 ```python
-from yoxo_client.client import YoxoClient
+from yoxo-api-client.client import YoxoClient
 
-client = YoxoClient('mon_id', 'mon_secret')
-data = client.java.get_country('fr')
+client = YoxoClient(client_id="CLIENT_ID", client_secret="CLIENT_SECRET")
+
+# Utilisation des méthodes générées (snake_case)
+info = client.java.get_country("red")
+print(info.label)
 ```
 
-## CI/CD
+## 🛠️ Fonctionnement de l'Usine (SDK Factory)
 
-Le workflow GitHub Actions `.github/workflows/sdk-factory.yml` tourne quotidiennement pour :
-1.  Vérifier les changements dans l'API.
-2.  Régénérer les clients.
-3.  Publier les paquets sur GitHub Packages.
+1.  **Génération** : Le code est généré via `OpenAPI Generator` à partir de la spec officielle.
+2.  **Patching** : Un script (`scripts/patch_spec.js`) résout automatiquement les dépendances circulaires complexes.
+3.  **Surcouche (Overlay)** : Nous injectons une classe `YoxoClient` dans chaque langage. Cette classe contient un intercepteur qui :
+    *   Récupère un Access Token via `client_credentials`.
+    *   Gère le cache du token en mémoire.
+    *   Rafraîchit le token 60 secondes avant son expiration.
+4.  **Distribution** : 
+    *   Les clients TS/Python sont poussés sur des branches `release/*` isolées.
+    *   Le client Java est déployé sur `maven.romaindu35.fr`.
+
+## 🔄 Automatisation
+Le pipeline GitHub Actions se déclenche automatiquement après chaque déploiement de l'API Server, garantissant des SDKs toujours à jour avec les dernières routes et modèles.

@@ -22,9 +22,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import software.yoxo.client.model.EnterpriseBank;
 import software.yoxo.client.model.EnterprisePermission;
 
@@ -52,10 +50,10 @@ import java.util.Set;
 import software.yoxo.client.invoker.JSON;
 
 /**
- * Entreprise pétrolière
+ * Champs communs à toutes les entreprises
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
-public class EnterprisePetrol {
+public class EnterpriseBase {
   /**
    * Type d&#39;entreprise
    */
@@ -209,60 +207,10 @@ public class EnterprisePetrol {
   @javax.annotation.Nullable
   private EnterpriseBank bank;
 
-  public static final String SERIALIZED_NAME_HISTORY_GENERATED = "historyGenerated";
-  @SerializedName(SERIALIZED_NAME_HISTORY_GENERATED)
-  @javax.annotation.Nullable
-  private Map<String, Double> historyGenerated = new HashMap<>();
-
-  public static final String SERIALIZED_NAME_HISTORY_COLLECTED = "historyCollected";
-  @SerializedName(SERIALIZED_NAME_HISTORY_COLLECTED)
-  @javax.annotation.Nullable
-  private Map<String, Double> historyCollected = new HashMap<>();
-
-  public static final String SERIALIZED_NAME_TOTAL = "total";
-  @SerializedName(SERIALIZED_NAME_TOTAL)
-  @javax.annotation.Nullable
-  private Integer total;
-
-  public static final String SERIALIZED_NAME_AVAILABLE = "available";
-  @SerializedName(SERIALIZED_NAME_AVAILABLE)
-  @javax.annotation.Nullable
-  private Integer available;
-
-  public static final String SERIALIZED_NAME_ALLOW_COUNTRY = "allowCountry";
-  @SerializedName(SERIALIZED_NAME_ALLOW_COUNTRY)
-  @javax.annotation.Nullable
-  private Boolean allowCountry;
-
-  public static final String SERIALIZED_NAME_ALLOW_ALLY = "allowAlly";
-  @SerializedName(SERIALIZED_NAME_ALLOW_ALLY)
-  @javax.annotation.Nullable
-  private Boolean allowAlly;
-
-  public static final String SERIALIZED_NAME_ALLOW_ALL = "allowAll";
-  @SerializedName(SERIALIZED_NAME_ALLOW_ALL)
-  @javax.annotation.Nullable
-  private Boolean allowAll;
-
-  public static final String SERIALIZED_NAME_ASSOCIATED_COUNTRY = "associatedCountry";
-  @SerializedName(SERIALIZED_NAME_ASSOCIATED_COUNTRY)
-  @javax.annotation.Nullable
-  private String associatedCountry;
-
-  public static final String SERIALIZED_NAME_PRICE = "price";
-  @SerializedName(SERIALIZED_NAME_PRICE)
-  @javax.annotation.Nullable
-  private Integer price;
-
-  public static final String SERIALIZED_NAME_PRICE_AVERAGE = "priceAverage";
-  @SerializedName(SERIALIZED_NAME_PRICE_AVERAGE)
-  @javax.annotation.Nullable
-  private Integer priceAverage;
-
-  public EnterprisePetrol() {
+  public EnterpriseBase() {
   }
 
-  public EnterprisePetrol type(@javax.annotation.Nullable TypeEnum type) {
+  public EnterpriseBase type(@javax.annotation.Nullable TypeEnum type) {
     this.type = type;
     return this;
   }
@@ -281,7 +229,7 @@ public class EnterprisePetrol {
   }
 
 
-  public EnterprisePetrol name(@javax.annotation.Nullable String name) {
+  public EnterpriseBase name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -300,7 +248,7 @@ public class EnterprisePetrol {
   }
 
 
-  public EnterprisePetrol age(@javax.annotation.Nullable Integer age) {
+  public EnterpriseBase age(@javax.annotation.Nullable Integer age) {
     this.age = age;
     return this;
   }
@@ -319,7 +267,7 @@ public class EnterprisePetrol {
   }
 
 
-  public EnterprisePetrol description(@javax.annotation.Nullable String description) {
+  public EnterpriseBase description(@javax.annotation.Nullable String description) {
     this.description = description;
     return this;
   }
@@ -338,7 +286,7 @@ public class EnterprisePetrol {
   }
 
 
-  public EnterprisePetrol services(@javax.annotation.Nullable String services) {
+  public EnterpriseBase services(@javax.annotation.Nullable String services) {
     this.services = services;
     return this;
   }
@@ -357,7 +305,7 @@ public class EnterprisePetrol {
   }
 
 
-  public EnterprisePetrol owner(@javax.annotation.Nullable String owner) {
+  public EnterpriseBase owner(@javax.annotation.Nullable String owner) {
     this.owner = owner;
     return this;
   }
@@ -376,7 +324,7 @@ public class EnterprisePetrol {
   }
 
 
-  public EnterprisePetrol flag(@javax.annotation.Nullable String flag) {
+  public EnterpriseBase flag(@javax.annotation.Nullable String flag) {
     this.flag = flag;
     return this;
   }
@@ -395,12 +343,12 @@ public class EnterprisePetrol {
   }
 
 
-  public EnterprisePetrol cadres(@javax.annotation.Nullable List<String> cadres) {
+  public EnterpriseBase cadres(@javax.annotation.Nullable List<String> cadres) {
     this.cadres = cadres;
     return this;
   }
 
-  public EnterprisePetrol addCadresItem(String cadresItem) {
+  public EnterpriseBase addCadresItem(String cadresItem) {
     if (this.cadres == null) {
       this.cadres = new ArrayList<>();
     }
@@ -422,12 +370,12 @@ public class EnterprisePetrol {
   }
 
 
-  public EnterprisePetrol employees(@javax.annotation.Nullable List<String> employees) {
+  public EnterpriseBase employees(@javax.annotation.Nullable List<String> employees) {
     this.employees = employees;
     return this;
   }
 
-  public EnterprisePetrol addEmployeesItem(String employeesItem) {
+  public EnterpriseBase addEmployeesItem(String employeesItem) {
     if (this.employees == null) {
       this.employees = new ArrayList<>();
     }
@@ -449,7 +397,7 @@ public class EnterprisePetrol {
   }
 
 
-  public EnterprisePetrol contractsDone(@javax.annotation.Nullable Integer contractsDone) {
+  public EnterpriseBase contractsDone(@javax.annotation.Nullable Integer contractsDone) {
     this.contractsDone = contractsDone;
     return this;
   }
@@ -468,7 +416,7 @@ public class EnterprisePetrol {
   }
 
 
-  public EnterprisePetrol disputes(@javax.annotation.Nullable Integer disputes) {
+  public EnterpriseBase disputes(@javax.annotation.Nullable Integer disputes) {
     this.disputes = disputes;
     return this;
   }
@@ -487,7 +435,7 @@ public class EnterprisePetrol {
   }
 
 
-  public EnterprisePetrol contractsSuccess(@javax.annotation.Nullable Double contractsSuccess) {
+  public EnterpriseBase contractsSuccess(@javax.annotation.Nullable Double contractsSuccess) {
     this.contractsSuccess = contractsSuccess;
     return this;
   }
@@ -506,7 +454,7 @@ public class EnterprisePetrol {
   }
 
 
-  public EnterprisePetrol turnover(@javax.annotation.Nullable Integer turnover) {
+  public EnterpriseBase turnover(@javax.annotation.Nullable Integer turnover) {
     this.turnover = turnover;
     return this;
   }
@@ -525,12 +473,12 @@ public class EnterprisePetrol {
   }
 
 
-  public EnterprisePetrol permissions(@javax.annotation.Nullable List<EnterprisePermission> permissions) {
+  public EnterpriseBase permissions(@javax.annotation.Nullable List<EnterprisePermission> permissions) {
     this.permissions = permissions;
     return this;
   }
 
-  public EnterprisePetrol addPermissionsItem(EnterprisePermission permissionsItem) {
+  public EnterpriseBase addPermissionsItem(EnterprisePermission permissionsItem) {
     if (this.permissions == null) {
       this.permissions = new ArrayList<>();
     }
@@ -552,7 +500,7 @@ public class EnterprisePetrol {
   }
 
 
-  public EnterprisePetrol bank(@javax.annotation.Nullable EnterpriseBank bank) {
+  public EnterpriseBase bank(@javax.annotation.Nullable EnterpriseBank bank) {
     this.bank = bank;
     return this;
   }
@@ -571,212 +519,6 @@ public class EnterprisePetrol {
   }
 
 
-  public EnterprisePetrol historyGenerated(@javax.annotation.Nullable Map<String, Double> historyGenerated) {
-    this.historyGenerated = historyGenerated;
-    return this;
-  }
-
-  public EnterprisePetrol putHistoryGeneratedItem(String key, Double historyGeneratedItem) {
-    if (this.historyGenerated == null) {
-      this.historyGenerated = new HashMap<>();
-    }
-    this.historyGenerated.put(key, historyGeneratedItem);
-    return this;
-  }
-
-  /**
-   * Historique du pétrole vendue
-   * @return historyGenerated
-   */
-  @javax.annotation.Nullable
-  public Map<String, Double> getHistoryGenerated() {
-    return historyGenerated;
-  }
-
-  public void setHistoryGenerated(@javax.annotation.Nullable Map<String, Double> historyGenerated) {
-    this.historyGenerated = historyGenerated;
-  }
-
-
-  public EnterprisePetrol historyCollected(@javax.annotation.Nullable Map<String, Double> historyCollected) {
-    this.historyCollected = historyCollected;
-    return this;
-  }
-
-  public EnterprisePetrol putHistoryCollectedItem(String key, Double historyCollectedItem) {
-    if (this.historyCollected == null) {
-      this.historyCollected = new HashMap<>();
-    }
-    this.historyCollected.put(key, historyCollectedItem);
-    return this;
-  }
-
-  /**
-   * Historique du pétrole collectée
-   * @return historyCollected
-   */
-  @javax.annotation.Nullable
-  public Map<String, Double> getHistoryCollected() {
-    return historyCollected;
-  }
-
-  public void setHistoryCollected(@javax.annotation.Nullable Map<String, Double> historyCollected) {
-    this.historyCollected = historyCollected;
-  }
-
-
-  public EnterprisePetrol total(@javax.annotation.Nullable Integer total) {
-    this.total = total;
-    return this;
-  }
-
-  /**
-   * Total du pétrole distribué (L)
-   * @return total
-   */
-  @javax.annotation.Nullable
-  public Integer getTotal() {
-    return total;
-  }
-
-  public void setTotal(@javax.annotation.Nullable Integer total) {
-    this.total = total;
-  }
-
-
-  public EnterprisePetrol available(@javax.annotation.Nullable Integer available) {
-    this.available = available;
-    return this;
-  }
-
-  /**
-   * Pétrole disponible (L)
-   * @return available
-   */
-  @javax.annotation.Nullable
-  public Integer getAvailable() {
-    return available;
-  }
-
-  public void setAvailable(@javax.annotation.Nullable Integer available) {
-    this.available = available;
-  }
-
-
-  public EnterprisePetrol allowCountry(@javax.annotation.Nullable Boolean allowCountry) {
-    this.allowCountry = allowCountry;
-    return this;
-  }
-
-  /**
-   * Autoriser la vente au pays
-   * @return allowCountry
-   */
-  @javax.annotation.Nullable
-  public Boolean getAllowCountry() {
-    return allowCountry;
-  }
-
-  public void setAllowCountry(@javax.annotation.Nullable Boolean allowCountry) {
-    this.allowCountry = allowCountry;
-  }
-
-
-  public EnterprisePetrol allowAlly(@javax.annotation.Nullable Boolean allowAlly) {
-    this.allowAlly = allowAlly;
-    return this;
-  }
-
-  /**
-   * Autoriser la vente aux alliés
-   * @return allowAlly
-   */
-  @javax.annotation.Nullable
-  public Boolean getAllowAlly() {
-    return allowAlly;
-  }
-
-  public void setAllowAlly(@javax.annotation.Nullable Boolean allowAlly) {
-    this.allowAlly = allowAlly;
-  }
-
-
-  public EnterprisePetrol allowAll(@javax.annotation.Nullable Boolean allowAll) {
-    this.allowAll = allowAll;
-    return this;
-  }
-
-  /**
-   * Autoriser la vente à tous
-   * @return allowAll
-   */
-  @javax.annotation.Nullable
-  public Boolean getAllowAll() {
-    return allowAll;
-  }
-
-  public void setAllowAll(@javax.annotation.Nullable Boolean allowAll) {
-    this.allowAll = allowAll;
-  }
-
-
-  public EnterprisePetrol associatedCountry(@javax.annotation.Nullable String associatedCountry) {
-    this.associatedCountry = associatedCountry;
-    return this;
-  }
-
-  /**
-   * Pays associé (semble être le pays du chef de l&#39;entreprise)
-   * @return associatedCountry
-   */
-  @javax.annotation.Nullable
-  public String getAssociatedCountry() {
-    return associatedCountry;
-  }
-
-  public void setAssociatedCountry(@javax.annotation.Nullable String associatedCountry) {
-    this.associatedCountry = associatedCountry;
-  }
-
-
-  public EnterprisePetrol price(@javax.annotation.Nullable Integer price) {
-    this.price = price;
-    return this;
-  }
-
-  /**
-   * Prix actuel du pétrole ($/100L)
-   * @return price
-   */
-  @javax.annotation.Nullable
-  public Integer getPrice() {
-    return price;
-  }
-
-  public void setPrice(@javax.annotation.Nullable Integer price) {
-    this.price = price;
-  }
-
-
-  public EnterprisePetrol priceAverage(@javax.annotation.Nullable Integer priceAverage) {
-    this.priceAverage = priceAverage;
-    return this;
-  }
-
-  /**
-   * Prix moyen, à l&#39;échelle du serveur ($/100L)
-   * @return priceAverage
-   */
-  @javax.annotation.Nullable
-  public Integer getPriceAverage() {
-    return priceAverage;
-  }
-
-  public void setPriceAverage(@javax.annotation.Nullable Integer priceAverage) {
-    this.priceAverage = priceAverage;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -786,43 +528,33 @@ public class EnterprisePetrol {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    EnterprisePetrol enterprisePetrol = (EnterprisePetrol) o;
-    return Objects.equals(this.type, enterprisePetrol.type) &&
-        Objects.equals(this.name, enterprisePetrol.name) &&
-        Objects.equals(this.age, enterprisePetrol.age) &&
-        Objects.equals(this.description, enterprisePetrol.description) &&
-        Objects.equals(this.services, enterprisePetrol.services) &&
-        Objects.equals(this.owner, enterprisePetrol.owner) &&
-        Objects.equals(this.flag, enterprisePetrol.flag) &&
-        Objects.equals(this.cadres, enterprisePetrol.cadres) &&
-        Objects.equals(this.employees, enterprisePetrol.employees) &&
-        Objects.equals(this.contractsDone, enterprisePetrol.contractsDone) &&
-        Objects.equals(this.disputes, enterprisePetrol.disputes) &&
-        Objects.equals(this.contractsSuccess, enterprisePetrol.contractsSuccess) &&
-        Objects.equals(this.turnover, enterprisePetrol.turnover) &&
-        Objects.equals(this.permissions, enterprisePetrol.permissions) &&
-        Objects.equals(this.bank, enterprisePetrol.bank) &&
-        Objects.equals(this.historyGenerated, enterprisePetrol.historyGenerated) &&
-        Objects.equals(this.historyCollected, enterprisePetrol.historyCollected) &&
-        Objects.equals(this.total, enterprisePetrol.total) &&
-        Objects.equals(this.available, enterprisePetrol.available) &&
-        Objects.equals(this.allowCountry, enterprisePetrol.allowCountry) &&
-        Objects.equals(this.allowAlly, enterprisePetrol.allowAlly) &&
-        Objects.equals(this.allowAll, enterprisePetrol.allowAll) &&
-        Objects.equals(this.associatedCountry, enterprisePetrol.associatedCountry) &&
-        Objects.equals(this.price, enterprisePetrol.price) &&
-        Objects.equals(this.priceAverage, enterprisePetrol.priceAverage);
+    EnterpriseBase enterpriseBase = (EnterpriseBase) o;
+    return Objects.equals(this.type, enterpriseBase.type) &&
+        Objects.equals(this.name, enterpriseBase.name) &&
+        Objects.equals(this.age, enterpriseBase.age) &&
+        Objects.equals(this.description, enterpriseBase.description) &&
+        Objects.equals(this.services, enterpriseBase.services) &&
+        Objects.equals(this.owner, enterpriseBase.owner) &&
+        Objects.equals(this.flag, enterpriseBase.flag) &&
+        Objects.equals(this.cadres, enterpriseBase.cadres) &&
+        Objects.equals(this.employees, enterpriseBase.employees) &&
+        Objects.equals(this.contractsDone, enterpriseBase.contractsDone) &&
+        Objects.equals(this.disputes, enterpriseBase.disputes) &&
+        Objects.equals(this.contractsSuccess, enterpriseBase.contractsSuccess) &&
+        Objects.equals(this.turnover, enterpriseBase.turnover) &&
+        Objects.equals(this.permissions, enterpriseBase.permissions) &&
+        Objects.equals(this.bank, enterpriseBase.bank);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, name, age, description, services, owner, flag, cadres, employees, contractsDone, disputes, contractsSuccess, turnover, permissions, bank, historyGenerated, historyCollected, total, available, allowCountry, allowAlly, allowAll, associatedCountry, price, priceAverage);
+    return Objects.hash(type, name, age, description, services, owner, flag, cadres, employees, contractsDone, disputes, contractsSuccess, turnover, permissions, bank);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class EnterprisePetrol {\n");
+    sb.append("class EnterpriseBase {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    age: ").append(toIndentedString(age)).append("\n");
@@ -838,16 +570,6 @@ public class EnterprisePetrol {
     sb.append("    turnover: ").append(toIndentedString(turnover)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    bank: ").append(toIndentedString(bank)).append("\n");
-    sb.append("    historyGenerated: ").append(toIndentedString(historyGenerated)).append("\n");
-    sb.append("    historyCollected: ").append(toIndentedString(historyCollected)).append("\n");
-    sb.append("    total: ").append(toIndentedString(total)).append("\n");
-    sb.append("    available: ").append(toIndentedString(available)).append("\n");
-    sb.append("    allowCountry: ").append(toIndentedString(allowCountry)).append("\n");
-    sb.append("    allowAlly: ").append(toIndentedString(allowAlly)).append("\n");
-    sb.append("    allowAll: ").append(toIndentedString(allowAll)).append("\n");
-    sb.append("    associatedCountry: ").append(toIndentedString(associatedCountry)).append("\n");
-    sb.append("    price: ").append(toIndentedString(price)).append("\n");
-    sb.append("    priceAverage: ").append(toIndentedString(priceAverage)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -869,7 +591,7 @@ public class EnterprisePetrol {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("type", "name", "age", "description", "services", "owner", "flag", "cadres", "employees", "contractsDone", "disputes", "contractsSuccess", "turnover", "permissions", "bank", "historyGenerated", "historyCollected", "total", "available", "allowCountry", "allowAlly", "allowAll", "associatedCountry", "price", "priceAverage"));
+    openapiFields = new HashSet<String>(Arrays.asList("type", "name", "age", "description", "services", "owner", "flag", "cadres", "employees", "contractsDone", "disputes", "contractsSuccess", "turnover", "permissions", "bank"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -879,20 +601,20 @@ public class EnterprisePetrol {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to EnterprisePetrol
+   * @throws IOException if the JSON Element is invalid with respect to EnterpriseBase
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!EnterprisePetrol.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in EnterprisePetrol is not found in the empty JSON string", EnterprisePetrol.openapiRequiredFields.toString()));
+        if (!EnterpriseBase.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in EnterpriseBase is not found in the empty JSON string", EnterpriseBase.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!EnterprisePetrol.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `EnterprisePetrol` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!EnterpriseBase.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `EnterpriseBase` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -944,31 +666,28 @@ public class EnterprisePetrol {
       if (jsonObj.get("bank") != null && !jsonObj.get("bank").isJsonNull()) {
         EnterpriseBank.validateJsonElement(jsonObj.get("bank"));
       }
-      if ((jsonObj.get("associatedCountry") != null && !jsonObj.get("associatedCountry").isJsonNull()) && !jsonObj.get("associatedCountry").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `associatedCountry` to be a primitive type in the JSON string but got `%s`", jsonObj.get("associatedCountry").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!EnterprisePetrol.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'EnterprisePetrol' and its subtypes
+       if (!EnterpriseBase.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'EnterpriseBase' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<EnterprisePetrol> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(EnterprisePetrol.class));
+       final TypeAdapter<EnterpriseBase> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(EnterpriseBase.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<EnterprisePetrol>() {
+       return (TypeAdapter<T>) new TypeAdapter<EnterpriseBase>() {
            @Override
-           public void write(JsonWriter out, EnterprisePetrol value) throws IOException {
+           public void write(JsonWriter out, EnterpriseBase value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public EnterprisePetrol read(JsonReader in) throws IOException {
+           public EnterpriseBase read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -979,18 +698,18 @@ public class EnterprisePetrol {
   }
 
   /**
-   * Create an instance of EnterprisePetrol given an JSON string
+   * Create an instance of EnterpriseBase given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of EnterprisePetrol
-   * @throws IOException if the JSON string is invalid with respect to EnterprisePetrol
+   * @return An instance of EnterpriseBase
+   * @throws IOException if the JSON string is invalid with respect to EnterpriseBase
    */
-  public static EnterprisePetrol fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, EnterprisePetrol.class);
+  public static EnterpriseBase fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, EnterpriseBase.class);
   }
 
   /**
-   * Convert an instance of EnterprisePetrol to an JSON string
+   * Convert an instance of EnterpriseBase to an JSON string
    *
    * @return JSON string
    */

@@ -45,6 +45,7 @@ __all__ = [
     "Enterprise",
     "EnterpriseBank",
     "EnterpriseBankLog",
+    "EnterpriseBase",
     "EnterpriseBasic",
     "EnterpriseBet",
     "EnterpriseBetItem",
@@ -119,6 +120,7 @@ from yoxo_client.models.dividende_history_entry import DividendeHistoryEntry as 
 from yoxo_client.models.enterprise import Enterprise as Enterprise
 from yoxo_client.models.enterprise_bank import EnterpriseBank as EnterpriseBank
 from yoxo_client.models.enterprise_bank_log import EnterpriseBankLog as EnterpriseBankLog
+from yoxo_client.models.enterprise_base import EnterpriseBase as EnterpriseBase
 from yoxo_client.models.enterprise_basic import EnterpriseBasic as EnterpriseBasic
 from yoxo_client.models.enterprise_bet import EnterpriseBet as EnterpriseBet
 from yoxo_client.models.enterprise_bet_item import EnterpriseBetItem as EnterpriseBetItem

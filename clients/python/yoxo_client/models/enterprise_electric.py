@@ -17,20 +17,32 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from yoxo_client.models.enterprise_bank import EnterpriseBank
-from yoxo_client.models.enterprise_bet_item import EnterpriseBetItem
-from yoxo_client.models.enterprise_entry import EnterpriseEntry
 from yoxo_client.models.enterprise_permission import EnterprisePermission
-from yoxo_client.models.parcelle import Parcelle
 from typing import Optional, Set
 from typing_extensions import Self
 
-class EnterpriseElectric(EnterpriseEntry):
+class EnterpriseElectric(BaseModel):
     """
     Entreprise électrique
     """ # noqa: E501
+    type: Optional[StrictStr] = Field(default=None, description="Type d'entreprise")
+    name: Optional[StrictStr] = Field(default=None, description="Nom de l'entreprise")
+    age: Optional[StrictInt] = Field(default=None, description="Âge de l'entreprise en jours")
+    description: Optional[StrictStr] = Field(default=None, description="Description de l'entreprise")
+    services: Optional[StrictStr] = Field(default=None, description="Services proposés")
+    owner: Optional[StrictStr] = Field(default=None, description="Propriétaire de l'entreprise")
+    flag: Optional[StrictStr] = Field(default=None, description="Drapeau de l'entreprise, sous la forme d'image en Base64")
+    cadres: Optional[List[StrictStr]] = Field(default=None, description="Liste des cadres de l'entreprise")
+    employees: Optional[List[StrictStr]] = Field(default=None, description="Liste des employés de l'entreprise")
+    contracts_done: Optional[StrictInt] = Field(default=None, description="Nombre de contrats réalisés", alias="contractsDone")
+    disputes: Optional[StrictInt] = Field(default=None, description="Nombre de litiges")
+    contracts_success: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Taux de réussite des contrats (pourcentage)", alias="contractsSuccess")
+    turnover: Optional[StrictInt] = Field(default=None, description="Chiffre d'affaires total")
+    permissions: Optional[List[EnterprisePermission]] = Field(default=None, description="Permissions de l'entreprise")
+    bank: Optional[EnterpriseBank] = None
     total: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Électricité totale distribué (MJ)")
     available: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Électricité disponible (MJ)")
     allow_country: Optional[StrictBool] = Field(default=None, description="Autoriser la vente au pays", alias="allowCountry")
@@ -42,7 +54,17 @@ class EnterpriseElectric(EnterpriseEntry):
     countries_sell: Optional[Dict[str, Union[StrictFloat, StrictInt]]] = Field(default=None, description="Ventes par pays", alias="countriesSell")
     history_generated: Optional[Dict[str, Union[StrictFloat, StrictInt]]] = Field(default=None, description="Historique de l'électricité vendue", alias="historyGenerated")
     history_collected: Optional[Dict[str, Union[StrictFloat, StrictInt]]] = Field(default=None, description="Historique de l'électricité générée/collectée par les collecteurs", alias="historyCollected")
-    __properties: ClassVar[List[str]] = ["type", "name", "age", "description", "services", "owner", "flag", "cadres", "employees", "contractsDone", "disputes", "contractsSuccess", "turnover", "permissions", "bank", "bets", "betsRewardRedistributed", "betTotal", "betActive", "history", "benefAverage", "totalPlay", "winPercent", "totalWin", "total", "available", "allowCountry", "allowAlly", "allowAll", "associatedCountry", "price", "priceAverage", "countriesSell", "historyGenerated", "historyCollected", "histories", "totalCollected", "collectedCereal", "parcelles", "totalGenerated", "sumInvestment", "totalInvestors"]
+    __properties: ClassVar[List[str]] = ["type", "name", "age", "description", "services", "owner", "flag", "cadres", "employees", "contractsDone", "disputes", "contractsSuccess", "turnover", "permissions", "bank", "total", "available", "allowCountry", "allowAlly", "allowAll", "associatedCountry", "price", "priceAverage", "countriesSell", "historyGenerated", "historyCollected"]
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['build', 'engineer', 'terraform', 'journalist', 'casino', 'pvp', 'loan', 'realestate', 'trader', 'bet', 'repair', 'lawyer', 'electric', 'petrol', 'farm']):
+            raise ValueError("must be one of enum values ('build', 'engineer', 'terraform', 'journalist', 'casino', 'pvp', 'loan', 'realestate', 'trader', 'bet', 'repair', 'lawyer', 'electric', 'petrol', 'farm')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,20 +115,6 @@ class EnterpriseElectric(EnterpriseEntry):
         # override the default output from pydantic by calling `to_dict()` of bank
         if self.bank:
             _dict['bank'] = self.bank.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in bets (list)
-        _items = []
-        if self.bets:
-            for _item_bets in self.bets:
-                if _item_bets:
-                    _items.append(_item_bets.to_dict())
-            _dict['bets'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in parcelles (list)
-        _items = []
-        if self.parcelles:
-            for _item_parcelles in self.parcelles:
-                if _item_parcelles:
-                    _items.append(_item_parcelles.to_dict())
-            _dict['parcelles'] = _items
         return _dict
 
     @classmethod
@@ -134,15 +142,6 @@ class EnterpriseElectric(EnterpriseEntry):
             "turnover": obj.get("turnover"),
             "permissions": [EnterprisePermission.from_dict(_item) for _item in obj["permissions"]] if obj.get("permissions") is not None else None,
             "bank": EnterpriseBank.from_dict(obj["bank"]) if obj.get("bank") is not None else None,
-            "bets": [EnterpriseBetItem.from_dict(_item) for _item in obj["bets"]] if obj.get("bets") is not None else None,
-            "betsRewardRedistributed": obj.get("betsRewardRedistributed"),
-            "betTotal": obj.get("betTotal"),
-            "betActive": obj.get("betActive"),
-            "history": obj.get("history"),
-            "benefAverage": obj.get("benefAverage"),
-            "totalPlay": obj.get("totalPlay"),
-            "winPercent": obj.get("winPercent"),
-            "totalWin": obj.get("totalWin"),
             "total": obj.get("total"),
             "available": obj.get("available"),
             "allowCountry": obj.get("allowCountry"),
@@ -153,14 +152,7 @@ class EnterpriseElectric(EnterpriseEntry):
             "priceAverage": obj.get("priceAverage"),
             "countriesSell": obj.get("countriesSell"),
             "historyGenerated": obj.get("historyGenerated"),
-            "historyCollected": obj.get("historyCollected"),
-            "histories": obj.get("histories"),
-            "totalCollected": obj.get("totalCollected"),
-            "collectedCereal": obj.get("collectedCereal"),
-            "parcelles": [Parcelle.from_dict(_item) for _item in obj["parcelles"]] if obj.get("parcelles") is not None else None,
-            "totalGenerated": obj.get("totalGenerated"),
-            "sumInvestment": obj.get("sumInvestment"),
-            "totalInvestors": obj.get("totalInvestors")
+            "historyCollected": obj.get("historyCollected")
         })
         return _obj
 

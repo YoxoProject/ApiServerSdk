@@ -193,6 +193,7 @@ Class | Method | HTTP request | Description
  - [Enterprise](docs/Enterprise.md)
  - [EnterpriseBank](docs/EnterpriseBank.md)
  - [EnterpriseBankLog](docs/EnterpriseBankLog.md)
+ - [EnterpriseBase](docs/EnterpriseBase.md)
  - [EnterpriseBasic](docs/EnterpriseBasic.md)
  - [EnterpriseBet](docs/EnterpriseBet.md)
  - [EnterpriseBetItem](docs/EnterpriseBetItem.md)

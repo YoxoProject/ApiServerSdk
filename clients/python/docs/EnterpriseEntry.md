@@ -21,6 +21,10 @@ Name | Type | Description | Notes
 **turnover** | **int** | Chiffre d&#39;affaires total | [optional] 
 **permissions** | [**List[EnterprisePermission]**](EnterprisePermission.md) | Permissions de l&#39;entreprise | [optional] 
 **bank** | [**EnterpriseBank**](EnterpriseBank.md) |  | [optional] 
+**bets** | [**List[EnterpriseBetItem]**](EnterpriseBetItem.md) | Liste des paris actifs | [optional] 
+**bets_reward_redistributed** | **int** | L&#39;argent redistribuées suite aux paris | [optional] 
+**bet_total** | **int** | Nombre total de paris réalisés | [optional] 
+**bet_active** | **int** | Nombre de paris actuellement actifs | [optional] 
 **history** | **Dict[str, float]** | Historique des rendements journaliers par date | [optional] 
 **benef_average** | **float** | Bénéfice moyen (par jours) | [optional] 
 **total_play** | **float** | Sommes totale jouée | [optional] 
@@ -44,10 +48,6 @@ Name | Type | Description | Notes
 **total_generated** | **int** | Argent total généré | [optional] 
 **sum_investment** | **float** | Somme totale investie par l&#39;ensemble des investisseurs | [optional] 
 **total_investors** | **int** | Nombre total d&#39;investisseurs | [optional] 
-**bets** | [**List[EnterpriseBetItem]**](EnterpriseBetItem.md) | Liste des paris actifs | [optional] 
-**bets_reward_redistributed** | **int** | L&#39;argent redistribuées suite aux paris | [optional] 
-**bet_total** | **int** | Nombre total de paris réalisés | [optional] 
-**bet_active** | **int** | Nombre de paris actuellement actifs | [optional] 
 
 ## Example
 

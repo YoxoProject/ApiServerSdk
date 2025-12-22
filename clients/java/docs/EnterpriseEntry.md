@@ -23,6 +23,10 @@ Données d'une entreprise (différentes versions selon le type)
 |**turnover** | **Integer** | Chiffre d&#39;affaires total |  [optional] |
 |**permissions** | [**List&lt;EnterprisePermission&gt;**](EnterprisePermission.md) | Permissions de l&#39;entreprise |  [optional] |
 |**bank** | [**EnterpriseBank**](EnterpriseBank.md) |  |  [optional] |
+|**bets** | [**List&lt;EnterpriseBetItem&gt;**](EnterpriseBetItem.md) | Liste des paris actifs |  [optional] |
+|**betsRewardRedistributed** | **Integer** | L&#39;argent redistribuées suite aux paris |  [optional] |
+|**betTotal** | **Integer** | Nombre total de paris réalisés |  [optional] |
+|**betActive** | **Integer** | Nombre de paris actuellement actifs |  [optional] |
 |**history** | **Map&lt;String, Double&gt;** | Historique des rendements journaliers par date |  [optional] |
 |**benefAverage** | **Double** | Bénéfice moyen (par jours) |  [optional] |
 |**totalPlay** | **Double** | Sommes totale jouée |  [optional] |
@@ -46,10 +50,6 @@ Données d'une entreprise (différentes versions selon le type)
 |**totalGenerated** | **Integer** | Argent total généré |  [optional] |
 |**sumInvestment** | **Float** | Somme totale investie par l&#39;ensemble des investisseurs |  [optional] |
 |**totalInvestors** | **Integer** | Nombre total d&#39;investisseurs |  [optional] |
-|**bets** | [**List&lt;EnterpriseBetItem&gt;**](EnterpriseBetItem.md) | Liste des paris actifs |  [optional] |
-|**betsRewardRedistributed** | **Integer** | L&#39;argent redistribuées suite aux paris |  [optional] |
-|**betTotal** | **Integer** | Nombre total de paris réalisés |  [optional] |
-|**betActive** | **Integer** | Nombre de paris actuellement actifs |  [optional] |
 
 
 

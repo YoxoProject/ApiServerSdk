@@ -18,21 +18,18 @@
 import type { EnterpriseBank } from './enterprise-bank';
 // May contain unused imports in some cases
 // @ts-ignore
+import type { EnterpriseBase } from './enterprise-base';
+// May contain unused imports in some cases
+// @ts-ignore
 import type { EnterpriseBetItem } from './enterprise-bet-item';
 // May contain unused imports in some cases
 // @ts-ignore
-import type { EnterpriseEntry } from './enterprise-entry';
-// May contain unused imports in some cases
-// @ts-ignore
 import type { EnterprisePermission } from './enterprise-permission';
-// May contain unused imports in some cases
-// @ts-ignore
-import type { Parcelle } from './parcelle';
 
 /**
  * @type EnterpriseBet
  * Entreprise de paris
  */
-export type EnterpriseBet = EnterpriseEntry;
+export type EnterpriseBet = EnterpriseBase;
 
 

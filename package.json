@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "fetch-spec": "curl https://api.yoxo.software/v3/api-docs -o specs/openapi.json",
+    "fetch-spec": "curl https://api.yoxo.software/v3/api-docs -o specs/openapi.json && node scripts/patch_spec.js",
     "generate:ts": "openapi-generator-cli generate -i specs/openapi.json -g typescript-axios -c configs/typescript.json -o clients/typescript",
     "generate:java": "openapi-generator-cli generate -i specs/openapi.json -g java -c configs/java.json -o clients/java",
     "generate:python": "openapi-generator-cli generate -i specs/openapi.json -g python -c configs/python.json -o clients/python",

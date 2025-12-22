@@ -1,6 +1,5 @@
 .gitignore
 .npmignore
-.openapi-generator-ignore
 README.md
 api.ts
 api/apijava-api.ts
@@ -25,6 +24,7 @@ docs/DividendeHistoryEntry.md
 docs/Enterprise.md
 docs/EnterpriseBank.md
 docs/EnterpriseBankLog.md
+docs/EnterpriseBase.md
 docs/EnterpriseBasic.md
 docs/EnterpriseBet.md
 docs/EnterpriseBetItem.md
@@ -83,6 +83,7 @@ model/dividende-classement-entry.ts
 model/dividende-history-entry.ts
 model/enterprise-bank-log.ts
 model/enterprise-bank.ts
+model/enterprise-base.ts
 model/enterprise-basic.ts
 model/enterprise-bet-item.ts
 model/enterprise-bet.ts

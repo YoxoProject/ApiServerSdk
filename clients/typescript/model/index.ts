@@ -15,6 +15,7 @@ export * from './dividende-history-entry';
 export * from './enterprise';
 export * from './enterprise-bank';
 export * from './enterprise-bank-log';
+export * from './enterprise-base';
 export * from './enterprise-basic';
 export * from './enterprise-bet';
 export * from './enterprise-bet-item';

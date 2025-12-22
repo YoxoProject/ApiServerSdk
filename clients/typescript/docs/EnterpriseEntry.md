@@ -21,6 +21,10 @@ Name | Type | Description | Notes
 **turnover** | **number** | Chiffre d\&#39;affaires total | [optional] [default to undefined]
 **permissions** | [**Array&lt;EnterprisePermission&gt;**](EnterprisePermission.md) | Permissions de l\&#39;entreprise | [optional] [default to undefined]
 **bank** | [**EnterpriseBank**](EnterpriseBank.md) |  | [optional] [default to undefined]
+**bets** | [**Array&lt;EnterpriseBetItem&gt;**](EnterpriseBetItem.md) | Liste des paris actifs | [optional] [default to undefined]
+**betsRewardRedistributed** | **number** | L\&#39;argent redistribuées suite aux paris | [optional] [default to undefined]
+**betTotal** | **number** | Nombre total de paris réalisés | [optional] [default to undefined]
+**betActive** | **number** | Nombre de paris actuellement actifs | [optional] [default to undefined]
 **history** | **{ [key: string]: number; }** | Historique des rendements journaliers par date | [optional] [default to undefined]
 **benefAverage** | **number** | Bénéfice moyen (par jours) | [optional] [default to undefined]
 **totalPlay** | **number** | Sommes totale jouée | [optional] [default to undefined]
@@ -44,10 +48,6 @@ Name | Type | Description | Notes
 **totalGenerated** | **number** | Argent total généré | [optional] [default to undefined]
 **sumInvestment** | **number** | Somme totale investie par l\&#39;ensemble des investisseurs | [optional] [default to undefined]
 **totalInvestors** | **number** | Nombre total d\&#39;investisseurs | [optional] [default to undefined]
-**bets** | [**Array&lt;EnterpriseBetItem&gt;**](EnterpriseBetItem.md) | Liste des paris actifs | [optional] [default to undefined]
-**betsRewardRedistributed** | **number** | L\&#39;argent redistribuées suite aux paris | [optional] [default to undefined]
-**betTotal** | **number** | Nombre total de paris réalisés | [optional] [default to undefined]
-**betActive** | **number** | Nombre de paris actuellement actifs | [optional] [default to undefined]
 
 ## Example
 
@@ -70,6 +70,10 @@ const instance: EnterpriseEntry = {
     turnover,
     permissions,
     bank,
+    bets,
+    betsRewardRedistributed,
+    betTotal,
+    betActive,
     history,
     benefAverage,
     totalPlay,
@@ -93,10 +97,6 @@ const instance: EnterpriseEntry = {
     totalGenerated,
     sumInvestment,
     totalInvestors,
-    bets,
-    betsRewardRedistributed,
-    betTotal,
-    betActive,
 };
 ```
 

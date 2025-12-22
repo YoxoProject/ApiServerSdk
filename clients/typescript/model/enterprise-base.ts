@@ -18,15 +18,89 @@
 import type { EnterpriseBank } from './enterprise-bank';
 // May contain unused imports in some cases
 // @ts-ignore
-import type { EnterpriseBase } from './enterprise-base';
-// May contain unused imports in some cases
-// @ts-ignore
 import type { EnterprisePermission } from './enterprise-permission';
 
 /**
- * @type EnterpriseTrader
- * Entreprise de trading
+ * Champs communs à toutes les entreprises
  */
-export type EnterpriseTrader = EnterpriseBase;
+export interface EnterpriseBase {
+    /**
+     * Type d\'entreprise
+     */
+    'type'?: EnterpriseBaseTypeEnum;
+    /**
+     * Nom de l\'entreprise
+     */
+    'name'?: string;
+    /**
+     * Âge de l\'entreprise en jours
+     */
+    'age'?: number;
+    /**
+     * Description de l\'entreprise
+     */
+    'description'?: string;
+    /**
+     * Services proposés
+     */
+    'services'?: string;
+    /**
+     * Propriétaire de l\'entreprise
+     */
+    'owner'?: string;
+    /**
+     * Drapeau de l\'entreprise, sous la forme d\'image en Base64
+     */
+    'flag'?: string;
+    /**
+     * Liste des cadres de l\'entreprise
+     */
+    'cadres'?: Array<string>;
+    /**
+     * Liste des employés de l\'entreprise
+     */
+    'employees'?: Array<string>;
+    /**
+     * Nombre de contrats réalisés
+     */
+    'contractsDone'?: number;
+    /**
+     * Nombre de litiges
+     */
+    'disputes'?: number;
+    /**
+     * Taux de réussite des contrats (pourcentage)
+     */
+    'contractsSuccess'?: number;
+    /**
+     * Chiffre d\'affaires total
+     */
+    'turnover'?: number;
+    /**
+     * Permissions de l\'entreprise
+     */
+    'permissions'?: Array<EnterprisePermission>;
+    'bank'?: EnterpriseBank;
+}
+
+export const EnterpriseBaseTypeEnum = {
+    Build: 'build',
+    Engineer: 'engineer',
+    Terraform: 'terraform',
+    Journalist: 'journalist',
+    Casino: 'casino',
+    Pvp: 'pvp',
+    Loan: 'loan',
+    Realestate: 'realestate',
+    Trader: 'trader',
+    Bet: 'bet',
+    Repair: 'repair',
+    Lawyer: 'lawyer',
+    Electric: 'electric',
+    Petrol: 'petrol',
+    Farm: 'farm'
+} as const;
+
+export type EnterpriseBaseTypeEnum = typeof EnterpriseBaseTypeEnum[keyof typeof EnterpriseBaseTypeEnum];
 
 

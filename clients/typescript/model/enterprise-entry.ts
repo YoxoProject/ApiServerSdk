@@ -54,6 +54,6 @@ import type { Parcelle } from './parcelle';
  * @type EnterpriseEntry
  * Données d\'une entreprise (différentes versions selon le type)
  */
-export type EnterpriseEntry = { type: 'EnterpriseBasic' } & EnterpriseBasic | { type: 'EnterpriseBet' } & EnterpriseBet | { type: 'EnterpriseCasino' } & EnterpriseCasino | { type: 'EnterpriseElectric' } & EnterpriseElectric | { type: 'EnterpriseFarm' } & EnterpriseFarm | { type: 'EnterprisePetrol' } & EnterprisePetrol | { type: 'EnterpriseRealEstate' } & EnterpriseRealEstate | { type: 'EnterpriseTrader' } & EnterpriseTrader;
+export type EnterpriseEntry = EnterpriseBasic | EnterpriseBet | EnterpriseCasino | EnterpriseElectric | EnterpriseFarm | EnterprisePetrol | EnterpriseRealEstate | EnterpriseTrader;
 
 

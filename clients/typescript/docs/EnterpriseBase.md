@@ -1,6 +1,6 @@
-# EnterpriseFarm
+# EnterpriseBase
 
-Entreprise agricole
+Champs communs à toutes les entreprises
 
 ## Properties
 
@@ -21,16 +21,13 @@ Name | Type | Description | Notes
 **turnover** | **number** | Chiffre d\&#39;affaires total | [optional] [default to undefined]
 **permissions** | [**Array&lt;EnterprisePermission&gt;**](EnterprisePermission.md) | Permissions de l\&#39;entreprise | [optional] [default to undefined]
 **bank** | [**EnterpriseBank**](EnterpriseBank.md) |  | [optional] [default to undefined]
-**histories** | **{ [key: string]: { [key: string]: number; }; }** | Historiques des ventes par céréale et date | [optional] [default to undefined]
-**totalCollected** | **number** | Poids total de céréale vendu depuis la création de l\&#39;entreprise (en kg) | [optional] [default to undefined]
-**collectedCereal** | **{ [key: string]: number; }** | Poids total de céréales collectées (pour chaque céréale) | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { EnterpriseFarm } from '@yoxo/client';
+import { EnterpriseBase } from '@yoxo/client';
 
-const instance: EnterpriseFarm = {
+const instance: EnterpriseBase = {
     type,
     name,
     age,
@@ -46,9 +43,6 @@ const instance: EnterpriseFarm = {
     turnover,
     permissions,
     bank,
-    histories,
-    totalCollected,
-    collectedCereal,
 };
 ```
 

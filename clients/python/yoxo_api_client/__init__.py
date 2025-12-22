@@ -162,3 +162,5 @@ from yoxo_api_client.models.war_missile import WarMissile as WarMissile
 from yoxo_api_client.models.war_participant import WarParticipant as WarParticipant
 from yoxo_api_client.models.war_rewards import WarRewards as WarRewards
 
+
+from yoxo_api_client.client import YoxoClient

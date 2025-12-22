@@ -78,9 +78,10 @@ jobs:
         run: |
           npm install
           npm run build
-          # On nettoie pour ne publier que le nécessaire
+          # Nettoyage agressif
           rm -rf node_modules
-          # On garde package.json, dist/, README, etc.
+          rm -rf .github # Suppression des workflows générés
+          rm -f git_push.sh
 
       - name: Deploy to Branch release/typescript
         working-directory: ./clients/typescript
@@ -90,8 +91,7 @@ jobs:
           git config user.email "bot@yoxo.software"
           git checkout -b release/typescript
           git add .
-          git commit -m "New TypeScript Release form ${{ github.sha }}"
-          # Force push sur la branche release/typescript
+          git commit -m "New TypeScript Release from ${{ github.sha }}"
           git push -f https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git release/typescript
 
   # ------------------------------------------------------------------
@@ -106,6 +106,14 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
 
+      - name: Prepare Python
+        working-directory: ./clients/python
+        run: |
+          # Nettoyage préventif des fichiers parasites générés
+          rm -rf .github
+          rm -rf test
+          rm -f git_push.sh .travis.yml tox.ini
+
       - name: Deploy to Branch release/python
         working-directory: ./clients/python
         run: |
@@ -115,7 +123,6 @@ jobs:
           git checkout -b release/python
           git add .
           git commit -m "New Python Release from ${{ github.sha }}"
-          # Force push sur la branche release/python
           git push -f https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git release/python
 
   # ------------------------------------------------------------------

@@ -10,10 +10,72 @@ permissions:
   packages: write
 
 jobs:
-  generate-and-publish:
+  # ------------------------------------------------------------------
+  # JOB 1 : Mise à jour du Code Source (Centralisé)
+  # ------------------------------------------------------------------
+  update-repo:
     runs-on: ubuntu-latest
+    outputs:
+      changes_detected: ${{ steps.auto-commit.outputs.changes_detected }}
     steps:
       - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Fetch & Patch Spec
+        run: npm run fetch-spec
+
+      - name: Check for Changes & Generate
+        id: auto-commit
+        run: |
+          # 1. Vérification des changements de spec OU trigger manuel
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ] || [ "${{ github.event_name }}" == "repository_dispatch" ] || ! git diff --quiet specs/openapi.json; then
+            echo "🔄 Changements détectés ou forcés. Lancement de la génération..."
+            
+            # 2. Génération complète
+            npm run generate:all
+            
+            # 3. Commit & Push
+            # Configuration Git
+            git config --global user.name 'Yoxo SDK'
+            git config --global user.email 'sdk@yoxo.software'
+            
+            # On ajoute tout
+            git add .
+            
+            # On vérifie s'il y a vraiment quelque chose à commiter
+            if ! git diff --cached --quiet; then
+              git commit -m "chore(sdk): update clients based on new OpenAPI spec [skip ci]"
+              git push
+              echo "changes_detected=true" >> $GITHUB_OUTPUT
+              echo "✅ Code mis à jour et poussé."
+            else
+              echo "⚠️ Aucune modification de fichier concrète après génération."
+              echo "changes_detected=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "😴 Aucun changement dans la spécification API."
+            echo "changes_detected=false" >> $GITHUB_OUTPUT
+          fi
+
+  # ------------------------------------------------------------------
+  # JOB 2 : Publication TypeScript
+  # ------------------------------------------------------------------
+  publish-typescript:
+    needs: update-repo
+    if: needs.update-repo.outputs.changes_detected == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      # IMPORTANT : On checkout la branche actuelle (mise à jour par le job précédent)
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref_name }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -22,6 +84,28 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@yoxo'
 
+      - name: Build & Publish
+        working-directory: ./clients/typescript
+        run: |
+          npm install
+          npm run build
+          npm version patch --no-git-tag-version
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # ------------------------------------------------------------------
+  # JOB 3 : Publication Java
+  # ------------------------------------------------------------------
+  publish-java:
+    needs: update-repo
+    if: needs.update-repo.outputs.changes_detected == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref_name }}
+
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
@@ -29,72 +113,33 @@ jobs:
           distribution: 'temurin'
           server-id: github
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Install Generator Dependencies
-        run: npm install
-
-      - name: Fetch Latest Spec
-        run: npm run fetch-spec
-
-      - name: Check for Spec Changes
-        id: check_changes
-        run: |
-          if [ "${{ github.event_name }}" == "workflow_dispatch" ] || [ "${{ github.event_name }}" == "repository_dispatch" ]; then
-            echo "changed=true" >> $GITHUB_OUTPUT
-          else
-            git diff --quiet specs/openapi.json || echo "changed=true" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Generate SDKs
-        if: steps.check_changes.outputs.changed == 'true'
-        run: npm run generate:all
-
-      # --- TypeScript Publishing ---
-      - name: Publish TypeScript Client
-        if: steps.check_changes.outputs.changed == 'true'
-        working-directory: ./clients/typescript
-        run: |
-          npm install
-          npm run build
-          # Ensure version bump based on date or commit (simplified here)
-          npm version patch --no-git-tag-version
-          npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # --- Java Publishing ---
-      - name: Publish Java Client
-        if: steps.check_changes.outputs.changed == 'true'
+      - name: Deploy Maven
         working-directory: ./clients/java
         run: |
-          # Configure distribution management for GitHub Packages in pom.xml on the fly if needed
-          # or rely on -DaltDeploymentRepository
           mvn deploy -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/${{ github.repository }}/
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # --- Python Publishing ---
-      # GitHub Packages does not host PyPI. 
-      # We will build the distribution and commit it, 
-      # allowing usage via pip install git+https://github.com/...
-      - name: Build Python Client
-        if: steps.check_changes.outputs.changed == 'true'
+  # ------------------------------------------------------------------
+  # JOB 4 : Publication Python
+  # ------------------------------------------------------------------
+  publish-python:
+    needs: update-repo
+    if: needs.update-repo.outputs.changes_detected == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Build Wheel
         working-directory: ./clients/python
         run: |
           pip install setuptools wheel
           python setup.py sdist bdist_wheel
-
-      # --- Commit Source Code ---
-      - name: Commit and Push Changes
-        if: steps.check_changes.outputs.changed == 'true'
-        run: |
-          git config --global user.name 'Yoxo SDK'
-          git config --global user.email 'sdk@yoxo.software'
-          git add .
-          git commit -m "chore(sdk): update clients based on new OpenAPI spec [skip ci]"
-          git push

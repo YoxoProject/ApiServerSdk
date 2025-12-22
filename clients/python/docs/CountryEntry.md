@@ -41,15 +41,15 @@ Name | Type | Description | Notes
 **actions** | [**CountryActionsEntry**](CountryActionsEntry.md) |  | [optional] 
 **settings** | [**CountrySettingsEntry**](CountrySettingsEntry.md) |  | [optional] 
 **empire** | **bool** |  | [optional] 
-**referent** | **bool** |  | [optional] 
-**top_warzone** | **bool** |  | [optional] 
 **restrict_assault** | **bool** |  | [optional] 
 **restrict_missile** | **bool** |  | [optional] 
+**top_warzone** | **bool** |  | [optional] 
+**referent** | **bool** |  | [optional] 
 
 ## Example
 
 ```python
-from yoxo_client.models.country_entry import CountryEntry
+from yoxo-api_client.models.country_entry import CountryEntry
 
 # TODO update the JSON string below
 json = "{}"

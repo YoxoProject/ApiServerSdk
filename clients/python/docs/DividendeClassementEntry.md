@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from yoxo_client.models.dividende_classement_entry import DividendeClassementEntry
+from yoxo-api_client.models.dividende_classement_entry import DividendeClassementEntry
 
 # TODO update the JSON string below
 json = "{}"

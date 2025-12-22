@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { Metadata } from '@yoxoproject/client';
+import { Metadata } from '@yoxoproject/yoxo-api-client';
 
 const instance: Metadata = {
     dataType,

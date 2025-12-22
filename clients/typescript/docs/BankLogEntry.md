@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BankLogEntry } from '@yoxoproject/client';
+import { BankLogEntry } from '@yoxoproject/yoxo-api-client';
 
 const instance: BankLogEntry = {
     amount,

@@ -1,4 +1,4 @@
-# yoxo_client.APIJavaApi
+# yoxo-api_client.APIJavaApi
 
 All URIs are relative to *https://api.yoxo.software*
 
@@ -52,14 +52,14 @@ Les données sont actualisées tous les jours impairs du mois (environ une fois 
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.cereal_global_market import CerealGlobalMarket
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.cereal_global_market import CerealGlobalMarket
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -71,9 +71,9 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-10-28' # date | La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd)
     java_server = 'red' # str | Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
 
@@ -141,14 +141,14 @@ Les données sont actualisées tous les jours, généralement la nuit.
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.country import Country
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.country import Country
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -160,9 +160,9 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
     java_server = 'red' # str | Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
 
@@ -230,14 +230,14 @@ Les données sont actualisées tous les jours, généralement la nuit.
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.country import Country
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.country import Country
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -249,9 +249,9 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
     java_server = 'red' # str | Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
     country = 'country_example' # str | Nom du pays
@@ -326,14 +326,14 @@ Les données sont actualisées tous les lundis matin.
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.enterprise import Enterprise
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.enterprise import Enterprise
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -345,9 +345,9 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
     java_server = 'red' # str | Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
     enterprise_type = 'enterprise_type_example' # str | Type d'entreprise (optional)
@@ -422,14 +422,14 @@ Les données sont actualisées tous les lundis matin.
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.enterprise import Enterprise
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.enterprise import Enterprise
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -441,9 +441,9 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
     java_server = 'red' # str | Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
     enterprise_name = 'enterprise_name_example' # str | Nom de l'entreprise
@@ -515,14 +515,14 @@ Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.halloween2025 import Halloween2025
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.halloween2025 import Halloween2025
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -534,9 +534,9 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-10-28' # date | Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement
 
     try:
@@ -603,14 +603,14 @@ et la date/heure du tirage.
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.noel_megagift2024 import NoelMegagift2024
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.noel_megagift2024 import NoelMegagift2024
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -622,9 +622,9 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
 
     try:
         # Noël Megagift 2024
@@ -688,14 +688,14 @@ Les données sont actualisées quotidiennement pendant toute la durée de l'év�
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.noel_megagift2025 import NoelMegagift2025
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.noel_megagift2025 import NoelMegagift2025
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -707,9 +707,9 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-11-24' # date | Date de la configuration (format ISO-8601: yyyy-MM-dd)
 
     try:
@@ -767,14 +767,14 @@ Les données sont actualisées quotidiennement, généralement la nuit.
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.player_list import PlayerList
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.player_list import PlayerList
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -786,9 +786,9 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-10-28' # date | La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
     java_server = 'red' # str | Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
 
@@ -856,14 +856,14 @@ Les données sont actualisées tous les jours impairs du mois (environ une fois 
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.research_config import ResearchConfig
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.research_config import ResearchConfig
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -875,9 +875,9 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-11-24' # date | Date de la configuration (format ISO-8601: yyyy-MM-dd)
 
     try:
@@ -940,14 +940,14 @@ Les données sont actualisées tous les jours impairs du mois (environ une fois 
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.research_server import ResearchServer
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.research_server import ResearchServer
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -959,9 +959,9 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
     java_server = 'red' # str | Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
 
@@ -1025,14 +1025,14 @@ Plus d'informations sur les compétences/skills : https://wiki.nationsglory.fr/f
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.skill import Skill
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.skill import Skill
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -1044,9 +1044,9 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-10-28' # date | La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
     java_server = 'red' # str | Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
 
@@ -1114,14 +1114,14 @@ Les données sont actualisées quotidiennement, généralement la nuit.
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.war import War
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.war import War
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -1133,9 +1133,9 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
     java_server = 'red' # str | Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
 
@@ -1203,14 +1203,14 @@ Les données sont actualisées quotidiennement, généralement la nuit.
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.war import War
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.war import War
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -1222,9 +1222,9 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
     java_server = 'red' # str | Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
     war_id = 'war_id_example' # str | Identifiant de la guerre
@@ -1293,15 +1293,15 @@ Les données sont actualisées tous les jours, généralement la nuit.
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.country import Country
-from yoxo_client.models.post_query_body import PostQueryBody
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.country import Country
+from yoxo-api_client.models.post_query_body import PostQueryBody
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -1313,12 +1313,12 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
     java_server = 'red' # str | Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
-    post_query_body = yoxo_client.PostQueryBody() # PostQueryBody |  (optional)
+    post_query_body = yoxo-api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
         # Country
@@ -1389,15 +1389,15 @@ Les données sont actualisées tous les lundis matin.
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.enterprise import Enterprise
-from yoxo_client.models.post_query_body import PostQueryBody
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.enterprise import Enterprise
+from yoxo-api_client.models.post_query_body import PostQueryBody
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -1409,12 +1409,12 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd)
     java_server = 'red' # str | Serveur NationsGlory
-    post_query_body = yoxo_client.PostQueryBody() # PostQueryBody |  (optional)
+    post_query_body = yoxo-api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
         # Enterprise
@@ -1481,15 +1481,15 @@ Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.halloween2025 import Halloween2025
-from yoxo_client.models.post_query_body import PostQueryBody
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.halloween2025 import Halloween2025
+from yoxo-api_client.models.post_query_body import PostQueryBody
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -1501,11 +1501,11 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-10-28' # date | Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement
-    post_query_body = yoxo_client.PostQueryBody() # PostQueryBody |  (optional)
+    post_query_body = yoxo-api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
         # Halloween 2025
@@ -1572,15 +1572,15 @@ et la date/heure du tirage.
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.noel_megagift2024 import NoelMegagift2024
-from yoxo_client.models.post_query_body import PostQueryBody
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.noel_megagift2024 import NoelMegagift2024
+from yoxo-api_client.models.post_query_body import PostQueryBody
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -1592,10 +1592,10 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
-    post_query_body = yoxo_client.PostQueryBody() # PostQueryBody |  (optional)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
+    post_query_body = yoxo-api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
         # Noël Megagift 2024
@@ -1662,15 +1662,15 @@ Les données sont actualisées quotidiennement pendant toute la durée de l'év�
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.noel_megagift2025 import NoelMegagift2025
-from yoxo_client.models.post_query_body import PostQueryBody
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.noel_megagift2025 import NoelMegagift2025
+from yoxo-api_client.models.post_query_body import PostQueryBody
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -1682,11 +1682,11 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-11-24' # date | Date de la configuration (format ISO-8601: yyyy-MM-dd)
-    post_query_body = yoxo_client.PostQueryBody() # PostQueryBody |  (optional)
+    post_query_body = yoxo-api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
         # Noël Megagift 2025
@@ -1744,15 +1744,15 @@ Les données sont actualisées quotidiennement, généralement la nuit.
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.player_list import PlayerList
-from yoxo_client.models.post_query_body import PostQueryBody
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.player_list import PlayerList
+from yoxo-api_client.models.post_query_body import PostQueryBody
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -1764,12 +1764,12 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-10-28' # date | La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
     java_server = 'red' # str | Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
-    post_query_body = yoxo_client.PostQueryBody() # PostQueryBody |  (optional)
+    post_query_body = yoxo-api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
         # Player List
@@ -1840,15 +1840,15 @@ Les données sont actualisées tous les jours pairs du mois (environ une fois to
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.post_query_body import PostQueryBody
-from yoxo_client.models.research_server import ResearchServer
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.post_query_body import PostQueryBody
+from yoxo-api_client.models.research_server import ResearchServer
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -1860,12 +1860,12 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
     java_server = 'red' # str | Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
-    post_query_body = yoxo_client.PostQueryBody() # PostQueryBody |  (optional)
+    post_query_body = yoxo-api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
         # Research Server
@@ -1928,15 +1928,15 @@ Plus d'informations sur les compétences/skills : https://wiki.nationsglory.fr/f
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.post_query_body import PostQueryBody
-from yoxo_client.models.skill import Skill
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.post_query_body import PostQueryBody
+from yoxo-api_client.models.skill import Skill
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -1948,12 +1948,12 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-10-28' # date | La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
     java_server = 'red' # str | Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
-    post_query_body = yoxo_client.PostQueryBody() # PostQueryBody |  (optional)
+    post_query_body = yoxo-api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
         # Skill
@@ -2019,15 +2019,15 @@ Les données sont actualisées quotidiennement, généralement la nuit.
 * OAuth Authentication (oauth2_client_credentials):
 
 ```python
-import yoxo_client
-from yoxo_client.models.post_query_body import PostQueryBody
-from yoxo_client.models.war import War
-from yoxo_client.rest import ApiException
+import yoxo-api_client
+from yoxo-api_client.models.post_query_body import PostQueryBody
+from yoxo-api_client.models.war import War
+from yoxo-api_client.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://api.yoxo.software
 # See configuration.py for a list of all supported configuration parameters.
-configuration = yoxo_client.Configuration(
+configuration = yoxo-api_client.Configuration(
     host = "https://api.yoxo.software"
 )
 
@@ -2039,12 +2039,12 @@ configuration = yoxo_client.Configuration(
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with yoxo_client.ApiClient(configuration) as api_client:
+with yoxo-api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = yoxo_client.APIJavaApi(api_client)
+    api_instance = yoxo-api_client.APIJavaApi(api_client)
     var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
     java_server = 'red' # str | Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
-    post_query_body = yoxo_client.PostQueryBody() # PostQueryBody |  (optional)
+    post_query_body = yoxo-api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
         # War

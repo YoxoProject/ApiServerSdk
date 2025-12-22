@@ -1,4 +1,4 @@
-# client
+# yoxo-api-client
 
 Yoxo API Server
 - API version: 1.0.0
@@ -68,7 +68,7 @@ Add this dependency to your project's POM:
 ```xml
 <dependency>
   <groupId>software.yoxo</groupId>
-  <artifactId>client</artifactId>
+  <artifactId>yoxo-api-client</artifactId>
   <version>1.0-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
@@ -80,12 +80,12 @@ Add this dependency to your project's build file:
 
 ```groovy
   repositories {
-    mavenCentral()     // Needed if the 'client' jar has been published to maven central.
-    mavenLocal()       // Needed if the 'client' jar has been published to the local maven repo.
+    mavenCentral()     // Needed if the 'yoxo-api-client' jar has been published to maven central.
+    mavenLocal()       // Needed if the 'yoxo-api-client' jar has been published to the local maven repo.
   }
 
   dependencies {
-     implementation "software.yoxo:client:1.0-SNAPSHOT"
+     implementation "software.yoxo:yoxo-api-client:1.0-SNAPSHOT"
   }
 ```
 
@@ -99,7 +99,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/client-1.0-SNAPSHOT.jar`
+* `target/yoxo-api-client-1.0-SNAPSHOT.jar`
 * `target/lib/*.jar`
 
 ## Getting Started

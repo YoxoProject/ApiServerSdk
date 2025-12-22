@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { EnterpriseBetItem } from '@yoxoproject/client';
+import { EnterpriseBetItem } from '@yoxoproject/yoxo-api-client';
 
 const instance: EnterpriseBetItem = {
     deadlineTime,

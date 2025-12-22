@@ -3521,8 +3521,8 @@ components:
           powerboostFixed: 1
           powerboostWarzone: 1
           flag: flag
-          referent: true
           topWarzone: true
+          referent: true
           fhomeCoord:
             x: 5
             z: 5
@@ -3657,8 +3657,8 @@ components:
           powerboostFixed: 1
           powerboostWarzone: 1
           flag: flag
-          referent: true
           topWarzone: true
+          referent: true
           fhomeCoord:
             x: 5
             z: 5
@@ -3909,8 +3909,8 @@ components:
         powerboostFixed: 1
         powerboostWarzone: 1
         flag: flag
-        referent: true
         topWarzone: true
+        referent: true
         fhomeCoord:
           x: 5
           z: 5
@@ -4174,13 +4174,13 @@ components:
           $ref: "#/components/schemas/CountrySettingsEntry"
         empire:
           type: boolean
-        referent:
-          type: boolean
-        topWarzone:
-          type: boolean
         restrictAssault:
           type: boolean
         restrictMissile:
+          type: boolean
+        topWarzone:
+          type: boolean
+        referent:
           type: boolean
       type: object
     CountrySettingsEntry:

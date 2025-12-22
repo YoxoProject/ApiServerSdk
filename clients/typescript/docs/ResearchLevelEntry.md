@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ResearchLevelEntry } from '@yoxoproject/client';
+import { ResearchLevelEntry } from '@yoxoproject/yoxo-api-client';
 
 const instance: ResearchLevelEntry = {
     level,

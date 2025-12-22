@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PostQueryBody } from '@yoxoproject/client';
+import { PostQueryBody } from '@yoxoproject/yoxo-api-client';
 
 const instance: PostQueryBody = {
     filter,

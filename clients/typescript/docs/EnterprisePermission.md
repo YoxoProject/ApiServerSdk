@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { EnterprisePermission } from '@yoxoproject/client';
+import { EnterprisePermission } from '@yoxoproject/yoxo-api-client';
 
 const instance: EnterprisePermission = {
     name,

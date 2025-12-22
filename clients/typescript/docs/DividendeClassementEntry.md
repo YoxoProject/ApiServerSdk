@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DividendeClassementEntry } from '@yoxo/client';
+import { DividendeClassementEntry } from '@yoxoproject/client';
 
 const instance: DividendeClassementEntry = {
     pays,

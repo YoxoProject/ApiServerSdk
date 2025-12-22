@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { WarMissile } from '@yoxo/client';
+import { WarMissile } from '@yoxoproject/client';
 
 const instance: WarMissile = {
     launchedAt,

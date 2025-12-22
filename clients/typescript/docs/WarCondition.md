@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { WarCondition } from '@yoxo/client';
+import { WarCondition } from '@yoxoproject/client';
 
 const instance: WarCondition = {
     kill,

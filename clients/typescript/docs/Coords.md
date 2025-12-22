@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { Coords } from '@yoxo/client';
+import { Coords } from '@yoxoproject/client';
 
 const instance: Coords = {
     x,

@@ -52,7 +52,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { EnterpriseEntry } from '@yoxo/client';
+import { EnterpriseEntry } from '@yoxoproject/client';
 
 const instance: EnterpriseEntry = {
     type,

@@ -154,4 +154,3 @@ src/main/java/software/yoxo/client/model/WarEntry.java
 src/main/java/software/yoxo/client/model/WarMissile.java
 src/main/java/software/yoxo/client/model/WarParticipant.java
 src/main/java/software/yoxo/client/model/WarRewards.java
-src/test/java/software/yoxo/client/model/EnterpriseBaseTest.java

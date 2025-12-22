@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { LastResearchEntry } from '@yoxo/client';
+import { LastResearchEntry } from '@yoxoproject/client';
 
 const instance: LastResearchEntry = {
     domain,

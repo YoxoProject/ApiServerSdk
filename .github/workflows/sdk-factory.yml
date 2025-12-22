@@ -1,0 +1,100 @@
+name: SDK Factory
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [yoxo_api_updated]
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  generate-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@yoxo'
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          server-id: github
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Generator Dependencies
+        run: npm install
+
+      - name: Fetch Latest Spec
+        run: npm run fetch-spec
+
+      - name: Check for Spec Changes
+        id: check_changes
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ] || [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            git diff --quiet specs/openapi.json || echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Generate SDKs
+        if: steps.check_changes.outputs.changed == 'true'
+        run: npm run generate:all
+
+      # --- TypeScript Publishing ---
+      - name: Publish TypeScript Client
+        if: steps.check_changes.outputs.changed == 'true'
+        working-directory: ./clients/typescript
+        run: |
+          npm install
+          npm run build
+          # Ensure version bump based on date or commit (simplified here)
+          npm version patch --no-git-tag-version
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # --- Java Publishing ---
+      - name: Publish Java Client
+        if: steps.check_changes.outputs.changed == 'true'
+        working-directory: ./clients/java
+        run: |
+          # Configure distribution management for GitHub Packages in pom.xml on the fly if needed
+          # or rely on -DaltDeploymentRepository
+          mvn deploy -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/${{ github.repository }}/
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # --- Python Publishing ---
+      # GitHub Packages does not host PyPI. 
+      # We will build the distribution and commit it, 
+      # allowing usage via pip install git+https://github.com/...
+      - name: Build Python Client
+        if: steps.check_changes.outputs.changed == 'true'
+        working-directory: ./clients/python
+        run: |
+          pip install setuptools wheel
+          python setup.py sdist bdist_wheel
+
+      # --- Commit Source Code ---
+      - name: Commit and Push Changes
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --global user.name 'Yoxo SDK'
+          git config --global user.email 'sdk@yoxo.software'
+          git add .
+          git commit -m "chore(sdk): update clients based on new OpenAPI spec [skip ci]"
+          git push

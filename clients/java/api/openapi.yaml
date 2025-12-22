@@ -1,0 +1,4962 @@
+openapi: 3.0.1
+info:
+  description: |
+    API REST exposant diverses données liées aux serveurs de NationsGlory.
+
+    ## À propos
+    Cette API centralise et expose différents types de données relatives aux serveurs de NationsGlory :
+    - **Routes `/v2/java/*`** : Données collectées par scraping direct sur les serveurs Java de NationsGlory. Pour cela, le protocole 78 (Minecraft 1.6.4) est pleinement utilisé.
+    - **Autres routes** (à venir) : Données obtenues par d'autres méthodes (API officielles, DynMap, etc.)
+
+    ## Authentification
+    L'API utilise le flux OAuth2 Client Credentials. Pour vous authentifier :
+    1. Obtenez vos identifiants client (client_id et client_secret) depuis le serveur d'authentification de Yoxo
+    2. Demandez un jeton d'accès : `POST https://auth.yoxo.software/oauth2/token`
+       ```
+       grant_type=client_credentials
+       &client_id=votre_client_id
+       &client_secret=votre_client_secret
+       &scope=api_access
+       ```
+    3. Incluez le jeton dans l'en-tête Authorization : `Bearer <token>`
+
+    ## Filtrage RSQL
+    Utilisez le paramètre de requête `filter` avec la syntaxe RSQL :
+    - **Opérateurs** : `==`, `!=`, `>`, `>=`, `<`, `<=`
+    - **Logique** : `;` (ET), `,` (OU), `()` pour grouper
+    - **Wildcards** : `*` pour contains/startsWith/endsWith
+    - **Exemples** :
+      - `b>100000` : niveau global > 100000
+      - `u==*Romain*` : nom d'utilisateur contenant "Romain"
+      - `b>500000;bP<100` : niveau > 500000 ET position < 100
+      - `(u==*35*,u==*76*)` : nom contenant "35" OU "76"
+  title: Yoxo API Server
+  version: 1.0.0
+servers:
+- description: Generated server url
+  url: https://api.yoxo.software
+security:
+- oauth2_client_credentials: []
+tags:
+- description: "Endpoints exposant les données de jeu scrapées depuis les serveurs\
+    \ Java de NationsGlory. Supporte le filtrage RSQL, la pagination et utilise un\
+    \ système de cache multi-niveaux pour optimiser les performances."
+  name: API Java
+paths:
+  /v2/java/cereal_global_market/{date}/{javaServer}:
+    get:
+      description: |
+        Permet d'obtenir les données du marché global des céréales pour un serveur spécifique à une date donnée.
+
+        Ces données incluent :
+        - Les graphiques de l'évolution des prix, des ventes et des stocks
+        - L'historique des prix, ventes et stocks par type de céréale
+        - Les prix actuels des céréales
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit.
+
+        **Note :** Ces données représentent un objet unique (pas une liste), donc le filtrage et la pagination ne sont pas applicables.
+      operationId: getCerealGlobalMarket
+      parameters:
+      - description: "La date à laquelle on veut récupérer les données du marché des\
+          \ céréales (au format ISO-8601: yyyy-MM-dd)"
+        example: 2025-10-28
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: "Serveur NationsGlory dont on veut les données. Valeurs possibles\
+          \ : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple,\
+          \ green, red, mocha et jade"
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CerealGlobalMarket"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Cereal Global Market
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+  /v2/java/country/{date}/{javaServer}:
+    get:
+      description: |
+        Permet d'obtenir la liste et les détails complets de tous les pays d'un serveur à une date donnée (aucun filtrage possible).
+        Il est possible de spécifier un pays dans l'URL pour récupérer un pays spécifique.
+
+        **Données exposées :**
+        - Informations générales (nom, description, niveau, power, claims...)
+        - Relations (alliance, guerres)
+        - Membres (liste, rôles, recrues)
+        - Économie (banque, actions)
+        - Paramètres et permissions
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les jours, généralement la nuit.
+      operationId: getCountry
+      parameters:
+      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
+          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
+          e"
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: "Serveur NationsGlory dont on veut les données des pays. Valeurs\
+          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
+          \ purple, green, red, mocha et jade"
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Country"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Country
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+    post:
+      description: |
+        Permet d'obtenir la liste et les détails complets de tous les pays d'un serveur à une date donnée (avec filtrage possible).
+
+        **Données exposées :**
+        - Informations générales (nom, description, niveau, power, claims...)
+        - Relations (alliance, guerres)
+        - Membres (liste, rôles, recrues)
+        - Économie (banque, actions)
+        - Paramètres et permissions
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les jours, généralement la nuit.
+      operationId: postCountry
+      parameters:
+      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
+          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
+          e"
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: "Serveur NationsGlory dont on veut les données des pays. Valeurs\
+          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
+          \ purple, green, red, mocha et jade"
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostQueryBody"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Country"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Country
+      tags:
+      - API Java
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /v2/java/country/{date}/{javaServer}/{country}:
+    get:
+      description: |
+        Permet d'obtenir la liste et les détails complets de tous les pays d'un serveur à une date donnée (aucun filtrage possible).
+        Il est possible de spécifier un pays dans l'URL pour récupérer un pays spécifique.
+
+        **Données exposées :**
+        - Informations générales (nom, description, niveau, power, claims...)
+        - Relations (alliance, guerres)
+        - Membres (liste, rôles, recrues)
+        - Économie (banque, actions)
+        - Paramètres et permissions
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les jours, généralement la nuit.
+      operationId: getCountry_1
+      parameters:
+      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
+          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
+          e"
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: "Serveur NationsGlory dont on veut les données des pays. Valeurs\
+          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
+          \ purple, green, red, mocha et jade"
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      - description: Nom du pays
+        explode: false
+        in: path
+        name: country
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Country"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Country
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+  /v2/java/enterprise/{date}/{javaServer}:
+    get:
+      description: |
+        Permet d'obtenir la liste de toutes les entreprises sur un serveur à une date donnée.
+        Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs
+        spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques).
+        Il est possible de filtrer par nom d'entreprise.
+
+        **Types d'entreprises :**
+        - Casino : Entreprises de casino
+        - Electric : Entreprises électriques
+        - Farm : Entreprises agricoles
+        - Petrol : Entreprises pétrolières
+        - Trader : Entreprises de trading
+        - Bet : Entreprises de paris
+        - RealEstate : Entreprises immobilières (location de parcelles)
+        - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les lundis matin.
+      operationId: getEnterprises
+      parameters:
+      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
+          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
+          e"
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: "Serveur NationsGlory dont on veut les données d'entreprises.\
+          \ Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral,\
+          \ pink, purple, green, red, mocha et jade"
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      - description: Type d'entreprise
+        explode: true
+        in: query
+        name: enterpriseType
+        required: false
+        schema:
+          enum:
+          - build
+          - engineer
+          - terraform
+          - journalist
+          - casino
+          - pvp
+          - loan
+          - realestate
+          - trader
+          - bet
+          - repair
+          - lawyer
+          - electric
+          - petrol
+          - farm
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enterprise"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Enterprise
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+    post:
+      description: |
+        Permet d'obtenir la liste de toutes les entreprises sur un serveur à une date donnée.
+        Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs
+        spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques).
+
+        **Types d'entreprises :**
+        - Casino : Entreprises de casino
+        - Electric : Entreprises électriques
+        - Farm : Entreprises agricoles
+        - Petrol : Entreprises pétrolières
+        - Trader : Entreprises de trading
+        - Bet : Entreprises de paris
+        - RealEstate : Entreprises immobilières (location de parcelles)
+        - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les lundis matin.
+      operationId: postEnterprises
+      parameters:
+      - description: "Date des données (format ISO-8601: yyyy-MM-dd)"
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: Serveur NationsGlory
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostQueryBody"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enterprise"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Enterprise
+      tags:
+      - API Java
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /v2/java/enterprise/{date}/{javaServer}/{enterpriseName}:
+    get:
+      description: |
+        Permet d'obtenir la liste de toutes les entreprises sur un serveur à une date donnée.
+        Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs
+        spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques).
+        Il est possible de filtrer par nom d'entreprise.
+
+        **Types d'entreprises :**
+        - Casino : Entreprises de casino
+        - Electric : Entreprises électriques
+        - Farm : Entreprises agricoles
+        - Petrol : Entreprises pétrolières
+        - Trader : Entreprises de trading
+        - Bet : Entreprises de paris
+        - RealEstate : Entreprises immobilières (location de parcelles)
+        - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les lundis matin.
+      operationId: getEnterprises_1
+      parameters:
+      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
+          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
+          e"
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: "Serveur NationsGlory dont on veut les données d'entreprises.\
+          \ Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral,\
+          \ pink, purple, green, red, mocha et jade"
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      - description: Nom de l'entreprise
+        explode: false
+        in: path
+        name: enterpriseName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Type d'entreprise
+        explode: true
+        in: query
+        name: enterpriseType
+        required: false
+        schema:
+          enum:
+          - build
+          - engineer
+          - terraform
+          - journalist
+          - casino
+          - pvp
+          - loan
+          - realestate
+          - trader
+          - bet
+          - repair
+          - lawyer
+          - electric
+          - petrol
+          - farm
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Enterprise"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Enterprise
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+  /v2/java/halloween-2025/{date}:
+    get:
+      description: |
+        Permet d'obtenir les statistiques des joueurs du top 50 de l'événement Halloween 2025 "Demon's Return" à une date donnée (aucun filtrage possible).
+        Seuls les joueurs du top 50 interserveur sont accessibles (limitation du serveur).
+
+        **À propos de l'événement :**
+        L'événement "Demon's Return" est un événement global interserveur où l'objectif est de collecter des âmes et tuer des démons pour empêcher l'invasion démoniaque.
+        Le classement est identique sur tous les serveurs puisqu'il s'agit d'un événement global à NationsGlory.
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 21/10/2025 au 04/11/2025), généralement la nuit.
+
+        **Documentation :**
+        Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/halloween-2025-demons-return-1lfsu05/
+      operationId: getHalloween2025
+      parameters:
+      - description: "Date des données au format ISO-8601 (yyyy-MM-dd). Événement\
+          \ actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement"
+        example: 2025-10-28
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Halloween2025"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Halloween 2025
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+    post:
+      description: |
+        Permet d'obtenir les statistiques des joueurs du top 50 de l'événement Halloween 2025 "Demon's Return" à une date donnée (avec filtrage possible).
+        Seuls les joueurs du top 50 interserveur sont disponibles (limitation du serveur).
+
+        **À propos de l'événement :**
+        L'événement "Demon's Return" est un événement global interserveur où l'objectif est de collecter des âmes et tuer des démons pour empêcher l'invasion démoniaque.
+        Le classement est identique sur tous les serveurs puisqu'il s'agit d'un événement global à NationsGlory.
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 21/10/2025 au 04/11/2025), généralement la nuit.
+
+        **Documentation :**
+        Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/halloween-2025-demons-return-1lfsu05/
+      operationId: postHalloween2025
+      parameters:
+      - description: "Date des données au format ISO-8601 (yyyy-MM-dd). Événement\
+          \ actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement"
+        example: 2025-10-28
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostQueryBody"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Halloween2025"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Halloween 2025
+      tags:
+      - API Java
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /v2/java/noelmegagift-2024:
+    get:
+      description: |
+        Permet d'obtenir les données des tirages du Mega Cadeau de l'événement "The Key Guardian" (Noël 2024).
+
+        **À propos de l'événement :**
+        L'événement "The Key Guardian" est l'événement de Noël 2024 où les joueurs doivent
+        à récupérer 9 clés perdues pour assembler une Méga Clé et débloquer le Mega Cadeau.
+        Chaque tirage du Mega Cadeau offre jusqu'à 4 récompenses selon le nombre de joueurs présents (armes exclusives,
+        plans rares, items légendaires, cosmétiques).
+
+        **Période de l'événement :** Du 24/12/2024 au 12/01/2025
+
+        **Données exposées :**
+        Chaque entrée représente un tirage individuel du Mega Gift par un joueur, avec les items obtenus
+        et la date/heure du tirage.
+      operationId: getNoelMegagift2024
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NoelMegagift2024"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Noël Megagift 2024
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+    post:
+      description: |
+        Permet d'obtenir les données des tirages du Mega Cadeau de l'événement "The Key Guardian" (Noël 2024).
+
+        **À propos de l'événement :**
+        L'événement "The Key Guardian" est l'événement de Noël 2024 où les joueurs doivent
+        à récupérer 9 clés perdues pour assembler une Méga Clé et débloquer le Mega Cadeau.
+        Chaque tirage du Mega Cadeau offre jusqu'à 4 récompenses selon le nombre de joueurs présents (armes exclusives,
+        plans rares, items légendaires, cosmétiques).
+
+        **Période de l'événement :** Du 24/12/2024 au 12/01/2025
+
+        **Données exposées :**
+        Chaque entrée représente un tirage individuel du Mega Gift par un joueur, avec les items obtenus
+        et la date/heure du tirage.
+      operationId: postNoelMegagift2024
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostQueryBody"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NoelMegagift2024"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Noël Megagift 2024
+      tags:
+      - API Java
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /v2/java/noelmegagift-2025/{date}:
+    get:
+      description: |
+        Permet d'obtenir les données des tirages du Mega Cadeau de l'événement de Noël 2025.
+
+        **À propos de l'événement :**
+        Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau.
+        Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime
+
+        **Période de l'événement :** Du 14/12/2025 au 06/01/2026
+
+        **Données exposées :**
+        Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus
+        et la date/heure du tirage.
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 14/12/2025 au 06/01/2026), généralement la nuit.
+      operationId: getNoelMegagift2025
+      parameters:
+      - description: "Date de la configuration (format ISO-8601: yyyy-MM-dd)"
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NoelMegagift2025"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Noël Megagift 2025
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+    post:
+      description: |
+        Permet d'obtenir les données des tirages du Mega Cadeau de l'événement de Noël 2025 (filtrage RSQL possible).
+
+        **À propos de l'événement :**
+        Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau.
+        Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime
+
+        **Période de l'événement :** Du 14/12/2025 au 06/01/2026
+
+        **Données exposées :**
+        Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus
+        et la date/heure du tirage.
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 14/12/2025 au 06/01/2026), généralement la nuit.
+      operationId: postNoelMegagift2025
+      parameters:
+      - description: "Date de la configuration (format ISO-8601: yyyy-MM-dd)"
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostQueryBody"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NoelMegagift2025"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Noël Megagift 2025
+      tags:
+      - API Java
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /v2/java/player-list/{date}/{javaServer}:
+    get:
+      description: |
+        Permet d'obtenir la liste des joueurs s'étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (aucun filtrage possible).
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées quotidiennement, généralement la nuit.
+      operationId: getPlayerList
+      parameters:
+      - description: "La date à laquelle on veut récupérer la liste des joueurs (au\
+          \ format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là\
+          , la date antérieure la plus proche sera utilisée"
+        example: 2025-10-28
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: "Serveur NationsGlory dont on veut la liste des joueurs. Valeurs\
+          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
+          \ purple, green, red, mocha et jade"
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PlayerList"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Player List
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+    post:
+      description: |
+        Permet d'obtenir la liste des joueurs s'étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (avec filtrage possible).
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées quotidiennement, généralement la nuit.
+      operationId: postPlayerList
+      parameters:
+      - description: "La date à laquelle on veut récupérer la liste des joueurs (au\
+          \ format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là\
+          , la date antérieure la plus proche sera utilisée"
+        example: 2025-10-28
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: "Serveur NationsGlory dont on veut la liste des joueurs. Valeurs\
+          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
+          \ purple, green, red, mocha et jade"
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostQueryBody"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PlayerList"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Player List
+      tags:
+      - API Java
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /v2/java/research/{date}/config:
+    get:
+      description: |
+        Permet d'obtenir la configuration globale de tous les domaines de recherche disponibles dans NationsGlory.
+        Cette configuration est identique pour tous les serveurs et définit les niveaux, conditions et récompenses.
+
+        **Contenu de la configuration :**
+        - Noms et descriptions des domaines de recherche
+        - Niveaux maximum par domaine
+        - Conditions requises par niveau
+        - Récompenses obtenues par niveau
+        - Durées de recherche
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit.
+      operationId: getResearchConfig
+      parameters:
+      - description: "Date de la configuration (format ISO-8601: yyyy-MM-dd)"
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResearchConfig"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Research Config
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+  /v2/java/research/{date}/{javaServer}:
+    get:
+      description: |
+        Permet d'obtenir les niveaux de recherche actuels de tous les pays d'un serveur à une date donnée (sans filtrage).
+
+        **Données exposées :**
+        - Niveaux actuels de recherche par domaine pour chaque pays
+        - Dernière recherche complétée par chaque pays
+        - Valeurs actuelles des conditions de recherche
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit.
+      operationId: getResearchServer
+      parameters:
+      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
+          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
+          e"
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: "Serveur NationsGlory dont on veut les données de R&D. Valeurs\
+          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
+          \ purple, green, red, mocha et jade"
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResearchServer"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Research Server
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+    post:
+      description: |
+        Permet d'obtenir les niveaux de recherche actuels de tous les pays d'un serveur à une date donnée (avec filtrage possible).
+
+        **Données exposées :**
+        - Niveaux actuels de recherche par domaine pour chaque pays
+        - Dernière recherche complétée par chaque pays
+        - Valeurs actuelles des conditions de recherche
+
+        **Exemples de filtres RSQL :**
+        - `country==Papouasie` - Pays nommé exactement "Papouasie"
+        - `country==*Terre*` - Pays dont le nom contient "Terre"
+        - `lastResearch.level>3` - Pays dont la dernière recherche a atteint un niveau > 3
+        - `lastResearch.domain==militaire` - Pays dont la dernière recherche était dans le domaine militaire
+        - `lastResearch.timestamp>1735689600000` - Pays dont la dernière recherche a été complétée après cette date
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit.
+      operationId: postResearchServer
+      parameters:
+      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
+          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
+          e"
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: "Serveur NationsGlory dont on veut les données de R&D. Valeurs\
+          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
+          \ purple, green, red, mocha et jade"
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostQueryBody"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResearchServer"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Research Server
+      tags:
+      - API Java
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /v2/java/skill/{date}/{javaServer}:
+    get:
+      description: |
+        Permet d'obtenir les compétences des joueurs présents dans au moins 1 top 50 compétences sur un serveur à une date donnée (aucun filtrage possible).
+        Seuls les joueurs figurant dans le top 50 d'au moins une compétence sur le serveur sont inclus pour éviter de surcharger les serveurs.
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit.
+
+        **Documentation :**
+        Plus d'informations sur les compétences/skills : https://wiki.nationsglory.fr/fr/article/les-competences-java-1shixp7/
+      operationId: getSkill
+      parameters:
+      - description: "La date à laquelle on veut récupéré les skills (au format ISO-8601:\
+          \ yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure\
+          \ la plus proche sera utilisée"
+        example: 2025-10-28
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: "Serveur NationsGlory dont on veut les skills. Valeurs possibles\
+          \ : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple,\
+          \ green, red, mocha et jade"
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Skill"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Skill
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+    post:
+      description: |
+        Permet d'obtenir les compétences des joueurs présents dans au moins 1 top 50 compétences sur un serveur à une date donnée (avec filtrage possible).
+        Seuls les joueurs figurant dans le top 50 d'au moins une compétence sur le serveur sont inclus pour éviter de surcharger les serveurs.
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit.
+
+        **Documentation :**
+        Plus d'informations sur les compétences/skills : https://wiki.nationsglory.fr/fr/article/les-competences-java-1shixp7/
+      operationId: postSkill
+      parameters:
+      - description: "La date à laquelle on veut récupéré les skills (au format ISO-8601:\
+          \ yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure\
+          \ la plus proche sera utilisée"
+        example: 2025-10-28
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: "Serveur NationsGlory dont on veut les skills. Valeurs possibles\
+          \ : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple,\
+          \ green, red, mocha et jade"
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostQueryBody"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Skill"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Skill
+      tags:
+      - API Java
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /v2/java/war/{date}/{javaServer}:
+    get:
+      description: |
+        Permet d'obtenir la liste des guerres (en cours ou terminées) d'un serveur à une date donnée.
+        Il est possible de spécifier un warId dans l'URL pour récupérer une guerre spécifique.
+
+        **Données exposées :**
+        - Identifiant, dates (déclaration, début), raison
+        - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...)
+        - Conditions de victoire
+        - Récompenses
+        - Détails des assauts et missiles lancés
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées quotidiennement, généralement la nuit.
+      operationId: getWar
+      parameters:
+      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
+          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
+          e"
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: "Serveur NationsGlory dont on veut les données de guerre. Valeurs\
+          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
+          \ purple, green, red, mocha et jade"
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/War"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: War
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+    post:
+      description: |
+        Permet d'obtenir la liste des guerres (en cours ou terminées) d'un serveur à une date donnée (avec filtrage possible).
+
+        **Données exposées :**
+        - Identifiant, dates (déclaration, début), raison
+        - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...)
+        - Conditions de victoire
+        - Récompenses
+        - Détails des assauts et missiles lancés
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées quotidiennement, généralement la nuit.
+      operationId: postWar
+      parameters:
+      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
+          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
+          e"
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: "Serveur NationsGlory dont on veut les données de guerre. Valeurs\
+          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
+          \ purple, green, red, mocha et jade"
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostQueryBody"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/War"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: War
+      tags:
+      - API Java
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /v2/java/war/{date}/{javaServer}/{warId}:
+    get:
+      description: |
+        Permet d'obtenir la liste des guerres (en cours ou terminées) d'un serveur à une date donnée.
+        Il est possible de spécifier un warId dans l'URL pour récupérer une guerre spécifique.
+
+        **Données exposées :**
+        - Identifiant, dates (déclaration, début), raison
+        - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...)
+        - Conditions de victoire
+        - Récompenses
+        - Détails des assauts et missiles lancés
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées quotidiennement, généralement la nuit.
+      operationId: getWar_1
+      parameters:
+      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
+          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
+          e"
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: "Serveur NationsGlory dont on veut les données de guerre. Valeurs\
+          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
+          \ purple, green, red, mocha et jade"
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      - description: Identifiant de la guerre
+        explode: false
+        in: path
+        name: warId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/War"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: War
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+components:
+  schemas:
+    PostQueryBody:
+      description: "Le corps de la requête pour les endpoints POST /v2/data/{type}/{date}/{server}/query\
+        \ permettant des requêtes complexes avec filtrage et pagination"
+      example:
+        filter: builder>100000;builderPosition<100
+        size: 50
+        page: 1
+      properties:
+        filter:
+          description: |
+            Permet de filtrer les résultats avec des expressions RSQL dans le corps de la requête.
+            - Opérateurs de comparaison : `==`, `!=`, `>`, `>=`, `<`, `<=`
+            - Opérateurs logiques : `;` (ET), `,` (OU), parenthèses pour grouper
+            - Wildcards : `*` pour contient/commence par/finit par (ex: `username==*Didje*`)
+
+            __Exemples de filtres :__
+            - `builder>100000` : joueurs avec plus de 100000 XP en Builder
+            - `username==*Romain*` : joueurs dont le nom contient "Romain"
+            - `builder>500000;builderPosition<100` : XP Builder > 500000 ET position < 100
+            - `(username==*77*,username==*24*)` : nom contient "77" OU "24"
+          example: builder>100000;builderPosition<100
+          nullable: true
+          type: string
+        page:
+          description: Le numéro de page à récupérer (la première page est la page
+            1)
+          example: 1
+          format: int32
+          minimum: 1
+          nullable: true
+          type: integer
+        size:
+          description: Le nombre d'éléments par page
+          example: 50
+          format: int32
+          minimum: 1
+          nullable: true
+          type: integer
+      type: object
+    Metadata:
+      example:
+        date: 2025-10-21
+        filteredCount: 42
+        server: red
+        dataType: example
+        executionTimeMs: 210
+        totalPages: 3
+        pageSize: 20
+        source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+        totalCount: 50
+        currentPage: 1
+        cacheSource: L1
+        timestamp: 1760939974755
+      properties:
+        dataType:
+          description: "Le type de données (researches, skill, enterprise, ...)"
+          example: example
+          type: string
+        server:
+          description: "Le serveur duquel est issue les données. Dans le cas de donné\
+            es issue d'un évènement interserveur, le serveur sera 'event'"
+          example: red
+          type: string
+        timestamp:
+          description: "Timestamp auquel les données ont été scrap. Le timestamp est\
+            \ ici exprimé en milliseconde et correspond au nombre de milliseconde\
+            \ écoulées depuis le 1er janvier 1970, minuit UTC"
+          example: 1760939974755
+          format: int64
+          type: integer
+        date:
+          description: "La date auquel les données ont été scrap, au format ISO"
+          example: 2025-10-21
+          type: string
+        source:
+          description: Le chemin d'accès du fichier dans le bucket S3
+          example: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          type: string
+        cacheSource:
+          description: "La source des données: S3 (sans cache), L1 (cache Caffeine,\
+            \ en mémoire), L2 (cache Redis)"
+          example: L1
+          type: string
+        executionTimeMs:
+          description: "Le temps d'exécution de la requête, en millisecondes"
+          example: 210
+          format: int64
+          type: integer
+        totalCount:
+          description: "Si filtrage possible, nombre d'éléments avant le filtrage"
+          example: 50
+          format: int32
+          type: integer
+        filteredCount:
+          description: "Si filtrage possible, nombre d'éléments après le filtrage"
+          example: 42
+          format: int32
+          type: integer
+        currentPage:
+          description: "Si pagination, le page actuel"
+          example: 1
+          format: int32
+          type: integer
+        pageSize:
+          description: "Si pagination, le nombre d'éléments par pages"
+          example: 20
+          format: int32
+          type: integer
+        totalPages:
+          description: "Si pagination, le nombre total de pages. La première page\
+            \ est la page 1"
+          example: 3
+          format: int32
+          type: integer
+      type: object
+    War:
+      example:
+        metadata:
+          date: 2025-10-21
+          filteredCount: 42
+          server: red
+          dataType: example
+          executionTimeMs: 210
+          totalPages: 3
+          pageSize: 20
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          totalCount: 50
+          currentPage: 1
+          cacheSource: L1
+          timestamp: 1760939974755
+        data:
+        - reason: KILL_WILDERNESS
+          warsInitiatedBy: Romaindu35
+          attacker:
+            country: TerreSigny
+            condition:
+              victory: 2
+              kill: 10
+              assaultPoints: 1500
+              antimatter: 1
+              missilePoints: 50
+              redmatter: 1
+            inactivity: 12
+            progress: 45.5
+            remainingMissilesPoints: 100
+          targetGrade: LEADER
+          target: Romaindu35
+          winner: TerreSigny
+          warStartAt: 1735693200000
+          warDeclaredAt: 1735689600000
+          daysBeforeMissilePointReset: 5
+          warId: 99101e976cb0dc7ca57a54e5849dbe0943a7544e
+          conditionType: AND
+          conditions:
+            victory: 2
+            kill: 10
+            assaultPoints: 1500
+            antimatter: 1
+            missilePoints: 50
+            redmatter: 1
+          missiles:
+          - missile: Sonic
+            launcherCountry: Papouasie
+            launchedAt: 1735696800000
+            missilePoints: 4
+            launcher: Romaindu35
+          - missile: Sonic
+            launcherCountry: Papouasie
+            launchedAt: 1735696800000
+            missilePoints: 4
+            launcher: Romaindu35
+          rewards:
+            peace: 7
+            claims: 3
+            dollars: 50000
+            power: 10
+          status: IN_PROGRESS
+          defender:
+            country: TerreSigny
+            condition:
+              victory: 2
+              kill: 10
+              assaultPoints: 1500
+              antimatter: 1
+              missilePoints: 50
+              redmatter: 1
+            inactivity: 12
+            progress: 45.5
+            remainingMissilesPoints: 100
+          assaults:
+          - winner: TerreSigny
+            winnerHelpers:
+            - winnerHelpers
+            - winnerHelpers
+            looserHelpers:
+            - looserHelpers
+            - looserHelpers
+            mmrWinner: 25
+            mmrLooser: -25
+            startAt: 1735695000000
+            looser: TerreAdelie
+          - winner: TerreSigny
+            winnerHelpers:
+            - winnerHelpers
+            - winnerHelpers
+            looserHelpers:
+            - looserHelpers
+            - looserHelpers
+            mmrWinner: 25
+            mmrLooser: -25
+            startAt: 1735695000000
+            looser: TerreAdelie
+        - reason: KILL_WILDERNESS
+          warsInitiatedBy: Romaindu35
+          attacker:
+            country: TerreSigny
+            condition:
+              victory: 2
+              kill: 10
+              assaultPoints: 1500
+              antimatter: 1
+              missilePoints: 50
+              redmatter: 1
+            inactivity: 12
+            progress: 45.5
+            remainingMissilesPoints: 100
+          targetGrade: LEADER
+          target: Romaindu35
+          winner: TerreSigny
+          warStartAt: 1735693200000
+          warDeclaredAt: 1735689600000
+          daysBeforeMissilePointReset: 5
+          warId: 99101e976cb0dc7ca57a54e5849dbe0943a7544e
+          conditionType: AND
+          conditions:
+            victory: 2
+            kill: 10
+            assaultPoints: 1500
+            antimatter: 1
+            missilePoints: 50
+            redmatter: 1
+          missiles:
+          - missile: Sonic
+            launcherCountry: Papouasie
+            launchedAt: 1735696800000
+            missilePoints: 4
+            launcher: Romaindu35
+          - missile: Sonic
+            launcherCountry: Papouasie
+            launchedAt: 1735696800000
+            missilePoints: 4
+            launcher: Romaindu35
+          rewards:
+            peace: 7
+            claims: 3
+            dollars: 50000
+            power: 10
+          status: IN_PROGRESS
+          defender:
+            country: TerreSigny
+            condition:
+              victory: 2
+              kill: 10
+              assaultPoints: 1500
+              antimatter: 1
+              missilePoints: 50
+              redmatter: 1
+            inactivity: 12
+            progress: 45.5
+            remainingMissilesPoints: 100
+          assaults:
+          - winner: TerreSigny
+            winnerHelpers:
+            - winnerHelpers
+            - winnerHelpers
+            looserHelpers:
+            - looserHelpers
+            - looserHelpers
+            mmrWinner: 25
+            mmrLooser: -25
+            startAt: 1735695000000
+            looser: TerreAdelie
+          - winner: TerreSigny
+            winnerHelpers:
+            - winnerHelpers
+            - winnerHelpers
+            looserHelpers:
+            - looserHelpers
+            - looserHelpers
+            mmrWinner: 25
+            mmrLooser: -25
+            startAt: 1735695000000
+            looser: TerreAdelie
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/WarEntry"
+          type: array
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      type: object
+    WarAssault:
+      description: Détails d'un assaut au sein de la guerre
+      example:
+        winner: TerreSigny
+        winnerHelpers:
+        - winnerHelpers
+        - winnerHelpers
+        looserHelpers:
+        - looserHelpers
+        - looserHelpers
+        mmrWinner: 25
+        mmrLooser: -25
+        startAt: 1735695000000
+        looser: TerreAdelie
+      properties:
+        startAt:
+          description: Timestamp (ms) du début de l'assaut
+          example: 1735695000000
+          format: int64
+          type: integer
+        winner:
+          description: Nom du pays vainqueur de l'assaut
+          example: TerreSigny
+          type: string
+        looser:
+          description: Nom du pays perdant de l'assaut
+          example: TerreAdelie
+          type: string
+        mmrWinner:
+          description: MMR gagné par le pays vainqueur suite à sa victoire sur l'assaut
+          example: 25
+          format: int32
+          type: integer
+        mmrLooser:
+          description: "MMR perdu par le pays perdant suite à sa défaite sur l'assaut.\
+            \ Attention, pour signifier la perte, le nombre est négatif."
+          example: -25
+          format: int32
+          type: integer
+        winnerHelpers:
+          description: Liste des pays ayant aidé le vainqueur
+          items:
+            description: Liste des pays ayant aidé le vainqueur
+            type: string
+          type: array
+        looserHelpers:
+          description: Liste des pays ayant aidé le perdant
+          items:
+            description: Liste des pays ayant aidé le perdant
+            type: string
+          type: array
+      type: object
+    WarCondition:
+      description: Valeurs des conditions de victoire (objectifs ou progression)
+      example:
+        victory: 2
+        kill: 10
+        assaultPoints: 1500
+        antimatter: 1
+        missilePoints: 50
+        redmatter: 1
+      properties:
+        kill:
+          description: Nombre de kills effectués
+          example: 10
+          format: int32
+          type: integer
+        victory:
+          description: Nombre d'assauts gagnés
+          example: 2
+          format: int32
+          type: integer
+        missilePoints:
+          description: Nombre de points obtenus lors des tirs de missile
+          example: 50
+          format: int32
+          type: integer
+        assaultPoints:
+          description: Nombre de points obtenus lors des assauts
+          example: 1500
+          format: int32
+          type: integer
+        antimatter:
+          description: Nombre d'antimmater tiré
+          example: 1
+          format: int32
+          type: integer
+        redmatter:
+          description: Nombre de redmatter tiré
+          example: 1
+          format: int32
+          type: integer
+      type: object
+    WarEntry:
+      description: Détails d'une guerre
+      example:
+        reason: KILL_WILDERNESS
+        warsInitiatedBy: Romaindu35
+        attacker:
+          country: TerreSigny
+          condition:
+            victory: 2
+            kill: 10
+            assaultPoints: 1500
+            antimatter: 1
+            missilePoints: 50
+            redmatter: 1
+          inactivity: 12
+          progress: 45.5
+          remainingMissilesPoints: 100
+        targetGrade: LEADER
+        target: Romaindu35
+        winner: TerreSigny
+        warStartAt: 1735693200000
+        warDeclaredAt: 1735689600000
+        daysBeforeMissilePointReset: 5
+        warId: 99101e976cb0dc7ca57a54e5849dbe0943a7544e
+        conditionType: AND
+        conditions:
+          victory: 2
+          kill: 10
+          assaultPoints: 1500
+          antimatter: 1
+          missilePoints: 50
+          redmatter: 1
+        missiles:
+        - missile: Sonic
+          launcherCountry: Papouasie
+          launchedAt: 1735696800000
+          missilePoints: 4
+          launcher: Romaindu35
+        - missile: Sonic
+          launcherCountry: Papouasie
+          launchedAt: 1735696800000
+          missilePoints: 4
+          launcher: Romaindu35
+        rewards:
+          peace: 7
+          claims: 3
+          dollars: 50000
+          power: 10
+        status: IN_PROGRESS
+        defender:
+          country: TerreSigny
+          condition:
+            victory: 2
+            kill: 10
+            assaultPoints: 1500
+            antimatter: 1
+            missilePoints: 50
+            redmatter: 1
+          inactivity: 12
+          progress: 45.5
+          remainingMissilesPoints: 100
+        assaults:
+        - winner: TerreSigny
+          winnerHelpers:
+          - winnerHelpers
+          - winnerHelpers
+          looserHelpers:
+          - looserHelpers
+          - looserHelpers
+          mmrWinner: 25
+          mmrLooser: -25
+          startAt: 1735695000000
+          looser: TerreAdelie
+        - winner: TerreSigny
+          winnerHelpers:
+          - winnerHelpers
+          - winnerHelpers
+          looserHelpers:
+          - looserHelpers
+          - looserHelpers
+          mmrWinner: 25
+          mmrLooser: -25
+          startAt: 1735695000000
+          looser: TerreAdelie
+      properties:
+        warId:
+          description: Identifiant unique de la guerre permettant de lier avec les
+            données des pays
+          example: 99101e976cb0dc7ca57a54e5849dbe0943a7544e
+          type: string
+        warDeclaredAt:
+          description: Timestamp (ms) de la déclaration de guerre
+          example: 1735689600000
+          format: int64
+          type: integer
+        warStartAt:
+          description: Timestamp (ms) du début effectif de la guerre
+          example: 1735693200000
+          format: int64
+          type: integer
+        warsInitiatedBy:
+          description: Joueur ayant initié la guerre via la commande /f enemy
+          example: Romaindu35
+          type: string
+        reason:
+          description: Raison de la déclaration de guerre
+          enum:
+          - KILL_WILDERNESS
+          - PROVOCATION
+          - TERRITORIAL_EXPANSION
+          - TREASON
+          - INTRUSION
+          - SCAM
+          - TPKILL
+          - COLONY_IMDEPENDENCE
+          - COLONY_REFUSAL
+          - COLONY_PROTECTION
+          - COLONY_STEAL
+          - BUFFER_COUNTRY
+          - UNDER_POWER
+          - REPRISAL
+          - FOLLOW_WAR
+          - MMR500
+          - EMPIRE_RIVALITY
+          - WAR_REVENGE
+          - BOMBING_ASSISTANCE
+          - WARZONE_DOMINATION
+          - PROTECTORAT
+          example: KILL_WILDERNESS
+          type: string
+        target:
+          description: Le pays ou joueur ayant donné la raison de guerre (peut être
+            nul selon la raison)
+          example: Romaindu35
+          type: string
+        targetGrade:
+          description: Grade du joueur ayant donné la raison de guerre (au moment
+            de la raison de la guerre)
+          enum:
+          - RECRUIT
+          - MEMBER
+          - OFFICER
+          - LEADER
+          example: LEADER
+          type: string
+        status:
+          description: "Statut actuel de la guerre (ex: IN_PROGRESS, FINISHED)"
+          enum:
+          - IN_PROGRESS
+          - WAITING_VALIDATION
+          - WAITING_CONDITIONS_ATT
+          - WAITING_CONDITIONS_DEF
+          - WAITING_CONDITIONS_ATT_VALIDATION
+          - FINISHED
+          - REFUSED
+          example: IN_PROGRESS
+          type: string
+        winner:
+          description: Le nom du pays vainqueur de la guerre (si terminée)
+          example: TerreSigny
+          type: string
+        daysBeforeMissilePointReset:
+          description: Nombre de jours restants avant la réinitialisation des points
+            missile
+          example: 5
+          format: int32
+          type: integer
+        attacker:
+          $ref: "#/components/schemas/WarParticipant"
+        defender:
+          $ref: "#/components/schemas/WarParticipant"
+        conditions:
+          $ref: "#/components/schemas/WarCondition"
+        conditionType:
+          description: "Logique d'application des conditions (AND: toutes requises,\
+            \ OR: une seule requise)"
+          enum:
+          - OR
+          - AND
+          example: AND
+          type: string
+        rewards:
+          $ref: "#/components/schemas/WarRewards"
+        assaults:
+          description: Liste des assauts ayant eu lieu durant la guerre
+          items:
+            $ref: "#/components/schemas/WarAssault"
+          type: array
+        missiles:
+          description: Liste des missiles lancés durant la guerre
+          items:
+            $ref: "#/components/schemas/WarMissile"
+          type: array
+      type: object
+    WarMissile:
+      description: Détails d'un missile lancé
+      example:
+        missile: Sonic
+        launcherCountry: Papouasie
+        launchedAt: 1735696800000
+        missilePoints: 4
+        launcher: Romaindu35
+      properties:
+        launchedAt:
+          description: Timestamp (ms) du lancement du missile
+          example: 1735696800000
+          format: int64
+          type: integer
+        missile:
+          description: Type de missile lancé
+          example: Sonic
+          type: string
+        missilePoints:
+          description: Points de missile consommés pour ce lancement
+          example: 4
+          format: int32
+          type: integer
+        launcher:
+          description: Joueur ayant lancé le missile
+          example: Romaindu35
+          type: string
+        launcherCountry:
+          description: Pays du joueur ayant lancé le missile
+          example: Papouasie
+          type: string
+      type: object
+    WarParticipant:
+      description: Détails d'un pays participant à la guerre
+      example:
+        country: TerreSigny
+        condition:
+          victory: 2
+          kill: 10
+          assaultPoints: 1500
+          antimatter: 1
+          missilePoints: 50
+          redmatter: 1
+        inactivity: 12
+        progress: 45.5
+        remainingMissilesPoints: 100
+      properties:
+        country:
+          description: Nom du pays participant
+          example: TerreSigny
+          type: string
+        remainingMissilesPoints:
+          description: Points de missile restants utilisables par le pays
+          example: 100
+          format: int32
+          type: integer
+        inactivity:
+          description: Pourcentage d'inactivité du pays. Augmente de 3% si les critères
+            de connexion ne sont pas remplis pendant 2h
+          example: 12
+          format: int32
+          type: integer
+        progress:
+          description: "Pourcentage de progression vers la validation des conditions\
+            \ de victoire (0-100%). À 100%, le pays gagne"
+          example: 45.5
+          format: double
+          type: number
+        condition:
+          $ref: "#/components/schemas/WarCondition"
+      type: object
+    WarRewards:
+      description: Récompenses accordées au pays vainqueur de la guerre
+      example:
+        peace: 7
+        claims: 3
+        dollars: 50000
+        power: 10
+      properties:
+        dollars:
+          description: Montant en dollars gagné
+          example: 50000
+          format: int32
+          type: integer
+        power:
+          description: Points de power gagnés
+          example: 10
+          format: int32
+          type: integer
+        claims:
+          description: Nombre de claims (territoires) gagnés
+          example: 3
+          format: int32
+          type: integer
+        peace:
+          description: Nombre de jours de trêve forcée après la guerre pendant lesquels
+            les pays ne peuvent plus s'attaquer
+          example: 7
+          format: int32
+          type: integer
+      type: object
+    Skill:
+      example:
+        metadata:
+          date: 2025-10-21
+          filteredCount: 42
+          server: red
+          dataType: example
+          executionTimeMs: 210
+          totalPages: 3
+          pageSize: 20
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          totalCount: 50
+          currentPage: 1
+          cacheSource: L1
+          timestamp: 1760939974755
+        data:
+        - minerPosition: 5
+          builderPosition: 15
+          engineerPosition: 31
+          engineer: 50000
+          miner: 180000
+          farmerPosition: 23
+          lumberjackPosition: 12
+          builder: 125000
+          hunterPosition: 8
+          farmer: 75000
+          hunter: 45000
+          lumberjack: 90000
+          username: Romaindu35
+        - minerPosition: 5
+          builderPosition: 15
+          engineerPosition: 31
+          engineer: 50000
+          miner: 180000
+          farmerPosition: 23
+          lumberjackPosition: 12
+          builder: 125000
+          hunterPosition: 8
+          farmer: 75000
+          hunter: 45000
+          lumberjack: 90000
+          username: Romaindu35
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/SkillEntry"
+          type: array
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      type: object
+    SkillEntry:
+      description: Skills d'un joueur
+      example:
+        minerPosition: 5
+        builderPosition: 15
+        engineerPosition: 31
+        engineer: 50000
+        miner: 180000
+        farmerPosition: 23
+        lumberjackPosition: 12
+        builder: 125000
+        hunterPosition: 8
+        farmer: 75000
+        hunter: 45000
+        lumberjack: 90000
+        username: Romaindu35
+      properties:
+        username:
+          description: Le pseudonyme du joueur
+          example: Romaindu35
+          type: string
+        builder:
+          description: "XP du joueur dans le métier de Builder. Paliers: Niveau 1:\
+            \ 5000 XP, Niveau 2: 20000 XP, Niveau 3: 50000 XP, Niveau 4: 100000 XP,\
+            \ Niveau 5: 200000 XP"
+          example: 125000
+          format: int32
+          type: integer
+        farmer:
+          description: "XP du joueur dans le métier d'Agriculteur (Farmer). Paliers:\
+            \ Niveau 1: 5000 XP, Niveau 2: 20000 XP, Niveau 3: 60000 XP, Niveau 4:\
+            \ 125000 XP, Niveau 5: 300000 XP"
+          example: 75000
+          format: int32
+          type: integer
+        hunter:
+          description: "XP du joueur dans le métier de Chasseur (Hunter). Paliers:\
+            \ Niveau 1: 5000 XP, Niveau 2: 20000 XP, Niveau 3: 50000 XP, Niveau 4:\
+            \ 100000 XP, Niveau 5: 200000 XP"
+          example: 45000
+          format: int32
+          type: integer
+        lumberjack:
+          description: "XP du joueur dans le métier de Bûcheron (Lumberjack). Paliers:\
+            \ Niveau 1: 5000 XP, Niveau 2: 20000 XP, Niveau 3: 50000 XP, Niveau 4:\
+            \ 100000 XP, Niveau 5: 200000 XP"
+          example: 90000
+          format: int32
+          type: integer
+        engineer:
+          description: "XP du joueur dans le métier d'Ingénieur (Engineer). Paliers:\
+            \ Niveau 1: 3500 XP, Niveau 2: 15000 XP, Niveau 3: 30000 XP, Niveau 4:\
+            \ 70000 XP, Niveau 5: 200000 XP"
+          example: 50000
+          format: int32
+          type: integer
+        miner:
+          description: "XP du joueur dans le métier de Mineur (Miner). Paliers: Niveau\
+            \ 1: 5000 XP, Niveau 2: 20000 XP, Niveau 3: 75000 XP, Niveau 4: 150000\
+            \ XP, Niveau 5: 400000 XP"
+          example: 180000
+          format: int32
+          type: integer
+        builderPosition:
+          description: Position du joueur dans le classement serveur de le métier
+            de Builder (1 = premier du classement)
+          example: 15
+          format: int32
+          type: integer
+        farmerPosition:
+          description: Position du joueur dans le classement serveur de le métier
+            d'Agriculteur (1 = premier du classement)
+          example: 23
+          format: int32
+          type: integer
+        hunterPosition:
+          description: Position du joueur dans le classement serveur de le métier
+            de Chasseur (1 = premier du classement)
+          example: 8
+          format: int32
+          type: integer
+        lumberjackPosition:
+          description: Position du joueur dans le classement serveur de le métier
+            de Bûcheron (1 = premier du classement)
+          example: 12
+          format: int32
+          type: integer
+        engineerPosition:
+          description: Position du joueur dans le classement serveur de le métier
+            d'Ingénieur (1 = premier du classement)
+          example: 31
+          format: int32
+          type: integer
+        minerPosition:
+          description: Position du joueur dans le classement serveur de le métier
+            de Mineur (1 = premier du classement)
+          example: 5
+          format: int32
+          type: integer
+      type: object
+    CountryResearchEntry:
+      description: Données de R&D pour un pays
+      example:
+        country: Lituanie
+        researchesLevels:
+          general: 11
+          resource: 15
+          industry: 12
+          military: 5
+          technology: 6
+        lastResearch:
+          level: 6
+          domain: technology
+          timestamp: 1739864326118
+        researchesConditionsValues:
+          vote: 10924
+          block_break: 20919114
+          block_place: 3799270
+      properties:
+        country:
+          description: Nom du pays
+          example: Lituanie
+          type: string
+        researchesLevels:
+          additionalProperties:
+            description: Niveaux actuels de R&D par branche
+            format: int32
+            type: integer
+          description: Niveaux actuels de R&D par branche
+          example:
+            general: 11
+            resource: 15
+            industry: 12
+            military: 5
+            technology: 6
+          type: object
+        lastResearch:
+          $ref: "#/components/schemas/LastResearchEntry"
+        researchesConditionsValues:
+          additionalProperties:
+            description: Valeurs actuelles des conditions de recherche. Celles-ci
+              sont globales
+            format: double
+            type: number
+          description: Valeurs actuelles des conditions de recherche. Celles-ci sont
+            globales
+          example:
+            vote: 10924
+            block_break: 20919114
+            block_place: 3799270
+          type: object
+      type: object
+    LastResearchEntry:
+      description: Dernière recherche complétée par un pays
+      example:
+        level: 6
+        domain: technology
+        timestamp: 1739864326118
+      properties:
+        domain:
+          description: Nom de la branche
+          example: technology
+          type: string
+        level:
+          description: Niveau atteint
+          example: 6
+          format: int32
+          type: integer
+        timestamp:
+          description: Timestamp de complétion (epoch milliseconds)
+          example: 1739864326118
+          format: int64
+          type: integer
+      type: object
+    ResearchServer:
+      example:
+        metadata:
+          date: 2025-10-21
+          filteredCount: 42
+          server: red
+          dataType: example
+          executionTimeMs: 210
+          totalPages: 3
+          pageSize: 20
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          totalCount: 50
+          currentPage: 1
+          cacheSource: L1
+          timestamp: 1760939974755
+        data:
+        - country: Lituanie
+          researchesLevels:
+            general: 11
+            resource: 15
+            industry: 12
+            military: 5
+            technology: 6
+          lastResearch:
+            level: 6
+            domain: technology
+            timestamp: 1739864326118
+          researchesConditionsValues:
+            vote: 10924
+            block_break: 20919114
+            block_place: 3799270
+        - country: Lituanie
+          researchesLevels:
+            general: 11
+            resource: 15
+            industry: 12
+            military: 5
+            technology: 6
+          lastResearch:
+            level: 6
+            domain: technology
+            timestamp: 1739864326118
+          researchesConditionsValues:
+            vote: 10924
+            block_break: 20919114
+            block_place: 3799270
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/CountryResearchEntry"
+          type: array
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      type: object
+    PlayerList:
+      example:
+        metadata:
+          date: 2025-10-21
+          filteredCount: 42
+          server: red
+          dataType: example
+          executionTimeMs: 210
+          totalPages: 3
+          pageSize: 20
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          totalCount: 50
+          currentPage: 1
+          cacheSource: L1
+          timestamp: 1760939974755
+        data:
+        - country: France
+          lastLogin: 1760939974755
+          powerMax: 25
+          name: Romaindu35
+          power: 12
+          playtime: 3600
+        - country: France
+          lastLogin: 1760939974755
+          powerMax: 25
+          name: Romaindu35
+          power: 12
+          playtime: 3600
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/PlayerListEntry"
+          type: array
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      type: object
+    PlayerListEntry:
+      example:
+        country: France
+        lastLogin: 1760939974755
+        powerMax: 25
+        name: Romaindu35
+        power: 12
+        playtime: 3600
+      properties:
+        name:
+          description: Le pseudonyme du joueur
+          example: Romaindu35
+          type: string
+        country:
+          description: "Le pays du joueur, écrit en toutes lettres. Si le joueur est\
+            \ sans pays, la chaine retourné sera vide"
+          example: France
+          type: string
+        power:
+          description: Le power actuel du joueur
+          example: 12
+          format: int32
+          type: integer
+        powerMax:
+          description: Le power maximum atteignable par le joueur
+          example: 25
+          format: int32
+          type: integer
+        playtime:
+          description: Le temps de jeu total du joueur sur le serveur (en secondes)
+          example: 3600
+          format: int32
+          type: integer
+        lastLogin:
+          description: "Le timestamp de la dernière connexion du joueur. Le timestamp\
+            \ est ici exprimé en secondes et correspond au nombre de secondes écoulé\
+            es depuis le 1er janvier 1970, minuit UTC"
+          example: 1760939974755
+          format: int64
+          type: integer
+      type: object
+    NoelMegagift2025:
+      example:
+        metadata:
+          date: 2025-10-21
+          filteredCount: 42
+          server: red
+          dataType: example
+          executionTimeMs: 210
+          totalPages: 3
+          pageSize: 20
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          totalCount: 50
+          currentPage: 1
+          cacheSource: L1
+          timestamp: 1760939974755
+        data:
+        - server: red
+          loots:
+          - Multi Outil
+          - Hâche Guerrier de Glace
+          - Plan - Fusée spatiale
+          - Hâche Guerrier de Glace Légendaire
+          username: Paskap
+          timestamp: 1766179080000
+        - server: red
+          loots:
+          - Multi Outil
+          - Hâche Guerrier de Glace
+          - Plan - Fusée spatiale
+          - Hâche Guerrier de Glace Légendaire
+          username: Paskap
+          timestamp: 1766179080000
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/NoelMegagift2025Entry"
+          type: array
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      type: object
+    NoelMegagift2025Entry:
+      description: Données d'un tirage du méga cadeau de Noël 2025
+      example:
+        server: red
+        loots:
+        - Multi Outil
+        - Hâche Guerrier de Glace
+        - Plan - Fusée spatiale
+        - Hâche Guerrier de Glace Légendaire
+        username: Paskap
+        timestamp: 1766179080000
+      properties:
+        username:
+          description: Le pseudo du joueur ayant réalisé le tirage
+          example: Paskap
+          type: string
+        server:
+          description: Le serveur sur lequel le méga cadeau a été ouvert
+          example: red
+          type: string
+        timestamp:
+          description: Timestamp du moment où le tirage a été effectué (en ms)
+          example: 1766179080000
+          format: int64
+          type: integer
+        loots:
+          description: Liste des items obtenus par le joueur lors du tirage
+          example:
+          - Multi Outil
+          - Hâche Guerrier de Glace
+          - Plan - Fusée spatiale
+          - Hâche Guerrier de Glace Légendaire
+          items:
+            description: Liste des items obtenus par le joueur lors du tirage
+            example: "[\"Multi Outil\",\"Hâche Guerrier de Glace\",\"Plan - Fusée\
+              \ spatiale\",\"Hâche Guerrier de Glace Légendaire\"]"
+            type: string
+          type: array
+      type: object
+    NoelMegagift2024:
+      example:
+        metadata:
+          date: 2025-10-21
+          filteredCount: 42
+          server: red
+          dataType: example
+          executionTimeMs: 210
+          totalPages: 3
+          pageSize: 20
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          totalCount: 50
+          currentPage: 1
+          cacheSource: L1
+          timestamp: 1760939974755
+        data:
+        - server: orange
+          loots:
+          - Laser Spartan Blanc
+          - Hache Guerrier de Glace
+          - Bouclier Soldat Hiver
+          - Plan T4
+          username: Mat4628149
+          timestamp: 1736710460000
+        - server: orange
+          loots:
+          - Laser Spartan Blanc
+          - Hache Guerrier de Glace
+          - Bouclier Soldat Hiver
+          - Plan T4
+          username: Mat4628149
+          timestamp: 1736710460000
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/NoelMegagift2024Entry"
+          type: array
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      type: object
+    NoelMegagift2024Entry:
+      description: Données d'un tirage du méga cadeau de Noël 2024
+      example:
+        server: orange
+        loots:
+        - Laser Spartan Blanc
+        - Hache Guerrier de Glace
+        - Bouclier Soldat Hiver
+        - Plan T4
+        username: Mat4628149
+        timestamp: 1736710460000
+      properties:
+        username:
+          description: Le pseudo du joueur ayant réalisé le tirage
+          example: Mat4628149
+          type: string
+        server:
+          description: Le serveur sur lequel le méga cadeau a été ouvert
+          example: orange
+          type: string
+        timestamp:
+          description: Timestamp du moment où le tirage a été effectué (en ms)
+          example: 1736710460000
+          format: int64
+          type: integer
+        loots:
+          description: Liste des items obtenus par le joueur lors du tirage
+          example:
+          - Laser Spartan Blanc
+          - Hache Guerrier de Glace
+          - Bouclier Soldat Hiver
+          - Plan T4
+          items:
+            description: Liste des items obtenus par le joueur lors du tirage
+            example: "[\"Laser Spartan Blanc\",\"Hache Guerrier de Glace\",\"Bouclier\
+              \ Soldat Hiver\",\"Plan T4\"]"
+            type: string
+          type: array
+      type: object
+    Halloween2025:
+      example:
+        metadata:
+          date: 2025-10-21
+          filteredCount: 42
+          server: red
+          dataType: example
+          executionTimeMs: 210
+          totalPages: 3
+          pageSize: 20
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          totalCount: 50
+          currentPage: 1
+          cacheSource: L1
+          timestamp: 1760939974755
+        data:
+        - demonsKilled: 450
+          tickets: 15
+          lostSoulsCount: 87
+          extractedSouls: 1250
+          lostSouls: 520
+          username: Romaindu35
+        - demonsKilled: 450
+          tickets: 15
+          lostSoulsCount: 87
+          extractedSouls: 1250
+          lostSouls: 520
+          username: Romaindu35
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/Halloween2025Entry"
+          type: array
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      type: object
+    Halloween2025Entry:
+      description: Statistiques individuelles d'un joueur pour l'événement Halloween
+        2025
+      example:
+        demonsKilled: 450
+        tickets: 15
+        lostSoulsCount: 87
+        extractedSouls: 1250
+        lostSouls: 520
+        username: Romaindu35
+      properties:
+        username:
+          description: Le nom d'utilisateur du joueur
+          example: Romaindu35
+          type: string
+        demonsKilled:
+          description: Nombre de démons tués dans le Nether
+          example: 450
+          format: int32
+          type: integer
+        tickets:
+          description: "Nombre de tickets obtenus pour la tombola finale. 1 ticket\
+            \ est obtenu toutes les 200 âmes collectées, avec des tickets bonus pour\
+            \ le top 10 des chasseurs d'âmes"
+          example: 15
+          format: int32
+          type: integer
+        lostSoulsCount:
+          description: Nombre d'âmes égarées retrouvées dans les capitales (/spawn)
+            des différents serveurs
+          example: 87
+          format: int32
+          type: integer
+        extractedSouls:
+          description: "Nombre de points gagnés par le joueur en battant les démons\
+            \ du Nether (Démon de niveau 1: 1 âme, de niveau 2: 4 âmes, de niveau\
+            \ 3: 40 âmes)"
+          example: 1250
+          format: int32
+          type: integer
+        lostSouls:
+          description: Nombre de points gagnés par le joueur en retrouvant les âmes
+            égarées dans les capitales
+          example: 520
+          format: int32
+          type: integer
+      type: object
+    Coords:
+      description: Coordonnées
+      properties:
+        x:
+          description: Coordonnée X
+          example: 1250
+          format: int32
+          type: integer
+        "y":
+          description: Coordonnée Y
+          example: 64
+          format: int32
+          type: integer
+        z:
+          description: Coordonnée Z
+          example: -850
+          format: int32
+          type: integer
+      type: object
+    Enterprise:
+      example:
+        metadata:
+          date: 2025-10-21
+          filteredCount: 42
+          server: red
+          dataType: example
+          executionTimeMs: 210
+          totalPages: 3
+          pageSize: 20
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          totalCount: 50
+          currentPage: 1
+          cacheSource: L1
+          timestamp: 1760939974755
+        data:
+        - owner: Romaindu35
+          flag: flag
+          description: Entreprise de pétrole de la papouasie !
+          services: "######Poser des contrats si vous voulez##50k max, binance ré\
+            cupère 50% du bénéfice##si le contrat vas a 100k vous récupérer ##75k######################"
+          type: petrol
+          disputes: 3
+          cadres:
+          - PingouinMaxIV
+          - random20
+          bank:
+            bank: 325331.0
+            flux14Days: 142595.0
+            taxes14Days: -97.7
+            salaries14Days: -71785.0
+            inProgressContracts: 136856.0
+            logs:
+            - amount: 74.5
+              name: tax
+              timestamp: 1763258552178
+            - amount: 74.5
+              name: tax
+              timestamp: 1763258552178
+          permissions:
+          - owner: true
+            name: exclude
+            cadre: true
+            employee: false
+          - owner: true
+            name: exclude
+            cadre: true
+            employee: false
+          name: Pompouasie
+          contractsDone: 12
+          contractsSuccess: 80
+          employees:
+          - Zerlow__
+          - Trigun0169
+          turnover: 995177
+          age: 997
+        - owner: Romaindu35
+          flag: flag
+          description: Entreprise de pétrole de la papouasie !
+          services: "######Poser des contrats si vous voulez##50k max, binance ré\
+            cupère 50% du bénéfice##si le contrat vas a 100k vous récupérer ##75k######################"
+          type: petrol
+          disputes: 3
+          cadres:
+          - PingouinMaxIV
+          - random20
+          bank:
+            bank: 325331.0
+            flux14Days: 142595.0
+            taxes14Days: -97.7
+            salaries14Days: -71785.0
+            inProgressContracts: 136856.0
+            logs:
+            - amount: 74.5
+              name: tax
+              timestamp: 1763258552178
+            - amount: 74.5
+              name: tax
+              timestamp: 1763258552178
+          permissions:
+          - owner: true
+            name: exclude
+            cadre: true
+            employee: false
+          - owner: true
+            name: exclude
+            cadre: true
+            employee: false
+          name: Pompouasie
+          contractsDone: 12
+          contractsSuccess: 80
+          employees:
+          - Zerlow__
+          - Trigun0169
+          turnover: 995177
+          age: 997
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/EnterpriseEntry"
+          type: array
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      type: object
+    EnterpriseBank:
+      description: Informations bancaires d'une entreprise
+      example:
+        bank: 325331.0
+        flux14Days: 142595.0
+        taxes14Days: -97.7
+        salaries14Days: -71785.0
+        inProgressContracts: 136856.0
+        logs:
+        - amount: 74.5
+          name: tax
+          timestamp: 1763258552178
+        - amount: 74.5
+          name: tax
+          timestamp: 1763258552178
+      properties:
+        bank:
+          description: Solde bancaire actuel (positif ou nul)
+          example: 325331.0
+          format: double
+          type: number
+        flux14Days:
+          description: Flux bancaire des 14 derniers jours
+          example: 142595.0
+          format: double
+          type: number
+        inProgressContracts:
+          description: Montant des contrats en cours (positif ou nul)
+          example: 136856.0
+          format: double
+          type: number
+        salaries14Days:
+          description: Salaires versés sur 14 jours (négatif ou nul)
+          example: -71785.0
+          format: double
+          type: number
+        taxes14Days:
+          description: Taxes payées sur 14 jours (négatif ou nul)
+          example: -97.7
+          format: double
+          type: number
+        logs:
+          description: Historique des transactions
+          items:
+            $ref: "#/components/schemas/EnterpriseBankLog"
+          type: array
+      type: object
+    EnterpriseBankLog:
+      description: Transaction dans les logs de l'entreprise
+      example:
+        amount: 74.5
+        name: tax
+        timestamp: 1763258552178
+      properties:
+        name:
+          description: Type de transaction
+          example: tax
+          type: string
+        amount:
+          description: "Montant de la transaction (positif si ajout d'argent, négatif\
+            \ si retrait) "
+          example: 74.5
+          format: double
+          type: number
+        timestamp:
+          description: Timestamp de la transaction
+          example: 1763258552178
+          format: int64
+          type: integer
+      type: object
+    EnterpriseBasic:
+      allOf:
+      - $ref: "#/components/schemas/EnterpriseEntry"
+      description: Entreprise basique (sans données spécifiques)
+      type: object
+    EnterpriseBet:
+      allOf:
+      - $ref: "#/components/schemas/EnterpriseEntry"
+      - properties:
+          bets:
+            description: Liste des paris actifs
+            items:
+              $ref: "#/components/schemas/EnterpriseBetItem"
+            type: array
+          betsRewardRedistributed:
+            description: L'argent redistribuées suite aux paris
+            example: 225208
+            format: int32
+            type: integer
+          betTotal:
+            description: Nombre total de paris réalisés
+            example: 50
+            format: int32
+            type: integer
+          betActive:
+            description: Nombre de paris actuellement actifs
+            example: 5
+            format: int32
+            type: integer
+        type: object
+      description: Entreprise de paris
+      type: object
+    EnterpriseBetItem:
+      description: Pari proposé par une entreprise
+      properties:
+        deadlineTime:
+          description: Timestamp de fin du pari
+          example: 1766837968789
+          format: int64
+          type: integer
+        minBet:
+          description: Mise minimale (en dollar)
+          example: 100
+          format: int32
+          type: integer
+        numberOfPlayers:
+          description: Nombre de joueurs ayant parié
+          example: 42
+          format: int32
+          type: integer
+        title:
+          description: Titre du pari
+          example: Qui gagnera la coupe du monde ?
+          type: string
+        option1:
+          description: Première option
+          example: France
+          type: string
+        option2:
+          description: Deuxième option
+          example: Espagne
+          type: string
+        status:
+          description: Statut du pari
+          example: done
+          type: string
+      type: object
+    EnterpriseCasino:
+      allOf:
+      - $ref: "#/components/schemas/EnterpriseEntry"
+      - properties:
+          history:
+            additionalProperties:
+              description: Historique des bénéfices du casino par date
+              format: double
+              type: number
+            description: Historique des bénéfices du casino par date
+            type: object
+          benefAverage:
+            description: Bénéfice moyen (par jours)
+            example: 5000.0
+            format: double
+            type: number
+          totalPlay:
+            description: Sommes totale jouée
+            example: 704636.0
+            format: double
+            type: number
+          winPercent:
+            description: Taux de redistribution des gains (en pourcentage)
+            example: 48.5
+            format: double
+            type: number
+          totalWin:
+            description: Somme totale des gains distribuées aux joueurs
+            example: 121250.0
+            format: double
+            type: number
+        type: object
+      description: Entreprise casino
+      type: object
+    EnterpriseElectric:
+      allOf:
+      - $ref: "#/components/schemas/EnterpriseEntry"
+      - properties:
+          total:
+            description: Électricité totale distribué (MJ)
+            example: 785492.0
+            format: double
+            type: number
+          available:
+            description: Électricité disponible (MJ)
+            example: 459.799
+            format: double
+            type: number
+          allowCountry:
+            description: Autoriser la vente au pays
+            example: true
+            type: boolean
+          allowAlly:
+            description: Autoriser la vente aux alliés
+            example: true
+            type: boolean
+          allowAll:
+            description: Autoriser la vente à tous
+            example: false
+            type: boolean
+          associatedCountry:
+            description: Pays associé (semble être le pays du chef de l'entreprise)
+            example: Papouasie
+            type: string
+          price:
+            description: Prix actuel de l'électricité ($/GJ)
+            example: 2.5
+            format: double
+            type: number
+          priceAverage:
+            description: "Prix moyen, à l'échelle du serveur ($/GJ)"
+            example: 8709.0
+            format: double
+            type: number
+          countriesSell:
+            additionalProperties:
+              description: Ventes par pays
+              format: double
+              type: number
+            description: Ventes par pays
+            type: object
+          historyGenerated:
+            additionalProperties:
+              description: Historique de l'électricité vendue
+              format: double
+              type: number
+            description: Historique de l'électricité vendue
+            type: object
+          historyCollected:
+            additionalProperties:
+              description: Historique de l'électricité générée/collectée par les collecteurs
+              format: double
+              type: number
+            description: Historique de l'électricité générée/collectée par les collecteurs
+            type: object
+        type: object
+      description: Entreprise électrique
+      type: object
+    EnterpriseEntry:
+      description: Données d'une entreprise (différentes versions selon le type)
+      discriminator:
+        propertyName: type
+      example:
+        owner: Romaindu35
+        flag: flag
+        description: Entreprise de pétrole de la papouasie !
+        services: "######Poser des contrats si vous voulez##50k max, binance récupè\
+          re 50% du bénéfice##si le contrat vas a 100k vous récupérer ##75k######################"
+        type: petrol
+        disputes: 3
+        cadres:
+        - PingouinMaxIV
+        - random20
+        bank:
+          bank: 325331.0
+          flux14Days: 142595.0
+          taxes14Days: -97.7
+          salaries14Days: -71785.0
+          inProgressContracts: 136856.0
+          logs:
+          - amount: 74.5
+            name: tax
+            timestamp: 1763258552178
+          - amount: 74.5
+            name: tax
+            timestamp: 1763258552178
+        permissions:
+        - owner: true
+          name: exclude
+          cadre: true
+          employee: false
+        - owner: true
+          name: exclude
+          cadre: true
+          employee: false
+        name: Pompouasie
+        contractsDone: 12
+        contractsSuccess: 80
+        employees:
+        - Zerlow__
+        - Trigun0169
+        turnover: 995177
+        age: 997
+      oneOf:
+      - $ref: "#/components/schemas/EnterpriseBet"
+      - $ref: "#/components/schemas/EnterpriseCasino"
+      - $ref: "#/components/schemas/EnterpriseElectric"
+      - $ref: "#/components/schemas/EnterpriseFarm"
+      - $ref: "#/components/schemas/EnterpriseRealEstate"
+      - $ref: "#/components/schemas/EnterprisePetrol"
+      - $ref: "#/components/schemas/EnterpriseTrader"
+      - $ref: "#/components/schemas/EnterpriseBasic"
+      properties:
+        type:
+          description: Type d'entreprise
+          enum:
+          - build
+          - engineer
+          - terraform
+          - journalist
+          - casino
+          - pvp
+          - loan
+          - realestate
+          - trader
+          - bet
+          - repair
+          - lawyer
+          - electric
+          - petrol
+          - farm
+          example: petrol
+          type: string
+        name:
+          description: Nom de l'entreprise
+          example: Pompouasie
+          type: string
+        age:
+          description: Âge de l'entreprise en jours
+          example: 997
+          format: int32
+          type: integer
+        description:
+          description: Description de l'entreprise
+          example: Entreprise de pétrole de la papouasie !
+          type: string
+        services:
+          description: Services proposés
+          example: "######Poser des contrats si vous voulez##50k max, binance récupè\
+            re 50% du bénéfice##si le contrat vas a 100k vous récupérer ##75k######################"
+          type: string
+        owner:
+          description: Propriétaire de l'entreprise
+          example: Romaindu35
+          type: string
+        flag:
+          description: "Drapeau de l'entreprise, sous la forme d'image en Base64"
+          type: string
+        cadres:
+          description: Liste des cadres de l'entreprise
+          example:
+          - PingouinMaxIV
+          - random20
+          items:
+            description: Liste des cadres de l'entreprise
+            example: "[\"PingouinMaxIV\",\"random20\"]"
+            type: string
+          type: array
+        employees:
+          description: Liste des employés de l'entreprise
+          example:
+          - Zerlow__
+          - Trigun0169
+          items:
+            description: Liste des employés de l'entreprise
+            example: "[\"Zerlow__\",\"Trigun0169\"]"
+            type: string
+          type: array
+        contractsDone:
+          description: Nombre de contrats réalisés
+          example: 12
+          format: int32
+          type: integer
+        disputes:
+          description: Nombre de litiges
+          example: 3
+          format: int32
+          type: integer
+        contractsSuccess:
+          description: Taux de réussite des contrats (pourcentage)
+          example: 80
+          format: double
+          type: number
+        turnover:
+          description: Chiffre d'affaires total
+          example: 995177
+          format: int32
+          type: integer
+        permissions:
+          description: Permissions de l'entreprise
+          items:
+            $ref: "#/components/schemas/EnterprisePermission"
+          type: array
+        bank:
+          $ref: "#/components/schemas/EnterpriseBank"
+      type: object
+    EnterpriseFarm:
+      allOf:
+      - $ref: "#/components/schemas/EnterpriseEntry"
+      - properties:
+          histories:
+            additionalProperties:
+              additionalProperties:
+                description: Historiques des ventes par céréale et date
+                format: double
+                type: number
+              description: Historiques des ventes par céréale et date
+              type: object
+            description: Historiques des ventes par céréale et date
+            type: object
+          totalCollected:
+            description: Poids total de céréale vendu depuis la création de l'entreprise
+              (en kg)
+            example: 91788
+            format: int32
+            type: integer
+          collectedCereal:
+            additionalProperties:
+              description: Poids total de céréales collectées (pour chaque céréale)
+              format: int32
+              type: integer
+            description: Poids total de céréales collectées (pour chaque céréale)
+            type: object
+        type: object
+      description: Entreprise agricole
+      type: object
+    EnterprisePermission:
+      description: Les permission associé à une entreprise
+      example:
+        owner: true
+        name: exclude
+        cadre: true
+        employee: false
+      properties:
+        name:
+          description: Nom de la permission
+          example: exclude
+          type: string
+        owner:
+          description: Si le chef de l'entreprise peut utiliser cette permission
+          example: true
+          type: boolean
+        cadre:
+          description: Si les cadres peuvent utiliser cette permission
+          example: true
+          type: boolean
+        employee:
+          description: Si les employés peuvent utiliser cette permission
+          example: false
+          type: boolean
+      type: object
+    EnterprisePetrol:
+      allOf:
+      - $ref: "#/components/schemas/EnterpriseEntry"
+      - properties:
+          historyGenerated:
+            additionalProperties:
+              description: Historique du pétrole vendue
+              format: double
+              type: number
+            description: Historique du pétrole vendue
+            type: object
+          historyCollected:
+            additionalProperties:
+              description: Historique du pétrole collectée
+              format: double
+              type: number
+            description: Historique du pétrole collectée
+            type: object
+          total:
+            description: Total du pétrole distribué (L)
+            example: 17985
+            format: int32
+            type: integer
+          available:
+            description: Pétrole disponible (L)
+            example: 559
+            format: int32
+            type: integer
+          allowCountry:
+            description: Autoriser la vente au pays
+            example: true
+            type: boolean
+          allowAlly:
+            description: Autoriser la vente aux alliés
+            example: true
+            type: boolean
+          allowAll:
+            description: Autoriser la vente à tous
+            example: false
+            type: boolean
+          associatedCountry:
+            description: Pays associé (semble être le pays du chef de l'entreprise)
+            example: France
+            type: string
+          price:
+            description: Prix actuel du pétrole ($/100L)
+            example: 580
+            format: int32
+            type: integer
+          priceAverage:
+            description: "Prix moyen, à l'échelle du serveur ($/100L)"
+            example: 12569
+            format: int32
+            type: integer
+        type: object
+      description: Entreprise pétrolière
+      type: object
+    EnterpriseRealEstate:
+      allOf:
+      - $ref: "#/components/schemas/EnterpriseEntry"
+      - properties:
+          parcelles:
+            description: Liste des parcelles de l'entreprise
+            items:
+              $ref: "#/components/schemas/Parcelle"
+            type: array
+        type: object
+      description: Entreprise immobilière
+      type: object
+    EnterpriseTrader:
+      allOf:
+      - $ref: "#/components/schemas/EnterpriseEntry"
+      - properties:
+          history:
+            additionalProperties:
+              description: Historique des rendements journaliers par date
+              format: double
+              type: number
+            description: Historique des rendements journaliers par date
+            type: object
+          totalGenerated:
+            description: Argent total généré
+            example: 185561
+            format: int32
+            type: integer
+          sumInvestment:
+            description: Somme totale investie par l'ensemble des investisseurs
+            example: 250000.5
+            format: float
+            type: number
+          totalInvestors:
+            description: Nombre total d'investisseurs
+            example: 24
+            format: int32
+            type: integer
+        type: object
+      description: Entreprise de trading
+      type: object
+    Parcelle:
+      description: Parcelle immobilière
+      properties:
+        name:
+          description: Nom de la parcelle
+          example: Villa du Lac
+          type: string
+        clientName:
+          description: Nom du locataire
+          example: Romaindu35
+          type: string
+        isStaff:
+          example: false
+          type: boolean
+        price:
+          description: Prix de location (par jour)
+          example: 150
+          format: int32
+          type: integer
+        signCoords:
+          $ref: "#/components/schemas/Coords"
+        status:
+          description: Statut de location de la parcelle
+          example: rent
+          type: string
+        daysRent:
+          description: Nombre de jours de location restants
+          example: 15
+          format: int32
+          type: integer
+      type: object
+    ActionEntry:
+      description: Action détenue
+      example:
+        owner: owner
+        status: LOCKED
+      properties:
+        owner:
+          description: Pays propriétaire de l'action
+          type: string
+        status:
+          description: Statut de l'action
+          enum:
+          - LOCKED
+          - UNLOCKED
+          type: string
+      type: object
+    BankLogEntry:
+      description: Log bancaire
+      example:
+        amount: 2.8841621266687802
+        pseudo: pseudo
+        timestamp: 6
+      properties:
+        amount:
+          description: Montant de la transaction
+          format: double
+          type: number
+        timestamp:
+          description: Timestamp de la transaction
+          format: int64
+          type: integer
+        pseudo:
+          description: Joueur ayant effectué la transaction
+          type: string
+      type: object
+    Country:
+      example:
+        metadata:
+          date: 2025-10-21
+          filteredCount: 42
+          server: red
+          dataType: example
+          executionTimeMs: 210
+          totalPages: 3
+          pageSize: 20
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          totalCount: 50
+          currentPage: 1
+          cacheSource: L1
+          timestamp: 1760939974755
+        data:
+        - leader: leader
+          powerboostFixed: 1
+          powerboostWarzone: 1
+          flag: flag
+          referent: true
+          topWarzone: true
+          fhomeCoord:
+            x: 5
+            z: 5
+          description: description
+          bank:
+            balance: 1
+            members:
+            - members
+            - members
+            owners:
+            - owners
+            - owners
+            logs:
+            - amount: 2.8841621266687802
+              pseudo: pseudo
+              timestamp: 6
+            - amount: 2.8841621266687802
+              pseudo: pseudo
+              timestamp: 6
+          mmr: 3
+          members:
+          - members
+          - members
+          newMembers:
+          - playedTime: 1
+            rewardMoneyMax: 9
+            rewardPowerMax: 5
+            step: 6
+            pseudo: pseudo
+            rewardMoney: 9
+            rewardPower: 4
+          - playedTime: 1
+            rewardMoneyMax: 9
+            rewardPowerMax: 5
+            step: 6
+            pseudo: pseudo
+            rewardMoney: 9
+            rewardPower: 4
+          allianceName: allianceName
+          powerboostMalusAssault: 7
+          empire: true
+          restrictAssault: true
+          entryMsg: entryMsg
+          power: 4
+          researchesLevel:
+            general: 8
+            resource: 9
+            military: 6
+            industry: 3
+            technology: 6
+          powerboostNewMember: 6
+          officers:
+          - officers
+          - officers
+          motd: motd
+          settings:
+            recruitmentOpen: true
+            invitationNeeded: true
+            doKickMemberNegativePower: true
+            permissions:
+            - leader: true
+              ally: true
+              officer: true
+              recruit: true
+              name: name
+              member: true
+              description: description
+              neutral: true
+              enemy: true
+            - leader: true
+              ally: true
+              officer: true
+              recruit: true
+              name: name
+              member: true
+              description: description
+              neutral: true
+              enemy: true
+            doKickRecruitWarReason: true
+            logs:
+            - action: action
+              user: user
+              target: target
+              timestamp: 0
+            - action: action
+              user: user
+              target: target
+              timestamp: 0
+          level: 2
+          notationsPosition: 9
+          countMembers: 6
+          tags:
+          - tags
+          - tags
+          discord: discord
+          restrictMissile: true
+          name: France
+          countNewMembers: 1
+          claims: 2
+          progress: 7
+          maxPower: 7
+          wars:
+          - wars
+          - wars
+          recruits:
+          - recruits
+          - recruits
+          actions:
+            availableActions: 5
+            actionPrice: 6
+            totalDividendes: 6.878052220127876
+            dividendesHistory:
+            - montant: 3.0937452626664474
+              pays: pays
+              timestamp: 7
+            - montant: 3.0937452626664474
+              pays: pays
+              timestamp: 7
+            dividendesClassement:
+            - montant: 3.353193347011243
+              pays: pays
+            - montant: 3.353193347011243
+              pays: pays
+            actions:
+            - owner: owner
+              status: LOCKED
+            - owner: owner
+              status: LOCKED
+          age: 0
+          powerboostUnesco: 1
+        - leader: leader
+          powerboostFixed: 1
+          powerboostWarzone: 1
+          flag: flag
+          referent: true
+          topWarzone: true
+          fhomeCoord:
+            x: 5
+            z: 5
+          description: description
+          bank:
+            balance: 1
+            members:
+            - members
+            - members
+            owners:
+            - owners
+            - owners
+            logs:
+            - amount: 2.8841621266687802
+              pseudo: pseudo
+              timestamp: 6
+            - amount: 2.8841621266687802
+              pseudo: pseudo
+              timestamp: 6
+          mmr: 3
+          members:
+          - members
+          - members
+          newMembers:
+          - playedTime: 1
+            rewardMoneyMax: 9
+            rewardPowerMax: 5
+            step: 6
+            pseudo: pseudo
+            rewardMoney: 9
+            rewardPower: 4
+          - playedTime: 1
+            rewardMoneyMax: 9
+            rewardPowerMax: 5
+            step: 6
+            pseudo: pseudo
+            rewardMoney: 9
+            rewardPower: 4
+          allianceName: allianceName
+          powerboostMalusAssault: 7
+          empire: true
+          restrictAssault: true
+          entryMsg: entryMsg
+          power: 4
+          researchesLevel:
+            general: 8
+            resource: 9
+            military: 6
+            industry: 3
+            technology: 6
+          powerboostNewMember: 6
+          officers:
+          - officers
+          - officers
+          motd: motd
+          settings:
+            recruitmentOpen: true
+            invitationNeeded: true
+            doKickMemberNegativePower: true
+            permissions:
+            - leader: true
+              ally: true
+              officer: true
+              recruit: true
+              name: name
+              member: true
+              description: description
+              neutral: true
+              enemy: true
+            - leader: true
+              ally: true
+              officer: true
+              recruit: true
+              name: name
+              member: true
+              description: description
+              neutral: true
+              enemy: true
+            doKickRecruitWarReason: true
+            logs:
+            - action: action
+              user: user
+              target: target
+              timestamp: 0
+            - action: action
+              user: user
+              target: target
+              timestamp: 0
+          level: 2
+          notationsPosition: 9
+          countMembers: 6
+          tags:
+          - tags
+          - tags
+          discord: discord
+          restrictMissile: true
+          name: France
+          countNewMembers: 1
+          claims: 2
+          progress: 7
+          maxPower: 7
+          wars:
+          - wars
+          - wars
+          recruits:
+          - recruits
+          - recruits
+          actions:
+            availableActions: 5
+            actionPrice: 6
+            totalDividendes: 6.878052220127876
+            dividendesHistory:
+            - montant: 3.0937452626664474
+              pays: pays
+              timestamp: 7
+            - montant: 3.0937452626664474
+              pays: pays
+              timestamp: 7
+            dividendesClassement:
+            - montant: 3.353193347011243
+              pays: pays
+            - montant: 3.353193347011243
+              pays: pays
+            actions:
+            - owner: owner
+              status: LOCKED
+            - owner: owner
+              status: LOCKED
+          age: 0
+          powerboostUnesco: 1
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/CountryEntry"
+          type: array
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      type: object
+    CountryActionsEntry:
+      description: Actions du pays
+      example:
+        availableActions: 5
+        actionPrice: 6
+        totalDividendes: 6.878052220127876
+        dividendesHistory:
+        - montant: 3.0937452626664474
+          pays: pays
+          timestamp: 7
+        - montant: 3.0937452626664474
+          pays: pays
+          timestamp: 7
+        dividendesClassement:
+        - montant: 3.353193347011243
+          pays: pays
+        - montant: 3.353193347011243
+          pays: pays
+        actions:
+        - owner: owner
+          status: LOCKED
+        - owner: owner
+          status: LOCKED
+      properties:
+        totalDividendes:
+          description: Total des dividendes perçus
+          format: double
+          type: number
+        availableActions:
+          description: Nombre d'actions disponibles à l'achat
+          format: int32
+          type: integer
+        actionPrice:
+          description: Prix d'une action
+          format: int32
+          type: integer
+        dividendesClassement:
+          description: Total des dividendes perçus détaillés par pays
+          items:
+            $ref: "#/components/schemas/DividendeClassementEntry"
+          type: array
+        dividendesHistory:
+          description: Historique des dividendes perçus
+          items:
+            $ref: "#/components/schemas/DividendeHistoryEntry"
+          type: array
+        actions:
+          description: Les 8 actions du pays
+          items:
+            $ref: "#/components/schemas/ActionEntry"
+          type: array
+      type: object
+    CountryBankEntry:
+      description: Banque du pays
+      example:
+        balance: 1
+        members:
+        - members
+        - members
+        owners:
+        - owners
+        - owners
+        logs:
+        - amount: 2.8841621266687802
+          pseudo: pseudo
+          timestamp: 6
+        - amount: 2.8841621266687802
+          pseudo: pseudo
+          timestamp: 6
+      properties:
+        balance:
+          description: Argent dans la banque de pays
+          format: int32
+          type: integer
+        owners:
+          description: Propriétaires de la banque
+          items:
+            description: Propriétaires de la banque
+            type: string
+          type: array
+        members:
+          description: Membres ayant accès à la banque
+          items:
+            description: Membres ayant accès à la banque
+            type: string
+          type: array
+        logs:
+          description: Logs bancaires
+          items:
+            $ref: "#/components/schemas/BankLogEntry"
+          type: array
+      type: object
+    CountryCoordinates:
+      description: "Coordonnées X,Z"
+      example:
+        x: 5
+        z: 5
+      properties:
+        x:
+          format: int32
+          type: integer
+        z:
+          format: int32
+          type: integer
+      type: object
+    CountryEntry:
+      description: Données d'un pays
+      example:
+        leader: leader
+        powerboostFixed: 1
+        powerboostWarzone: 1
+        flag: flag
+        referent: true
+        topWarzone: true
+        fhomeCoord:
+          x: 5
+          z: 5
+        description: description
+        bank:
+          balance: 1
+          members:
+          - members
+          - members
+          owners:
+          - owners
+          - owners
+          logs:
+          - amount: 2.8841621266687802
+            pseudo: pseudo
+            timestamp: 6
+          - amount: 2.8841621266687802
+            pseudo: pseudo
+            timestamp: 6
+        mmr: 3
+        members:
+        - members
+        - members
+        newMembers:
+        - playedTime: 1
+          rewardMoneyMax: 9
+          rewardPowerMax: 5
+          step: 6
+          pseudo: pseudo
+          rewardMoney: 9
+          rewardPower: 4
+        - playedTime: 1
+          rewardMoneyMax: 9
+          rewardPowerMax: 5
+          step: 6
+          pseudo: pseudo
+          rewardMoney: 9
+          rewardPower: 4
+        allianceName: allianceName
+        powerboostMalusAssault: 7
+        empire: true
+        restrictAssault: true
+        entryMsg: entryMsg
+        power: 4
+        researchesLevel:
+          general: 8
+          resource: 9
+          military: 6
+          industry: 3
+          technology: 6
+        powerboostNewMember: 6
+        officers:
+        - officers
+        - officers
+        motd: motd
+        settings:
+          recruitmentOpen: true
+          invitationNeeded: true
+          doKickMemberNegativePower: true
+          permissions:
+          - leader: true
+            ally: true
+            officer: true
+            recruit: true
+            name: name
+            member: true
+            description: description
+            neutral: true
+            enemy: true
+          - leader: true
+            ally: true
+            officer: true
+            recruit: true
+            name: name
+            member: true
+            description: description
+            neutral: true
+            enemy: true
+          doKickRecruitWarReason: true
+          logs:
+          - action: action
+            user: user
+            target: target
+            timestamp: 0
+          - action: action
+            user: user
+            target: target
+            timestamp: 0
+        level: 2
+        notationsPosition: 9
+        countMembers: 6
+        tags:
+        - tags
+        - tags
+        discord: discord
+        restrictMissile: true
+        name: France
+        countNewMembers: 1
+        claims: 2
+        progress: 7
+        maxPower: 7
+        wars:
+        - wars
+        - wars
+        recruits:
+        - recruits
+        - recruits
+        actions:
+          availableActions: 5
+          actionPrice: 6
+          totalDividendes: 6.878052220127876
+          dividendesHistory:
+          - montant: 3.0937452626664474
+            pays: pays
+            timestamp: 7
+          - montant: 3.0937452626664474
+            pays: pays
+            timestamp: 7
+          dividendesClassement:
+          - montant: 3.353193347011243
+            pays: pays
+          - montant: 3.353193347011243
+            pays: pays
+          actions:
+          - owner: owner
+            status: LOCKED
+          - owner: owner
+            status: LOCKED
+        age: 0
+        powerboostUnesco: 1
+      properties:
+        name:
+          description: Nom du pays
+          example: France
+          type: string
+        description:
+          description: Description du pays
+          type: string
+        motd:
+          description: Message du jour (MOTD)
+          type: string
+        entryMsg:
+          description: Message d'entrée sur le territoire
+          type: string
+        age:
+          description: Âge du pays en jours
+          format: int32
+          type: integer
+        countMembers:
+          description: Nombre de membres
+          format: int32
+          type: integer
+        countNewMembers:
+          description: Nombre de nouvelles recrues
+          format: int32
+          type: integer
+        fhomeCoord:
+          $ref: "#/components/schemas/CountryCoordinates"
+        level:
+          description: Niveau du pays
+          format: int32
+          type: integer
+        progress:
+          description: Progression vers le niveau suivant (en pourcentage)
+          format: int32
+          type: integer
+        notationsPosition:
+          description: Position dans le classement des notations
+          format: int32
+          type: integer
+        tags:
+          description: Tags du pays
+          items:
+            description: Tags du pays
+            type: string
+          type: array
+        discord:
+          description: Lien discord
+          type: string
+        allianceName:
+          description: Nom de l'alliance
+          type: string
+        mmr:
+          description: Score MMR
+          format: int32
+          type: integer
+        claims:
+          description: Nombre de chunks claim
+          format: int32
+          type: integer
+        power:
+          description: Power actuel
+          format: int32
+          type: integer
+        maxPower:
+          description: Power maximum
+          format: int32
+          type: integer
+        powerboostFixed:
+          description: Power boost fixe
+          format: int32
+          type: integer
+        powerboostWarzone:
+          description: Power boost warzone
+          format: int32
+          type: integer
+        powerboostUnesco:
+          description: Power boost UNESCO
+          format: int32
+          type: integer
+        powerboostNewMember:
+          description: Power boost obtenu via les nouveaux membres
+          format: int32
+          type: integer
+        powerboostMalusAssault:
+          description: Malus de power lié aux assauts
+          format: int32
+          type: integer
+        flag:
+          description: Drapeau (en base64)
+          type: string
+        leader:
+          description: Chef du pays
+          type: string
+        officers:
+          description: Officiers
+          items:
+            description: Officiers
+            type: string
+          type: array
+        members:
+          description: Membres
+          items:
+            description: Membres
+            type: string
+          type: array
+        recruits:
+          description: Recrues
+          items:
+            description: Recrues
+            type: string
+          type: array
+        newMembers:
+          description: Informations détaillé sur les nouvelles recrues
+          items:
+            $ref: "#/components/schemas/NewMemberEntry"
+          type: array
+        researchesLevel:
+          $ref: "#/components/schemas/ResearchesEntry"
+        wars:
+          description: Guerres en cours
+          items:
+            description: Guerres en cours
+            type: string
+          type: array
+        bank:
+          $ref: "#/components/schemas/CountryBankEntry"
+        actions:
+          $ref: "#/components/schemas/CountryActionsEntry"
+        settings:
+          $ref: "#/components/schemas/CountrySettingsEntry"
+        empire:
+          type: boolean
+        referent:
+          type: boolean
+        topWarzone:
+          type: boolean
+        restrictAssault:
+          type: boolean
+        restrictMissile:
+          type: boolean
+      type: object
+    CountrySettingsEntry:
+      description: Paramètres du pays
+      example:
+        recruitmentOpen: true
+        invitationNeeded: true
+        doKickMemberNegativePower: true
+        permissions:
+        - leader: true
+          ally: true
+          officer: true
+          recruit: true
+          name: name
+          member: true
+          description: description
+          neutral: true
+          enemy: true
+        - leader: true
+          ally: true
+          officer: true
+          recruit: true
+          name: name
+          member: true
+          description: description
+          neutral: true
+          enemy: true
+        doKickRecruitWarReason: true
+        logs:
+        - action: action
+          user: user
+          target: target
+          timestamp: 0
+        - action: action
+          user: user
+          target: target
+          timestamp: 0
+      properties:
+        invitationNeeded:
+          description: Invitation obligatoire pour rejoindre le pays
+          type: boolean
+        recruitmentOpen:
+          description: Pays ouvert aux recrutements
+          type: boolean
+        doKickRecruitWarReason:
+          description: Expulsion automatique des recrues lorsque qu'elles donnent
+            une raison de guerre
+          type: boolean
+        doKickMemberNegativePower:
+          description: Expulsion automatique des membres lorsque leur power devient
+            négatif
+          type: boolean
+        permissions:
+          description: Permissions accordées dans le pays
+          items:
+            $ref: "#/components/schemas/PermissionEntry"
+          type: array
+        logs:
+          description: Logs de pays
+          items:
+            $ref: "#/components/schemas/SettingLogEntry"
+          type: array
+      type: object
+    DividendeClassementEntry:
+      description: Classement dividendes
+      example:
+        montant: 3.353193347011243
+        pays: pays
+      properties:
+        pays:
+          description: Pays ayant versé les dividendes
+          type: string
+        montant:
+          description: Montant des dividendes perçus de ce pays
+          format: double
+          type: number
+      type: object
+    DividendeHistoryEntry:
+      description: Historique dividendes
+      example:
+        montant: 3.0937452626664474
+        pays: pays
+        timestamp: 7
+      properties:
+        pays:
+          description: Pays ayant versé les dividendes
+          type: string
+        montant:
+          description: Montant des dividendes perçus de ce pays
+          format: double
+          type: number
+        timestamp:
+          description: Timestamp du versement des dividendes
+          format: int64
+          type: integer
+      type: object
+    NewMemberEntry:
+      description: Détail sur la formation d'un nouveau joueur
+      example:
+        playedTime: 1
+        rewardMoneyMax: 9
+        rewardPowerMax: 5
+        step: 6
+        pseudo: pseudo
+        rewardMoney: 9
+        rewardPower: 4
+      properties:
+        pseudo:
+          description: Pseudo du nouveau joueur
+          type: string
+        playedTime:
+          description: Temps de jeu sur le serveur (en secondes)
+          format: int32
+          type: integer
+        rewardPower:
+          description: Récompenses de power débloquées par la formation du joueur
+          format: int32
+          type: integer
+        rewardPowerMax:
+          description: Récompenses de power maximale espérable par la formation du
+            joueur (déjà obtenu et à venir)
+          format: int32
+          type: integer
+        rewardMoney:
+          description: Récompenses en dollard débloquées par la formation du joueur
+          format: int32
+          type: integer
+        rewardMoneyMax:
+          description: Récompenses en dollard maximale espérable par la formation
+            du joueur (déjà obtenu et à venir)
+          format: int32
+          type: integer
+        step:
+          description: Étape de formation actuelle du joueur
+          format: int32
+          type: integer
+      type: object
+    PermissionEntry:
+      description: Permission de pays
+      example:
+        leader: true
+        ally: true
+        officer: true
+        recruit: true
+        name: name
+        member: true
+        description: description
+        neutral: true
+        enemy: true
+      properties:
+        name:
+          description: Nom de la permission
+          type: string
+        description:
+          description: Description de la permission
+          type: string
+        leader:
+          description: Permission accordée au leader
+          type: boolean
+        officer:
+          description: Permission accordée aux officiers
+          type: boolean
+        member:
+          description: Permission accordée aux membres
+          type: boolean
+        recruit:
+          description: Permission accordée aux recrues
+          type: boolean
+        ally:
+          description: Permission accordée aux alliés
+          type: boolean
+        neutral:
+          description: Permission accordée aux pays sans relation particulière
+          type: boolean
+        enemy:
+          description: Permission accordée aux ennemis
+          type: boolean
+      type: object
+    ResearchesEntry:
+      description: Niveaux de recherches
+      example:
+        general: 8
+        resource: 9
+        military: 6
+        industry: 3
+        technology: 6
+      properties:
+        general:
+          description: Niveau de recherche sur la branche générale
+          format: int32
+          type: integer
+        resource:
+          description: Niveau de recherche sur la branche ressource
+          format: int32
+          type: integer
+        military:
+          description: Niveau de recherche sur la branche militaire
+          format: int32
+          type: integer
+        industry:
+          description: Niveau de recherche sur la branche industrielle
+          format: int32
+          type: integer
+        technology:
+          description: Niveau de recherche sur la branche technologique
+          format: int32
+          type: integer
+      type: object
+    SettingLogEntry:
+      description: Log de pays
+      example:
+        action: action
+        user: user
+        target: target
+        timestamp: 0
+      properties:
+        user:
+          description: Joueur ayant effectué l'action
+          type: string
+        action:
+          description: Action effectuée
+          type: string
+        target:
+          description: Joueur cible de l'action (par exemple lors d'une expulsion)
+          nullable: true
+          type: string
+        timestamp:
+          description: Timestamp de l'action
+          format: int64
+          type: integer
+      type: object
+    ResearchConfig:
+      example:
+        metadata:
+          date: 2025-10-21
+          filteredCount: 42
+          server: red
+          dataType: example
+          executionTimeMs: 210
+          totalPages: 3
+          pageSize: 20
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          totalCount: 50
+          currentPage: 1
+          cacheSource: L1
+          timestamp: 1760939974755
+        data:
+          key:
+            maxLevel: 15
+            name: Général
+            description: Le domaine de recherche 'Général' permet de débloquer des
+              fonctionnalités générales pour votre pays.
+            levels:
+            - duration: 15
+              level: 2
+              conditions:
+              - players#5
+              - claims#15
+              - has_motd
+              rewards:
+              - 30 membres max
+              - 10 relations max
+              - 3 officiers max
+            - duration: 15
+              level: 2
+              conditions:
+              - players#5
+              - claims#15
+              - has_motd
+              rewards:
+              - 30 membres max
+              - 10 relations max
+              - 3 officiers max
+      properties:
+        data:
+          additionalProperties:
+            $ref: "#/components/schemas/ResearchConfigEntry"
+          type: object
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      type: object
+    ResearchConfigEntry:
+      description: Configuration d'une branche de R&D sur ses différents niveaux
+      example:
+        maxLevel: 15
+        name: Général
+        description: Le domaine de recherche 'Général' permet de débloquer des fonctionnalités
+          générales pour votre pays.
+        levels:
+        - duration: 15
+          level: 2
+          conditions:
+          - players#5
+          - claims#15
+          - has_motd
+          rewards:
+          - 30 membres max
+          - 10 relations max
+          - 3 officiers max
+        - duration: 15
+          level: 2
+          conditions:
+          - players#5
+          - claims#15
+          - has_motd
+          rewards:
+          - 30 membres max
+          - 10 relations max
+          - 3 officiers max
+      properties:
+        name:
+          description: Nom de la branche R&D
+          example: Général
+          type: string
+        maxLevel:
+          description: Nombre de niveaux dans la branche
+          example: 15
+          format: int32
+          type: integer
+        description:
+          description: Description de la branche
+          example: Le domaine de recherche 'Général' permet de débloquer des fonctionnalités
+            générales pour votre pays.
+          type: string
+        levels:
+          description: Configuration des différents niveaux (conditions et récompenses)
+          items:
+            $ref: "#/components/schemas/ResearchLevelEntry"
+          type: array
+      type: object
+    ResearchLevelEntry:
+      description: Configuration d'un niveau de R&D
+      example:
+        duration: 15
+        level: 2
+        conditions:
+        - players#5
+        - claims#15
+        - has_motd
+        rewards:
+        - 30 membres max
+        - 10 relations max
+        - 3 officiers max
+      properties:
+        level:
+          description: Numéro du niveau
+          example: 2
+          format: int32
+          type: integer
+        duration:
+          description: Durée de la recherche (en secondes)
+          example: 15
+          format: int32
+          type: integer
+        conditions:
+          description: Liste des conditions requises pour débloquer ce niveau
+          example:
+          - players#5
+          - claims#15
+          - has_motd
+          items:
+            description: Liste des conditions requises pour débloquer ce niveau
+            example: "[\"players#5\",\"claims#15\",\"has_motd\"]"
+            type: string
+          type: array
+        rewards:
+          description: Liste des récompenses obtenues en complétant ce niveau
+          example:
+          - 30 membres max
+          - 10 relations max
+          - 3 officiers max
+          items:
+            description: Liste des récompenses obtenues en complétant ce niveau
+            example: "[\"30 membres max\",\"10 relations max\",\"3 officiers max\"\
+              ]"
+            type: string
+          type: array
+      type: object
+    CerealGlobalMarket:
+      example:
+        metadata:
+          date: 2025-10-21
+          filteredCount: 42
+          server: red
+          dataType: example
+          executionTimeMs: 210
+          totalPages: 3
+          pageSize: 20
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          totalCount: 50
+          currentPage: 1
+          cacheSource: L1
+          timestamp: 1760939974755
+        data:
+          salesTexture: salesTexture
+          stocksHistory:
+            arcticoats:
+              "2025-10-14": 0
+              "2025-10-15": 0
+              "2025-10-16": 0
+              "2025-10-17": 0
+              "2025-10-18": 0
+              "2025-10-19": 0
+              "2025-10-20": 0
+              "2025-10-21": 0
+            barley:
+              "2025-10-14": 41566
+              "2025-10-15": 41566
+              "2025-10-16": 41566
+              "2025-10-17": 41566
+              "2025-10-18": 41566
+              "2025-10-19": 41566
+              "2025-10-20": 41566
+              "2025-10-21": 41566
+          salesHistory:
+            oats:
+              "2025-10-14": 0
+              "2025-10-15": 0
+              "2025-10-16": 0
+              "2025-10-17": 0
+              "2025-10-18": 2096
+              "2025-10-19": 2096
+              "2025-10-20": 2000
+              "2025-10-21": 0
+            wheat:
+              "2025-10-14": 14000
+              "2025-10-15": 0
+              "2025-10-16": 256
+              "2025-10-17": 12716
+              "2025-10-18": 0
+              "2025-10-19": 0
+              "2025-10-20": 1500
+              "2025-10-21": 0
+          cerealsPrice:
+            soybean: 950
+            oats: 650
+            glazedspelt: 2000
+            arcticoats: 2000
+            sorgho: 19550
+            corn: 2000
+            kamut: 19450
+            wheat: 550
+            barley: 1300
+            fonio: 19950
+            sunflower: 1050
+            rye: 950
+          pricesHistory:
+            soybean:
+              "2025-10-14": 950
+              "2025-10-15": 950
+              "2025-10-16": 950
+              "2025-10-17": 950
+              "2025-10-18": 950
+              "2025-10-19": 950
+              "2025-10-20": 950
+              "2025-10-21": 950
+            sunflower:
+              "2025-10-14": 1000
+              "2025-10-15": 1000
+              "2025-10-16": 1000
+              "2025-10-17": 1000
+              "2025-10-18": 1000
+              "2025-10-19": 1000
+              "2025-10-20": 1050
+              "2025-10-21": 1050
+          stocksTexture: stocksTexture
+          pricesTexture: pricesTexture
+      properties:
+        data:
+          $ref: "#/components/schemas/CerealGlobalMarketEntry"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      type: object
+    CerealGlobalMarketEntry:
+      description: Données du marché global des céréales.
+      example:
+        salesTexture: salesTexture
+        stocksHistory:
+          arcticoats:
+            "2025-10-14": 0
+            "2025-10-15": 0
+            "2025-10-16": 0
+            "2025-10-17": 0
+            "2025-10-18": 0
+            "2025-10-19": 0
+            "2025-10-20": 0
+            "2025-10-21": 0
+          barley:
+            "2025-10-14": 41566
+            "2025-10-15": 41566
+            "2025-10-16": 41566
+            "2025-10-17": 41566
+            "2025-10-18": 41566
+            "2025-10-19": 41566
+            "2025-10-20": 41566
+            "2025-10-21": 41566
+        salesHistory:
+          oats:
+            "2025-10-14": 0
+            "2025-10-15": 0
+            "2025-10-16": 0
+            "2025-10-17": 0
+            "2025-10-18": 2096
+            "2025-10-19": 2096
+            "2025-10-20": 2000
+            "2025-10-21": 0
+          wheat:
+            "2025-10-14": 14000
+            "2025-10-15": 0
+            "2025-10-16": 256
+            "2025-10-17": 12716
+            "2025-10-18": 0
+            "2025-10-19": 0
+            "2025-10-20": 1500
+            "2025-10-21": 0
+        cerealsPrice:
+          soybean: 950
+          oats: 650
+          glazedspelt: 2000
+          arcticoats: 2000
+          sorgho: 19550
+          corn: 2000
+          kamut: 19450
+          wheat: 550
+          barley: 1300
+          fonio: 19950
+          sunflower: 1050
+          rye: 950
+        pricesHistory:
+          soybean:
+            "2025-10-14": 950
+            "2025-10-15": 950
+            "2025-10-16": 950
+            "2025-10-17": 950
+            "2025-10-18": 950
+            "2025-10-19": 950
+            "2025-10-20": 950
+            "2025-10-21": 950
+          sunflower:
+            "2025-10-14": 1000
+            "2025-10-15": 1000
+            "2025-10-16": 1000
+            "2025-10-17": 1000
+            "2025-10-18": 1000
+            "2025-10-19": 1000
+            "2025-10-20": 1050
+            "2025-10-21": 1050
+        stocksTexture: stocksTexture
+        pricesTexture: pricesTexture
+      properties:
+        pricesTexture:
+          description: Le graphique de l'évolution des prix des céréales au cours
+            des 7 derniers jours au format base64.
+          type: string
+        salesTexture:
+          description: Le graphique des ventes des différents céréales au cours des
+            7 derniers jours au format base64.
+          type: string
+        stocksTexture:
+          description: Le graphique de l'évolution des stocks des différents céréales
+            au cours des 7 derniers jours au format base64.
+          type: string
+        pricesHistory:
+          additionalProperties:
+            additionalProperties:
+              description: L'historique des prix des différentes céréales sur le marché
+                global au cours des 7 derniers jours.
+              format: double
+              type: number
+            description: L'historique des prix des différentes céréales sur le marché
+              global au cours des 7 derniers jours.
+            example:
+              soybean:
+                "2025-10-14": 950
+                "2025-10-15": 950
+                "2025-10-16": 950
+                "2025-10-17": 950
+                "2025-10-18": 950
+                "2025-10-19": 950
+                "2025-10-20": 950
+                "2025-10-21": 950
+              sunflower:
+                "2025-10-14": 1000
+                "2025-10-15": 1000
+                "2025-10-16": 1000
+                "2025-10-17": 1000
+                "2025-10-18": 1000
+                "2025-10-19": 1000
+                "2025-10-20": 1050
+                "2025-10-21": 1050
+            type: object
+          description: L'historique des prix des différentes céréales sur le marché
+            global au cours des 7 derniers jours.
+          example:
+            soybean:
+              "2025-10-14": 950
+              "2025-10-15": 950
+              "2025-10-16": 950
+              "2025-10-17": 950
+              "2025-10-18": 950
+              "2025-10-19": 950
+              "2025-10-20": 950
+              "2025-10-21": 950
+            sunflower:
+              "2025-10-14": 1000
+              "2025-10-15": 1000
+              "2025-10-16": 1000
+              "2025-10-17": 1000
+              "2025-10-18": 1000
+              "2025-10-19": 1000
+              "2025-10-20": 1050
+              "2025-10-21": 1050
+          type: object
+        salesHistory:
+          additionalProperties:
+            additionalProperties:
+              description: L'historique des ventes des différentes céréales sur le
+                marché global au cours des 7 derniers jours.
+              format: double
+              type: number
+            description: L'historique des ventes des différentes céréales sur le marché
+              global au cours des 7 derniers jours.
+            example:
+              oats:
+                "2025-10-14": 0
+                "2025-10-15": 0
+                "2025-10-16": 0
+                "2025-10-17": 0
+                "2025-10-18": 2096
+                "2025-10-19": 2096
+                "2025-10-20": 2000
+                "2025-10-21": 0
+              wheat:
+                "2025-10-14": 14000
+                "2025-10-15": 0
+                "2025-10-16": 256
+                "2025-10-17": 12716
+                "2025-10-18": 0
+                "2025-10-19": 0
+                "2025-10-20": 1500
+                "2025-10-21": 0
+            type: object
+          description: L'historique des ventes des différentes céréales sur le marché
+            global au cours des 7 derniers jours.
+          example:
+            oats:
+              "2025-10-14": 0
+              "2025-10-15": 0
+              "2025-10-16": 0
+              "2025-10-17": 0
+              "2025-10-18": 2096
+              "2025-10-19": 2096
+              "2025-10-20": 2000
+              "2025-10-21": 0
+            wheat:
+              "2025-10-14": 14000
+              "2025-10-15": 0
+              "2025-10-16": 256
+              "2025-10-17": 12716
+              "2025-10-18": 0
+              "2025-10-19": 0
+              "2025-10-20": 1500
+              "2025-10-21": 0
+          type: object
+        stocksHistory:
+          additionalProperties:
+            additionalProperties:
+              description: L'historique des stocks des différentes céréales sur le
+                marché global au cours des 7 derniers jours.
+              format: double
+              type: number
+            description: L'historique des stocks des différentes céréales sur le marché
+              global au cours des 7 derniers jours.
+            example:
+              arcticoats:
+                "2025-10-14": 0
+                "2025-10-15": 0
+                "2025-10-16": 0
+                "2025-10-17": 0
+                "2025-10-18": 0
+                "2025-10-19": 0
+                "2025-10-20": 0
+                "2025-10-21": 0
+              barley:
+                "2025-10-14": 41566
+                "2025-10-15": 41566
+                "2025-10-16": 41566
+                "2025-10-17": 41566
+                "2025-10-18": 41566
+                "2025-10-19": 41566
+                "2025-10-20": 41566
+                "2025-10-21": 41566
+            type: object
+          description: L'historique des stocks des différentes céréales sur le marché
+            global au cours des 7 derniers jours.
+          example:
+            arcticoats:
+              "2025-10-14": 0
+              "2025-10-15": 0
+              "2025-10-16": 0
+              "2025-10-17": 0
+              "2025-10-18": 0
+              "2025-10-19": 0
+              "2025-10-20": 0
+              "2025-10-21": 0
+            barley:
+              "2025-10-14": 41566
+              "2025-10-15": 41566
+              "2025-10-16": 41566
+              "2025-10-17": 41566
+              "2025-10-18": 41566
+              "2025-10-19": 41566
+              "2025-10-20": 41566
+              "2025-10-21": 41566
+          type: object
+        cerealsPrice:
+          additionalProperties:
+            description: Les prix actuels des différentes céréales disponibles sur
+              le marché global.
+            format: int32
+            type: integer
+          description: Les prix actuels des différentes céréales disponibles sur le
+            marché global.
+          example:
+            soybean: 950
+            oats: 650
+            glazedspelt: 2000
+            arcticoats: 2000
+            sorgho: 19550
+            corn: 2000
+            kamut: 19450
+            wheat: 550
+            barley: 1300
+            fonio: 19950
+            sunflower: 1050
+            rye: 950
+          type: object
+      type: object
+  securitySchemes:
+    oauth2_client_credentials:
+      description: Authentification OAuth2 Client Credentials pour accéder à l'API
+      flows:
+        clientCredentials:
+          scopes:
+            api_access: Permet l'accès aux API de Yoxo
+          tokenUrl: https://auth.yoxo.software/oauth2/token
+      type: oauth2
+

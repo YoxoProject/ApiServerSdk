@@ -1,0 +1,7 @@
+{
+  "packageName": "yoxo_client",
+  "projectName": "yoxo-client",
+  "packageVersion": "0.0.1",
+  "library": "urllib3",
+  "hideGenerationTimestamp": true
+}

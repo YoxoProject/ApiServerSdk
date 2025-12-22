@@ -1,0 +1,10 @@
+{
+  "npmName": "@yoxo/client",
+  "npmVersion": "0.0.1",
+  "snapshot": true,
+  "supportsES6": true,
+  "withSeparateModelsAndApi": true,
+  "apiPackage": "api",
+  "modelPackage": "model",
+  "npmRepository": "https://npm.pkg.github.com"
+}

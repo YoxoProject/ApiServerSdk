@@ -1,0 +1,22 @@
+{
+  "name": "apiserversdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fetch-spec": "curl https://api.yoxo.software/v3/api-docs -o specs/openapi.json",
+    "generate:ts": "openapi-generator-cli generate -i specs/openapi.json -g typescript-axios -c configs/typescript.json -o clients/typescript",
+    "generate:java": "openapi-generator-cli generate -i specs/openapi.json -g java -c configs/java.json -o clients/java",
+    "generate:python": "openapi-generator-cli generate -i specs/openapi.json -g python -c configs/python.json -o clients/python",
+    "enhance": "node scripts/enhance.js",
+    "generate:all": "npm run generate:ts && npm run generate:java && npm run generate:python && npm run enhance"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.25.2"
+  }
+}

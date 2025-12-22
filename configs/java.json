@@ -1,0 +1,11 @@
+{
+  "groupId": "software.yoxo",
+  "artifactId": "client",
+  "artifactVersion": "0.0.1-SNAPSHOT",
+  "library": "okhttp-gson",
+  "apiPackage": "software.yoxo.client.api",
+  "modelPackage": "software.yoxo.client.model",
+  "invokerPackage": "software.yoxo.client.invoker",
+  "dateLibrary": "java8",
+  "hideGenerationTimestamp": true
+}

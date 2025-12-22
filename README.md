@@ -72,13 +72,13 @@ pip install git+https://github.com/YoxoProject/ApiServerSdk.git@release/python
 
 **Utilisation :**
 ```python
-from yoxo-api-client.client import YoxoClient
+from yoxo_api_client.client import YoxoClient
 
 client = YoxoClient(client_id="CLIENT_ID", client_secret="CLIENT_SECRET")
 
 # Utilisation des méthodes générées (snake_case)
-info = client.java.get_country("red")
-print(info.label)
+response = client.java.get_country("2025-12-25", "red")
+print(response.data[0])
 ```
 
 ## 🛠️ Fonctionnement de l'Usine (SDK Factory)

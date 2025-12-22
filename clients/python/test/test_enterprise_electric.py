@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.enterprise_electric import EnterpriseElectric
+from yoxo-api_client.models.enterprise_electric import EnterpriseElectric
 
 class TestEnterpriseElectric(unittest.TestCase):
     """EnterpriseElectric unit test stubs"""
@@ -35,14 +35,46 @@ class TestEnterpriseElectric(unittest.TestCase):
         model = EnterpriseElectric()
         if include_optional:
             return EnterpriseElectric(
-                total = 785492.0,
+                type = 'petrol',
+                name = 'Pompouasie',
+                age = 997,
+                description = 'Entreprise de pétrole de la papouasie !',
+                services = '######Poser des contrats si vous voulez##50k max, binance récupère 50% du bénéfice##si le contrat vas a 100k vous récupérer ##75k######################',
+                owner = 'Romaindu35',
+                flag = '',
+                cadres = [PingouinMaxIV, random20],
+                employees = [Zerlow__, Trigun0169],
+                contracts_done = 12,
+                disputes = 3,
+                contracts_success = 80,
+                turnover = 995177,
+                permissions = [
+                    yoxo-api_client.models.enterprise_permission.EnterprisePermission(
+                        name = 'exclude', 
+                        owner = True, 
+                        cadre = True, 
+                        employee = False, )
+                    ],
+                bank = yoxo-api_client.models.enterprise_bank.EnterpriseBank(
+                    bank = 325331, 
+                    flux14_days = 142595, 
+                    in_progress_contracts = 136856, 
+                    salaries14_days = -71785, 
+                    taxes14_days = -97.7, 
+                    logs = [
+                        yoxo-api_client.models.enterprise_bank_log.EnterpriseBankLog(
+                            name = 'tax', 
+                            amount = 74.5, 
+                            timestamp = 1763258552178, )
+                        ], ),
+                total = 785492,
                 available = 459.799,
                 allow_country = True,
                 allow_ally = True,
                 allow_all = False,
                 associated_country = 'Papouasie',
                 price = 2.5,
-                price_average = 8709.0,
+                price_average = 8709,
                 countries_sell = {
                     'key' : 1.337
                     },

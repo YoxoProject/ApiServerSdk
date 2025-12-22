@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.war_missile import WarMissile
+from yoxo-api_client.models.war_missile import WarMissile
 
 class TestWarMissile(unittest.TestCase):
     """WarMissile unit test stubs"""

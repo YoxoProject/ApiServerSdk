@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from yoxo_client.models.researches_entry import ResearchesEntry
+from yoxo-api_client.models.researches_entry import ResearchesEntry
 
 # TODO update the JSON string below
 json = "{}"

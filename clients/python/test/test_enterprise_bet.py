@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.enterprise_bet import EnterpriseBet
+from yoxo-api_client.models.enterprise_bet import EnterpriseBet
 
 class TestEnterpriseBet(unittest.TestCase):
     """EnterpriseBet unit test stubs"""
@@ -35,8 +35,40 @@ class TestEnterpriseBet(unittest.TestCase):
         model = EnterpriseBet()
         if include_optional:
             return EnterpriseBet(
+                type = 'petrol',
+                name = 'Pompouasie',
+                age = 997,
+                description = 'Entreprise de pétrole de la papouasie !',
+                services = '######Poser des contrats si vous voulez##50k max, binance récupère 50% du bénéfice##si le contrat vas a 100k vous récupérer ##75k######################',
+                owner = 'Romaindu35',
+                flag = '',
+                cadres = [PingouinMaxIV, random20],
+                employees = [Zerlow__, Trigun0169],
+                contracts_done = 12,
+                disputes = 3,
+                contracts_success = 80,
+                turnover = 995177,
+                permissions = [
+                    yoxo-api_client.models.enterprise_permission.EnterprisePermission(
+                        name = 'exclude', 
+                        owner = True, 
+                        cadre = True, 
+                        employee = False, )
+                    ],
+                bank = yoxo-api_client.models.enterprise_bank.EnterpriseBank(
+                    bank = 325331, 
+                    flux14_days = 142595, 
+                    in_progress_contracts = 136856, 
+                    salaries14_days = -71785, 
+                    taxes14_days = -97.7, 
+                    logs = [
+                        yoxo-api_client.models.enterprise_bank_log.EnterpriseBankLog(
+                            name = 'tax', 
+                            amount = 74.5, 
+                            timestamp = 1763258552178, )
+                        ], ),
                 bets = [
-                    yoxo_client.models.enterprise_bet_item.EnterpriseBetItem(
+                    yoxo-api_client.models.enterprise_bet_item.EnterpriseBetItem(
                         deadline_time = 1766837968789, 
                         min_bet = 100, 
                         number_of_players = 42, 

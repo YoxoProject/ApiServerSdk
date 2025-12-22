@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.enterprise_bank import EnterpriseBank
+from yoxo-api_client.models.enterprise_bank import EnterpriseBank
 
 class TestEnterpriseBank(unittest.TestCase):
     """EnterpriseBank unit test stubs"""
@@ -35,13 +35,13 @@ class TestEnterpriseBank(unittest.TestCase):
         model = EnterpriseBank()
         if include_optional:
             return EnterpriseBank(
-                bank = 325331.0,
-                flux14_days = 142595.0,
-                in_progress_contracts = 136856.0,
-                salaries14_days = -71785.0,
+                bank = 325331,
+                flux14_days = 142595,
+                in_progress_contracts = 136856,
+                salaries14_days = -71785,
                 taxes14_days = -97.7,
                 logs = [
-                    yoxo_client.models.enterprise_bank_log.EnterpriseBankLog(
+                    yoxo-api_client.models.enterprise_bank_log.EnterpriseBankLog(
                         name = 'tax', 
                         amount = 74.5, 
                         timestamp = 1763258552178, )

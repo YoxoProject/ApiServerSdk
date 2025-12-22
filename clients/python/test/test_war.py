@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.war import War
+from yoxo-api_client.models.war import War
 
 class TestWar(unittest.TestCase):
     """War unit test stubs"""
@@ -36,7 +36,7 @@ class TestWar(unittest.TestCase):
         if include_optional:
             return War(
                 data = [
-                    yoxo_client.models.war_entry.WarEntry(
+                    yoxo-api_client.models.war_entry.WarEntry(
                         war_id = '99101e976cb0dc7ca57a54e5849dbe0943a7544e', 
                         war_declared_at = 1735689600000, 
                         war_start_at = 1735693200000, 
@@ -47,24 +47,24 @@ class TestWar(unittest.TestCase):
                         status = 'IN_PROGRESS', 
                         winner = 'TerreSigny', 
                         days_before_missile_point_reset = 5, 
-                        attacker = yoxo_client.models.war_participant.WarParticipant(
+                        attacker = yoxo-api_client.models.war_participant.WarParticipant(
                             country = 'TerreSigny', 
                             remaining_missiles_points = 100, 
                             inactivity = 12, 
                             progress = 45.5, 
-                            condition = yoxo_client.models.war_condition.WarCondition(
+                            condition = yoxo-api_client.models.war_condition.WarCondition(
                                 kill = 10, 
                                 victory = 2, 
                                 missile_points = 50, 
                                 assault_points = 1500, 
                                 antimatter = 1, 
                                 redmatter = 1, ), ), 
-                        defender = yoxo_client.models.war_participant.WarParticipant(
+                        defender = yoxo-api_client.models.war_participant.WarParticipant(
                             country = 'TerreSigny', 
                             remaining_missiles_points = 100, 
                             inactivity = 12, 
                             progress = 45.5, ), 
-                        conditions = yoxo_client.models.war_condition.WarCondition(
+                        conditions = yoxo-api_client.models.war_condition.WarCondition(
                             kill = 10, 
                             victory = 2, 
                             missile_points = 50, 
@@ -72,13 +72,13 @@ class TestWar(unittest.TestCase):
                             antimatter = 1, 
                             redmatter = 1, ), 
                         condition_type = 'AND', 
-                        rewards = yoxo_client.models.war_rewards.WarRewards(
+                        rewards = yoxo-api_client.models.war_rewards.WarRewards(
                             dollars = 50000, 
                             power = 10, 
                             claims = 3, 
                             peace = 7, ), 
                         assaults = [
-                            yoxo_client.models.war_assault.WarAssault(
+                            yoxo-api_client.models.war_assault.WarAssault(
                                 start_at = 1735695000000, 
                                 winner = 'TerreSigny', 
                                 looser = 'TerreAdelie', 
@@ -92,7 +92,7 @@ class TestWar(unittest.TestCase):
                                     ], )
                             ], 
                         missiles = [
-                            yoxo_client.models.war_missile.WarMissile(
+                            yoxo-api_client.models.war_missile.WarMissile(
                                 launched_at = 1735696800000, 
                                 missile = 'Sonic', 
                                 missile_points = 4, 
@@ -100,7 +100,7 @@ class TestWar(unittest.TestCase):
                                 launcher_country = 'Papouasie', )
                             ], )
                     ],
-                metadata = yoxo_client.models.metadata.Metadata(
+                metadata = yoxo-api_client.models.metadata.Metadata(
                     data_type = 'example', 
                     server = 'red', 
                     timestamp = 1760939974755, 

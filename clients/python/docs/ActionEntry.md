@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from yoxo_client.models.action_entry import ActionEntry
+from yoxo-api_client.models.action_entry import ActionEntry
 
 # TODO update the JSON string below
 json = "{}"

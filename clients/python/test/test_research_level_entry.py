@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.research_level_entry import ResearchLevelEntry
+from yoxo-api_client.models.research_level_entry import ResearchLevelEntry
 
 class TestResearchLevelEntry(unittest.TestCase):
     """ResearchLevelEntry unit test stubs"""

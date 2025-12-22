@@ -174,6 +174,38 @@ public class EnterpriseEntryTest {
     }
 
     /**
+     * Test the property 'bets'
+     */
+    @Test
+    public void betsTest() {
+        // TODO: test bets
+    }
+
+    /**
+     * Test the property 'betsRewardRedistributed'
+     */
+    @Test
+    public void betsRewardRedistributedTest() {
+        // TODO: test betsRewardRedistributed
+    }
+
+    /**
+     * Test the property 'betTotal'
+     */
+    @Test
+    public void betTotalTest() {
+        // TODO: test betTotal
+    }
+
+    /**
+     * Test the property 'betActive'
+     */
+    @Test
+    public void betActiveTest() {
+        // TODO: test betActive
+    }
+
+    /**
      * Test the property 'history'
      */
     @Test
@@ -355,38 +387,6 @@ public class EnterpriseEntryTest {
     @Test
     public void totalInvestorsTest() {
         // TODO: test totalInvestors
-    }
-
-    /**
-     * Test the property 'bets'
-     */
-    @Test
-    public void betsTest() {
-        // TODO: test bets
-    }
-
-    /**
-     * Test the property 'betsRewardRedistributed'
-     */
-    @Test
-    public void betsRewardRedistributedTest() {
-        // TODO: test betsRewardRedistributed
-    }
-
-    /**
-     * Test the property 'betTotal'
-     */
-    @Test
-    public void betTotalTest() {
-        // TODO: test betTotal
-    }
-
-    /**
-     * Test the property 'betActive'
-     */
-    @Test
-    public void betActiveTest() {
-        // TODO: test betActive
     }
 
 }

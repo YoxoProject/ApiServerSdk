@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CountryBankEntry } from '@yoxoproject/client';
+import { CountryBankEntry } from '@yoxoproject/yoxo-api-client';
 
 const instance: CountryBankEntry = {
     balance,

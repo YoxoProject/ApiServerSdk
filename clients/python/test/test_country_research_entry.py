@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.country_research_entry import CountryResearchEntry
+from yoxo-api_client.models.country_research_entry import CountryResearchEntry
 
 class TestCountryResearchEntry(unittest.TestCase):
     """CountryResearchEntry unit test stubs"""
@@ -37,7 +37,7 @@ class TestCountryResearchEntry(unittest.TestCase):
             return CountryResearchEntry(
                 country = 'Lituanie',
                 researches_levels = {"general":11,"resource":15,"industry":12,"military":5,"technology":6},
-                last_research = yoxo_client.models.last_research_entry.LastResearchEntry(
+                last_research = yoxo-api_client.models.last_research_entry.LastResearchEntry(
                     domain = 'technology', 
                     level = 6, 
                     timestamp = 1739864326118, ),

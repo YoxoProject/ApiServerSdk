@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.country_settings_entry import CountrySettingsEntry
+from yoxo-api_client.models.country_settings_entry import CountrySettingsEntry
 
 class TestCountrySettingsEntry(unittest.TestCase):
     """CountrySettingsEntry unit test stubs"""
@@ -40,7 +40,7 @@ class TestCountrySettingsEntry(unittest.TestCase):
                 do_kick_recruit_war_reason = True,
                 do_kick_member_negative_power = True,
                 permissions = [
-                    yoxo_client.models.permission_entry.PermissionEntry(
+                    yoxo-api_client.models.permission_entry.PermissionEntry(
                         name = '', 
                         description = '', 
                         leader = True, 
@@ -52,7 +52,7 @@ class TestCountrySettingsEntry(unittest.TestCase):
                         enemy = True, )
                     ],
                 logs = [
-                    yoxo_client.models.setting_log_entry.SettingLogEntry(
+                    yoxo-api_client.models.setting_log_entry.SettingLogEntry(
                         user = '', 
                         action = '', 
                         target = '', 

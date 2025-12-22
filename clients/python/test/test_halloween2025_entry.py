@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.halloween2025_entry import Halloween2025Entry
+from yoxo-api_client.models.halloween2025_entry import Halloween2025Entry
 
 class TestHalloween2025Entry(unittest.TestCase):
     """Halloween2025Entry unit test stubs"""

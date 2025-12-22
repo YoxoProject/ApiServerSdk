@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.player_list_entry import PlayerListEntry
+from yoxo-api_client.models.player_list_entry import PlayerListEntry
 
 class TestPlayerListEntry(unittest.TestCase):
     """PlayerListEntry unit test stubs"""

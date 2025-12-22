@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { Parcelle } from '@yoxoproject/client';
+import { Parcelle } from '@yoxoproject/yoxo-api-client';
 
 const instance: Parcelle = {
     name,

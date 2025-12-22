@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.dividende_history_entry import DividendeHistoryEntry
+from yoxo-api_client.models.dividende_history_entry import DividendeHistoryEntry
 
 class TestDividendeHistoryEntry(unittest.TestCase):
     """DividendeHistoryEntry unit test stubs"""

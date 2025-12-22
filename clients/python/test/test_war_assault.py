@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.war_assault import WarAssault
+from yoxo-api_client.models.war_assault import WarAssault
 
 class TestWarAssault(unittest.TestCase):
     """WarAssault unit test stubs"""

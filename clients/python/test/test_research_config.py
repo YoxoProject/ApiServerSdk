@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.research_config import ResearchConfig
+from yoxo-api_client.models.research_config import ResearchConfig
 
 class TestResearchConfig(unittest.TestCase):
     """ResearchConfig unit test stubs"""
@@ -36,19 +36,19 @@ class TestResearchConfig(unittest.TestCase):
         if include_optional:
             return ResearchConfig(
                 data = {
-                    'key' : yoxo_client.models.research_config_entry.ResearchConfigEntry(
+                    'key' : yoxo-api_client.models.research_config_entry.ResearchConfigEntry(
                         name = 'Général', 
                         max_level = 15, 
                         description = 'Le domaine de recherche 'Général' permet de débloquer des fonctionnalités générales pour votre pays.', 
                         levels = [
-                            yoxo_client.models.research_level_entry.ResearchLevelEntry(
+                            yoxo-api_client.models.research_level_entry.ResearchLevelEntry(
                                 level = 2, 
                                 duration = 15, 
                                 conditions = ["players#5","claims#15","has_motd"], 
                                 rewards = ["30 membres max","10 relations max","3 officiers max"], )
                             ], )
                     },
-                metadata = yoxo_client.models.metadata.Metadata(
+                metadata = yoxo-api_client.models.metadata.Metadata(
                     data_type = 'example', 
                     server = 'red', 
                     timestamp = 1760939974755, 

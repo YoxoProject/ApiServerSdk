@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CountryCoordinates } from '@yoxoproject/client';
+import { CountryCoordinates } from '@yoxoproject/yoxo-api-client';
 
 const instance: CountryCoordinates = {
     x,

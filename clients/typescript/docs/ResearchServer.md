@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ResearchServer } from '@yoxoproject/client';
+import { ResearchServer } from '@yoxoproject/yoxo-api-client';
 
 const instance: ResearchServer = {
     data,

@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.api.api_java_api import APIJavaApi
+from yoxo-api_client.api.api_java_api import APIJavaApi
 
 
 class TestAPIJavaApi(unittest.TestCase):

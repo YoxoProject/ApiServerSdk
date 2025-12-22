@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.war_rewards import WarRewards
+from yoxo-api_client.models.war_rewards import WarRewards
 
 class TestWarRewards(unittest.TestCase):
     """WarRewards unit test stubs"""

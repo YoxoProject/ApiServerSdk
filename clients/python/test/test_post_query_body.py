@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.post_query_body import PostQueryBody
+from yoxo-api_client.models.post_query_body import PostQueryBody
 
 class TestPostQueryBody(unittest.TestCase):
     """PostQueryBody unit test stubs"""

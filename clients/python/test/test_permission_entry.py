@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.permission_entry import PermissionEntry
+from yoxo-api_client.models.permission_entry import PermissionEntry
 
 class TestPermissionEntry(unittest.TestCase):
     """PermissionEntry unit test stubs"""

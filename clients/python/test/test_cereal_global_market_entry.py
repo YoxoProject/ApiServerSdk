@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.cereal_global_market_entry import CerealGlobalMarketEntry
+from yoxo-api_client.models.cereal_global_market_entry import CerealGlobalMarketEntry
 
 class TestCerealGlobalMarketEntry(unittest.TestCase):
     """CerealGlobalMarketEntry unit test stubs"""

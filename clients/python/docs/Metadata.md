@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from yoxo_client.models.metadata import Metadata
+from yoxo-api_client.models.metadata import Metadata
 
 # TODO update the JSON string below
 json = "{}"

@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.noel_megagift2025 import NoelMegagift2025
+from yoxo-api_client.models.noel_megagift2025 import NoelMegagift2025
 
 class TestNoelMegagift2025(unittest.TestCase):
     """NoelMegagift2025 unit test stubs"""
@@ -36,13 +36,13 @@ class TestNoelMegagift2025(unittest.TestCase):
         if include_optional:
             return NoelMegagift2025(
                 data = [
-                    yoxo_client.models.noel_megagift2025_entry.NoelMegagift2025Entry(
+                    yoxo-api_client.models.noel_megagift2025_entry.NoelMegagift2025Entry(
                         username = 'Paskap', 
                         server = 'red', 
                         timestamp = 1766179080000, 
                         loots = ["Multi Outil","Hâche Guerrier de Glace","Plan - Fusée spatiale","Hâche Guerrier de Glace Légendaire"], )
                     ],
-                metadata = yoxo_client.models.metadata.Metadata(
+                metadata = yoxo-api_client.models.metadata.Metadata(
                     data_type = 'example', 
                     server = 'red', 
                     timestamp = 1760939974755, 

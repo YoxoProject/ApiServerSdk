@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CerealGlobalMarketEntry } from '@yoxoproject/client';
+import { CerealGlobalMarketEntry } from '@yoxoproject/yoxo-api-client';
 
 const instance: CerealGlobalMarketEntry = {
     pricesTexture,

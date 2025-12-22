@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.war_participant import WarParticipant
+from yoxo-api_client.models.war_participant import WarParticipant
 
 class TestWarParticipant(unittest.TestCase):
     """WarParticipant unit test stubs"""
@@ -39,7 +39,7 @@ class TestWarParticipant(unittest.TestCase):
                 remaining_missiles_points = 100,
                 inactivity = 12,
                 progress = 45.5,
-                condition = yoxo_client.models.war_condition.WarCondition(
+                condition = yoxo-api_client.models.war_condition.WarCondition(
                     kill = 10, 
                     victory = 2, 
                     missile_points = 50, 

@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.metadata import Metadata
+from yoxo-api_client.models.metadata import Metadata
 
 class TestMetadata(unittest.TestCase):
     """Metadata unit test stubs"""

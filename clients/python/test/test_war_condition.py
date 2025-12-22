@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.war_condition import WarCondition
+from yoxo-api_client.models.war_condition import WarCondition
 
 class TestWarCondition(unittest.TestCase):
     """WarCondition unit test stubs"""

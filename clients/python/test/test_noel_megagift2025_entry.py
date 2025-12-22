@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.noel_megagift2025_entry import NoelMegagift2025Entry
+from yoxo-api_client.models.noel_megagift2025_entry import NoelMegagift2025Entry
 
 class TestNoelMegagift2025Entry(unittest.TestCase):
     """NoelMegagift2025Entry unit test stubs"""

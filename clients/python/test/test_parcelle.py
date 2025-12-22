@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.parcelle import Parcelle
+from yoxo-api_client.models.parcelle import Parcelle
 
 class TestParcelle(unittest.TestCase):
     """Parcelle unit test stubs"""
@@ -39,7 +39,7 @@ class TestParcelle(unittest.TestCase):
                 client_name = 'Romaindu35',
                 is_staff = False,
                 price = 150,
-                sign_coords = yoxo_client.models.coords.Coords(
+                sign_coords = yoxo-api_client.models.coords.Coords(
                     x = 1250, 
                     y = 64, 
                     z = -850, ),

@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.enterprise_entry import EnterpriseEntry
+from yoxo-api_client.models.enterprise_entry import EnterpriseEntry
 
 class TestEnterpriseEntry(unittest.TestCase):
     """EnterpriseEntry unit test stubs"""
@@ -42,37 +42,51 @@ class TestEnterpriseEntry(unittest.TestCase):
                 services = '######Poser des contrats si vous voulez##50k max, binance récupère 50% du bénéfice##si le contrat vas a 100k vous récupérer ##75k######################',
                 owner = 'Romaindu35',
                 flag = '',
-                cadres = ["PingouinMaxIV","random20"],
-                employees = ["Zerlow__","Trigun0169"],
+                cadres = [PingouinMaxIV, random20],
+                employees = [Zerlow__, Trigun0169],
                 contracts_done = 12,
                 disputes = 3,
                 contracts_success = 80,
                 turnover = 995177,
                 permissions = [
-                    yoxo_client.models.enterprise_permission.EnterprisePermission(
+                    yoxo-api_client.models.enterprise_permission.EnterprisePermission(
                         name = 'exclude', 
                         owner = True, 
                         cadre = True, 
                         employee = False, )
                     ],
-                bank = yoxo_client.models.enterprise_bank.EnterpriseBank(
-                    flux14_days = 142595.0, 
-                    in_progress_contracts = 136856.0, 
-                    salaries14_days = -71785.0, 
+                bank = yoxo-api_client.models.enterprise_bank.EnterpriseBank(
+                    bank = 325331, 
+                    flux14_days = 142595, 
+                    in_progress_contracts = 136856, 
+                    salaries14_days = -71785, 
                     taxes14_days = -97.7, 
                     logs = [
-                        yoxo_client.models.enterprise_bank_log.EnterpriseBankLog(
+                        yoxo-api_client.models.enterprise_bank_log.EnterpriseBankLog(
                             name = 'tax', 
                             amount = 74.5, 
                             timestamp = 1763258552178, )
                         ], ),
+                bets = [
+                    yoxo-api_client.models.enterprise_bet_item.EnterpriseBetItem(
+                        deadline_time = 1766837968789, 
+                        min_bet = 100, 
+                        number_of_players = 42, 
+                        title = 'Qui gagnera la coupe du monde ?', 
+                        option1 = 'France', 
+                        option2 = 'Espagne', 
+                        status = 'done', )
+                    ],
+                bets_reward_redistributed = 225208,
+                bet_total = 50,
+                bet_active = 5,
                 history = {
                     'key' : 1.337
                     },
-                benef_average = 5000.0,
-                total_play = 704636.0,
+                benef_average = 5000,
+                total_play = 704636,
                 win_percent = 48.5,
-                total_win = 121250.0,
+                total_win = 121250,
                 total = 17985,
                 available = 559,
                 allow_country = True,
@@ -100,12 +114,12 @@ class TestEnterpriseEntry(unittest.TestCase):
                     'key' : 56
                     },
                 parcelles = [
-                    yoxo_client.models.parcelle.Parcelle(
+                    yoxo-api_client.models.parcelle.Parcelle(
                         name = 'Villa du Lac', 
                         client_name = 'Romaindu35', 
                         is_staff = False, 
                         price = 150, 
-                        sign_coords = yoxo_client.models.coords.Coords(
+                        sign_coords = yoxo-api_client.models.coords.Coords(
                             x = 1250, 
                             y = 64, 
                             z = -850, ), 
@@ -114,20 +128,7 @@ class TestEnterpriseEntry(unittest.TestCase):
                     ],
                 total_generated = 185561,
                 sum_investment = 250000.5,
-                total_investors = 24,
-                bets = [
-                    yoxo_client.models.enterprise_bet_item.EnterpriseBetItem(
-                        deadline_time = 1766837968789, 
-                        min_bet = 100, 
-                        number_of_players = 42, 
-                        title = 'Qui gagnera la coupe du monde ?', 
-                        option1 = 'France', 
-                        option2 = 'Espagne', 
-                        status = 'done', )
-                    ],
-                bets_reward_redistributed = 225208,
-                bet_total = 50,
-                bet_active = 5
+                total_investors = 24
             )
         else:
             return EnterpriseEntry(

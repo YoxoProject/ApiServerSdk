@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { Halloween2025 } from '@yoxoproject/client';
+import { Halloween2025 } from '@yoxoproject/yoxo-api-client';
 
 const instance: Halloween2025 = {
     data,

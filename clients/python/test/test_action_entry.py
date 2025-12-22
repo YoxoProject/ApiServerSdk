@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.action_entry import ActionEntry
+from yoxo-api_client.models.action_entry import ActionEntry
 
 class TestActionEntry(unittest.TestCase):
     """ActionEntry unit test stubs"""

@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.country_bank_entry import CountryBankEntry
+from yoxo-api_client.models.country_bank_entry import CountryBankEntry
 
 class TestCountryBankEntry(unittest.TestCase):
     """CountryBankEntry unit test stubs"""
@@ -43,7 +43,7 @@ class TestCountryBankEntry(unittest.TestCase):
                     ''
                     ],
                 logs = [
-                    yoxo_client.models.bank_log_entry.BankLogEntry(
+                    yoxo-api_client.models.bank_log_entry.BankLogEntry(
                         amount = 1.337, 
                         timestamp = 56, 
                         pseudo = '', )

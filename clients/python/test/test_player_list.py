@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.player_list import PlayerList
+from yoxo-api_client.models.player_list import PlayerList
 
 class TestPlayerList(unittest.TestCase):
     """PlayerList unit test stubs"""
@@ -36,7 +36,7 @@ class TestPlayerList(unittest.TestCase):
         if include_optional:
             return PlayerList(
                 data = [
-                    yoxo_client.models.player_list_entry.PlayerListEntry(
+                    yoxo-api_client.models.player_list_entry.PlayerListEntry(
                         name = 'Romaindu35', 
                         country = 'France', 
                         power = 12, 
@@ -44,7 +44,7 @@ class TestPlayerList(unittest.TestCase):
                         playtime = 3600, 
                         last_login = 1760939974755, )
                     ],
-                metadata = yoxo_client.models.metadata.Metadata(
+                metadata = yoxo-api_client.models.metadata.Metadata(
                     data_type = 'example', 
                     server = 'red', 
                     timestamp = 1760939974755, 

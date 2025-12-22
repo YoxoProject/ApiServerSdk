@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.enterprise_base import EnterpriseBase
+from yoxo-api_client.models.enterprise_base import EnterpriseBase
 
 class TestEnterpriseBase(unittest.TestCase):
     """EnterpriseBase unit test stubs"""
@@ -49,19 +49,19 @@ class TestEnterpriseBase(unittest.TestCase):
                 contracts_success = 80,
                 turnover = 995177,
                 permissions = [
-                    yoxo_client.models.enterprise_permission.EnterprisePermission(
+                    yoxo-api_client.models.enterprise_permission.EnterprisePermission(
                         name = 'exclude', 
                         owner = True, 
                         cadre = True, 
                         employee = False, )
                     ],
-                bank = yoxo_client.models.enterprise_bank.EnterpriseBank(
+                bank = yoxo-api_client.models.enterprise_bank.EnterpriseBank(
                     flux14_days = 142595, 
                     in_progress_contracts = 136856, 
                     salaries14_days = -71785, 
                     taxes14_days = -97.7, 
                     logs = [
-                        yoxo_client.models.enterprise_bank_log.EnterpriseBankLog(
+                        yoxo-api_client.models.enterprise_bank_log.EnterpriseBankLog(
                             name = 'tax', 
                             amount = 74.5, 
                             timestamp = 1763258552178, )

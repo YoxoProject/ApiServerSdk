@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.enterprise_bet_item import EnterpriseBetItem
+from yoxo-api_client.models.enterprise_bet_item import EnterpriseBetItem
 
 class TestEnterpriseBetItem(unittest.TestCase):
     """EnterpriseBetItem unit test stubs"""

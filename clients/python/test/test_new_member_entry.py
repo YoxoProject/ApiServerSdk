@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.new_member_entry import NewMemberEntry
+from yoxo-api_client.models.new_member_entry import NewMemberEntry
 
 class TestNewMemberEntry(unittest.TestCase):
     """NewMemberEntry unit test stubs"""

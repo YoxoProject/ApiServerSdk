@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.enterprise import Enterprise
+from yoxo-api_client.models.enterprise import Enterprise
 
 class TestEnterprise(unittest.TestCase):
     """Enterprise unit test stubs"""
@@ -36,39 +36,9 @@ class TestEnterprise(unittest.TestCase):
         if include_optional:
             return Enterprise(
                 data = [
-                    yoxo_client.models.enterprise_entry.EnterpriseEntry(
-                        name = 'Pompouasie', 
-                        age = 997, 
-                        description = 'Entreprise de pétrole de la papouasie !', 
-                        services = '######Poser des contrats si vous voulez##50k max, binance récupère 50% du bénéfice##si le contrat vas a 100k vous récupérer ##75k######################', 
-                        owner = 'Romaindu35', 
-                        flag = '', 
-                        cadres = ["PingouinMaxIV","random20"], 
-                        employees = ["Zerlow__","Trigun0169"], 
-                        contracts_done = 12, 
-                        disputes = 3, 
-                        contracts_success = 80, 
-                        turnover = 995177, 
-                        permissions = [
-                            yoxo_client.models.enterprise_permission.EnterprisePermission(
-                                name = 'exclude', 
-                                owner = True, 
-                                cadre = True, 
-                                employee = False, )
-                            ], 
-                        bank = yoxo_client.models.enterprise_bank.EnterpriseBank(
-                            flux14_days = 142595.0, 
-                            in_progress_contracts = 136856.0, 
-                            salaries14_days = -71785.0, 
-                            taxes14_days = -97.7, 
-                            logs = [
-                                yoxo_client.models.enterprise_bank_log.EnterpriseBankLog(
-                                    name = 'tax', 
-                                    amount = 74.5, 
-                                    timestamp = 1763258552178, )
-                                ], ), )
+                    yoxo-api_client.models.enterprise_entry.EnterpriseEntry()
                     ],
-                metadata = yoxo_client.models.metadata.Metadata(
+                metadata = yoxo-api_client.models.metadata.Metadata(
                     data_type = 'example', 
                     server = 'red', 
                     timestamp = 1760939974755, 

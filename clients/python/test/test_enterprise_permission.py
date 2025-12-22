@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.enterprise_permission import EnterprisePermission
+from yoxo-api_client.models.enterprise_permission import EnterprisePermission
 
 class TestEnterprisePermission(unittest.TestCase):
     """EnterprisePermission unit test stubs"""

@@ -1,6 +1,6 @@
 {
-  "packageName": "yoxo-api_client",
-  "projectName": "yoxo-api-client",
+  "packageName": "yoxo_api_client",
+  "projectName": "yoxo_api_client",
   "packageVersion": "1.0",
   "library": "urllib3",
   "hideGenerationTimestamp": true

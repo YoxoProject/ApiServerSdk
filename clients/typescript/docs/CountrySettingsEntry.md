@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CountrySettingsEntry } from '@yoxoproject/client';
+import { CountrySettingsEntry } from '@yoxoproject/yoxo-api-client';
 
 const instance: CountrySettingsEntry = {
     invitationNeeded,

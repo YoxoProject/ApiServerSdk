@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.setting_log_entry import SettingLogEntry
+from yoxo-api_client.models.setting_log_entry import SettingLogEntry
 
 class TestSettingLogEntry(unittest.TestCase):
     """SettingLogEntry unit test stubs"""

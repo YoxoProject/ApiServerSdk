@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.country_actions_entry import CountryActionsEntry
+from yoxo-api_client.models.country_actions_entry import CountryActionsEntry
 
 class TestCountryActionsEntry(unittest.TestCase):
     """CountryActionsEntry unit test stubs"""
@@ -39,18 +39,18 @@ class TestCountryActionsEntry(unittest.TestCase):
                 available_actions = 56,
                 action_price = 56,
                 dividendes_classement = [
-                    yoxo_client.models.dividende_classement_entry.DividendeClassementEntry(
+                    yoxo-api_client.models.dividende_classement_entry.DividendeClassementEntry(
                         pays = '', 
                         montant = 1.337, )
                     ],
                 dividendes_history = [
-                    yoxo_client.models.dividende_history_entry.DividendeHistoryEntry(
+                    yoxo-api_client.models.dividende_history_entry.DividendeHistoryEntry(
                         pays = '', 
                         montant = 1.337, 
                         timestamp = 56, )
                     ],
                 actions = [
-                    yoxo_client.models.action_entry.ActionEntry(
+                    yoxo-api_client.models.action_entry.ActionEntry(
                         owner = '', 
                         status = 'LOCKED', )
                     ]

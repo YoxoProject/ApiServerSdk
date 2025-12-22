@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.dividende_classement_entry import DividendeClassementEntry
+from yoxo-api_client.models.dividende_classement_entry import DividendeClassementEntry
 
 class TestDividendeClassementEntry(unittest.TestCase):
     """DividendeClassementEntry unit test stubs"""

@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.halloween2025 import Halloween2025
+from yoxo-api_client.models.halloween2025 import Halloween2025
 
 class TestHalloween2025(unittest.TestCase):
     """Halloween2025 unit test stubs"""
@@ -36,7 +36,7 @@ class TestHalloween2025(unittest.TestCase):
         if include_optional:
             return Halloween2025(
                 data = [
-                    yoxo_client.models.halloween2025_entry.Halloween2025Entry(
+                    yoxo-api_client.models.halloween2025_entry.Halloween2025Entry(
                         username = 'Romaindu35', 
                         demons_killed = 450, 
                         tickets = 15, 
@@ -44,7 +44,7 @@ class TestHalloween2025(unittest.TestCase):
                         extracted_souls = 1250, 
                         lost_souls = 520, )
                     ],
-                metadata = yoxo_client.models.metadata.Metadata(
+                metadata = yoxo-api_client.models.metadata.Metadata(
                     data_type = 'example', 
                     server = 'red', 
                     timestamp = 1760939974755, 

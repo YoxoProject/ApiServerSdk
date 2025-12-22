@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.country import Country
+from yoxo-api_client.models.country import Country
 
 class TestCountry(unittest.TestCase):
     """Country unit test stubs"""
@@ -36,7 +36,7 @@ class TestCountry(unittest.TestCase):
         if include_optional:
             return Country(
                 data = [
-                    yoxo_client.models.country_entry.CountryEntry(
+                    yoxo-api_client.models.country_entry.CountryEntry(
                         name = 'France', 
                         description = '', 
                         motd = '', 
@@ -44,7 +44,7 @@ class TestCountry(unittest.TestCase):
                         age = 56, 
                         count_members = 56, 
                         count_new_members = 56, 
-                        fhome_coord = yoxo_client.models.country_coordinates.CountryCoordinates(
+                        fhome_coord = yoxo-api_client.models.country_coordinates.CountryCoordinates(
                             x = 56, 
                             z = 56, ), 
                         level = 56, 
@@ -76,7 +76,7 @@ class TestCountry(unittest.TestCase):
                             ''
                             ], 
                         new_members = [
-                            yoxo_client.models.new_member_entry.NewMemberEntry(
+                            yoxo-api_client.models.new_member_entry.NewMemberEntry(
                                 pseudo = '', 
                                 played_time = 56, 
                                 reward_power = 56, 
@@ -85,7 +85,7 @@ class TestCountry(unittest.TestCase):
                                 reward_money_max = 56, 
                                 step = 56, )
                             ], 
-                        researches_level = yoxo_client.models.researches_entry.ResearchesEntry(
+                        researches_level = yoxo-api_client.models.researches_entry.ResearchesEntry(
                             general = 56, 
                             resource = 56, 
                             military = 56, 
@@ -94,39 +94,39 @@ class TestCountry(unittest.TestCase):
                         wars = [
                             ''
                             ], 
-                        bank = yoxo_client.models.country_bank_entry.CountryBankEntry(
+                        bank = yoxo-api_client.models.country_bank_entry.CountryBankEntry(
                             balance = 56, 
                             owners = [
                                 ''
                                 ], 
                             logs = [
-                                yoxo_client.models.bank_log_entry.BankLogEntry(
+                                yoxo-api_client.models.bank_log_entry.BankLogEntry(
                                     amount = 1.337, 
                                     timestamp = 56, 
                                     pseudo = '', )
                                 ], ), 
-                        actions = yoxo_client.models.country_actions_entry.CountryActionsEntry(
+                        actions = yoxo-api_client.models.country_actions_entry.CountryActionsEntry(
                             total_dividendes = 1.337, 
                             available_actions = 56, 
                             action_price = 56, 
                             dividendes_classement = [
-                                yoxo_client.models.dividende_classement_entry.DividendeClassementEntry(
+                                yoxo-api_client.models.dividende_classement_entry.DividendeClassementEntry(
                                     pays = '', 
                                     montant = 1.337, )
                                 ], 
                             dividendes_history = [
-                                yoxo_client.models.dividende_history_entry.DividendeHistoryEntry(
+                                yoxo-api_client.models.dividende_history_entry.DividendeHistoryEntry(
                                     pays = '', 
                                     montant = 1.337, 
                                     timestamp = 56, )
                                 ], ), 
-                        settings = yoxo_client.models.country_settings_entry.CountrySettingsEntry(
+                        settings = yoxo-api_client.models.country_settings_entry.CountrySettingsEntry(
                             invitation_needed = True, 
                             recruitment_open = True, 
                             do_kick_recruit_war_reason = True, 
                             do_kick_member_negative_power = True, 
                             permissions = [
-                                yoxo_client.models.permission_entry.PermissionEntry(
+                                yoxo-api_client.models.permission_entry.PermissionEntry(
                                     name = '', 
                                     description = '', 
                                     leader = True, 
@@ -143,7 +143,7 @@ class TestCountry(unittest.TestCase):
                         restrict_assault = True, 
                         restrict_missile = True, )
                     ],
-                metadata = yoxo_client.models.metadata.Metadata(
+                metadata = yoxo-api_client.models.metadata.Metadata(
                     data_type = 'example', 
                     server = 'red', 
                     timestamp = 1760939974755, 

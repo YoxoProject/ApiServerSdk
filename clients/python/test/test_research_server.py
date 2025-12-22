@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.research_server import ResearchServer
+from yoxo-api_client.models.research_server import ResearchServer
 
 class TestResearchServer(unittest.TestCase):
     """ResearchServer unit test stubs"""
@@ -36,16 +36,16 @@ class TestResearchServer(unittest.TestCase):
         if include_optional:
             return ResearchServer(
                 data = [
-                    yoxo_client.models.country_research_entry.CountryResearchEntry(
+                    yoxo-api_client.models.country_research_entry.CountryResearchEntry(
                         country = 'Lituanie', 
                         researches_levels = {"general":11,"resource":15,"industry":12,"military":5,"technology":6}, 
-                        last_research = yoxo_client.models.last_research_entry.LastResearchEntry(
+                        last_research = yoxo-api_client.models.last_research_entry.LastResearchEntry(
                             domain = 'technology', 
                             level = 6, 
                             timestamp = 1739864326118, ), 
                         researches_conditions_values = {"vote":10924,"block_break":20919114,"block_place":3799270}, )
                     ],
-                metadata = yoxo_client.models.metadata.Metadata(
+                metadata = yoxo-api_client.models.metadata.Metadata(
                     data_type = 'example', 
                     server = 'red', 
                     timestamp = 1760939974755, 

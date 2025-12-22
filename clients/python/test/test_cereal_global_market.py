@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.cereal_global_market import CerealGlobalMarket
+from yoxo-api_client.models.cereal_global_market import CerealGlobalMarket
 
 class TestCerealGlobalMarket(unittest.TestCase):
     """CerealGlobalMarket unit test stubs"""
@@ -35,7 +35,7 @@ class TestCerealGlobalMarket(unittest.TestCase):
         model = CerealGlobalMarket()
         if include_optional:
             return CerealGlobalMarket(
-                data = yoxo_client.models.cereal_global_market_entry.CerealGlobalMarketEntry(
+                data = yoxo-api_client.models.cereal_global_market_entry.CerealGlobalMarketEntry(
                     prices_texture = '', 
                     sales_texture = '', 
                     stocks_texture = '', 
@@ -43,7 +43,7 @@ class TestCerealGlobalMarket(unittest.TestCase):
                     sales_history = {"oats":{"2025-10-14":0,"2025-10-15":0,"2025-10-16":0,"2025-10-17":0,"2025-10-18":2096,"2025-10-19":2096,"2025-10-20":2000,"2025-10-21":0},"wheat":{"2025-10-14":14000,"2025-10-15":0,"2025-10-16":256,"2025-10-17":12716,"2025-10-18":0,"2025-10-19":0,"2025-10-20":1500,"2025-10-21":0}}, 
                     stocks_history = {"arcticoats":{"2025-10-14":0,"2025-10-15":0,"2025-10-16":0,"2025-10-17":0,"2025-10-18":0,"2025-10-19":0,"2025-10-20":0,"2025-10-21":0},"barley":{"2025-10-14":41566,"2025-10-15":41566,"2025-10-16":41566,"2025-10-17":41566,"2025-10-18":41566,"2025-10-19":41566,"2025-10-20":41566,"2025-10-21":41566}}, 
                     cereals_price = {"soybean":950,"oats":650,"glazedspelt":2000,"arcticoats":2000,"sorgho":19550,"corn":2000,"kamut":19450,"wheat":550,"barley":1300,"fonio":19950,"sunflower":1050,"rye":950}, ),
-                metadata = yoxo_client.models.metadata.Metadata(
+                metadata = yoxo-api_client.models.metadata.Metadata(
                     data_type = 'example', 
                     server = 'red', 
                     timestamp = 1760939974755, 

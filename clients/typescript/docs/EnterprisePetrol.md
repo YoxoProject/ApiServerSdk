@@ -35,7 +35,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { EnterprisePetrol } from '@yoxoproject/client';
+import { EnterprisePetrol } from '@yoxoproject/yoxo-api-client';
 
 const instance: EnterprisePetrol = {
     type,

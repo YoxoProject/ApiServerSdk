@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.bank_log_entry import BankLogEntry
+from yoxo-api_client.models.bank_log_entry import BankLogEntry
 
 class TestBankLogEntry(unittest.TestCase):
     """BankLogEntry unit test stubs"""

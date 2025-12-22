@@ -25,10 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import software.yoxo.client.model.EnterpriseBank;
-import software.yoxo.client.model.EnterpriseBetItem;
-import software.yoxo.client.model.EnterpriseEntry;
 import software.yoxo.client.model.EnterprisePermission;
-import software.yoxo.client.model.Parcelle;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -167,78 +164,6 @@ public class EnterpriseElectricTest {
     }
 
     /**
-     * Test the property 'bets'
-     */
-    @Test
-    public void betsTest() {
-        // TODO: test bets
-    }
-
-    /**
-     * Test the property 'betsRewardRedistributed'
-     */
-    @Test
-    public void betsRewardRedistributedTest() {
-        // TODO: test betsRewardRedistributed
-    }
-
-    /**
-     * Test the property 'betTotal'
-     */
-    @Test
-    public void betTotalTest() {
-        // TODO: test betTotal
-    }
-
-    /**
-     * Test the property 'betActive'
-     */
-    @Test
-    public void betActiveTest() {
-        // TODO: test betActive
-    }
-
-    /**
-     * Test the property 'history'
-     */
-    @Test
-    public void historyTest() {
-        // TODO: test history
-    }
-
-    /**
-     * Test the property 'benefAverage'
-     */
-    @Test
-    public void benefAverageTest() {
-        // TODO: test benefAverage
-    }
-
-    /**
-     * Test the property 'totalPlay'
-     */
-    @Test
-    public void totalPlayTest() {
-        // TODO: test totalPlay
-    }
-
-    /**
-     * Test the property 'winPercent'
-     */
-    @Test
-    public void winPercentTest() {
-        // TODO: test winPercent
-    }
-
-    /**
-     * Test the property 'totalWin'
-     */
-    @Test
-    public void totalWinTest() {
-        // TODO: test totalWin
-    }
-
-    /**
      * Test the property 'total'
      */
     @Test
@@ -324,62 +249,6 @@ public class EnterpriseElectricTest {
     @Test
     public void historyCollectedTest() {
         // TODO: test historyCollected
-    }
-
-    /**
-     * Test the property 'histories'
-     */
-    @Test
-    public void historiesTest() {
-        // TODO: test histories
-    }
-
-    /**
-     * Test the property 'totalCollected'
-     */
-    @Test
-    public void totalCollectedTest() {
-        // TODO: test totalCollected
-    }
-
-    /**
-     * Test the property 'collectedCereal'
-     */
-    @Test
-    public void collectedCerealTest() {
-        // TODO: test collectedCereal
-    }
-
-    /**
-     * Test the property 'parcelles'
-     */
-    @Test
-    public void parcellesTest() {
-        // TODO: test parcelles
-    }
-
-    /**
-     * Test the property 'totalGenerated'
-     */
-    @Test
-    public void totalGeneratedTest() {
-        // TODO: test totalGenerated
-    }
-
-    /**
-     * Test the property 'sumInvestment'
-     */
-    @Test
-    public void sumInvestmentTest() {
-        // TODO: test sumInvestment
-    }
-
-    /**
-     * Test the property 'totalInvestors'
-     */
-    @Test
-    public void totalInvestorsTest() {
-        // TODO: test totalInvestors
     }
 
 }

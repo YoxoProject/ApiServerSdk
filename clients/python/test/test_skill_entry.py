@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.skill_entry import SkillEntry
+from yoxo-api_client.models.skill_entry import SkillEntry
 
 class TestSkillEntry(unittest.TestCase):
     """SkillEntry unit test stubs"""

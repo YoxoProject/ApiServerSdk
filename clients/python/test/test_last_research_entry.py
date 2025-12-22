@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.last_research_entry import LastResearchEntry
+from yoxo-api_client.models.last_research_entry import LastResearchEntry
 
 class TestLastResearchEntry(unittest.TestCase):
     """LastResearchEntry unit test stubs"""

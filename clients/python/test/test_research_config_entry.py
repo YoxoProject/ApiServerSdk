@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.research_config_entry import ResearchConfigEntry
+from yoxo-api_client.models.research_config_entry import ResearchConfigEntry
 
 class TestResearchConfigEntry(unittest.TestCase):
     """ResearchConfigEntry unit test stubs"""
@@ -39,7 +39,7 @@ class TestResearchConfigEntry(unittest.TestCase):
                 max_level = 15,
                 description = 'Le domaine de recherche 'Général' permet de débloquer des fonctionnalités générales pour votre pays.',
                 levels = [
-                    yoxo_client.models.research_level_entry.ResearchLevelEntry(
+                    yoxo-api_client.models.research_level_entry.ResearchLevelEntry(
                         level = 2, 
                         duration = 15, 
                         conditions = ["players#5","claims#15","has_motd"], 

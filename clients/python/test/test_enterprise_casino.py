@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.enterprise_casino import EnterpriseCasino
+from yoxo-api_client.models.enterprise_casino import EnterpriseCasino
 
 class TestEnterpriseCasino(unittest.TestCase):
     """EnterpriseCasino unit test stubs"""
@@ -35,13 +35,45 @@ class TestEnterpriseCasino(unittest.TestCase):
         model = EnterpriseCasino()
         if include_optional:
             return EnterpriseCasino(
+                type = 'petrol',
+                name = 'Pompouasie',
+                age = 997,
+                description = 'Entreprise de pétrole de la papouasie !',
+                services = '######Poser des contrats si vous voulez##50k max, binance récupère 50% du bénéfice##si le contrat vas a 100k vous récupérer ##75k######################',
+                owner = 'Romaindu35',
+                flag = '',
+                cadres = [PingouinMaxIV, random20],
+                employees = [Zerlow__, Trigun0169],
+                contracts_done = 12,
+                disputes = 3,
+                contracts_success = 80,
+                turnover = 995177,
+                permissions = [
+                    yoxo-api_client.models.enterprise_permission.EnterprisePermission(
+                        name = 'exclude', 
+                        owner = True, 
+                        cadre = True, 
+                        employee = False, )
+                    ],
+                bank = yoxo-api_client.models.enterprise_bank.EnterpriseBank(
+                    bank = 325331, 
+                    flux14_days = 142595, 
+                    in_progress_contracts = 136856, 
+                    salaries14_days = -71785, 
+                    taxes14_days = -97.7, 
+                    logs = [
+                        yoxo-api_client.models.enterprise_bank_log.EnterpriseBankLog(
+                            name = 'tax', 
+                            amount = 74.5, 
+                            timestamp = 1763258552178, )
+                        ], ),
                 history = {
                     'key' : 1.337
                     },
-                benef_average = 5000.0,
-                total_play = 704636.0,
+                benef_average = 5000,
+                total_play = 704636,
                 win_percent = 48.5,
-                total_win = 121250.0
+                total_win = 121250
             )
         else:
             return EnterpriseCasino(

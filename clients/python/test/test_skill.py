@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.skill import Skill
+from yoxo-api_client.models.skill import Skill
 
 class TestSkill(unittest.TestCase):
     """Skill unit test stubs"""
@@ -36,7 +36,7 @@ class TestSkill(unittest.TestCase):
         if include_optional:
             return Skill(
                 data = [
-                    yoxo_client.models.skill_entry.SkillEntry(
+                    yoxo-api_client.models.skill_entry.SkillEntry(
                         username = 'Romaindu35', 
                         builder = 125000, 
                         farmer = 75000, 
@@ -51,7 +51,7 @@ class TestSkill(unittest.TestCase):
                         engineer_position = 31, 
                         miner_position = 5, )
                     ],
-                metadata = yoxo_client.models.metadata.Metadata(
+                metadata = yoxo-api_client.models.metadata.Metadata(
                     data_type = 'example', 
                     server = 'red', 
                     timestamp = 1760939974755, 

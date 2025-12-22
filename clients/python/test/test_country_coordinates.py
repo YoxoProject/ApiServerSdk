@@ -14,7 +14,7 @@
 
 import unittest
 
-from yoxo_client.models.country_coordinates import CountryCoordinates
+from yoxo-api_client.models.country_coordinates import CountryCoordinates
 
 class TestCountryCoordinates(unittest.TestCase):
     """CountryCoordinates unit test stubs"""

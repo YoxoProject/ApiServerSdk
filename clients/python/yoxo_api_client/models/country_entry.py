@@ -66,12 +66,12 @@ class CountryEntry(BaseModel):
     bank: Optional[CountryBankEntry] = None
     actions: Optional[CountryActionsEntry] = None
     settings: Optional[CountrySettingsEntry] = None
-    empire: Optional[StrictBool] = None
-    referent: Optional[StrictBool] = None
     top_warzone: Optional[StrictBool] = Field(default=None, alias="topWarzone")
     restrict_assault: Optional[StrictBool] = Field(default=None, alias="restrictAssault")
     restrict_missile: Optional[StrictBool] = Field(default=None, alias="restrictMissile")
-    __properties: ClassVar[List[str]] = ["name", "description", "motd", "entryMsg", "age", "countMembers", "countNewMembers", "fhomeCoord", "level", "progress", "notationsPosition", "tags", "discord", "allianceName", "mmr", "claims", "power", "maxPower", "powerboostFixed", "powerboostWarzone", "powerboostUnesco", "powerboostNewMember", "powerboostMalusAssault", "flag", "leader", "officers", "members", "recruits", "newMembers", "researchesLevel", "wars", "bank", "actions", "settings", "empire", "referent", "topWarzone", "restrictAssault", "restrictMissile"]
+    empire: Optional[StrictBool] = None
+    referent: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["name", "description", "motd", "entryMsg", "age", "countMembers", "countNewMembers", "fhomeCoord", "level", "progress", "notationsPosition", "tags", "discord", "allianceName", "mmr", "claims", "power", "maxPower", "powerboostFixed", "powerboostWarzone", "powerboostUnesco", "powerboostNewMember", "powerboostMalusAssault", "flag", "leader", "officers", "members", "recruits", "newMembers", "researchesLevel", "wars", "bank", "actions", "settings", "topWarzone", "restrictAssault", "restrictMissile", "empire", "referent"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -180,11 +180,11 @@ class CountryEntry(BaseModel):
             "bank": CountryBankEntry.from_dict(obj["bank"]) if obj.get("bank") is not None else None,
             "actions": CountryActionsEntry.from_dict(obj["actions"]) if obj.get("actions") is not None else None,
             "settings": CountrySettingsEntry.from_dict(obj["settings"]) if obj.get("settings") is not None else None,
-            "empire": obj.get("empire"),
-            "referent": obj.get("referent"),
             "topWarzone": obj.get("topWarzone"),
             "restrictAssault": obj.get("restrictAssault"),
-            "restrictMissile": obj.get("restrictMissile")
+            "restrictMissile": obj.get("restrictMissile"),
+            "empire": obj.get("empire"),
+            "referent": obj.get("referent")
         })
         return _obj
 

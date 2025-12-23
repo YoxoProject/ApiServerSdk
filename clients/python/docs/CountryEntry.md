@@ -40,11 +40,11 @@ Name | Type | Description | Notes
 **bank** | [**CountryBankEntry**](CountryBankEntry.md) |  | [optional] 
 **actions** | [**CountryActionsEntry**](CountryActionsEntry.md) |  | [optional] 
 **settings** | [**CountrySettingsEntry**](CountrySettingsEntry.md) |  | [optional] 
-**empire** | **bool** |  | [optional] 
-**referent** | **bool** |  | [optional] 
 **top_warzone** | **bool** |  | [optional] 
 **restrict_assault** | **bool** |  | [optional] 
 **restrict_missile** | **bool** |  | [optional] 
+**empire** | **bool** |  | [optional] 
+**referent** | **bool** |  | [optional] 
 
 ## Example
 

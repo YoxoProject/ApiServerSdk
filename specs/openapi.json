@@ -1533,7 +1533,7 @@
           "source": {
             "type": "string",
             "description": "Le chemin d'accès du fichier dans le bucket S3",
-            "example": "s3://yoxo-history/example/2025-10-21_red_example.json.xz"
+            "example": "s3://yoxo-history/example/2025-10-21_red_example.json.zst"
           },
           "cacheSource": {
             "type": "string",
@@ -3221,12 +3221,6 @@
           "settings": {
             "$ref": "#/components/schemas/CountrySettingsEntry"
           },
-          "empire": {
-            "type": "boolean"
-          },
-          "referent": {
-            "type": "boolean"
-          },
           "topWarzone": {
             "type": "boolean"
           },
@@ -3234,6 +3228,12 @@
             "type": "boolean"
           },
           "restrictMissile": {
+            "type": "boolean"
+          },
+          "empire": {
+            "type": "boolean"
+          },
+          "referent": {
             "type": "boolean"
           }
         },

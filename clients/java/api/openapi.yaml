@@ -1570,7 +1570,7 @@ components:
         executionTimeMs: 210
         totalPages: 3
         pageSize: 20
-        source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+        source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
         totalCount: 50
         currentPage: 1
         cacheSource: L1
@@ -1598,7 +1598,7 @@ components:
           type: string
         source:
           description: Le chemin d'accès du fichier dans le bucket S3
-          example: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          example: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           type: string
         cacheSource:
           description: "La source des données: S3 (sans cache), L1 (cache Caffeine,\
@@ -1647,7 +1647,7 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
           cacheSource: L1
@@ -2221,7 +2221,7 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
           cacheSource: L1
@@ -2445,7 +2445,7 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
           cacheSource: L1
@@ -2499,7 +2499,7 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
           cacheSource: L1
@@ -2576,7 +2576,7 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
           cacheSource: L1
@@ -2655,7 +2655,7 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
           cacheSource: L1
@@ -2734,7 +2734,7 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
           cacheSource: L1
@@ -2836,7 +2836,7 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
           cacheSource: L1
@@ -3511,7 +3511,7 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
           cacheSource: L1
@@ -3521,8 +3521,8 @@ components:
           powerboostFixed: 1
           powerboostWarzone: 1
           flag: flag
-          referent: true
           topWarzone: true
+          referent: true
           fhomeCoord:
             x: 5
             z: 5
@@ -3657,8 +3657,8 @@ components:
           powerboostFixed: 1
           powerboostWarzone: 1
           flag: flag
-          referent: true
           topWarzone: true
+          referent: true
           fhomeCoord:
             x: 5
             z: 5
@@ -3909,8 +3909,8 @@ components:
         powerboostFixed: 1
         powerboostWarzone: 1
         flag: flag
-        referent: true
         topWarzone: true
+        referent: true
         fhomeCoord:
           x: 5
           z: 5
@@ -4172,15 +4172,15 @@ components:
           $ref: "#/components/schemas/CountryActionsEntry"
         settings:
           $ref: "#/components/schemas/CountrySettingsEntry"
-        empire:
-          type: boolean
-        referent:
-          type: boolean
         topWarzone:
           type: boolean
         restrictAssault:
           type: boolean
         restrictMissile:
+          type: boolean
+        empire:
+          type: boolean
+        referent:
           type: boolean
       type: object
     CountrySettingsEntry:
@@ -4422,7 +4422,7 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
           cacheSource: L1
@@ -4569,7 +4569,7 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.xz
+          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
           cacheSource: L1

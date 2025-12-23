@@ -40,11 +40,11 @@ Name | Type | Description | Notes
 **bank** | [**CountryBankEntry**](CountryBankEntry.md) |  | [optional] [default to undefined]
 **actions** | [**CountryActionsEntry**](CountryActionsEntry.md) |  | [optional] [default to undefined]
 **settings** | [**CountrySettingsEntry**](CountrySettingsEntry.md) |  | [optional] [default to undefined]
-**empire** | **boolean** |  | [optional] [default to undefined]
-**referent** | **boolean** |  | [optional] [default to undefined]
 **topWarzone** | **boolean** |  | [optional] [default to undefined]
 **restrictAssault** | **boolean** |  | [optional] [default to undefined]
 **restrictMissile** | **boolean** |  | [optional] [default to undefined]
+**empire** | **boolean** |  | [optional] [default to undefined]
+**referent** | **boolean** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -86,11 +86,11 @@ const instance: CountryEntry = {
     bank,
     actions,
     settings,
-    empire,
-    referent,
     topWarzone,
     restrictAssault,
     restrictMissile,
+    empire,
+    referent,
 };
 ```
 

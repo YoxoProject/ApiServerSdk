@@ -30,15 +30,13 @@ class Metadata(BaseModel):
     server: Optional[StrictStr] = Field(default=None, description="Le serveur duquel est issue les données. Dans le cas de données issue d'un évènement interserveur, le serveur sera 'event'")
     timestamp: Optional[StrictInt] = Field(default=None, description="Timestamp auquel les données ont été scrap. Le timestamp est ici exprimé en milliseconde et correspond au nombre de milliseconde écoulées depuis le 1er janvier 1970, minuit UTC")
     var_date: Optional[StrictStr] = Field(default=None, description="La date auquel les données ont été scrap, au format ISO", alias="date")
-    source: Optional[StrictStr] = Field(default=None, description="Le chemin d'accès du fichier dans le bucket S3")
-    cache_source: Optional[StrictStr] = Field(default=None, description="La source des données: S3 (sans cache), L1 (cache Caffeine, en mémoire), L2 (cache Redis)", alias="cacheSource")
     execution_time_ms: Optional[StrictInt] = Field(default=None, description="Le temps d'exécution de la requête, en millisecondes", alias="executionTimeMs")
     total_count: Optional[StrictInt] = Field(default=None, description="Si filtrage possible, nombre d'éléments avant le filtrage", alias="totalCount")
     filtered_count: Optional[StrictInt] = Field(default=None, description="Si filtrage possible, nombre d'éléments après le filtrage", alias="filteredCount")
     current_page: Optional[StrictInt] = Field(default=None, description="Si pagination, le page actuel", alias="currentPage")
     page_size: Optional[StrictInt] = Field(default=None, description="Si pagination, le nombre d'éléments par pages", alias="pageSize")
     total_pages: Optional[StrictInt] = Field(default=None, description="Si pagination, le nombre total de pages. La première page est la page 1", alias="totalPages")
-    __properties: ClassVar[List[str]] = ["dataType", "server", "timestamp", "date", "source", "cacheSource", "executionTimeMs", "totalCount", "filteredCount", "currentPage", "pageSize", "totalPages"]
+    __properties: ClassVar[List[str]] = ["dataType", "server", "timestamp", "date", "executionTimeMs", "totalCount", "filteredCount", "currentPage", "pageSize", "totalPages"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -95,8 +93,6 @@ class Metadata(BaseModel):
             "server": obj.get("server"),
             "timestamp": obj.get("timestamp"),
             "date": obj.get("date"),
-            "source": obj.get("source"),
-            "cacheSource": obj.get("cacheSource"),
             "executionTimeMs": obj.get("executionTimeMs"),
             "totalCount": obj.get("totalCount"),
             "filteredCount": obj.get("filteredCount"),

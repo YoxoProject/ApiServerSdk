@@ -70,16 +70,6 @@ public class Metadata {
   @javax.annotation.Nullable
   private String date;
 
-  public static final String SERIALIZED_NAME_SOURCE = "source";
-  @SerializedName(SERIALIZED_NAME_SOURCE)
-  @javax.annotation.Nullable
-  private String source;
-
-  public static final String SERIALIZED_NAME_CACHE_SOURCE = "cacheSource";
-  @SerializedName(SERIALIZED_NAME_CACHE_SOURCE)
-  @javax.annotation.Nullable
-  private String cacheSource;
-
   public static final String SERIALIZED_NAME_EXECUTION_TIME_MS = "executionTimeMs";
   @SerializedName(SERIALIZED_NAME_EXECUTION_TIME_MS)
   @javax.annotation.Nullable
@@ -186,44 +176,6 @@ public class Metadata {
 
   public void setDate(@javax.annotation.Nullable String date) {
     this.date = date;
-  }
-
-
-  public Metadata source(@javax.annotation.Nullable String source) {
-    this.source = source;
-    return this;
-  }
-
-  /**
-   * Le chemin d&#39;accès du fichier dans le bucket S3
-   * @return source
-   */
-  @javax.annotation.Nullable
-  public String getSource() {
-    return source;
-  }
-
-  public void setSource(@javax.annotation.Nullable String source) {
-    this.source = source;
-  }
-
-
-  public Metadata cacheSource(@javax.annotation.Nullable String cacheSource) {
-    this.cacheSource = cacheSource;
-    return this;
-  }
-
-  /**
-   * La source des données: S3 (sans cache), L1 (cache Caffeine, en mémoire), L2 (cache Redis)
-   * @return cacheSource
-   */
-  @javax.annotation.Nullable
-  public String getCacheSource() {
-    return cacheSource;
-  }
-
-  public void setCacheSource(@javax.annotation.Nullable String cacheSource) {
-    this.cacheSource = cacheSource;
   }
 
 
@@ -355,8 +307,6 @@ public class Metadata {
         Objects.equals(this.server, metadata.server) &&
         Objects.equals(this.timestamp, metadata.timestamp) &&
         Objects.equals(this.date, metadata.date) &&
-        Objects.equals(this.source, metadata.source) &&
-        Objects.equals(this.cacheSource, metadata.cacheSource) &&
         Objects.equals(this.executionTimeMs, metadata.executionTimeMs) &&
         Objects.equals(this.totalCount, metadata.totalCount) &&
         Objects.equals(this.filteredCount, metadata.filteredCount) &&
@@ -367,7 +317,7 @@ public class Metadata {
 
   @Override
   public int hashCode() {
-    return Objects.hash(dataType, server, timestamp, date, source, cacheSource, executionTimeMs, totalCount, filteredCount, currentPage, pageSize, totalPages);
+    return Objects.hash(dataType, server, timestamp, date, executionTimeMs, totalCount, filteredCount, currentPage, pageSize, totalPages);
   }
 
   @Override
@@ -378,8 +328,6 @@ public class Metadata {
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
-    sb.append("    source: ").append(toIndentedString(source)).append("\n");
-    sb.append("    cacheSource: ").append(toIndentedString(cacheSource)).append("\n");
     sb.append("    executionTimeMs: ").append(toIndentedString(executionTimeMs)).append("\n");
     sb.append("    totalCount: ").append(toIndentedString(totalCount)).append("\n");
     sb.append("    filteredCount: ").append(toIndentedString(filteredCount)).append("\n");
@@ -407,7 +355,7 @@ public class Metadata {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("dataType", "server", "timestamp", "date", "source", "cacheSource", "executionTimeMs", "totalCount", "filteredCount", "currentPage", "pageSize", "totalPages"));
+    openapiFields = new HashSet<String>(Arrays.asList("dataType", "server", "timestamp", "date", "executionTimeMs", "totalCount", "filteredCount", "currentPage", "pageSize", "totalPages"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -442,12 +390,6 @@ public class Metadata {
       }
       if ((jsonObj.get("date") != null && !jsonObj.get("date").isJsonNull()) && !jsonObj.get("date").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("date").toString()));
-      }
-      if ((jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) && !jsonObj.get("source").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source").toString()));
-      }
-      if ((jsonObj.get("cacheSource") != null && !jsonObj.get("cacheSource").isJsonNull()) && !jsonObj.get("cacheSource").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `cacheSource` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cacheSource").toString()));
       }
   }
 

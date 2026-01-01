@@ -157,10 +157,10 @@ export interface CountryEntry {
     'bank'?: CountryBankEntry;
     'actions'?: CountryActionsEntry;
     'settings'?: CountrySettingsEntry;
-    'topWarzone'?: boolean;
+    'referent'?: boolean;
     'restrictAssault'?: boolean;
     'restrictMissile'?: boolean;
+    'topWarzone'?: boolean;
     'empire'?: boolean;
-    'referent'?: boolean;
 }
 

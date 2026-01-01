@@ -42,11 +42,11 @@ Données d'un pays
 |**bank** | [**CountryBankEntry**](CountryBankEntry.md) |  |  [optional] |
 |**actions** | [**CountryActionsEntry**](CountryActionsEntry.md) |  |  [optional] |
 |**settings** | [**CountrySettingsEntry**](CountrySettingsEntry.md) |  |  [optional] |
-|**topWarzone** | **Boolean** |  |  [optional] |
+|**referent** | **Boolean** |  |  [optional] |
 |**restrictAssault** | **Boolean** |  |  [optional] |
 |**restrictMissile** | **Boolean** |  |  [optional] |
+|**topWarzone** | **Boolean** |  |  [optional] |
 |**empire** | **Boolean** |  |  [optional] |
-|**referent** | **Boolean** |  |  [optional] |
 
 
 

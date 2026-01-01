@@ -32,14 +32,6 @@ export interface Metadata {
      */
     'date'?: string;
     /**
-     * Le chemin d\'accès du fichier dans le bucket S3
-     */
-    'source'?: string;
-    /**
-     * La source des données: S3 (sans cache), L1 (cache Caffeine, en mémoire), L2 (cache Redis)
-     */
-    'cacheSource'?: string;
-    /**
      * Le temps d\'exécution de la requête, en millisecondes
      */
     'executionTimeMs'?: number;

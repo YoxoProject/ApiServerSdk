@@ -9,8 +9,6 @@ Name | Type | Description | Notes
 **server** | **str** | Le serveur duquel est issue les données. Dans le cas de données issue d&#39;un évènement interserveur, le serveur sera &#39;event&#39; | [optional] 
 **timestamp** | **int** | Timestamp auquel les données ont été scrap. Le timestamp est ici exprimé en milliseconde et correspond au nombre de milliseconde écoulées depuis le 1er janvier 1970, minuit UTC | [optional] 
 **var_date** | **str** | La date auquel les données ont été scrap, au format ISO | [optional] 
-**source** | **str** | Le chemin d&#39;accès du fichier dans le bucket S3 | [optional] 
-**cache_source** | **str** | La source des données: S3 (sans cache), L1 (cache Caffeine, en mémoire), L2 (cache Redis) | [optional] 
 **execution_time_ms** | **int** | Le temps d&#39;exécution de la requête, en millisecondes | [optional] 
 **total_count** | **int** | Si filtrage possible, nombre d&#39;éléments avant le filtrage | [optional] 
 **filtered_count** | **int** | Si filtrage possible, nombre d&#39;éléments après le filtrage | [optional] 

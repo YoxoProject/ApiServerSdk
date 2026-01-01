@@ -1530,16 +1530,6 @@
             "description": "La date auquel les données ont été scrap, au format ISO",
             "example": "2025-10-21"
           },
-          "source": {
-            "type": "string",
-            "description": "Le chemin d'accès du fichier dans le bucket S3",
-            "example": "s3://yoxo-history/example/2025-10-21_red_example.json.zst"
-          },
-          "cacheSource": {
-            "type": "string",
-            "description": "La source des données: S3 (sans cache), L1 (cache Caffeine, en mémoire), L2 (cache Redis)",
-            "example": "L1"
-          },
           "executionTimeMs": {
             "type": "integer",
             "description": "Le temps d'exécution de la requête, en millisecondes",
@@ -3221,7 +3211,7 @@
           "settings": {
             "$ref": "#/components/schemas/CountrySettingsEntry"
           },
-          "topWarzone": {
+          "referent": {
             "type": "boolean"
           },
           "restrictAssault": {
@@ -3230,10 +3220,10 @@
           "restrictMissile": {
             "type": "boolean"
           },
-          "empire": {
+          "topWarzone": {
             "type": "boolean"
           },
-          "referent": {
+          "empire": {
             "type": "boolean"
           }
         },

@@ -1570,10 +1570,8 @@ components:
         executionTimeMs: 210
         totalPages: 3
         pageSize: 20
-        source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
         totalCount: 50
         currentPage: 1
-        cacheSource: L1
         timestamp: 1760939974755
       properties:
         dataType:
@@ -1595,15 +1593,6 @@ components:
         date:
           description: "La date auquel les données ont été scrap, au format ISO"
           example: 2025-10-21
-          type: string
-        source:
-          description: Le chemin d'accès du fichier dans le bucket S3
-          example: s3://yoxo-history/example/2025-10-21_red_example.json.zst
-          type: string
-        cacheSource:
-          description: "La source des données: S3 (sans cache), L1 (cache Caffeine,\
-            \ en mémoire), L2 (cache Redis)"
-          example: L1
           type: string
         executionTimeMs:
           description: "Le temps d'exécution de la requête, en millisecondes"
@@ -1647,10 +1636,8 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
-          cacheSource: L1
           timestamp: 1760939974755
         data:
         - reason: KILL_WILDERNESS
@@ -2221,10 +2208,8 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
-          cacheSource: L1
           timestamp: 1760939974755
         data:
         - minerPosition: 5
@@ -2445,10 +2430,8 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
-          cacheSource: L1
           timestamp: 1760939974755
         data:
         - country: Lituanie
@@ -2499,10 +2482,8 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
-          cacheSource: L1
           timestamp: 1760939974755
         data:
         - country: France
@@ -2576,10 +2557,8 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
-          cacheSource: L1
           timestamp: 1760939974755
         data:
         - server: red
@@ -2655,10 +2634,8 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
-          cacheSource: L1
           timestamp: 1760939974755
         data:
         - server: orange
@@ -2734,10 +2711,8 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
-          cacheSource: L1
           timestamp: 1760939974755
         data:
         - demonsKilled: 450
@@ -2836,10 +2811,8 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
-          cacheSource: L1
           timestamp: 1760939974755
         data:
         - owner: Romaindu35
@@ -3511,18 +3484,16 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
-          cacheSource: L1
           timestamp: 1760939974755
         data:
         - leader: leader
           powerboostFixed: 1
           powerboostWarzone: 1
           flag: flag
-          topWarzone: true
           referent: true
+          topWarzone: true
           fhomeCoord:
             x: 5
             z: 5
@@ -3657,8 +3628,8 @@ components:
           powerboostFixed: 1
           powerboostWarzone: 1
           flag: flag
-          topWarzone: true
           referent: true
+          topWarzone: true
           fhomeCoord:
             x: 5
             z: 5
@@ -3909,8 +3880,8 @@ components:
         powerboostFixed: 1
         powerboostWarzone: 1
         flag: flag
-        topWarzone: true
         referent: true
+        topWarzone: true
         fhomeCoord:
           x: 5
           z: 5
@@ -4172,15 +4143,15 @@ components:
           $ref: "#/components/schemas/CountryActionsEntry"
         settings:
           $ref: "#/components/schemas/CountrySettingsEntry"
-        topWarzone:
+        referent:
           type: boolean
         restrictAssault:
           type: boolean
         restrictMissile:
           type: boolean
-        empire:
+        topWarzone:
           type: boolean
-        referent:
+        empire:
           type: boolean
       type: object
     CountrySettingsEntry:
@@ -4422,10 +4393,8 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
-          cacheSource: L1
           timestamp: 1760939974755
         data:
           key:
@@ -4569,10 +4538,8 @@ components:
           executionTimeMs: 210
           totalPages: 3
           pageSize: 20
-          source: s3://yoxo-history/example/2025-10-21_red_example.json.zst
           totalCount: 50
           currentPage: 1
-          cacheSource: L1
           timestamp: 1760939974755
         data:
           salesTexture: salesTexture

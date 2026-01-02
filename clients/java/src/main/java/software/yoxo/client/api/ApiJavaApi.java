@@ -86,8 +86,8 @@ public class ApiJavaApi {
 
     /**
      * Build call for getCerealGlobalMarket
-     * @param date La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd) (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -163,8 +163,8 @@ public class ApiJavaApi {
     /**
      * Cereal Global Market
      * Permet d&#39;obtenir les données du marché global des céréales pour un serveur spécifique à une date donnée.  Ces données incluent : - Les graphiques de l&#39;évolution des prix, des ventes et des stocks - L&#39;historique des prix, ventes et stocks par type de céréale - Les prix actuels des céréales  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Note :** Ces données représentent un objet unique (pas une liste), donc le filtrage et la pagination ne sont pas applicables. 
-     * @param date La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd) (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @return CerealGlobalMarket
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -182,8 +182,8 @@ public class ApiJavaApi {
     /**
      * Cereal Global Market
      * Permet d&#39;obtenir les données du marché global des céréales pour un serveur spécifique à une date donnée.  Ces données incluent : - Les graphiques de l&#39;évolution des prix, des ventes et des stocks - L&#39;historique des prix, ventes et stocks par type de céréale - Les prix actuels des céréales  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Note :** Ces données représentent un objet unique (pas une liste), donc le filtrage et la pagination ne sont pas applicables. 
-     * @param date La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd) (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @return ApiResponse&lt;CerealGlobalMarket&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -202,8 +202,8 @@ public class ApiJavaApi {
     /**
      * Cereal Global Market (asynchronously)
      * Permet d&#39;obtenir les données du marché global des céréales pour un serveur spécifique à une date donnée.  Ces données incluent : - Les graphiques de l&#39;évolution des prix, des ventes et des stocks - L&#39;historique des prix, ventes et stocks par type de céréale - Les prix actuels des céréales  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Note :** Ces données représentent un objet unique (pas une liste), donc le filtrage et la pagination ne sont pas applicables. 
-     * @param date La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd) (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -223,8 +223,8 @@ public class ApiJavaApi {
     }
     /**
      * Build call for getCountry
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -300,8 +300,8 @@ public class ApiJavaApi {
     /**
      * Country
      * Permet d&#39;obtenir la liste et les détails complets de tous les pays d&#39;un serveur à une date donnée (aucun filtrage possible). Il est possible de spécifier un pays dans l&#39;URL pour récupérer un pays spécifique.  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @return Country
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -319,8 +319,8 @@ public class ApiJavaApi {
     /**
      * Country
      * Permet d&#39;obtenir la liste et les détails complets de tous les pays d&#39;un serveur à une date donnée (aucun filtrage possible). Il est possible de spécifier un pays dans l&#39;URL pour récupérer un pays spécifique.  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @return ApiResponse&lt;Country&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -339,8 +339,8 @@ public class ApiJavaApi {
     /**
      * Country (asynchronously)
      * Permet d&#39;obtenir la liste et les détails complets de tous les pays d&#39;un serveur à une date donnée (aucun filtrage possible). Il est possible de spécifier un pays dans l&#39;URL pour récupérer un pays spécifique.  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -360,9 +360,9 @@ public class ApiJavaApi {
     }
     /**
      * Build call for getCountry1
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
-     * @param country Nom du pays (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param country Nom du pays (optionnel) (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -444,9 +444,9 @@ public class ApiJavaApi {
     /**
      * Country
      * Permet d&#39;obtenir la liste et les détails complets de tous les pays d&#39;un serveur à une date donnée (aucun filtrage possible). Il est possible de spécifier un pays dans l&#39;URL pour récupérer un pays spécifique.  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
-     * @param country Nom du pays (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param country Nom du pays (optionnel) (required)
      * @return Country
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -464,9 +464,9 @@ public class ApiJavaApi {
     /**
      * Country
      * Permet d&#39;obtenir la liste et les détails complets de tous les pays d&#39;un serveur à une date donnée (aucun filtrage possible). Il est possible de spécifier un pays dans l&#39;URL pour récupérer un pays spécifique.  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
-     * @param country Nom du pays (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param country Nom du pays (optionnel) (required)
      * @return ApiResponse&lt;Country&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -485,9 +485,9 @@ public class ApiJavaApi {
     /**
      * Country (asynchronously)
      * Permet d&#39;obtenir la liste et les détails complets de tous les pays d&#39;un serveur à une date donnée (aucun filtrage possible). Il est possible de spécifier un pays dans l&#39;URL pour récupérer un pays spécifique.  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
-     * @param country Nom du pays (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param country Nom du pays (optionnel) (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -507,9 +507,9 @@ public class ApiJavaApi {
     }
     /**
      * Build call for getEnterprises
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données d&#39;entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
-     * @param enterpriseType Type d&#39;entreprise (optional)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param enterpriseType Type d&#39;entreprise (optionnel) (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -589,9 +589,9 @@ public class ApiJavaApi {
     /**
      * Enterprise
      * Permet d&#39;obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques). Il est possible de filtrer par nom d&#39;entreprise.  **Types d&#39;entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données d&#39;entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
-     * @param enterpriseType Type d&#39;entreprise (optional)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param enterpriseType Type d&#39;entreprise (optionnel) (optional)
      * @return Enterprise
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -609,9 +609,9 @@ public class ApiJavaApi {
     /**
      * Enterprise
      * Permet d&#39;obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques). Il est possible de filtrer par nom d&#39;entreprise.  **Types d&#39;entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données d&#39;entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
-     * @param enterpriseType Type d&#39;entreprise (optional)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param enterpriseType Type d&#39;entreprise (optionnel) (optional)
      * @return ApiResponse&lt;Enterprise&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -630,9 +630,9 @@ public class ApiJavaApi {
     /**
      * Enterprise (asynchronously)
      * Permet d&#39;obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques). Il est possible de filtrer par nom d&#39;entreprise.  **Types d&#39;entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données d&#39;entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
-     * @param enterpriseType Type d&#39;entreprise (optional)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param enterpriseType Type d&#39;entreprise (optionnel) (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -652,10 +652,10 @@ public class ApiJavaApi {
     }
     /**
      * Build call for getEnterprises1
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données d&#39;entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
-     * @param enterpriseName Nom de l&#39;entreprise (required)
-     * @param enterpriseType Type d&#39;entreprise (optional)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param enterpriseName Nom de l&#39;entreprise (optionnel) (required)
+     * @param enterpriseType Type d&#39;entreprise (optionnel) (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -741,10 +741,10 @@ public class ApiJavaApi {
     /**
      * Enterprise
      * Permet d&#39;obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques). Il est possible de filtrer par nom d&#39;entreprise.  **Types d&#39;entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données d&#39;entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
-     * @param enterpriseName Nom de l&#39;entreprise (required)
-     * @param enterpriseType Type d&#39;entreprise (optional)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param enterpriseName Nom de l&#39;entreprise (optionnel) (required)
+     * @param enterpriseType Type d&#39;entreprise (optionnel) (optional)
      * @return Enterprise
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -762,10 +762,10 @@ public class ApiJavaApi {
     /**
      * Enterprise
      * Permet d&#39;obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques). Il est possible de filtrer par nom d&#39;entreprise.  **Types d&#39;entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données d&#39;entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
-     * @param enterpriseName Nom de l&#39;entreprise (required)
-     * @param enterpriseType Type d&#39;entreprise (optional)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param enterpriseName Nom de l&#39;entreprise (optionnel) (required)
+     * @param enterpriseType Type d&#39;entreprise (optionnel) (optional)
      * @return ApiResponse&lt;Enterprise&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -784,10 +784,10 @@ public class ApiJavaApi {
     /**
      * Enterprise (asynchronously)
      * Permet d&#39;obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques). Il est possible de filtrer par nom d&#39;entreprise.  **Types d&#39;entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données d&#39;entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
-     * @param enterpriseName Nom de l&#39;entreprise (required)
-     * @param enterpriseType Type d&#39;entreprise (optional)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param enterpriseName Nom de l&#39;entreprise (optionnel) (required)
+     * @param enterpriseType Type d&#39;entreprise (optionnel) (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -807,7 +807,7 @@ public class ApiJavaApi {
     }
     /**
      * Build call for getHalloween2025
-     * @param date Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -877,7 +877,7 @@ public class ApiJavaApi {
     /**
      * Halloween 2025
      * Permet d&#39;obtenir les statistiques des joueurs du top 50 de l&#39;événement Halloween 2025 \&quot;Demon&#39;s Return\&quot; à une date donnée (aucun filtrage possible). Seuls les joueurs du top 50 interserveur sont accessibles (limitation du serveur).  **À propos de l&#39;événement :** L&#39;événement \&quot;Demon&#39;s Return\&quot; est un événement global interserveur où l&#39;objectif est de collecter des âmes et tuer des démons pour empêcher l&#39;invasion démoniaque. Le classement est identique sur tous les serveurs puisqu&#39;il s&#39;agit d&#39;un événement global à NationsGlory.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 21/10/2025 au 04/11/2025), généralement la nuit.  **Documentation :** Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/halloween-2025-demons-return-1lfsu05/ 
-     * @param date Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @return Halloween2025
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -895,7 +895,7 @@ public class ApiJavaApi {
     /**
      * Halloween 2025
      * Permet d&#39;obtenir les statistiques des joueurs du top 50 de l&#39;événement Halloween 2025 \&quot;Demon&#39;s Return\&quot; à une date donnée (aucun filtrage possible). Seuls les joueurs du top 50 interserveur sont accessibles (limitation du serveur).  **À propos de l&#39;événement :** L&#39;événement \&quot;Demon&#39;s Return\&quot; est un événement global interserveur où l&#39;objectif est de collecter des âmes et tuer des démons pour empêcher l&#39;invasion démoniaque. Le classement est identique sur tous les serveurs puisqu&#39;il s&#39;agit d&#39;un événement global à NationsGlory.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 21/10/2025 au 04/11/2025), généralement la nuit.  **Documentation :** Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/halloween-2025-demons-return-1lfsu05/ 
-     * @param date Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @return ApiResponse&lt;Halloween2025&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -914,7 +914,7 @@ public class ApiJavaApi {
     /**
      * Halloween 2025 (asynchronously)
      * Permet d&#39;obtenir les statistiques des joueurs du top 50 de l&#39;événement Halloween 2025 \&quot;Demon&#39;s Return\&quot; à une date donnée (aucun filtrage possible). Seuls les joueurs du top 50 interserveur sont accessibles (limitation du serveur).  **À propos de l&#39;événement :** L&#39;événement \&quot;Demon&#39;s Return\&quot; est un événement global interserveur où l&#39;objectif est de collecter des âmes et tuer des démons pour empêcher l&#39;invasion démoniaque. Le classement est identique sur tous les serveurs puisqu&#39;il s&#39;agit d&#39;un événement global à NationsGlory.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 21/10/2025 au 04/11/2025), généralement la nuit.  **Documentation :** Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/halloween-2025-demons-return-1lfsu05/ 
-     * @param date Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1051,7 +1051,7 @@ public class ApiJavaApi {
     }
     /**
      * Build call for getNoelMegagift2025
-     * @param date Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1120,8 +1120,8 @@ public class ApiJavaApi {
 
     /**
      * Noël Megagift 2025
-     * Permet d&#39;obtenir les données des tirages du Mega Cadeau de l&#39;événement de Noël 2025.  **À propos de l&#39;événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l&#39;événement :** Du 14/12/2025 au 06/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
-     * @param date Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+     * Permet d&#39;obtenir les données des tirages du Mega Cadeau de l&#39;événement de Noël 2025.  **À propos de l&#39;événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l&#39;événement :** Du 14/12/2025 au 15/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
+     * @param date Date (yyyy-MM-dd) (required)
      * @return NoelMegagift2025
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1138,8 +1138,8 @@ public class ApiJavaApi {
 
     /**
      * Noël Megagift 2025
-     * Permet d&#39;obtenir les données des tirages du Mega Cadeau de l&#39;événement de Noël 2025.  **À propos de l&#39;événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l&#39;événement :** Du 14/12/2025 au 06/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
-     * @param date Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+     * Permet d&#39;obtenir les données des tirages du Mega Cadeau de l&#39;événement de Noël 2025.  **À propos de l&#39;événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l&#39;événement :** Du 14/12/2025 au 15/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
+     * @param date Date (yyyy-MM-dd) (required)
      * @return ApiResponse&lt;NoelMegagift2025&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1157,8 +1157,8 @@ public class ApiJavaApi {
 
     /**
      * Noël Megagift 2025 (asynchronously)
-     * Permet d&#39;obtenir les données des tirages du Mega Cadeau de l&#39;événement de Noël 2025.  **À propos de l&#39;événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l&#39;événement :** Du 14/12/2025 au 06/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
-     * @param date Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+     * Permet d&#39;obtenir les données des tirages du Mega Cadeau de l&#39;événement de Noël 2025.  **À propos de l&#39;événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l&#39;événement :** Du 14/12/2025 au 15/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
+     * @param date Date (yyyy-MM-dd) (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1178,8 +1178,8 @@ public class ApiJavaApi {
     }
     /**
      * Build call for getPlayerList
-     * @param date La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1255,8 +1255,8 @@ public class ApiJavaApi {
     /**
      * Player List
      * Permet d&#39;obtenir la liste des joueurs s&#39;étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (aucun filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
-     * @param date La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @return PlayerList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1274,8 +1274,8 @@ public class ApiJavaApi {
     /**
      * Player List
      * Permet d&#39;obtenir la liste des joueurs s&#39;étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (aucun filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
-     * @param date La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @return ApiResponse&lt;PlayerList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1294,8 +1294,8 @@ public class ApiJavaApi {
     /**
      * Player List (asynchronously)
      * Permet d&#39;obtenir la liste des joueurs s&#39;étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (aucun filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
-     * @param date La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1315,7 +1315,7 @@ public class ApiJavaApi {
     }
     /**
      * Build call for getResearchConfig
-     * @param date Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1385,7 +1385,7 @@ public class ApiJavaApi {
     /**
      * Research Config
      * Permet d&#39;obtenir la configuration globale de tous les domaines de recherche disponibles dans NationsGlory. Cette configuration est identique pour tous les serveurs et définit les niveaux, conditions et récompenses.  **Contenu de la configuration :** - Noms et descriptions des domaines de recherche - Niveaux maximum par domaine - Conditions requises par niveau - Récompenses obtenues par niveau - Durées de recherche  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
-     * @param date Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @return ResearchConfig
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1403,7 +1403,7 @@ public class ApiJavaApi {
     /**
      * Research Config
      * Permet d&#39;obtenir la configuration globale de tous les domaines de recherche disponibles dans NationsGlory. Cette configuration est identique pour tous les serveurs et définit les niveaux, conditions et récompenses.  **Contenu de la configuration :** - Noms et descriptions des domaines de recherche - Niveaux maximum par domaine - Conditions requises par niveau - Récompenses obtenues par niveau - Durées de recherche  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
-     * @param date Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @return ApiResponse&lt;ResearchConfig&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1422,7 +1422,7 @@ public class ApiJavaApi {
     /**
      * Research Config (asynchronously)
      * Permet d&#39;obtenir la configuration globale de tous les domaines de recherche disponibles dans NationsGlory. Cette configuration est identique pour tous les serveurs et définit les niveaux, conditions et récompenses.  **Contenu de la configuration :** - Noms et descriptions des domaines de recherche - Niveaux maximum par domaine - Conditions requises par niveau - Récompenses obtenues par niveau - Durées de recherche  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
-     * @param date Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1442,8 +1442,8 @@ public class ApiJavaApi {
     }
     /**
      * Build call for getResearchServer
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de R&amp;D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1519,8 +1519,8 @@ public class ApiJavaApi {
     /**
      * Research Server
      * Permet d&#39;obtenir les niveaux de recherche actuels de tous les pays d&#39;un serveur à une date donnée (sans filtrage).  **Données exposées :** - Niveaux actuels de recherche par domaine pour chaque pays - Dernière recherche complétée par chaque pays - Valeurs actuelles des conditions de recherche  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de R&amp;D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @return ResearchServer
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1538,8 +1538,8 @@ public class ApiJavaApi {
     /**
      * Research Server
      * Permet d&#39;obtenir les niveaux de recherche actuels de tous les pays d&#39;un serveur à une date donnée (sans filtrage).  **Données exposées :** - Niveaux actuels de recherche par domaine pour chaque pays - Dernière recherche complétée par chaque pays - Valeurs actuelles des conditions de recherche  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de R&amp;D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @return ApiResponse&lt;ResearchServer&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1558,8 +1558,8 @@ public class ApiJavaApi {
     /**
      * Research Server (asynchronously)
      * Permet d&#39;obtenir les niveaux de recherche actuels de tous les pays d&#39;un serveur à une date donnée (sans filtrage).  **Données exposées :** - Niveaux actuels de recherche par domaine pour chaque pays - Dernière recherche complétée par chaque pays - Valeurs actuelles des conditions de recherche  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de R&amp;D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1579,8 +1579,8 @@ public class ApiJavaApi {
     }
     /**
      * Build call for getSkill
-     * @param date La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (red, blue...) (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1656,8 +1656,8 @@ public class ApiJavaApi {
     /**
      * Skill
      * Permet d&#39;obtenir les compétences des joueurs présents dans au moins 1 top 50 compétences sur un serveur à une date donnée (aucun filtrage possible). Seuls les joueurs figurant dans le top 50 d&#39;au moins une compétence sur le serveur sont inclus pour éviter de surcharger les serveurs.  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Documentation :** Plus d&#39;informations sur les compétences/skills : https://wiki.nationsglory.fr/fr/article/les-competences-java-1shixp7/ 
-     * @param date La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (red, blue...) (required)
      * @return Skill
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1675,8 +1675,8 @@ public class ApiJavaApi {
     /**
      * Skill
      * Permet d&#39;obtenir les compétences des joueurs présents dans au moins 1 top 50 compétences sur un serveur à une date donnée (aucun filtrage possible). Seuls les joueurs figurant dans le top 50 d&#39;au moins une compétence sur le serveur sont inclus pour éviter de surcharger les serveurs.  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Documentation :** Plus d&#39;informations sur les compétences/skills : https://wiki.nationsglory.fr/fr/article/les-competences-java-1shixp7/ 
-     * @param date La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (red, blue...) (required)
      * @return ApiResponse&lt;Skill&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1695,8 +1695,8 @@ public class ApiJavaApi {
     /**
      * Skill (asynchronously)
      * Permet d&#39;obtenir les compétences des joueurs présents dans au moins 1 top 50 compétences sur un serveur à une date donnée (aucun filtrage possible). Seuls les joueurs figurant dans le top 50 d&#39;au moins une compétence sur le serveur sont inclus pour éviter de surcharger les serveurs.  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Documentation :** Plus d&#39;informations sur les compétences/skills : https://wiki.nationsglory.fr/fr/article/les-competences-java-1shixp7/ 
-     * @param date La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (red, blue...) (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1716,8 +1716,8 @@ public class ApiJavaApi {
     }
     /**
      * Build call for getWar
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1793,8 +1793,8 @@ public class ApiJavaApi {
     /**
      * War
      * Permet d&#39;obtenir la liste des guerres (en cours ou terminées) d&#39;un serveur à une date donnée. Il est possible de spécifier un warId dans l&#39;URL pour récupérer une guerre spécifique.  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @return War
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1812,8 +1812,8 @@ public class ApiJavaApi {
     /**
      * War
      * Permet d&#39;obtenir la liste des guerres (en cours ou terminées) d&#39;un serveur à une date donnée. Il est possible de spécifier un warId dans l&#39;URL pour récupérer une guerre spécifique.  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @return ApiResponse&lt;War&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1832,8 +1832,8 @@ public class ApiJavaApi {
     /**
      * War (asynchronously)
      * Permet d&#39;obtenir la liste des guerres (en cours ou terminées) d&#39;un serveur à une date donnée. Il est possible de spécifier un warId dans l&#39;URL pour récupérer une guerre spécifique.  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1853,9 +1853,9 @@ public class ApiJavaApi {
     }
     /**
      * Build call for getWar1
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
-     * @param warId Identifiant de la guerre (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param warId ID de la guerre (optionnel) (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1937,9 +1937,9 @@ public class ApiJavaApi {
     /**
      * War
      * Permet d&#39;obtenir la liste des guerres (en cours ou terminées) d&#39;un serveur à une date donnée. Il est possible de spécifier un warId dans l&#39;URL pour récupérer une guerre spécifique.  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
-     * @param warId Identifiant de la guerre (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param warId ID de la guerre (optionnel) (required)
      * @return War
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1957,9 +1957,9 @@ public class ApiJavaApi {
     /**
      * War
      * Permet d&#39;obtenir la liste des guerres (en cours ou terminées) d&#39;un serveur à une date donnée. Il est possible de spécifier un warId dans l&#39;URL pour récupérer une guerre spécifique.  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
-     * @param warId Identifiant de la guerre (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param warId ID de la guerre (optionnel) (required)
      * @return ApiResponse&lt;War&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1978,9 +1978,9 @@ public class ApiJavaApi {
     /**
      * War (asynchronously)
      * Permet d&#39;obtenir la liste des guerres (en cours ou terminées) d&#39;un serveur à une date donnée. Il est possible de spécifier un warId dans l&#39;URL pour récupérer une guerre spécifique.  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
-     * @param warId Identifiant de la guerre (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param warId ID de la guerre (optionnel) (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2000,8 +2000,8 @@ public class ApiJavaApi {
     }
     /**
      * Build call for postCountry
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2079,8 +2079,8 @@ public class ApiJavaApi {
     /**
      * Country
      * Permet d&#39;obtenir la liste et les détails complets de tous les pays d&#39;un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @return Country
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2099,8 +2099,8 @@ public class ApiJavaApi {
     /**
      * Country
      * Permet d&#39;obtenir la liste et les détails complets de tous les pays d&#39;un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @return ApiResponse&lt;Country&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2120,8 +2120,8 @@ public class ApiJavaApi {
     /**
      * Country (asynchronously)
      * Permet d&#39;obtenir la liste et les détails complets de tous les pays d&#39;un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2142,8 +2142,8 @@ public class ApiJavaApi {
     }
     /**
      * Build call for postEnterprises
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd) (required)
-     * @param javaServer Serveur NationsGlory (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2221,8 +2221,8 @@ public class ApiJavaApi {
     /**
      * Enterprise
      * Permet d&#39;obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques).  **Types d&#39;entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd) (required)
-     * @param javaServer Serveur NationsGlory (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @return Enterprise
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2241,8 +2241,8 @@ public class ApiJavaApi {
     /**
      * Enterprise
      * Permet d&#39;obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques).  **Types d&#39;entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd) (required)
-     * @param javaServer Serveur NationsGlory (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @return ApiResponse&lt;Enterprise&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2262,8 +2262,8 @@ public class ApiJavaApi {
     /**
      * Enterprise (asynchronously)
      * Permet d&#39;obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques).  **Types d&#39;entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd) (required)
-     * @param javaServer Serveur NationsGlory (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2284,7 +2284,7 @@ public class ApiJavaApi {
     }
     /**
      * Build call for postHalloween2025
-     * @param date Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @param postQueryBody  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2356,7 +2356,7 @@ public class ApiJavaApi {
     /**
      * Halloween 2025
      * Permet d&#39;obtenir les statistiques des joueurs du top 50 de l&#39;événement Halloween 2025 \&quot;Demon&#39;s Return\&quot; à une date donnée (avec filtrage possible). Seuls les joueurs du top 50 interserveur sont disponibles (limitation du serveur).  **À propos de l&#39;événement :** L&#39;événement \&quot;Demon&#39;s Return\&quot; est un événement global interserveur où l&#39;objectif est de collecter des âmes et tuer des démons pour empêcher l&#39;invasion démoniaque. Le classement est identique sur tous les serveurs puisqu&#39;il s&#39;agit d&#39;un événement global à NationsGlory.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 21/10/2025 au 04/11/2025), généralement la nuit.  **Documentation :** Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/halloween-2025-demons-return-1lfsu05/ 
-     * @param date Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @param postQueryBody  (optional)
      * @return Halloween2025
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2375,7 +2375,7 @@ public class ApiJavaApi {
     /**
      * Halloween 2025
      * Permet d&#39;obtenir les statistiques des joueurs du top 50 de l&#39;événement Halloween 2025 \&quot;Demon&#39;s Return\&quot; à une date donnée (avec filtrage possible). Seuls les joueurs du top 50 interserveur sont disponibles (limitation du serveur).  **À propos de l&#39;événement :** L&#39;événement \&quot;Demon&#39;s Return\&quot; est un événement global interserveur où l&#39;objectif est de collecter des âmes et tuer des démons pour empêcher l&#39;invasion démoniaque. Le classement est identique sur tous les serveurs puisqu&#39;il s&#39;agit d&#39;un événement global à NationsGlory.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 21/10/2025 au 04/11/2025), généralement la nuit.  **Documentation :** Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/halloween-2025-demons-return-1lfsu05/ 
-     * @param date Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @param postQueryBody  (optional)
      * @return ApiResponse&lt;Halloween2025&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2395,7 +2395,7 @@ public class ApiJavaApi {
     /**
      * Halloween 2025 (asynchronously)
      * Permet d&#39;obtenir les statistiques des joueurs du top 50 de l&#39;événement Halloween 2025 \&quot;Demon&#39;s Return\&quot; à une date donnée (avec filtrage possible). Seuls les joueurs du top 50 interserveur sont disponibles (limitation du serveur).  **À propos de l&#39;événement :** L&#39;événement \&quot;Demon&#39;s Return\&quot; est un événement global interserveur où l&#39;objectif est de collecter des âmes et tuer des démons pour empêcher l&#39;invasion démoniaque. Le classement est identique sur tous les serveurs puisqu&#39;il s&#39;agit d&#39;un événement global à NationsGlory.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 21/10/2025 au 04/11/2025), généralement la nuit.  **Documentation :** Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/halloween-2025-demons-return-1lfsu05/ 
-     * @param date Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @param postQueryBody  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2538,7 +2538,7 @@ public class ApiJavaApi {
     }
     /**
      * Build call for postNoelMegagift2025
-     * @param date Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @param postQueryBody  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2610,7 +2610,7 @@ public class ApiJavaApi {
     /**
      * Noël Megagift 2025
      * Permet d&#39;obtenir les données des tirages du Mega Cadeau de l&#39;événement de Noël 2025 (filtrage RSQL possible).  **À propos de l&#39;événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l&#39;événement :** Du 14/12/2025 au 06/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
-     * @param date Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @param postQueryBody  (optional)
      * @return NoelMegagift2025
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2629,7 +2629,7 @@ public class ApiJavaApi {
     /**
      * Noël Megagift 2025
      * Permet d&#39;obtenir les données des tirages du Mega Cadeau de l&#39;événement de Noël 2025 (filtrage RSQL possible).  **À propos de l&#39;événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l&#39;événement :** Du 14/12/2025 au 06/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
-     * @param date Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @param postQueryBody  (optional)
      * @return ApiResponse&lt;NoelMegagift2025&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2649,7 +2649,7 @@ public class ApiJavaApi {
     /**
      * Noël Megagift 2025 (asynchronously)
      * Permet d&#39;obtenir les données des tirages du Mega Cadeau de l&#39;événement de Noël 2025 (filtrage RSQL possible).  **À propos de l&#39;événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l&#39;événement :** Du 14/12/2025 au 06/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
-     * @param date Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+     * @param date Date (yyyy-MM-dd) (required)
      * @param postQueryBody  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2670,8 +2670,8 @@ public class ApiJavaApi {
     }
     /**
      * Build call for postPlayerList
-     * @param date La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2749,8 +2749,8 @@ public class ApiJavaApi {
     /**
      * Player List
      * Permet d&#39;obtenir la liste des joueurs s&#39;étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (avec filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
-     * @param date La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @return PlayerList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2769,8 +2769,8 @@ public class ApiJavaApi {
     /**
      * Player List
      * Permet d&#39;obtenir la liste des joueurs s&#39;étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (avec filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
-     * @param date La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @return ApiResponse&lt;PlayerList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2790,8 +2790,8 @@ public class ApiJavaApi {
     /**
      * Player List (asynchronously)
      * Permet d&#39;obtenir la liste des joueurs s&#39;étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (avec filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
-     * @param date La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2812,8 +2812,8 @@ public class ApiJavaApi {
     }
     /**
      * Build call for postResearchServer
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de R&amp;D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2891,8 +2891,8 @@ public class ApiJavaApi {
     /**
      * Research Server
      * Permet d&#39;obtenir les niveaux de recherche actuels de tous les pays d&#39;un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Niveaux actuels de recherche par domaine pour chaque pays - Dernière recherche complétée par chaque pays - Valeurs actuelles des conditions de recherche  **Exemples de filtres RSQL :** - &#x60;country&#x3D;&#x3D;Papouasie&#x60; - Pays nommé exactement \&quot;Papouasie\&quot; - &#x60;country&#x3D;&#x3D;*Terre*&#x60; - Pays dont le nom contient \&quot;Terre\&quot; - &#x60;lastResearch.level&gt;3&#x60; - Pays dont la dernière recherche a atteint un niveau &gt; 3 - &#x60;lastResearch.domain&#x3D;&#x3D;militaire&#x60; - Pays dont la dernière recherche était dans le domaine militaire - &#x60;lastResearch.timestamp&gt;1735689600000&#x60; - Pays dont la dernière recherche a été complétée après cette date  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de R&amp;D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @return ResearchServer
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2911,8 +2911,8 @@ public class ApiJavaApi {
     /**
      * Research Server
      * Permet d&#39;obtenir les niveaux de recherche actuels de tous les pays d&#39;un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Niveaux actuels de recherche par domaine pour chaque pays - Dernière recherche complétée par chaque pays - Valeurs actuelles des conditions de recherche  **Exemples de filtres RSQL :** - &#x60;country&#x3D;&#x3D;Papouasie&#x60; - Pays nommé exactement \&quot;Papouasie\&quot; - &#x60;country&#x3D;&#x3D;*Terre*&#x60; - Pays dont le nom contient \&quot;Terre\&quot; - &#x60;lastResearch.level&gt;3&#x60; - Pays dont la dernière recherche a atteint un niveau &gt; 3 - &#x60;lastResearch.domain&#x3D;&#x3D;militaire&#x60; - Pays dont la dernière recherche était dans le domaine militaire - &#x60;lastResearch.timestamp&gt;1735689600000&#x60; - Pays dont la dernière recherche a été complétée après cette date  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de R&amp;D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @return ApiResponse&lt;ResearchServer&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2932,8 +2932,8 @@ public class ApiJavaApi {
     /**
      * Research Server (asynchronously)
      * Permet d&#39;obtenir les niveaux de recherche actuels de tous les pays d&#39;un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Niveaux actuels de recherche par domaine pour chaque pays - Dernière recherche complétée par chaque pays - Valeurs actuelles des conditions de recherche  **Exemples de filtres RSQL :** - &#x60;country&#x3D;&#x3D;Papouasie&#x60; - Pays nommé exactement \&quot;Papouasie\&quot; - &#x60;country&#x3D;&#x3D;*Terre*&#x60; - Pays dont le nom contient \&quot;Terre\&quot; - &#x60;lastResearch.level&gt;3&#x60; - Pays dont la dernière recherche a atteint un niveau &gt; 3 - &#x60;lastResearch.domain&#x3D;&#x3D;militaire&#x60; - Pays dont la dernière recherche était dans le domaine militaire - &#x60;lastResearch.timestamp&gt;1735689600000&#x60; - Pays dont la dernière recherche a été complétée après cette date  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de R&amp;D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2954,8 +2954,8 @@ public class ApiJavaApi {
     }
     /**
      * Build call for postSkill
-     * @param date La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3033,8 +3033,8 @@ public class ApiJavaApi {
     /**
      * Skill
      * Permet d&#39;obtenir les compétences des joueurs présents dans au moins 1 top 50 compétences sur un serveur à une date donnée (avec filtrage possible). Seuls les joueurs figurant dans le top 50 d&#39;au moins une compétence sur le serveur sont inclus pour éviter de surcharger les serveurs.  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Documentation :** Plus d&#39;informations sur les compétences/skills : https://wiki.nationsglory.fr/fr/article/les-competences-java-1shixp7/ 
-     * @param date La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @return Skill
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3053,8 +3053,8 @@ public class ApiJavaApi {
     /**
      * Skill
      * Permet d&#39;obtenir les compétences des joueurs présents dans au moins 1 top 50 compétences sur un serveur à une date donnée (avec filtrage possible). Seuls les joueurs figurant dans le top 50 d&#39;au moins une compétence sur le serveur sont inclus pour éviter de surcharger les serveurs.  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Documentation :** Plus d&#39;informations sur les compétences/skills : https://wiki.nationsglory.fr/fr/article/les-competences-java-1shixp7/ 
-     * @param date La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @return ApiResponse&lt;Skill&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3074,8 +3074,8 @@ public class ApiJavaApi {
     /**
      * Skill (asynchronously)
      * Permet d&#39;obtenir les compétences des joueurs présents dans au moins 1 top 50 compétences sur un serveur à une date donnée (avec filtrage possible). Seuls les joueurs figurant dans le top 50 d&#39;au moins une compétence sur le serveur sont inclus pour éviter de surcharger les serveurs.  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Documentation :** Plus d&#39;informations sur les compétences/skills : https://wiki.nationsglory.fr/fr/article/les-competences-java-1shixp7/ 
-     * @param date La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3096,8 +3096,8 @@ public class ApiJavaApi {
     }
     /**
      * Build call for postWar
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3175,8 +3175,8 @@ public class ApiJavaApi {
     /**
      * War
      * Permet d&#39;obtenir la liste des guerres (en cours ou terminées) d&#39;un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @return War
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3195,8 +3195,8 @@ public class ApiJavaApi {
     /**
      * War
      * Permet d&#39;obtenir la liste des guerres (en cours ou terminées) d&#39;un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @return ApiResponse&lt;War&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3216,8 +3216,8 @@ public class ApiJavaApi {
     /**
      * War (asynchronously)
      * Permet d&#39;obtenir la liste des guerres (en cours ou terminées) d&#39;un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
-     * @param date Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
-     * @param javaServer Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
      * @param postQueryBody  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

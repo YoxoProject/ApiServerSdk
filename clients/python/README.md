@@ -102,8 +102,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-10-28' # date | La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd)
-    java_server = 'red' # str | Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    var_date = '2025-10-28' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
 
     try:
         # Cereal Global Market

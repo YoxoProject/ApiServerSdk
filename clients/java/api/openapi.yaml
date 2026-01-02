@@ -38,9 +38,9 @@ servers:
 security:
 - oauth2_client_credentials: []
 tags:
-- description: "Endpoints exposant les données de jeu scrapées depuis les serveurs\
-    \ Java de NationsGlory. Supporte le filtrage RSQL, la pagination et utilise un\
-    \ système de cache multi-niveaux pour optimiser les performances."
+- description: Endpoints exposant les données de jeu scrapées depuis les serveurs
+    Java de NationsGlory. Supporte le filtrage RSQL et la pagination pour s'adapter
+    aux divers usages.
   name: API Java
 paths:
   /v2/java/cereal_global_market/{date}/{javaServer}:
@@ -59,8 +59,7 @@ paths:
         **Note :** Ces données représentent un objet unique (pas une liste), donc le filtrage et la pagination ne sont pas applicables.
       operationId: getCerealGlobalMarket
       parameters:
-      - description: "La date à laquelle on veut récupérer les données du marché des\
-          \ céréales (au format ISO-8601: yyyy-MM-dd)"
+      - description: Date (yyyy-MM-dd)
         example: 2025-10-28
         explode: false
         in: path
@@ -70,9 +69,7 @@ paths:
           format: date
           type: string
         style: simple
-      - description: "Serveur NationsGlory dont on veut les données. Valeurs possibles\
-          \ : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple,\
-          \ green, red, mocha et jade"
+      - description: Serveur
         example: red
         explode: false
         in: path
@@ -127,9 +124,7 @@ paths:
         Les données sont actualisées tous les jours, généralement la nuit.
       operationId: getCountry
       parameters:
-      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
-          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
-          e"
+      - description: Date (yyyy-MM-dd)
         example: 2025-11-24
         explode: false
         in: path
@@ -139,9 +134,7 @@ paths:
           format: date
           type: string
         style: simple
-      - description: "Serveur NationsGlory dont on veut les données des pays. Valeurs\
-          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
-          \ purple, green, red, mocha et jade"
+      - description: Serveur
         example: red
         explode: false
         in: path
@@ -194,9 +187,7 @@ paths:
         Les données sont actualisées tous les jours, généralement la nuit.
       operationId: postCountry
       parameters:
-      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
-          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
-          e"
+      - description: Date (yyyy-MM-dd)
         example: 2025-11-24
         explode: false
         in: path
@@ -206,9 +197,7 @@ paths:
           format: date
           type: string
         style: simple
-      - description: "Serveur NationsGlory dont on veut les données des pays. Valeurs\
-          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
-          \ purple, green, red, mocha et jade"
+      - description: Serveur
         example: red
         explode: false
         in: path
@@ -269,9 +258,7 @@ paths:
         Les données sont actualisées tous les jours, généralement la nuit.
       operationId: getCountry_1
       parameters:
-      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
-          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
-          e"
+      - description: Date (yyyy-MM-dd)
         example: 2025-11-24
         explode: false
         in: path
@@ -281,9 +268,7 @@ paths:
           format: date
           type: string
         style: simple
-      - description: "Serveur NationsGlory dont on veut les données des pays. Valeurs\
-          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
-          \ purple, green, red, mocha et jade"
+      - description: Serveur
         example: red
         explode: false
         in: path
@@ -307,7 +292,7 @@ paths:
           - jade
           type: string
         style: simple
-      - description: Nom du pays
+      - description: Nom du pays (optionnel)
         explode: false
         in: path
         name: country
@@ -351,9 +336,7 @@ paths:
         Les données sont actualisées tous les lundis matin.
       operationId: getEnterprises
       parameters:
-      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
-          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
-          e"
+      - description: Date (yyyy-MM-dd)
         example: 2025-11-24
         explode: false
         in: path
@@ -363,9 +346,7 @@ paths:
           format: date
           type: string
         style: simple
-      - description: "Serveur NationsGlory dont on veut les données d'entreprises.\
-          \ Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral,\
-          \ pink, purple, green, red, mocha et jade"
+      - description: Serveur
         example: red
         explode: false
         in: path
@@ -389,7 +370,7 @@ paths:
           - jade
           type: string
         style: simple
-      - description: Type d'entreprise
+      - description: Type d'entreprise (optionnel)
         explode: true
         in: query
         name: enterpriseType
@@ -447,7 +428,7 @@ paths:
         Les données sont actualisées tous les lundis matin.
       operationId: postEnterprises
       parameters:
-      - description: "Date des données (format ISO-8601: yyyy-MM-dd)"
+      - description: Date (yyyy-MM-dd)
         example: 2025-11-24
         explode: false
         in: path
@@ -457,7 +438,7 @@ paths:
           format: date
           type: string
         style: simple
-      - description: Serveur NationsGlory
+      - description: Serveur
         example: red
         explode: false
         in: path
@@ -523,9 +504,7 @@ paths:
         Les données sont actualisées tous les lundis matin.
       operationId: getEnterprises_1
       parameters:
-      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
-          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
-          e"
+      - description: Date (yyyy-MM-dd)
         example: 2025-11-24
         explode: false
         in: path
@@ -535,9 +514,7 @@ paths:
           format: date
           type: string
         style: simple
-      - description: "Serveur NationsGlory dont on veut les données d'entreprises.\
-          \ Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral,\
-          \ pink, purple, green, red, mocha et jade"
+      - description: Serveur
         example: red
         explode: false
         in: path
@@ -561,7 +538,7 @@ paths:
           - jade
           type: string
         style: simple
-      - description: Nom de l'entreprise
+      - description: Nom de l'entreprise (optionnel)
         explode: false
         in: path
         name: enterpriseName
@@ -569,7 +546,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Type d'entreprise
+      - description: Type d'entreprise (optionnel)
         explode: true
         in: query
         name: enterpriseType
@@ -624,8 +601,7 @@ paths:
         Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/halloween-2025-demons-return-1lfsu05/
       operationId: getHalloween2025
       parameters:
-      - description: "Date des données au format ISO-8601 (yyyy-MM-dd). Événement\
-          \ actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement"
+      - description: Date (yyyy-MM-dd)
         example: 2025-10-28
         explode: false
         in: path
@@ -665,8 +641,7 @@ paths:
         Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/halloween-2025-demons-return-1lfsu05/
       operationId: postHalloween2025
       parameters:
-      - description: "Date des données au format ISO-8601 (yyyy-MM-dd). Événement\
-          \ actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement"
+      - description: Date (yyyy-MM-dd)
         example: 2025-10-28
         explode: false
         in: path
@@ -772,7 +747,7 @@ paths:
         Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau.
         Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime
 
-        **Période de l'événement :** Du 14/12/2025 au 06/01/2026
+        **Période de l'événement :** Du 14/12/2025 au 15/01/2026
 
         **Données exposées :**
         Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus
@@ -782,7 +757,7 @@ paths:
         Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 14/12/2025 au 06/01/2026), généralement la nuit.
       operationId: getNoelMegagift2025
       parameters:
-      - description: "Date de la configuration (format ISO-8601: yyyy-MM-dd)"
+      - description: Date (yyyy-MM-dd)
         example: 2025-11-24
         explode: false
         in: path
@@ -824,7 +799,7 @@ paths:
         Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 14/12/2025 au 06/01/2026), généralement la nuit.
       operationId: postNoelMegagift2025
       parameters:
-      - description: "Date de la configuration (format ISO-8601: yyyy-MM-dd)"
+      - description: Date (yyyy-MM-dd)
         example: 2025-11-24
         explode: false
         in: path
@@ -863,9 +838,7 @@ paths:
         Les données sont actualisées quotidiennement, généralement la nuit.
       operationId: getPlayerList
       parameters:
-      - description: "La date à laquelle on veut récupérer la liste des joueurs (au\
-          \ format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là\
-          , la date antérieure la plus proche sera utilisée"
+      - description: Date (yyyy-MM-dd)
         example: 2025-10-28
         explode: false
         in: path
@@ -875,9 +848,7 @@ paths:
           format: date
           type: string
         style: simple
-      - description: "Serveur NationsGlory dont on veut la liste des joueurs. Valeurs\
-          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
-          \ purple, green, red, mocha et jade"
+      - description: Serveur
         example: red
         explode: false
         in: path
@@ -923,9 +894,7 @@ paths:
         Les données sont actualisées quotidiennement, généralement la nuit.
       operationId: postPlayerList
       parameters:
-      - description: "La date à laquelle on veut récupérer la liste des joueurs (au\
-          \ format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là\
-          , la date antérieure la plus proche sera utilisée"
+      - description: Date (yyyy-MM-dd)
         example: 2025-10-28
         explode: false
         in: path
@@ -935,9 +904,7 @@ paths:
           format: date
           type: string
         style: simple
-      - description: "Serveur NationsGlory dont on veut la liste des joueurs. Valeurs\
-          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
-          \ purple, green, red, mocha et jade"
+      - description: Serveur
         example: red
         explode: false
         in: path
@@ -998,7 +965,7 @@ paths:
         Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit.
       operationId: getResearchConfig
       parameters:
-      - description: "Date de la configuration (format ISO-8601: yyyy-MM-dd)"
+      - description: Date (yyyy-MM-dd)
         example: 2025-11-24
         explode: false
         in: path
@@ -1036,9 +1003,7 @@ paths:
         Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit.
       operationId: getResearchServer
       parameters:
-      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
-          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
-          e"
+      - description: Date (yyyy-MM-dd)
         example: 2025-11-24
         explode: false
         in: path
@@ -1048,9 +1013,7 @@ paths:
           format: date
           type: string
         style: simple
-      - description: "Serveur NationsGlory dont on veut les données de R&D. Valeurs\
-          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
-          \ purple, green, red, mocha et jade"
+      - description: Serveur
         example: red
         explode: false
         in: path
@@ -1108,9 +1071,7 @@ paths:
         Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit.
       operationId: postResearchServer
       parameters:
-      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
-          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
-          e"
+      - description: Date (yyyy-MM-dd)
         example: 2025-11-24
         explode: false
         in: path
@@ -1120,9 +1081,7 @@ paths:
           format: date
           type: string
         style: simple
-      - description: "Serveur NationsGlory dont on veut les données de R&D. Valeurs\
-          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
-          \ purple, green, red, mocha et jade"
+      - description: Serveur
         example: red
         explode: false
         in: path
@@ -1179,9 +1138,7 @@ paths:
         Plus d'informations sur les compétences/skills : https://wiki.nationsglory.fr/fr/article/les-competences-java-1shixp7/
       operationId: getSkill
       parameters:
-      - description: "La date à laquelle on veut récupéré les skills (au format ISO-8601:\
-          \ yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure\
-          \ la plus proche sera utilisée"
+      - description: Date (yyyy-MM-dd)
         example: 2025-10-28
         explode: false
         in: path
@@ -1191,9 +1148,7 @@ paths:
           format: date
           type: string
         style: simple
-      - description: "Serveur NationsGlory dont on veut les skills. Valeurs possibles\
-          \ : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple,\
-          \ green, red, mocha et jade"
+      - description: "Serveur (red, blue...)"
         example: red
         explode: false
         in: path
@@ -1243,9 +1198,7 @@ paths:
         Plus d'informations sur les compétences/skills : https://wiki.nationsglory.fr/fr/article/les-competences-java-1shixp7/
       operationId: postSkill
       parameters:
-      - description: "La date à laquelle on veut récupéré les skills (au format ISO-8601:\
-          \ yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure\
-          \ la plus proche sera utilisée"
+      - description: Date (yyyy-MM-dd)
         example: 2025-10-28
         explode: false
         in: path
@@ -1255,9 +1208,7 @@ paths:
           format: date
           type: string
         style: simple
-      - description: "Serveur NationsGlory dont on veut les skills. Valeurs possibles\
-          \ : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple,\
-          \ green, red, mocha et jade"
+      - description: Serveur
         example: red
         explode: false
         in: path
@@ -1318,9 +1269,7 @@ paths:
         Les données sont actualisées quotidiennement, généralement la nuit.
       operationId: getWar
       parameters:
-      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
-          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
-          e"
+      - description: Date (yyyy-MM-dd)
         example: 2025-11-24
         explode: false
         in: path
@@ -1330,9 +1279,7 @@ paths:
           format: date
           type: string
         style: simple
-      - description: "Serveur NationsGlory dont on veut les données de guerre. Valeurs\
-          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
-          \ purple, green, red, mocha et jade"
+      - description: Serveur
         example: red
         explode: false
         in: path
@@ -1385,9 +1332,7 @@ paths:
         Les données sont actualisées quotidiennement, généralement la nuit.
       operationId: postWar
       parameters:
-      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
-          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
-          e"
+      - description: Date (yyyy-MM-dd)
         example: 2025-11-24
         explode: false
         in: path
@@ -1397,9 +1342,7 @@ paths:
           format: date
           type: string
         style: simple
-      - description: "Serveur NationsGlory dont on veut les données de guerre. Valeurs\
-          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
-          \ purple, green, red, mocha et jade"
+      - description: Serveur
         example: red
         explode: false
         in: path
@@ -1460,9 +1403,7 @@ paths:
         Les données sont actualisées quotidiennement, généralement la nuit.
       operationId: getWar_1
       parameters:
-      - description: "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donné\
-          e n'a été scrap ce jour là, la date antérieure la plus proche sera utilisé\
-          e"
+      - description: Date (yyyy-MM-dd)
         example: 2025-11-24
         explode: false
         in: path
@@ -1472,9 +1413,7 @@ paths:
           format: date
           type: string
         style: simple
-      - description: "Serveur NationsGlory dont on veut les données de guerre. Valeurs\
-          \ possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink,\
-          \ purple, green, red, mocha et jade"
+      - description: Serveur
         example: red
         explode: false
         in: path
@@ -1498,7 +1437,7 @@ paths:
           - jade
           type: string
         style: simple
-      - description: Identifiant de la guerre
+      - description: ID de la guerre (optionnel)
         explode: false
         in: path
         name: warId
@@ -3492,8 +3431,8 @@ components:
           powerboostFixed: 1
           powerboostWarzone: 1
           flag: flag
-          referent: true
           topWarzone: true
+          referent: true
           fhomeCoord:
             x: 5
             z: 5
@@ -3628,8 +3567,8 @@ components:
           powerboostFixed: 1
           powerboostWarzone: 1
           flag: flag
-          referent: true
           topWarzone: true
+          referent: true
           fhomeCoord:
             x: 5
             z: 5
@@ -3880,8 +3819,8 @@ components:
         powerboostFixed: 1
         powerboostWarzone: 1
         flag: flag
-        referent: true
         topWarzone: true
+        referent: true
         fhomeCoord:
           x: 5
           z: 5
@@ -4143,8 +4082,6 @@ components:
           $ref: "#/components/schemas/CountryActionsEntry"
         settings:
           $ref: "#/components/schemas/CountrySettingsEntry"
-        referent:
-          type: boolean
         restrictAssault:
           type: boolean
         restrictMissile:
@@ -4152,6 +4089,8 @@ components:
         topWarzone:
           type: boolean
         empire:
+          type: boolean
+        referent:
           type: boolean
       type: object
     CountrySettingsEntry:

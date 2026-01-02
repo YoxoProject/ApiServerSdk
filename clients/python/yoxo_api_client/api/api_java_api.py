@@ -54,8 +54,8 @@ class APIJavaApi:
     @validate_call
     def get_cereal_global_market(
         self,
-        var_date: Annotated[date, Field(description="La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd)")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -73,9 +73,9 @@ class APIJavaApi:
 
         Permet d'obtenir les données du marché global des céréales pour un serveur spécifique à une date donnée.  Ces données incluent : - Les graphiques de l'évolution des prix, des ventes et des stocks - L'historique des prix, ventes et stocks par type de céréale - Les prix actuels des céréales  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Note :** Ces données représentent un objet unique (pas une liste), donc le filtrage et la pagination ne sont pas applicables. 
 
-        :param var_date: La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd) (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -125,8 +125,8 @@ class APIJavaApi:
     @validate_call
     def get_cereal_global_market_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd)")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -144,9 +144,9 @@ class APIJavaApi:
 
         Permet d'obtenir les données du marché global des céréales pour un serveur spécifique à une date donnée.  Ces données incluent : - Les graphiques de l'évolution des prix, des ventes et des stocks - L'historique des prix, ventes et stocks par type de céréale - Les prix actuels des céréales  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Note :** Ces données représentent un objet unique (pas une liste), donc le filtrage et la pagination ne sont pas applicables. 
 
-        :param var_date: La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd) (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -196,8 +196,8 @@ class APIJavaApi:
     @validate_call
     def get_cereal_global_market_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd)")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -215,9 +215,9 @@ class APIJavaApi:
 
         Permet d'obtenir les données du marché global des céréales pour un serveur spécifique à une date donnée.  Ces données incluent : - Les graphiques de l'évolution des prix, des ventes et des stocks - L'historique des prix, ventes et stocks par type de céréale - Les prix actuels des céréales  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Note :** Ces données représentent un objet unique (pas une liste), donc le filtrage et la pagination ne sont pas applicables. 
 
-        :param var_date: La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd) (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -330,8 +330,8 @@ class APIJavaApi:
     @validate_call
     def get_country(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -349,9 +349,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste et les détails complets de tous les pays d'un serveur à une date donnée (aucun filtrage possible). Il est possible de spécifier un pays dans l'URL pour récupérer un pays spécifique.  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -401,8 +401,8 @@ class APIJavaApi:
     @validate_call
     def get_country_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -420,9 +420,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste et les détails complets de tous les pays d'un serveur à une date donnée (aucun filtrage possible). Il est possible de spécifier un pays dans l'URL pour récupérer un pays spécifique.  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -472,8 +472,8 @@ class APIJavaApi:
     @validate_call
     def get_country_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -491,9 +491,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste et les détails complets de tous les pays d'un serveur à une date donnée (aucun filtrage possible). Il est possible de spécifier un pays dans l'URL pour récupérer un pays spécifique.  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -606,9 +606,9 @@ class APIJavaApi:
     @validate_call
     def get_country1(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
-        country: Annotated[StrictStr, Field(description="Nom du pays")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
+        country: Annotated[StrictStr, Field(description="Nom du pays (optionnel)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -626,11 +626,11 @@ class APIJavaApi:
 
         Permet d'obtenir la liste et les détails complets de tous les pays d'un serveur à une date donnée (aucun filtrage possible). Il est possible de spécifier un pays dans l'URL pour récupérer un pays spécifique.  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
-        :param country: Nom du pays (required)
+        :param country: Nom du pays (optionnel) (required)
         :type country: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -681,9 +681,9 @@ class APIJavaApi:
     @validate_call
     def get_country1_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
-        country: Annotated[StrictStr, Field(description="Nom du pays")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
+        country: Annotated[StrictStr, Field(description="Nom du pays (optionnel)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -701,11 +701,11 @@ class APIJavaApi:
 
         Permet d'obtenir la liste et les détails complets de tous les pays d'un serveur à une date donnée (aucun filtrage possible). Il est possible de spécifier un pays dans l'URL pour récupérer un pays spécifique.  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
-        :param country: Nom du pays (required)
+        :param country: Nom du pays (optionnel) (required)
         :type country: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -756,9 +756,9 @@ class APIJavaApi:
     @validate_call
     def get_country1_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
-        country: Annotated[StrictStr, Field(description="Nom du pays")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
+        country: Annotated[StrictStr, Field(description="Nom du pays (optionnel)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -776,11 +776,11 @@ class APIJavaApi:
 
         Permet d'obtenir la liste et les détails complets de tous les pays d'un serveur à une date donnée (aucun filtrage possible). Il est possible de spécifier un pays dans l'URL pour récupérer un pays spécifique.  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
-        :param country: Nom du pays (required)
+        :param country: Nom du pays (optionnel) (required)
         :type country: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -897,9 +897,9 @@ class APIJavaApi:
     @validate_call
     def get_enterprises(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
-        enterprise_type: Annotated[Optional[StrictStr], Field(description="Type d'entreprise")] = None,
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
+        enterprise_type: Annotated[Optional[StrictStr], Field(description="Type d'entreprise (optionnel)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -917,11 +917,11 @@ class APIJavaApi:
 
         Permet d'obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques). Il est possible de filtrer par nom d'entreprise.  **Types d'entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
-        :param enterprise_type: Type d'entreprise
+        :param enterprise_type: Type d'entreprise (optionnel)
         :type enterprise_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -972,9 +972,9 @@ class APIJavaApi:
     @validate_call
     def get_enterprises_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
-        enterprise_type: Annotated[Optional[StrictStr], Field(description="Type d'entreprise")] = None,
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
+        enterprise_type: Annotated[Optional[StrictStr], Field(description="Type d'entreprise (optionnel)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -992,11 +992,11 @@ class APIJavaApi:
 
         Permet d'obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques). Il est possible de filtrer par nom d'entreprise.  **Types d'entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
-        :param enterprise_type: Type d'entreprise
+        :param enterprise_type: Type d'entreprise (optionnel)
         :type enterprise_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1047,9 +1047,9 @@ class APIJavaApi:
     @validate_call
     def get_enterprises_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
-        enterprise_type: Annotated[Optional[StrictStr], Field(description="Type d'entreprise")] = None,
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
+        enterprise_type: Annotated[Optional[StrictStr], Field(description="Type d'entreprise (optionnel)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1067,11 +1067,11 @@ class APIJavaApi:
 
         Permet d'obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques). Il est possible de filtrer par nom d'entreprise.  **Types d'entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
-        :param enterprise_type: Type d'entreprise
+        :param enterprise_type: Type d'entreprise (optionnel)
         :type enterprise_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1190,10 +1190,10 @@ class APIJavaApi:
     @validate_call
     def get_enterprises1(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
-        enterprise_name: Annotated[StrictStr, Field(description="Nom de l'entreprise")],
-        enterprise_type: Annotated[Optional[StrictStr], Field(description="Type d'entreprise")] = None,
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
+        enterprise_name: Annotated[StrictStr, Field(description="Nom de l'entreprise (optionnel)")],
+        enterprise_type: Annotated[Optional[StrictStr], Field(description="Type d'entreprise (optionnel)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1211,13 +1211,13 @@ class APIJavaApi:
 
         Permet d'obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques). Il est possible de filtrer par nom d'entreprise.  **Types d'entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
-        :param enterprise_name: Nom de l'entreprise (required)
+        :param enterprise_name: Nom de l'entreprise (optionnel) (required)
         :type enterprise_name: str
-        :param enterprise_type: Type d'entreprise
+        :param enterprise_type: Type d'entreprise (optionnel)
         :type enterprise_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1269,10 +1269,10 @@ class APIJavaApi:
     @validate_call
     def get_enterprises1_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
-        enterprise_name: Annotated[StrictStr, Field(description="Nom de l'entreprise")],
-        enterprise_type: Annotated[Optional[StrictStr], Field(description="Type d'entreprise")] = None,
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
+        enterprise_name: Annotated[StrictStr, Field(description="Nom de l'entreprise (optionnel)")],
+        enterprise_type: Annotated[Optional[StrictStr], Field(description="Type d'entreprise (optionnel)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1290,13 +1290,13 @@ class APIJavaApi:
 
         Permet d'obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques). Il est possible de filtrer par nom d'entreprise.  **Types d'entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
-        :param enterprise_name: Nom de l'entreprise (required)
+        :param enterprise_name: Nom de l'entreprise (optionnel) (required)
         :type enterprise_name: str
-        :param enterprise_type: Type d'entreprise
+        :param enterprise_type: Type d'entreprise (optionnel)
         :type enterprise_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1348,10 +1348,10 @@ class APIJavaApi:
     @validate_call
     def get_enterprises1_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
-        enterprise_name: Annotated[StrictStr, Field(description="Nom de l'entreprise")],
-        enterprise_type: Annotated[Optional[StrictStr], Field(description="Type d'entreprise")] = None,
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
+        enterprise_name: Annotated[StrictStr, Field(description="Nom de l'entreprise (optionnel)")],
+        enterprise_type: Annotated[Optional[StrictStr], Field(description="Type d'entreprise (optionnel)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1369,13 +1369,13 @@ class APIJavaApi:
 
         Permet d'obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques). Il est possible de filtrer par nom d'entreprise.  **Types d'entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
-        :param enterprise_name: Nom de l'entreprise (required)
+        :param enterprise_name: Nom de l'entreprise (optionnel) (required)
         :type enterprise_name: str
-        :param enterprise_type: Type d'entreprise
+        :param enterprise_type: Type d'entreprise (optionnel)
         :type enterprise_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1498,7 +1498,7 @@ class APIJavaApi:
     @validate_call
     def get_halloween2025(
         self,
-        var_date: Annotated[date, Field(description="Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1516,7 +1516,7 @@ class APIJavaApi:
 
         Permet d'obtenir les statistiques des joueurs du top 50 de l'événement Halloween 2025 \"Demon's Return\" à une date donnée (aucun filtrage possible). Seuls les joueurs du top 50 interserveur sont accessibles (limitation du serveur).  **À propos de l'événement :** L'événement \"Demon's Return\" est un événement global interserveur où l'objectif est de collecter des âmes et tuer des démons pour empêcher l'invasion démoniaque. Le classement est identique sur tous les serveurs puisqu'il s'agit d'un événement global à NationsGlory.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 21/10/2025 au 04/11/2025), généralement la nuit.  **Documentation :** Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/halloween-2025-demons-return-1lfsu05/ 
 
-        :param var_date: Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1565,7 +1565,7 @@ class APIJavaApi:
     @validate_call
     def get_halloween2025_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1583,7 +1583,7 @@ class APIJavaApi:
 
         Permet d'obtenir les statistiques des joueurs du top 50 de l'événement Halloween 2025 \"Demon's Return\" à une date donnée (aucun filtrage possible). Seuls les joueurs du top 50 interserveur sont accessibles (limitation du serveur).  **À propos de l'événement :** L'événement \"Demon's Return\" est un événement global interserveur où l'objectif est de collecter des âmes et tuer des démons pour empêcher l'invasion démoniaque. Le classement est identique sur tous les serveurs puisqu'il s'agit d'un événement global à NationsGlory.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 21/10/2025 au 04/11/2025), généralement la nuit.  **Documentation :** Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/halloween-2025-demons-return-1lfsu05/ 
 
-        :param var_date: Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1632,7 +1632,7 @@ class APIJavaApi:
     @validate_call
     def get_halloween2025_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1650,7 +1650,7 @@ class APIJavaApi:
 
         Permet d'obtenir les statistiques des joueurs du top 50 de l'événement Halloween 2025 \"Demon's Return\" à une date donnée (aucun filtrage possible). Seuls les joueurs du top 50 interserveur sont accessibles (limitation du serveur).  **À propos de l'événement :** L'événement \"Demon's Return\" est un événement global interserveur où l'objectif est de collecter des âmes et tuer des démons pour empêcher l'invasion démoniaque. Le classement est identique sur tous les serveurs puisqu'il s'agit d'un événement global à NationsGlory.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 21/10/2025 au 04/11/2025), généralement la nuit.  **Documentation :** Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/halloween-2025-demons-return-1lfsu05/ 
 
-        :param var_date: Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2005,7 +2005,7 @@ class APIJavaApi:
     @validate_call
     def get_noel_megagift2025(
         self,
-        var_date: Annotated[date, Field(description="Date de la configuration (format ISO-8601: yyyy-MM-dd)")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2021,9 +2021,9 @@ class APIJavaApi:
     ) -> NoelMegagift2025:
         """Noël Megagift 2025
 
-        Permet d'obtenir les données des tirages du Mega Cadeau de l'événement de Noël 2025.  **À propos de l'événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l'événement :** Du 14/12/2025 au 06/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
+        Permet d'obtenir les données des tirages du Mega Cadeau de l'événement de Noël 2025.  **À propos de l'événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l'événement :** Du 14/12/2025 au 15/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
 
-        :param var_date: Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2072,7 +2072,7 @@ class APIJavaApi:
     @validate_call
     def get_noel_megagift2025_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="Date de la configuration (format ISO-8601: yyyy-MM-dd)")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2088,9 +2088,9 @@ class APIJavaApi:
     ) -> ApiResponse[NoelMegagift2025]:
         """Noël Megagift 2025
 
-        Permet d'obtenir les données des tirages du Mega Cadeau de l'événement de Noël 2025.  **À propos de l'événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l'événement :** Du 14/12/2025 au 06/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
+        Permet d'obtenir les données des tirages du Mega Cadeau de l'événement de Noël 2025.  **À propos de l'événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l'événement :** Du 14/12/2025 au 15/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
 
-        :param var_date: Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2139,7 +2139,7 @@ class APIJavaApi:
     @validate_call
     def get_noel_megagift2025_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="Date de la configuration (format ISO-8601: yyyy-MM-dd)")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2155,9 +2155,9 @@ class APIJavaApi:
     ) -> RESTResponseType:
         """Noël Megagift 2025
 
-        Permet d'obtenir les données des tirages du Mega Cadeau de l'événement de Noël 2025.  **À propos de l'événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l'événement :** Du 14/12/2025 au 06/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
+        Permet d'obtenir les données des tirages du Mega Cadeau de l'événement de Noël 2025.  **À propos de l'événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l'événement :** Du 14/12/2025 au 15/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
 
-        :param var_date: Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2266,8 +2266,8 @@ class APIJavaApi:
     @validate_call
     def get_player_list(
         self,
-        var_date: Annotated[date, Field(description="La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2285,9 +2285,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste des joueurs s'étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (aucun filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
 
-        :param var_date: La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2337,8 +2337,8 @@ class APIJavaApi:
     @validate_call
     def get_player_list_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2356,9 +2356,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste des joueurs s'étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (aucun filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
 
-        :param var_date: La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2408,8 +2408,8 @@ class APIJavaApi:
     @validate_call
     def get_player_list_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2427,9 +2427,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste des joueurs s'étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (aucun filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
 
-        :param var_date: La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2542,7 +2542,7 @@ class APIJavaApi:
     @validate_call
     def get_research_config(
         self,
-        var_date: Annotated[date, Field(description="Date de la configuration (format ISO-8601: yyyy-MM-dd)")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2560,7 +2560,7 @@ class APIJavaApi:
 
         Permet d'obtenir la configuration globale de tous les domaines de recherche disponibles dans NationsGlory. Cette configuration est identique pour tous les serveurs et définit les niveaux, conditions et récompenses.  **Contenu de la configuration :** - Noms et descriptions des domaines de recherche - Niveaux maximum par domaine - Conditions requises par niveau - Récompenses obtenues par niveau - Durées de recherche  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
 
-        :param var_date: Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2609,7 +2609,7 @@ class APIJavaApi:
     @validate_call
     def get_research_config_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="Date de la configuration (format ISO-8601: yyyy-MM-dd)")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2627,7 +2627,7 @@ class APIJavaApi:
 
         Permet d'obtenir la configuration globale de tous les domaines de recherche disponibles dans NationsGlory. Cette configuration est identique pour tous les serveurs et définit les niveaux, conditions et récompenses.  **Contenu de la configuration :** - Noms et descriptions des domaines de recherche - Niveaux maximum par domaine - Conditions requises par niveau - Récompenses obtenues par niveau - Durées de recherche  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
 
-        :param var_date: Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2676,7 +2676,7 @@ class APIJavaApi:
     @validate_call
     def get_research_config_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="Date de la configuration (format ISO-8601: yyyy-MM-dd)")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2694,7 +2694,7 @@ class APIJavaApi:
 
         Permet d'obtenir la configuration globale de tous les domaines de recherche disponibles dans NationsGlory. Cette configuration est identique pour tous les serveurs et définit les niveaux, conditions et récompenses.  **Contenu de la configuration :** - Noms et descriptions des domaines de recherche - Niveaux maximum par domaine - Conditions requises par niveau - Récompenses obtenues par niveau - Durées de recherche  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
 
-        :param var_date: Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2803,8 +2803,8 @@ class APIJavaApi:
     @validate_call
     def get_research_server(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2822,9 +2822,9 @@ class APIJavaApi:
 
         Permet d'obtenir les niveaux de recherche actuels de tous les pays d'un serveur à une date donnée (sans filtrage).  **Données exposées :** - Niveaux actuels de recherche par domaine pour chaque pays - Dernière recherche complétée par chaque pays - Valeurs actuelles des conditions de recherche  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2874,8 +2874,8 @@ class APIJavaApi:
     @validate_call
     def get_research_server_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2893,9 +2893,9 @@ class APIJavaApi:
 
         Permet d'obtenir les niveaux de recherche actuels de tous les pays d'un serveur à une date donnée (sans filtrage).  **Données exposées :** - Niveaux actuels de recherche par domaine pour chaque pays - Dernière recherche complétée par chaque pays - Valeurs actuelles des conditions de recherche  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2945,8 +2945,8 @@ class APIJavaApi:
     @validate_call
     def get_research_server_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2964,9 +2964,9 @@ class APIJavaApi:
 
         Permet d'obtenir les niveaux de recherche actuels de tous les pays d'un serveur à une date donnée (sans filtrage).  **Données exposées :** - Niveaux actuels de recherche par domaine pour chaque pays - Dernière recherche complétée par chaque pays - Valeurs actuelles des conditions de recherche  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3079,8 +3079,8 @@ class APIJavaApi:
     @validate_call
     def get_skill(
         self,
-        var_date: Annotated[date, Field(description="La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur (red, blue...)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3098,9 +3098,9 @@ class APIJavaApi:
 
         Permet d'obtenir les compétences des joueurs présents dans au moins 1 top 50 compétences sur un serveur à une date donnée (aucun filtrage possible). Seuls les joueurs figurant dans le top 50 d'au moins une compétence sur le serveur sont inclus pour éviter de surcharger les serveurs.  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Documentation :** Plus d'informations sur les compétences/skills : https://wiki.nationsglory.fr/fr/article/les-competences-java-1shixp7/ 
 
-        :param var_date: La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (red, blue...) (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3150,8 +3150,8 @@ class APIJavaApi:
     @validate_call
     def get_skill_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur (red, blue...)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3169,9 +3169,9 @@ class APIJavaApi:
 
         Permet d'obtenir les compétences des joueurs présents dans au moins 1 top 50 compétences sur un serveur à une date donnée (aucun filtrage possible). Seuls les joueurs figurant dans le top 50 d'au moins une compétence sur le serveur sont inclus pour éviter de surcharger les serveurs.  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Documentation :** Plus d'informations sur les compétences/skills : https://wiki.nationsglory.fr/fr/article/les-competences-java-1shixp7/ 
 
-        :param var_date: La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (red, blue...) (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3221,8 +3221,8 @@ class APIJavaApi:
     @validate_call
     def get_skill_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur (red, blue...)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3240,9 +3240,9 @@ class APIJavaApi:
 
         Permet d'obtenir les compétences des joueurs présents dans au moins 1 top 50 compétences sur un serveur à une date donnée (aucun filtrage possible). Seuls les joueurs figurant dans le top 50 d'au moins une compétence sur le serveur sont inclus pour éviter de surcharger les serveurs.  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Documentation :** Plus d'informations sur les compétences/skills : https://wiki.nationsglory.fr/fr/article/les-competences-java-1shixp7/ 
 
-        :param var_date: La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (red, blue...) (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3355,8 +3355,8 @@ class APIJavaApi:
     @validate_call
     def get_war(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3374,9 +3374,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste des guerres (en cours ou terminées) d'un serveur à une date donnée. Il est possible de spécifier un warId dans l'URL pour récupérer une guerre spécifique.  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3426,8 +3426,8 @@ class APIJavaApi:
     @validate_call
     def get_war_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3445,9 +3445,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste des guerres (en cours ou terminées) d'un serveur à une date donnée. Il est possible de spécifier un warId dans l'URL pour récupérer une guerre spécifique.  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3497,8 +3497,8 @@ class APIJavaApi:
     @validate_call
     def get_war_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3516,9 +3516,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste des guerres (en cours ou terminées) d'un serveur à une date donnée. Il est possible de spécifier un warId dans l'URL pour récupérer une guerre spécifique.  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3631,9 +3631,9 @@ class APIJavaApi:
     @validate_call
     def get_war1(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
-        war_id: Annotated[StrictStr, Field(description="Identifiant de la guerre")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
+        war_id: Annotated[StrictStr, Field(description="ID de la guerre (optionnel)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3651,11 +3651,11 @@ class APIJavaApi:
 
         Permet d'obtenir la liste des guerres (en cours ou terminées) d'un serveur à une date donnée. Il est possible de spécifier un warId dans l'URL pour récupérer une guerre spécifique.  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
-        :param war_id: Identifiant de la guerre (required)
+        :param war_id: ID de la guerre (optionnel) (required)
         :type war_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3706,9 +3706,9 @@ class APIJavaApi:
     @validate_call
     def get_war1_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
-        war_id: Annotated[StrictStr, Field(description="Identifiant de la guerre")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
+        war_id: Annotated[StrictStr, Field(description="ID de la guerre (optionnel)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3726,11 +3726,11 @@ class APIJavaApi:
 
         Permet d'obtenir la liste des guerres (en cours ou terminées) d'un serveur à une date donnée. Il est possible de spécifier un warId dans l'URL pour récupérer une guerre spécifique.  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
-        :param war_id: Identifiant de la guerre (required)
+        :param war_id: ID de la guerre (optionnel) (required)
         :type war_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3781,9 +3781,9 @@ class APIJavaApi:
     @validate_call
     def get_war1_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
-        war_id: Annotated[StrictStr, Field(description="Identifiant de la guerre")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
+        war_id: Annotated[StrictStr, Field(description="ID de la guerre (optionnel)")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3801,11 +3801,11 @@ class APIJavaApi:
 
         Permet d'obtenir la liste des guerres (en cours ou terminées) d'un serveur à une date donnée. Il est possible de spécifier un warId dans l'URL pour récupérer une guerre spécifique.  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
-        :param war_id: Identifiant de la guerre (required)
+        :param war_id: ID de la guerre (optionnel) (required)
         :type war_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3922,8 +3922,8 @@ class APIJavaApi:
     @validate_call
     def post_country(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -3942,9 +3942,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste et les détails complets de tous les pays d'un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -3997,8 +3997,8 @@ class APIJavaApi:
     @validate_call
     def post_country_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -4017,9 +4017,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste et les détails complets de tous les pays d'un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -4072,8 +4072,8 @@ class APIJavaApi:
     @validate_call
     def post_country_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -4092,9 +4092,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste et les détails complets de tous les pays d'un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -4226,8 +4226,8 @@ class APIJavaApi:
     @validate_call
     def post_enterprises(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd)")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -4246,9 +4246,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques).  **Types d'entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd) (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -4301,8 +4301,8 @@ class APIJavaApi:
     @validate_call
     def post_enterprises_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd)")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -4321,9 +4321,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques).  **Types d'entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd) (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -4376,8 +4376,8 @@ class APIJavaApi:
     @validate_call
     def post_enterprises_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd)")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -4396,9 +4396,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste de toutes les entreprises sur un serveur à une date donnée. Chaque entreprise contient des champs communs (nom, propriétaire, employés, contrats) et des champs spécifiques selon son type (ex: historique des gains pour les casinos, production pour les centrales électriques).  **Types d'entreprises :** - Casino : Entreprises de casino - Electric : Entreprises électriques - Farm : Entreprises agricoles - Petrol : Entreprises pétrolières - Trader : Entreprises de trading - Bet : Entreprises de paris - RealEstate : Entreprises immobilières (location de parcelles) - Build, Engineer, Terraform, Journalist, PVP, Loan, Repair, Lawyer : Entreprises de services  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd) (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -4530,7 +4530,7 @@ class APIJavaApi:
     @validate_call
     def post_halloween2025(
         self,
-        var_date: Annotated[date, Field(description="Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -4549,7 +4549,7 @@ class APIJavaApi:
 
         Permet d'obtenir les statistiques des joueurs du top 50 de l'événement Halloween 2025 \"Demon's Return\" à une date donnée (avec filtrage possible). Seuls les joueurs du top 50 interserveur sont disponibles (limitation du serveur).  **À propos de l'événement :** L'événement \"Demon's Return\" est un événement global interserveur où l'objectif est de collecter des âmes et tuer des démons pour empêcher l'invasion démoniaque. Le classement est identique sur tous les serveurs puisqu'il s'agit d'un événement global à NationsGlory.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 21/10/2025 au 04/11/2025), généralement la nuit.  **Documentation :** Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/halloween-2025-demons-return-1lfsu05/ 
 
-        :param var_date: Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -4601,7 +4601,7 @@ class APIJavaApi:
     @validate_call
     def post_halloween2025_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -4620,7 +4620,7 @@ class APIJavaApi:
 
         Permet d'obtenir les statistiques des joueurs du top 50 de l'événement Halloween 2025 \"Demon's Return\" à une date donnée (avec filtrage possible). Seuls les joueurs du top 50 interserveur sont disponibles (limitation du serveur).  **À propos de l'événement :** L'événement \"Demon's Return\" est un événement global interserveur où l'objectif est de collecter des âmes et tuer des démons pour empêcher l'invasion démoniaque. Le classement est identique sur tous les serveurs puisqu'il s'agit d'un événement global à NationsGlory.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 21/10/2025 au 04/11/2025), généralement la nuit.  **Documentation :** Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/halloween-2025-demons-return-1lfsu05/ 
 
-        :param var_date: Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -4672,7 +4672,7 @@ class APIJavaApi:
     @validate_call
     def post_halloween2025_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -4691,7 +4691,7 @@ class APIJavaApi:
 
         Permet d'obtenir les statistiques des joueurs du top 50 de l'événement Halloween 2025 \"Demon's Return\" à une date donnée (avec filtrage possible). Seuls les joueurs du top 50 interserveur sont disponibles (limitation du serveur).  **À propos de l'événement :** L'événement \"Demon's Return\" est un événement global interserveur où l'objectif est de collecter des âmes et tuer des démons pour empêcher l'invasion démoniaque. Le classement est identique sur tous les serveurs puisqu'il s'agit d'un événement global à NationsGlory.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 21/10/2025 au 04/11/2025), généralement la nuit.  **Documentation :** Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/halloween-2025-demons-return-1lfsu05/ 
 
-        :param var_date: Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -5093,7 +5093,7 @@ class APIJavaApi:
     @validate_call
     def post_noel_megagift2025(
         self,
-        var_date: Annotated[date, Field(description="Date de la configuration (format ISO-8601: yyyy-MM-dd)")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -5112,7 +5112,7 @@ class APIJavaApi:
 
         Permet d'obtenir les données des tirages du Mega Cadeau de l'événement de Noël 2025 (filtrage RSQL possible).  **À propos de l'événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l'événement :** Du 14/12/2025 au 06/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
 
-        :param var_date: Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -5164,7 +5164,7 @@ class APIJavaApi:
     @validate_call
     def post_noel_megagift2025_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="Date de la configuration (format ISO-8601: yyyy-MM-dd)")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -5183,7 +5183,7 @@ class APIJavaApi:
 
         Permet d'obtenir les données des tirages du Mega Cadeau de l'événement de Noël 2025 (filtrage RSQL possible).  **À propos de l'événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l'événement :** Du 14/12/2025 au 06/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
 
-        :param var_date: Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -5235,7 +5235,7 @@ class APIJavaApi:
     @validate_call
     def post_noel_megagift2025_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="Date de la configuration (format ISO-8601: yyyy-MM-dd)")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -5254,7 +5254,7 @@ class APIJavaApi:
 
         Permet d'obtenir les données des tirages du Mega Cadeau de l'événement de Noël 2025 (filtrage RSQL possible).  **À propos de l'événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l'événement :** Du 14/12/2025 au 06/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l'événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
 
-        :param var_date: Date de la configuration (format ISO-8601: yyyy-MM-dd) (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -5382,8 +5382,8 @@ class APIJavaApi:
     @validate_call
     def post_player_list(
         self,
-        var_date: Annotated[date, Field(description="La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -5402,9 +5402,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste des joueurs s'étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (avec filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
 
-        :param var_date: La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -5457,8 +5457,8 @@ class APIJavaApi:
     @validate_call
     def post_player_list_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -5477,9 +5477,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste des joueurs s'étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (avec filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
 
-        :param var_date: La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -5532,8 +5532,8 @@ class APIJavaApi:
     @validate_call
     def post_player_list_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -5552,9 +5552,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste des joueurs s'étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (avec filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
 
-        :param var_date: La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -5686,8 +5686,8 @@ class APIJavaApi:
     @validate_call
     def post_research_server(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -5706,9 +5706,9 @@ class APIJavaApi:
 
         Permet d'obtenir les niveaux de recherche actuels de tous les pays d'un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Niveaux actuels de recherche par domaine pour chaque pays - Dernière recherche complétée par chaque pays - Valeurs actuelles des conditions de recherche  **Exemples de filtres RSQL :** - `country==Papouasie` - Pays nommé exactement \"Papouasie\" - `country==*Terre*` - Pays dont le nom contient \"Terre\" - `lastResearch.level>3` - Pays dont la dernière recherche a atteint un niveau > 3 - `lastResearch.domain==militaire` - Pays dont la dernière recherche était dans le domaine militaire - `lastResearch.timestamp>1735689600000` - Pays dont la dernière recherche a été complétée après cette date  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -5761,8 +5761,8 @@ class APIJavaApi:
     @validate_call
     def post_research_server_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -5781,9 +5781,9 @@ class APIJavaApi:
 
         Permet d'obtenir les niveaux de recherche actuels de tous les pays d'un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Niveaux actuels de recherche par domaine pour chaque pays - Dernière recherche complétée par chaque pays - Valeurs actuelles des conditions de recherche  **Exemples de filtres RSQL :** - `country==Papouasie` - Pays nommé exactement \"Papouasie\" - `country==*Terre*` - Pays dont le nom contient \"Terre\" - `lastResearch.level>3` - Pays dont la dernière recherche a atteint un niveau > 3 - `lastResearch.domain==militaire` - Pays dont la dernière recherche était dans le domaine militaire - `lastResearch.timestamp>1735689600000` - Pays dont la dernière recherche a été complétée après cette date  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -5836,8 +5836,8 @@ class APIJavaApi:
     @validate_call
     def post_research_server_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -5856,9 +5856,9 @@ class APIJavaApi:
 
         Permet d'obtenir les niveaux de recherche actuels de tous les pays d'un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Niveaux actuels de recherche par domaine pour chaque pays - Dernière recherche complétée par chaque pays - Valeurs actuelles des conditions de recherche  **Exemples de filtres RSQL :** - `country==Papouasie` - Pays nommé exactement \"Papouasie\" - `country==*Terre*` - Pays dont le nom contient \"Terre\" - `lastResearch.level>3` - Pays dont la dernière recherche a atteint un niveau > 3 - `lastResearch.domain==militaire` - Pays dont la dernière recherche était dans le domaine militaire - `lastResearch.timestamp>1735689600000` - Pays dont la dernière recherche a été complétée après cette date  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -5990,8 +5990,8 @@ class APIJavaApi:
     @validate_call
     def post_skill(
         self,
-        var_date: Annotated[date, Field(description="La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -6010,9 +6010,9 @@ class APIJavaApi:
 
         Permet d'obtenir les compétences des joueurs présents dans au moins 1 top 50 compétences sur un serveur à une date donnée (avec filtrage possible). Seuls les joueurs figurant dans le top 50 d'au moins une compétence sur le serveur sont inclus pour éviter de surcharger les serveurs.  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Documentation :** Plus d'informations sur les compétences/skills : https://wiki.nationsglory.fr/fr/article/les-competences-java-1shixp7/ 
 
-        :param var_date: La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -6065,8 +6065,8 @@ class APIJavaApi:
     @validate_call
     def post_skill_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -6085,9 +6085,9 @@ class APIJavaApi:
 
         Permet d'obtenir les compétences des joueurs présents dans au moins 1 top 50 compétences sur un serveur à une date donnée (avec filtrage possible). Seuls les joueurs figurant dans le top 50 d'au moins une compétence sur le serveur sont inclus pour éviter de surcharger les serveurs.  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Documentation :** Plus d'informations sur les compétences/skills : https://wiki.nationsglory.fr/fr/article/les-competences-java-1shixp7/ 
 
-        :param var_date: La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -6140,8 +6140,8 @@ class APIJavaApi:
     @validate_call
     def post_skill_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -6160,9 +6160,9 @@ class APIJavaApi:
 
         Permet d'obtenir les compétences des joueurs présents dans au moins 1 top 50 compétences sur un serveur à une date donnée (avec filtrage possible). Seuls les joueurs figurant dans le top 50 d'au moins une compétence sur le serveur sont inclus pour éviter de surcharger les serveurs.  **Fréquence de mise à jour :** Les données sont actualisées tous les jours pairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Documentation :** Plus d'informations sur les compétences/skills : https://wiki.nationsglory.fr/fr/article/les-competences-java-1shixp7/ 
 
-        :param var_date: La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -6294,8 +6294,8 @@ class APIJavaApi:
     @validate_call
     def post_war(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -6314,9 +6314,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste des guerres (en cours ou terminées) d'un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -6369,8 +6369,8 @@ class APIJavaApi:
     @validate_call
     def post_war_with_http_info(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -6389,9 +6389,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste des guerres (en cours ou terminées) d'un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody
@@ -6444,8 +6444,8 @@ class APIJavaApi:
     @validate_call
     def post_war_without_preload_content(
         self,
-        var_date: Annotated[date, Field(description="Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée")],
-        java_server: Annotated[StrictStr, Field(description="Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade")],
+        var_date: Annotated[date, Field(description="Date (yyyy-MM-dd)")],
+        java_server: Annotated[StrictStr, Field(description="Serveur")],
         post_query_body: Optional[PostQueryBody] = None,
         _request_timeout: Union[
             None,
@@ -6464,9 +6464,9 @@ class APIJavaApi:
 
         Permet d'obtenir la liste des guerres (en cours ou terminées) d'un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Identifiant, dates (déclaration, début), raison - Participants (attaquant, défenseur) avec détails (pays, points missiles, progression...) - Conditions de victoire - Récompenses - Détails des assauts et missiles lancés  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
 
-        :param var_date: Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (required)
+        :param var_date: Date (yyyy-MM-dd) (required)
         :type var_date: date
-        :param java_server: Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (required)
+        :param java_server: Serveur (required)
         :type java_server: str
         :param post_query_body:
         :type post_query_body: PostQueryBody

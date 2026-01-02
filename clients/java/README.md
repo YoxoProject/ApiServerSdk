@@ -126,8 +126,8 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd)
-    String javaServer = "blue"; // String | Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
     try {
       CerealGlobalMarket result = apiInstance.getCerealGlobalMarket(date, javaServer);
       System.out.println(result);

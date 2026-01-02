@@ -19,7 +19,7 @@
   "tags": [
     {
       "name": "API Java",
-      "description": "Endpoints exposant les données de jeu scrapées depuis les serveurs Java de NationsGlory. Supporte le filtrage RSQL, la pagination et utilise un système de cache multi-niveaux pour optimiser les performances."
+      "description": "Endpoints exposant les données de jeu scrapées depuis les serveurs Java de NationsGlory. Supporte le filtrage RSQL et la pagination pour s'adapter aux divers usages."
     }
   ],
   "paths": {
@@ -35,7 +35,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd)",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -46,7 +46,7 @@
           {
             "name": "javaServer",
             "in": "path",
-            "description": "Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade",
+            "description": "Serveur",
             "required": true,
             "schema": {
               "type": "string",
@@ -101,7 +101,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -112,7 +112,7 @@
           {
             "name": "javaServer",
             "in": "path",
-            "description": "Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade",
+            "description": "Serveur",
             "required": true,
             "schema": {
               "type": "string",
@@ -165,7 +165,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -176,7 +176,7 @@
           {
             "name": "javaServer",
             "in": "path",
-            "description": "Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade",
+            "description": "Serveur",
             "required": true,
             "schema": {
               "type": "string",
@@ -240,7 +240,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -251,7 +251,7 @@
           {
             "name": "javaServer",
             "in": "path",
-            "description": "Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade",
+            "description": "Serveur",
             "required": true,
             "schema": {
               "type": "string",
@@ -277,7 +277,7 @@
           {
             "name": "country",
             "in": "path",
-            "description": "Nom du pays",
+            "description": "Nom du pays (optionnel)",
             "required": true,
             "schema": {
               "type": "string"
@@ -315,7 +315,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -326,7 +326,7 @@
           {
             "name": "javaServer",
             "in": "path",
-            "description": "Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade",
+            "description": "Serveur",
             "required": true,
             "schema": {
               "type": "string",
@@ -352,7 +352,7 @@
           {
             "name": "enterpriseType",
             "in": "query",
-            "description": "Type d'entreprise",
+            "description": "Type d'entreprise (optionnel)",
             "required": false,
             "schema": {
               "type": "string",
@@ -405,7 +405,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "Date des données (format ISO-8601: yyyy-MM-dd)",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -416,7 +416,7 @@
           {
             "name": "javaServer",
             "in": "path",
-            "description": "Serveur NationsGlory",
+            "description": "Serveur",
             "required": true,
             "schema": {
               "type": "string",
@@ -480,7 +480,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -491,7 +491,7 @@
           {
             "name": "javaServer",
             "in": "path",
-            "description": "Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade",
+            "description": "Serveur",
             "required": true,
             "schema": {
               "type": "string",
@@ -517,7 +517,7 @@
           {
             "name": "enterpriseName",
             "in": "path",
-            "description": "Nom de l'entreprise",
+            "description": "Nom de l'entreprise (optionnel)",
             "required": true,
             "schema": {
               "type": "string"
@@ -526,7 +526,7 @@
           {
             "name": "enterpriseType",
             "in": "query",
-            "description": "Type d'entreprise",
+            "description": "Type d'entreprise (optionnel)",
             "required": false,
             "schema": {
               "type": "string",
@@ -581,7 +581,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -619,7 +619,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -723,13 +723,13 @@
           "API Java"
         ],
         "summary": "Noël Megagift 2025",
-        "description": "Permet d'obtenir les données des tirages du Mega Cadeau de l'événement de Noël 2025.\n\n**À propos de l'événement :**\nÉvénement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau.\nPlus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime\n\n**Période de l'événement :** Du 14/12/2025 au 06/01/2026\n\n**Données exposées :**\nChaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus\net la date/heure du tirage.\n\n**Fréquence de mise à jour :**\nLes données sont actualisées quotidiennement pendant toute la durée de l'événement (du 14/12/2025 au 06/01/2026), généralement la nuit.\n",
+        "description": "Permet d'obtenir les données des tirages du Mega Cadeau de l'événement de Noël 2025.\n\n**À propos de l'événement :**\nÉvénement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau.\nPlus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime\n\n**Période de l'événement :** Du 14/12/2025 au 15/01/2026\n\n**Données exposées :**\nChaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus\net la date/heure du tirage.\n\n**Fréquence de mise à jour :**\nLes données sont actualisées quotidiennement pendant toute la durée de l'événement (du 14/12/2025 au 06/01/2026), généralement la nuit.\n",
         "operationId": "getNoelMegagift2025",
         "parameters": [
           {
             "name": "date",
             "in": "path",
-            "description": "Date de la configuration (format ISO-8601: yyyy-MM-dd)",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -767,7 +767,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "Date de la configuration (format ISO-8601: yyyy-MM-dd)",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -816,7 +816,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -827,7 +827,7 @@
           {
             "name": "javaServer",
             "in": "path",
-            "description": "Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade",
+            "description": "Serveur",
             "required": true,
             "schema": {
               "type": "string",
@@ -880,7 +880,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -891,7 +891,7 @@
           {
             "name": "javaServer",
             "in": "path",
-            "description": "Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade",
+            "description": "Serveur",
             "required": true,
             "schema": {
               "type": "string",
@@ -955,7 +955,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "Date de la configuration (format ISO-8601: yyyy-MM-dd)",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -995,7 +995,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -1006,7 +1006,7 @@
           {
             "name": "javaServer",
             "in": "path",
-            "description": "Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade",
+            "description": "Serveur",
             "required": true,
             "schema": {
               "type": "string",
@@ -1059,7 +1059,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -1070,7 +1070,7 @@
           {
             "name": "javaServer",
             "in": "path",
-            "description": "Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade",
+            "description": "Serveur",
             "required": true,
             "schema": {
               "type": "string",
@@ -1134,7 +1134,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -1145,7 +1145,7 @@
           {
             "name": "javaServer",
             "in": "path",
-            "description": "Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade",
+            "description": "Serveur (red, blue...)",
             "required": true,
             "schema": {
               "type": "string",
@@ -1198,7 +1198,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -1209,7 +1209,7 @@
           {
             "name": "javaServer",
             "in": "path",
-            "description": "Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade",
+            "description": "Serveur",
             "required": true,
             "schema": {
               "type": "string",
@@ -1273,7 +1273,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -1284,7 +1284,7 @@
           {
             "name": "javaServer",
             "in": "path",
-            "description": "Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade",
+            "description": "Serveur",
             "required": true,
             "schema": {
               "type": "string",
@@ -1337,7 +1337,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -1348,7 +1348,7 @@
           {
             "name": "javaServer",
             "in": "path",
-            "description": "Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade",
+            "description": "Serveur",
             "required": true,
             "schema": {
               "type": "string",
@@ -1412,7 +1412,7 @@
           {
             "name": "date",
             "in": "path",
-            "description": "Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée",
+            "description": "Date (yyyy-MM-dd)",
             "required": true,
             "schema": {
               "type": "string",
@@ -1423,7 +1423,7 @@
           {
             "name": "javaServer",
             "in": "path",
-            "description": "Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade",
+            "description": "Serveur",
             "required": true,
             "schema": {
               "type": "string",
@@ -1449,7 +1449,7 @@
           {
             "name": "warId",
             "in": "path",
-            "description": "Identifiant de la guerre",
+            "description": "ID de la guerre (optionnel)",
             "required": true,
             "schema": {
               "type": "string"
@@ -3211,9 +3211,6 @@
           "settings": {
             "$ref": "#/components/schemas/CountrySettingsEntry"
           },
-          "referent": {
-            "type": "boolean"
-          },
           "restrictAssault": {
             "type": "boolean"
           },
@@ -3224,6 +3221,9 @@
             "type": "boolean"
           },
           "empire": {
+            "type": "boolean"
+          },
+          "referent": {
             "type": "boolean"
           }
         },

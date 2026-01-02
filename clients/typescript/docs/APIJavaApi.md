@@ -44,8 +44,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd) (default to undefined)
-let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
 
 const { status, data } = await apiInstance.getCerealGlobalMarket(
     date,
@@ -57,8 +57,8 @@ const { status, data } = await apiInstance.getCerealGlobalMarket(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **date** | [**string**] | La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd) | defaults to undefined|
-| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
 
 
 ### Return type
@@ -98,8 +98,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (default to undefined)
-let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
 
 const { status, data } = await apiInstance.getCountry(
     date,
@@ -111,8 +111,8 @@ const { status, data } = await apiInstance.getCountry(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **date** | [**string**] | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | defaults to undefined|
-| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
 
 
 ### Return type
@@ -152,9 +152,9 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (default to undefined)
-let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (default to undefined)
-let country: string; //Nom du pays (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
+let country: string; //Nom du pays (optionnel) (default to undefined)
 
 const { status, data } = await apiInstance.getCountry1(
     date,
@@ -167,9 +167,9 @@ const { status, data } = await apiInstance.getCountry1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **date** | [**string**] | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | defaults to undefined|
-| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | defaults to undefined|
-| **country** | [**string**] | Nom du pays | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
+| **country** | [**string**] | Nom du pays (optionnel) | defaults to undefined|
 
 
 ### Return type
@@ -209,9 +209,9 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (default to undefined)
-let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur NationsGlory dont on veut les données d\'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (default to undefined)
-let enterpriseType: 'build' | 'engineer' | 'terraform' | 'journalist' | 'casino' | 'pvp' | 'loan' | 'realestate' | 'trader' | 'bet' | 'repair' | 'lawyer' | 'electric' | 'petrol' | 'farm'; //Type d\'entreprise (optional) (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
+let enterpriseType: 'build' | 'engineer' | 'terraform' | 'journalist' | 'casino' | 'pvp' | 'loan' | 'realestate' | 'trader' | 'bet' | 'repair' | 'lawyer' | 'electric' | 'petrol' | 'farm'; //Type d\'entreprise (optionnel) (optional) (default to undefined)
 
 const { status, data } = await apiInstance.getEnterprises(
     date,
@@ -224,9 +224,9 @@ const { status, data } = await apiInstance.getEnterprises(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **date** | [**string**] | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | defaults to undefined|
-| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur NationsGlory dont on veut les données d\&#39;entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | defaults to undefined|
-| **enterpriseType** | [**&#39;build&#39; | &#39;engineer&#39; | &#39;terraform&#39; | &#39;journalist&#39; | &#39;casino&#39; | &#39;pvp&#39; | &#39;loan&#39; | &#39;realestate&#39; | &#39;trader&#39; | &#39;bet&#39; | &#39;repair&#39; | &#39;lawyer&#39; | &#39;electric&#39; | &#39;petrol&#39; | &#39;farm&#39;**]**Array<&#39;build&#39; &#124; &#39;engineer&#39; &#124; &#39;terraform&#39; &#124; &#39;journalist&#39; &#124; &#39;casino&#39; &#124; &#39;pvp&#39; &#124; &#39;loan&#39; &#124; &#39;realestate&#39; &#124; &#39;trader&#39; &#124; &#39;bet&#39; &#124; &#39;repair&#39; &#124; &#39;lawyer&#39; &#124; &#39;electric&#39; &#124; &#39;petrol&#39; &#124; &#39;farm&#39;>** | Type d\&#39;entreprise | (optional) defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
+| **enterpriseType** | [**&#39;build&#39; | &#39;engineer&#39; | &#39;terraform&#39; | &#39;journalist&#39; | &#39;casino&#39; | &#39;pvp&#39; | &#39;loan&#39; | &#39;realestate&#39; | &#39;trader&#39; | &#39;bet&#39; | &#39;repair&#39; | &#39;lawyer&#39; | &#39;electric&#39; | &#39;petrol&#39; | &#39;farm&#39;**]**Array<&#39;build&#39; &#124; &#39;engineer&#39; &#124; &#39;terraform&#39; &#124; &#39;journalist&#39; &#124; &#39;casino&#39; &#124; &#39;pvp&#39; &#124; &#39;loan&#39; &#124; &#39;realestate&#39; &#124; &#39;trader&#39; &#124; &#39;bet&#39; &#124; &#39;repair&#39; &#124; &#39;lawyer&#39; &#124; &#39;electric&#39; &#124; &#39;petrol&#39; &#124; &#39;farm&#39;>** | Type d\&#39;entreprise (optionnel) | (optional) defaults to undefined|
 
 
 ### Return type
@@ -266,10 +266,10 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (default to undefined)
-let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur NationsGlory dont on veut les données d\'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (default to undefined)
-let enterpriseName: string; //Nom de l\'entreprise (default to undefined)
-let enterpriseType: 'build' | 'engineer' | 'terraform' | 'journalist' | 'casino' | 'pvp' | 'loan' | 'realestate' | 'trader' | 'bet' | 'repair' | 'lawyer' | 'electric' | 'petrol' | 'farm'; //Type d\'entreprise (optional) (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
+let enterpriseName: string; //Nom de l\'entreprise (optionnel) (default to undefined)
+let enterpriseType: 'build' | 'engineer' | 'terraform' | 'journalist' | 'casino' | 'pvp' | 'loan' | 'realestate' | 'trader' | 'bet' | 'repair' | 'lawyer' | 'electric' | 'petrol' | 'farm'; //Type d\'entreprise (optionnel) (optional) (default to undefined)
 
 const { status, data } = await apiInstance.getEnterprises1(
     date,
@@ -283,10 +283,10 @@ const { status, data } = await apiInstance.getEnterprises1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **date** | [**string**] | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | defaults to undefined|
-| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur NationsGlory dont on veut les données d\&#39;entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | defaults to undefined|
-| **enterpriseName** | [**string**] | Nom de l\&#39;entreprise | defaults to undefined|
-| **enterpriseType** | [**&#39;build&#39; | &#39;engineer&#39; | &#39;terraform&#39; | &#39;journalist&#39; | &#39;casino&#39; | &#39;pvp&#39; | &#39;loan&#39; | &#39;realestate&#39; | &#39;trader&#39; | &#39;bet&#39; | &#39;repair&#39; | &#39;lawyer&#39; | &#39;electric&#39; | &#39;petrol&#39; | &#39;farm&#39;**]**Array<&#39;build&#39; &#124; &#39;engineer&#39; &#124; &#39;terraform&#39; &#124; &#39;journalist&#39; &#124; &#39;casino&#39; &#124; &#39;pvp&#39; &#124; &#39;loan&#39; &#124; &#39;realestate&#39; &#124; &#39;trader&#39; &#124; &#39;bet&#39; &#124; &#39;repair&#39; &#124; &#39;lawyer&#39; &#124; &#39;electric&#39; &#124; &#39;petrol&#39; &#124; &#39;farm&#39;>** | Type d\&#39;entreprise | (optional) defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
+| **enterpriseName** | [**string**] | Nom de l\&#39;entreprise (optionnel) | defaults to undefined|
+| **enterpriseType** | [**&#39;build&#39; | &#39;engineer&#39; | &#39;terraform&#39; | &#39;journalist&#39; | &#39;casino&#39; | &#39;pvp&#39; | &#39;loan&#39; | &#39;realestate&#39; | &#39;trader&#39; | &#39;bet&#39; | &#39;repair&#39; | &#39;lawyer&#39; | &#39;electric&#39; | &#39;petrol&#39; | &#39;farm&#39;**]**Array<&#39;build&#39; &#124; &#39;engineer&#39; &#124; &#39;terraform&#39; &#124; &#39;journalist&#39; &#124; &#39;casino&#39; &#124; &#39;pvp&#39; &#124; &#39;loan&#39; &#124; &#39;realestate&#39; &#124; &#39;trader&#39; &#124; &#39;bet&#39; &#124; &#39;repair&#39; &#124; &#39;lawyer&#39; &#124; &#39;electric&#39; &#124; &#39;petrol&#39; &#124; &#39;farm&#39;>** | Type d\&#39;entreprise (optionnel) | (optional) defaults to undefined|
 
 
 ### Return type
@@ -326,7 +326,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
 
 const { status, data } = await apiInstance.getHalloween2025(
     date
@@ -337,7 +337,7 @@ const { status, data } = await apiInstance.getHalloween2025(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **date** | [**string**] | Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
 
 
 ### Return type
@@ -408,7 +408,7 @@ This endpoint does not have any parameters.
 # **getNoelMegagift2025**
 > NoelMegagift2025 getNoelMegagift2025()
 
-Permet d\'obtenir les données des tirages du Mega Cadeau de l\'événement de Noël 2025.  **À propos de l\'événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d\'informations sur l\'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l\'événement :** Du 14/12/2025 au 06/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l\'événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
+Permet d\'obtenir les données des tirages du Mega Cadeau de l\'événement de Noël 2025.  **À propos de l\'événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d\'informations sur l\'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l\'événement :** Du 14/12/2025 au 15/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l\'événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
 
 ### Example
 
@@ -421,7 +421,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //Date de la configuration (format ISO-8601: yyyy-MM-dd) (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
 
 const { status, data } = await apiInstance.getNoelMegagift2025(
     date
@@ -432,7 +432,7 @@ const { status, data } = await apiInstance.getNoelMegagift2025(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **date** | [**string**] | Date de la configuration (format ISO-8601: yyyy-MM-dd) | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
 
 
 ### Return type
@@ -472,8 +472,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n\'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (default to undefined)
-let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
 
 const { status, data } = await apiInstance.getPlayerList(
     date,
@@ -485,8 +485,8 @@ const { status, data } = await apiInstance.getPlayerList(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **date** | [**string**] | La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n\&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | defaults to undefined|
-| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
 
 
 ### Return type
@@ -526,7 +526,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //Date de la configuration (format ISO-8601: yyyy-MM-dd) (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
 
 const { status, data } = await apiInstance.getResearchConfig(
     date
@@ -537,7 +537,7 @@ const { status, data } = await apiInstance.getResearchConfig(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **date** | [**string**] | Date de la configuration (format ISO-8601: yyyy-MM-dd) | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
 
 
 ### Return type
@@ -577,8 +577,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (default to undefined)
-let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
 
 const { status, data } = await apiInstance.getResearchServer(
     date,
@@ -590,8 +590,8 @@ const { status, data } = await apiInstance.getResearchServer(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **date** | [**string**] | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | defaults to undefined|
-| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur NationsGlory dont on veut les données de R&amp;D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
 
 
 ### Return type
@@ -631,8 +631,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n\'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (default to undefined)
-let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (red, blue...) (default to undefined)
 
 const { status, data } = await apiInstance.getSkill(
     date,
@@ -644,8 +644,8 @@ const { status, data } = await apiInstance.getSkill(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **date** | [**string**] | La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n\&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | defaults to undefined|
-| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur (red, blue...) | defaults to undefined|
 
 
 ### Return type
@@ -685,8 +685,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (default to undefined)
-let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
 
 const { status, data } = await apiInstance.getWar(
     date,
@@ -698,8 +698,8 @@ const { status, data } = await apiInstance.getWar(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **date** | [**string**] | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | defaults to undefined|
-| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
 
 
 ### Return type
@@ -739,9 +739,9 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (default to undefined)
-let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (default to undefined)
-let warId: string; //Identifiant de la guerre (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
+let warId: string; //ID de la guerre (optionnel) (default to undefined)
 
 const { status, data } = await apiInstance.getWar1(
     date,
@@ -754,9 +754,9 @@ const { status, data } = await apiInstance.getWar1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **date** | [**string**] | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | defaults to undefined|
-| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | defaults to undefined|
-| **warId** | [**string**] | Identifiant de la guerre | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
+| **warId** | [**string**] | ID de la guerre (optionnel) | defaults to undefined|
 
 
 ### Return type
@@ -797,8 +797,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (default to undefined)
-let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
 let postQueryBody: PostQueryBody; // (optional)
 
 const { status, data } = await apiInstance.postCountry(
@@ -813,8 +813,8 @@ const { status, data } = await apiInstance.postCountry(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **postQueryBody** | **PostQueryBody**|  | |
-| **date** | [**string**] | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | defaults to undefined|
-| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
 
 
 ### Return type
@@ -855,8 +855,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //Date des données (format ISO-8601: yyyy-MM-dd) (default to undefined)
-let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur NationsGlory (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
 let postQueryBody: PostQueryBody; // (optional)
 
 const { status, data } = await apiInstance.postEnterprises(
@@ -871,8 +871,8 @@ const { status, data } = await apiInstance.postEnterprises(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **postQueryBody** | **PostQueryBody**|  | |
-| **date** | [**string**] | Date des données (format ISO-8601: yyyy-MM-dd) | defaults to undefined|
-| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur NationsGlory | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
 
 
 ### Return type
@@ -913,7 +913,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
 let postQueryBody: PostQueryBody; // (optional)
 
 const { status, data } = await apiInstance.postHalloween2025(
@@ -927,7 +927,7 @@ const { status, data } = await apiInstance.postHalloween2025(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **postQueryBody** | **PostQueryBody**|  | |
-| **date** | [**string**] | Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
 
 
 ### Return type
@@ -1020,7 +1020,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //Date de la configuration (format ISO-8601: yyyy-MM-dd) (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
 let postQueryBody: PostQueryBody; // (optional)
 
 const { status, data } = await apiInstance.postNoelMegagift2025(
@@ -1034,7 +1034,7 @@ const { status, data } = await apiInstance.postNoelMegagift2025(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **postQueryBody** | **PostQueryBody**|  | |
-| **date** | [**string**] | Date de la configuration (format ISO-8601: yyyy-MM-dd) | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
 
 
 ### Return type
@@ -1075,8 +1075,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n\'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (default to undefined)
-let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
 let postQueryBody: PostQueryBody; // (optional)
 
 const { status, data } = await apiInstance.postPlayerList(
@@ -1091,8 +1091,8 @@ const { status, data } = await apiInstance.postPlayerList(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **postQueryBody** | **PostQueryBody**|  | |
-| **date** | [**string**] | La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n\&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | defaults to undefined|
-| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
 
 
 ### Return type
@@ -1133,8 +1133,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (default to undefined)
-let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
 let postQueryBody: PostQueryBody; // (optional)
 
 const { status, data } = await apiInstance.postResearchServer(
@@ -1149,8 +1149,8 @@ const { status, data } = await apiInstance.postResearchServer(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **postQueryBody** | **PostQueryBody**|  | |
-| **date** | [**string**] | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | defaults to undefined|
-| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur NationsGlory dont on veut les données de R&amp;D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
 
 
 ### Return type
@@ -1191,8 +1191,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n\'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (default to undefined)
-let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
 let postQueryBody: PostQueryBody; // (optional)
 
 const { status, data } = await apiInstance.postSkill(
@@ -1207,8 +1207,8 @@ const { status, data } = await apiInstance.postSkill(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **postQueryBody** | **PostQueryBody**|  | |
-| **date** | [**string**] | La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n\&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | defaults to undefined|
-| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
 
 
 ### Return type
@@ -1249,8 +1249,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new APIJavaApi(configuration);
 
-let date: string; //Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\'a été scrap ce jour là, la date antérieure la plus proche sera utilisée (default to undefined)
-let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade (default to undefined)
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
 let postQueryBody: PostQueryBody; // (optional)
 
 const { status, data } = await apiInstance.postWar(
@@ -1265,8 +1265,8 @@ const { status, data } = await apiInstance.postWar(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **postQueryBody** | **PostQueryBody**|  | |
-| **date** | [**string**] | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n\&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | defaults to undefined|
-| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | defaults to undefined|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
 
 
 ### Return type

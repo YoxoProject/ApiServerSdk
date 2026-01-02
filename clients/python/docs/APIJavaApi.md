@@ -74,8 +74,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-10-28' # date | La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd)
-    java_server = 'red' # str | Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    var_date = '2025-10-28' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
 
     try:
         # Cereal Global Market
@@ -93,8 +93,8 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd) | 
- **java_server** | **str**| Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
 
 ### Return type
 
@@ -163,8 +163,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    java_server = 'red' # str | Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
 
     try:
         # Country
@@ -182,8 +182,8 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | 
- **java_server** | **str**| Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
 
 ### Return type
 
@@ -252,9 +252,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    java_server = 'red' # str | Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
-    country = 'country_example' # str | Nom du pays
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
+    country = 'country_example' # str | Nom du pays (optionnel)
 
     try:
         # Country
@@ -272,9 +272,9 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | 
- **java_server** | **str**| Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | 
- **country** | **str**| Nom du pays | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
+ **country** | **str**| Nom du pays (optionnel) | 
 
 ### Return type
 
@@ -348,9 +348,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    java_server = 'red' # str | Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
-    enterprise_type = 'enterprise_type_example' # str | Type d'entreprise (optional)
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
+    enterprise_type = 'enterprise_type_example' # str | Type d'entreprise (optionnel) (optional)
 
     try:
         # Enterprise
@@ -368,9 +368,9 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | 
- **java_server** | **str**| Serveur NationsGlory dont on veut les données d&#39;entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | 
- **enterprise_type** | **str**| Type d&#39;entreprise | [optional] 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
+ **enterprise_type** | **str**| Type d&#39;entreprise (optionnel) | [optional] 
 
 ### Return type
 
@@ -444,10 +444,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    java_server = 'red' # str | Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
-    enterprise_name = 'enterprise_name_example' # str | Nom de l'entreprise
-    enterprise_type = 'enterprise_type_example' # str | Type d'entreprise (optional)
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
+    enterprise_name = 'enterprise_name_example' # str | Nom de l'entreprise (optionnel)
+    enterprise_type = 'enterprise_type_example' # str | Type d'entreprise (optionnel) (optional)
 
     try:
         # Enterprise
@@ -465,10 +465,10 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | 
- **java_server** | **str**| Serveur NationsGlory dont on veut les données d&#39;entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | 
- **enterprise_name** | **str**| Nom de l&#39;entreprise | 
- **enterprise_type** | **str**| Type d&#39;entreprise | [optional] 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
+ **enterprise_name** | **str**| Nom de l&#39;entreprise (optionnel) | 
+ **enterprise_type** | **str**| Type d&#39;entreprise (optionnel) | [optional] 
 
 ### Return type
 
@@ -537,7 +537,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-10-28' # date | Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement
+    var_date = '2025-10-28' # date | Date (yyyy-MM-dd)
 
     try:
         # Halloween 2025
@@ -555,7 +555,7 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
 
 ### Return type
 
@@ -673,7 +673,7 @@ Permet d'obtenir les données des tirages du Mega Cadeau de l'événement de No�
 Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau.
 Plus d'informations sur l'événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime
 
-**Période de l'événement :** Du 14/12/2025 au 06/01/2026
+**Période de l'événement :** Du 14/12/2025 au 15/01/2026
 
 **Données exposées :**
 Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus
@@ -710,7 +710,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-11-24' # date | Date de la configuration (format ISO-8601: yyyy-MM-dd)
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
 
     try:
         # Noël Megagift 2025
@@ -728,7 +728,7 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| Date de la configuration (format ISO-8601: yyyy-MM-dd) | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
 
 ### Return type
 
@@ -789,8 +789,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-10-28' # date | La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    java_server = 'red' # str | Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    var_date = '2025-10-28' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
 
     try:
         # Player List
@@ -808,8 +808,8 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | 
- **java_server** | **str**| Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
 
 ### Return type
 
@@ -878,7 +878,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-11-24' # date | Date de la configuration (format ISO-8601: yyyy-MM-dd)
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
 
     try:
         # Research Config
@@ -896,7 +896,7 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| Date de la configuration (format ISO-8601: yyyy-MM-dd) | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
 
 ### Return type
 
@@ -962,8 +962,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    java_server = 'red' # str | Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
 
     try:
         # Research Server
@@ -981,8 +981,8 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | 
- **java_server** | **str**| Serveur NationsGlory dont on veut les données de R&amp;D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
 
 ### Return type
 
@@ -1047,8 +1047,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-10-28' # date | La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    java_server = 'red' # str | Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    var_date = '2025-10-28' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur (red, blue...)
 
     try:
         # Skill
@@ -1066,8 +1066,8 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | 
- **java_server** | **str**| Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur (red, blue...) | 
 
 ### Return type
 
@@ -1136,8 +1136,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    java_server = 'red' # str | Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
 
     try:
         # War
@@ -1155,8 +1155,8 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | 
- **java_server** | **str**| Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
 
 ### Return type
 
@@ -1225,9 +1225,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    java_server = 'red' # str | Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
-    war_id = 'war_id_example' # str | Identifiant de la guerre
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
+    war_id = 'war_id_example' # str | ID de la guerre (optionnel)
 
     try:
         # War
@@ -1245,9 +1245,9 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | 
- **java_server** | **str**| Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | 
- **war_id** | **str**| Identifiant de la guerre | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
+ **war_id** | **str**| ID de la guerre (optionnel) | 
 
 ### Return type
 
@@ -1316,8 +1316,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    java_server = 'red' # str | Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
     post_query_body = yoxo_api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
@@ -1336,8 +1336,8 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | 
- **java_server** | **str**| Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
  **post_query_body** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] 
 
 ### Return type
@@ -1412,8 +1412,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd)
-    java_server = 'red' # str | Serveur NationsGlory
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
     post_query_body = yoxo_api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
@@ -1432,8 +1432,8 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| Date des données (format ISO-8601: yyyy-MM-dd) | 
- **java_server** | **str**| Serveur NationsGlory | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
  **post_query_body** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] 
 
 ### Return type
@@ -1504,7 +1504,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-10-28' # date | Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement
+    var_date = '2025-10-28' # date | Date (yyyy-MM-dd)
     post_query_body = yoxo_api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
@@ -1523,7 +1523,7 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
  **post_query_body** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] 
 
 ### Return type
@@ -1685,7 +1685,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-11-24' # date | Date de la configuration (format ISO-8601: yyyy-MM-dd)
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
     post_query_body = yoxo_api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
@@ -1704,7 +1704,7 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| Date de la configuration (format ISO-8601: yyyy-MM-dd) | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
  **post_query_body** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] 
 
 ### Return type
@@ -1767,8 +1767,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-10-28' # date | La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    java_server = 'red' # str | Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    var_date = '2025-10-28' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
     post_query_body = yoxo_api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
@@ -1787,8 +1787,8 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | 
- **java_server** | **str**| Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
  **post_query_body** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] 
 
 ### Return type
@@ -1863,8 +1863,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    java_server = 'red' # str | Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
     post_query_body = yoxo_api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
@@ -1883,8 +1883,8 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | 
- **java_server** | **str**| Serveur NationsGlory dont on veut les données de R&amp;D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
  **post_query_body** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] 
 
 ### Return type
@@ -1951,8 +1951,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-10-28' # date | La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    java_server = 'red' # str | Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    var_date = '2025-10-28' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
     post_query_body = yoxo_api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
@@ -1971,8 +1971,8 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | 
- **java_server** | **str**| Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
  **post_query_body** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] 
 
 ### Return type
@@ -2042,8 +2042,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with yoxo_api_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = yoxo_api_client.APIJavaApi(api_client)
-    var_date = '2025-11-24' # date | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    java_server = 'red' # str | Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
     post_query_body = yoxo_api_client.PostQueryBody() # PostQueryBody |  (optional)
 
     try:
@@ -2062,8 +2062,8 @@ with yoxo_api_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **var_date** | **date**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | 
- **java_server** | **str**| Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | 
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
  **post_query_body** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] 
 
 ### Return type

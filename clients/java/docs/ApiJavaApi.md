@@ -57,8 +57,8 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd)
-    String javaServer = "blue"; // String | Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
     try {
       CerealGlobalMarket result = apiInstance.getCerealGlobalMarket(date, javaServer);
       System.out.println(result);
@@ -77,8 +77,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| La date à laquelle on veut récupérer les données du marché des céréales (au format ISO-8601: yyyy-MM-dd) | |
-| **javaServer** | **String**| Serveur NationsGlory dont on veut les données. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
 
 ### Return type
 
@@ -126,8 +126,8 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    String javaServer = "blue"; // String | Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
     try {
       Country result = apiInstance.getCountry(date, javaServer);
       System.out.println(result);
@@ -146,8 +146,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | |
-| **javaServer** | **String**| Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
 
 ### Return type
 
@@ -195,9 +195,9 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    String javaServer = "blue"; // String | Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
-    String country = "country_example"; // String | Nom du pays
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
+    String country = "country_example"; // String | Nom du pays (optionnel)
     try {
       Country result = apiInstance.getCountry1(date, javaServer, country);
       System.out.println(result);
@@ -216,9 +216,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | |
-| **javaServer** | **String**| Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
-| **country** | **String**| Nom du pays | |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **country** | **String**| Nom du pays (optionnel) | |
 
 ### Return type
 
@@ -266,9 +266,9 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    String javaServer = "blue"; // String | Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
-    String enterpriseType = "build"; // String | Type d'entreprise
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
+    String enterpriseType = "build"; // String | Type d'entreprise (optionnel)
     try {
       Enterprise result = apiInstance.getEnterprises(date, javaServer, enterpriseType);
       System.out.println(result);
@@ -287,9 +287,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | |
-| **javaServer** | **String**| Serveur NationsGlory dont on veut les données d&#39;entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
-| **enterpriseType** | **String**| Type d&#39;entreprise | [optional] [enum: build, engineer, terraform, journalist, casino, pvp, loan, realestate, trader, bet, repair, lawyer, electric, petrol, farm] |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **enterpriseType** | **String**| Type d&#39;entreprise (optionnel) | [optional] [enum: build, engineer, terraform, journalist, casino, pvp, loan, realestate, trader, bet, repair, lawyer, electric, petrol, farm] |
 
 ### Return type
 
@@ -337,10 +337,10 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    String javaServer = "blue"; // String | Serveur NationsGlory dont on veut les données d'entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
-    String enterpriseName = "enterpriseName_example"; // String | Nom de l'entreprise
-    String enterpriseType = "build"; // String | Type d'entreprise
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
+    String enterpriseName = "enterpriseName_example"; // String | Nom de l'entreprise (optionnel)
+    String enterpriseType = "build"; // String | Type d'entreprise (optionnel)
     try {
       Enterprise result = apiInstance.getEnterprises1(date, javaServer, enterpriseName, enterpriseType);
       System.out.println(result);
@@ -359,10 +359,10 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | |
-| **javaServer** | **String**| Serveur NationsGlory dont on veut les données d&#39;entreprises. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
-| **enterpriseName** | **String**| Nom de l&#39;entreprise | |
-| **enterpriseType** | **String**| Type d&#39;entreprise | [optional] [enum: build, engineer, terraform, journalist, casino, pvp, loan, realestate, trader, bet, repair, lawyer, electric, petrol, farm] |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **enterpriseName** | **String**| Nom de l&#39;entreprise (optionnel) | |
+| **enterpriseType** | **String**| Type d&#39;entreprise (optionnel) | [optional] [enum: build, engineer, terraform, journalist, casino, pvp, loan, realestate, trader, bet, repair, lawyer, electric, petrol, farm] |
 
 ### Return type
 
@@ -410,7 +410,7 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement
+    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | Date (yyyy-MM-dd)
     try {
       Halloween2025 result = apiInstance.getHalloween2025(date);
       System.out.println(result);
@@ -429,7 +429,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement | |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
 
 ### Return type
 
@@ -518,7 +518,7 @@ This endpoint does not need any parameter.
 
 Noël Megagift 2025
 
-Permet d&#39;obtenir les données des tirages du Mega Cadeau de l&#39;événement de Noël 2025.  **À propos de l&#39;événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l&#39;événement :** Du 14/12/2025 au 06/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
+Permet d&#39;obtenir les données des tirages du Mega Cadeau de l&#39;événement de Noël 2025.  **À propos de l&#39;événement :** Événement interserveur où les joueurs peuvent obtenir des récompenses exclusives via le Mega Cadeau. Plus d&#39;informations sur l&#39;événement : https://wiki.nationsglory.fr/fr/article/lile-du-pere-noel-rv8x0t/#2-le-mega-cadeau-recompense-ultime  **Période de l&#39;événement :** Du 14/12/2025 au 15/01/2026  **Données exposées :** Chaque entrée représente un tirage individuel du Mega cadeau par un joueur, avec les items obtenus et la date/heure du tirage.  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement pendant toute la durée de l&#39;événement (du 14/12/2025 au 06/01/2026), généralement la nuit. 
 
 ### Example
 ```java
@@ -540,7 +540,7 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date de la configuration (format ISO-8601: yyyy-MM-dd)
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
     try {
       NoelMegagift2025 result = apiInstance.getNoelMegagift2025(date);
       System.out.println(result);
@@ -559,7 +559,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| Date de la configuration (format ISO-8601: yyyy-MM-dd) | |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
 
 ### Return type
 
@@ -607,8 +607,8 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    String javaServer = "blue"; // String | Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
     try {
       PlayerList result = apiInstance.getPlayerList(date, javaServer);
       System.out.println(result);
@@ -627,8 +627,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | |
-| **javaServer** | **String**| Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
 
 ### Return type
 
@@ -676,7 +676,7 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date de la configuration (format ISO-8601: yyyy-MM-dd)
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
     try {
       ResearchConfig result = apiInstance.getResearchConfig(date);
       System.out.println(result);
@@ -695,7 +695,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| Date de la configuration (format ISO-8601: yyyy-MM-dd) | |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
 
 ### Return type
 
@@ -743,8 +743,8 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    String javaServer = "blue"; // String | Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
     try {
       ResearchServer result = apiInstance.getResearchServer(date, javaServer);
       System.out.println(result);
@@ -763,8 +763,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | |
-| **javaServer** | **String**| Serveur NationsGlory dont on veut les données de R&amp;D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
 
 ### Return type
 
@@ -812,8 +812,8 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    String javaServer = "blue"; // String | Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur (red, blue...)
     try {
       Skill result = apiInstance.getSkill(date, javaServer);
       System.out.println(result);
@@ -832,8 +832,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | |
-| **javaServer** | **String**| Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur (red, blue...) | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
 
 ### Return type
 
@@ -881,8 +881,8 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    String javaServer = "blue"; // String | Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
     try {
       War result = apiInstance.getWar(date, javaServer);
       System.out.println(result);
@@ -901,8 +901,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | |
-| **javaServer** | **String**| Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
 
 ### Return type
 
@@ -950,9 +950,9 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    String javaServer = "blue"; // String | Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
-    String warId = "warId_example"; // String | Identifiant de la guerre
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
+    String warId = "warId_example"; // String | ID de la guerre (optionnel)
     try {
       War result = apiInstance.getWar1(date, javaServer, warId);
       System.out.println(result);
@@ -971,9 +971,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | |
-| **javaServer** | **String**| Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
-| **warId** | **String**| Identifiant de la guerre | |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **warId** | **String**| ID de la guerre (optionnel) | |
 
 ### Return type
 
@@ -1021,8 +1021,8 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    String javaServer = "blue"; // String | Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
     PostQueryBody postQueryBody = new PostQueryBody(); // PostQueryBody | 
     try {
       Country result = apiInstance.postCountry(date, javaServer, postQueryBody);
@@ -1042,8 +1042,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | |
-| **javaServer** | **String**| Serveur NationsGlory dont on veut les données des pays. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
 | **postQueryBody** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] |
 
 ### Return type
@@ -1092,8 +1092,8 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date des données (format ISO-8601: yyyy-MM-dd)
-    String javaServer = "blue"; // String | Serveur NationsGlory
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
     PostQueryBody postQueryBody = new PostQueryBody(); // PostQueryBody | 
     try {
       Enterprise result = apiInstance.postEnterprises(date, javaServer, postQueryBody);
@@ -1113,8 +1113,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| Date des données (format ISO-8601: yyyy-MM-dd) | |
-| **javaServer** | **String**| Serveur NationsGlory | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
 | **postQueryBody** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] |
 
 ### Return type
@@ -1163,7 +1163,7 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement
+    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | Date (yyyy-MM-dd)
     PostQueryBody postQueryBody = new PostQueryBody(); // PostQueryBody | 
     try {
       Halloween2025 result = apiInstance.postHalloween2025(date, postQueryBody);
@@ -1183,7 +1183,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| Date des données au format ISO-8601 (yyyy-MM-dd). Événement actif du 21/10/2025 au 13/11/2025, données actualisées quotidiennement | |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
 | **postQueryBody** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] |
 
 ### Return type
@@ -1299,7 +1299,7 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date de la configuration (format ISO-8601: yyyy-MM-dd)
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
     PostQueryBody postQueryBody = new PostQueryBody(); // PostQueryBody | 
     try {
       NoelMegagift2025 result = apiInstance.postNoelMegagift2025(date, postQueryBody);
@@ -1319,7 +1319,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| Date de la configuration (format ISO-8601: yyyy-MM-dd) | |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
 | **postQueryBody** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] |
 
 ### Return type
@@ -1368,8 +1368,8 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    String javaServer = "blue"; // String | Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
     PostQueryBody postQueryBody = new PostQueryBody(); // PostQueryBody | 
     try {
       PlayerList result = apiInstance.postPlayerList(date, javaServer, postQueryBody);
@@ -1389,8 +1389,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| La date à laquelle on veut récupérer la liste des joueurs (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | |
-| **javaServer** | **String**| Serveur NationsGlory dont on veut la liste des joueurs. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
 | **postQueryBody** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] |
 
 ### Return type
@@ -1439,8 +1439,8 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    String javaServer = "blue"; // String | Serveur NationsGlory dont on veut les données de R&D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
     PostQueryBody postQueryBody = new PostQueryBody(); // PostQueryBody | 
     try {
       ResearchServer result = apiInstance.postResearchServer(date, javaServer, postQueryBody);
@@ -1460,8 +1460,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | |
-| **javaServer** | **String**| Serveur NationsGlory dont on veut les données de R&amp;D. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
 | **postQueryBody** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] |
 
 ### Return type
@@ -1510,8 +1510,8 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    String javaServer = "blue"; // String | Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
     PostQueryBody postQueryBody = new PostQueryBody(); // PostQueryBody | 
     try {
       Skill result = apiInstance.postSkill(date, javaServer, postQueryBody);
@@ -1531,8 +1531,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| La date à laquelle on veut récupéré les skills (au format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | |
-| **javaServer** | **String**| Serveur NationsGlory dont on veut les skills. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
 | **postQueryBody** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] |
 
 ### Return type
@@ -1581,8 +1581,8 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n'a été scrap ce jour là, la date antérieure la plus proche sera utilisée
-    String javaServer = "blue"; // String | Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
     PostQueryBody postQueryBody = new PostQueryBody(); // PostQueryBody | 
     try {
       War result = apiInstance.postWar(date, javaServer, postQueryBody);
@@ -1602,8 +1602,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **date** | **LocalDate**| Date des données (format ISO-8601: yyyy-MM-dd). Si aucune donnée n&#39;a été scrap ce jour là, la date antérieure la plus proche sera utilisée | |
-| **javaServer** | **String**| Serveur NationsGlory dont on veut les données de guerre. Valeurs possibles : blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha et jade | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
 | **postQueryBody** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] |
 
 ### Return type

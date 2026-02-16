@@ -44,6 +44,8 @@ docs/NoelMegagift2025.md
 docs/NoelMegagift2025Entry.md
 docs/Parcelle.md
 docs/PermissionEntry.md
+docs/PillageCountry.md
+docs/PillageCountryEntry.md
 docs/PlayerList.md
 docs/PlayerListEntry.md
 docs/PostQueryBody.md
@@ -69,6 +71,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_pillage_country.py
+test/test_pillage_country_entry.py
 tox.ini
 yoxo_api_client/__init__.py
 yoxo_api_client/api/__init__.py
@@ -118,6 +122,8 @@ yoxo_api_client/models/noel_megagift2025.py
 yoxo_api_client/models/noel_megagift2025_entry.py
 yoxo_api_client/models/parcelle.py
 yoxo_api_client/models/permission_entry.py
+yoxo_api_client/models/pillage_country.py
+yoxo_api_client/models/pillage_country_entry.py
 yoxo_api_client/models/player_list.py
 yoxo_api_client/models/player_list_entry.py
 yoxo_api_client/models/post_query_body.py

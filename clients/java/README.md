@@ -157,6 +157,7 @@ Class | Method | HTTP request | Description
 *ApiJavaApi* | [**getHalloween2025**](docs/ApiJavaApi.md#getHalloween2025) | **GET** /v2/java/halloween-2025/{date} | Halloween 2025
 *ApiJavaApi* | [**getNoelMegagift2024**](docs/ApiJavaApi.md#getNoelMegagift2024) | **GET** /v2/java/noelmegagift-2024 | Noël Megagift 2024
 *ApiJavaApi* | [**getNoelMegagift2025**](docs/ApiJavaApi.md#getNoelMegagift2025) | **GET** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025
+*ApiJavaApi* | [**getPillageCountry**](docs/ApiJavaApi.md#getPillageCountry) | **GET** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country
 *ApiJavaApi* | [**getPlayerList**](docs/ApiJavaApi.md#getPlayerList) | **GET** /v2/java/player-list/{date}/{javaServer} | Player List
 *ApiJavaApi* | [**getResearchConfig**](docs/ApiJavaApi.md#getResearchConfig) | **GET** /v2/java/research/{date}/config | Research Config
 *ApiJavaApi* | [**getResearchServer**](docs/ApiJavaApi.md#getResearchServer) | **GET** /v2/java/research/{date}/{javaServer} | Research Server
@@ -168,6 +169,7 @@ Class | Method | HTTP request | Description
 *ApiJavaApi* | [**postHalloween2025**](docs/ApiJavaApi.md#postHalloween2025) | **POST** /v2/java/halloween-2025/{date} | Halloween 2025
 *ApiJavaApi* | [**postNoelMegagift2024**](docs/ApiJavaApi.md#postNoelMegagift2024) | **POST** /v2/java/noelmegagift-2024 | Noël Megagift 2024
 *ApiJavaApi* | [**postNoelMegagift2025**](docs/ApiJavaApi.md#postNoelMegagift2025) | **POST** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025
+*ApiJavaApi* | [**postPillageCountry**](docs/ApiJavaApi.md#postPillageCountry) | **POST** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country
 *ApiJavaApi* | [**postPlayerList**](docs/ApiJavaApi.md#postPlayerList) | **POST** /v2/java/player-list/{date}/{javaServer} | Player List
 *ApiJavaApi* | [**postResearchServer**](docs/ApiJavaApi.md#postResearchServer) | **POST** /v2/java/research/{date}/{javaServer} | Research Server
 *ApiJavaApi* | [**postSkill**](docs/ApiJavaApi.md#postSkill) | **POST** /v2/java/skill/{date}/{javaServer} | Skill
@@ -216,6 +218,8 @@ Class | Method | HTTP request | Description
  - [NoelMegagift2025Entry](docs/NoelMegagift2025Entry.md)
  - [Parcelle](docs/Parcelle.md)
  - [PermissionEntry](docs/PermissionEntry.md)
+ - [PillageCountry](docs/PillageCountry.md)
+ - [PillageCountryEntry](docs/PillageCountryEntry.md)
  - [PlayerList](docs/PlayerList.md)
  - [PlayerListEntry](docs/PlayerListEntry.md)
  - [PostQueryBody](docs/PostQueryBody.md)

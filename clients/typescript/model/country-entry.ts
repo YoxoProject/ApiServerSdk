@@ -157,9 +157,21 @@ export interface CountryEntry {
     'bank'?: CountryBankEntry;
     'actions'?: CountryActionsEntry;
     'settings'?: CountrySettingsEntry;
+    /**
+     * Pays alliés (Disponible depuis le 17/02/2026)
+     */
+    'allies'?: Array<string>;
+    /**
+     * Pays enemies (Disponible depuis le 17/02/2026)
+     */
+    'enemies'?: Array<string>;
+    /**
+     * Pays annexés (Disponible depuis le 17/02/2026)
+     */
+    'annexions'?: Array<string>;
+    'topWarzone'?: boolean;
     'restrictAssault'?: boolean;
     'restrictMissile'?: boolean;
-    'topWarzone'?: boolean;
     'empire'?: boolean;
     'referent'?: boolean;
 }

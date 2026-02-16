@@ -53,6 +53,8 @@ from yoxo_api_client.models.noel_megagift2025 import NoelMegagift2025
 from yoxo_api_client.models.noel_megagift2025_entry import NoelMegagift2025Entry
 from yoxo_api_client.models.parcelle import Parcelle
 from yoxo_api_client.models.permission_entry import PermissionEntry
+from yoxo_api_client.models.pillage_country import PillageCountry
+from yoxo_api_client.models.pillage_country_entry import PillageCountryEntry
 from yoxo_api_client.models.player_list import PlayerList
 from yoxo_api_client.models.player_list_entry import PlayerListEntry
 from yoxo_api_client.models.post_query_body import PostQueryBody

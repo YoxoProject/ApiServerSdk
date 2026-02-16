@@ -12,6 +12,7 @@ All URIs are relative to *https://api.yoxo.software*
 | [**getHalloween2025**](ApiJavaApi.md#getHalloween2025) | **GET** /v2/java/halloween-2025/{date} | Halloween 2025 |
 | [**getNoelMegagift2024**](ApiJavaApi.md#getNoelMegagift2024) | **GET** /v2/java/noelmegagift-2024 | Noël Megagift 2024 |
 | [**getNoelMegagift2025**](ApiJavaApi.md#getNoelMegagift2025) | **GET** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025 |
+| [**getPillageCountry**](ApiJavaApi.md#getPillageCountry) | **GET** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country |
 | [**getPlayerList**](ApiJavaApi.md#getPlayerList) | **GET** /v2/java/player-list/{date}/{javaServer} | Player List |
 | [**getResearchConfig**](ApiJavaApi.md#getResearchConfig) | **GET** /v2/java/research/{date}/config | Research Config |
 | [**getResearchServer**](ApiJavaApi.md#getResearchServer) | **GET** /v2/java/research/{date}/{javaServer} | Research Server |
@@ -23,6 +24,7 @@ All URIs are relative to *https://api.yoxo.software*
 | [**postHalloween2025**](ApiJavaApi.md#postHalloween2025) | **POST** /v2/java/halloween-2025/{date} | Halloween 2025 |
 | [**postNoelMegagift2024**](ApiJavaApi.md#postNoelMegagift2024) | **POST** /v2/java/noelmegagift-2024 | Noël Megagift 2024 |
 | [**postNoelMegagift2025**](ApiJavaApi.md#postNoelMegagift2025) | **POST** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025 |
+| [**postPillageCountry**](ApiJavaApi.md#postPillageCountry) | **POST** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country |
 | [**postPlayerList**](ApiJavaApi.md#postPlayerList) | **POST** /v2/java/player-list/{date}/{javaServer} | Player List |
 | [**postResearchServer**](ApiJavaApi.md#postResearchServer) | **POST** /v2/java/research/{date}/{javaServer} | Research Server |
 | [**postSkill**](ApiJavaApi.md#postSkill) | **POST** /v2/java/skill/{date}/{javaServer} | Skill |
@@ -564,6 +566,75 @@ public class Example {
 ### Return type
 
 [**NoelMegagift2025**](NoelMegagift2025.md)
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+<a id="getPillageCountry"></a>
+# **getPillageCountry**
+> PillageCountry getPillageCountry(date, javaServer)
+
+Pillage Country
+
+Permet d&#39;obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+
+### Example
+```java
+// Import classes:
+import software.yoxo.client.invoker.ApiClient;
+import software.yoxo.client.invoker.ApiException;
+import software.yoxo.client.invoker.Configuration;
+import software.yoxo.client.invoker.auth.*;
+import software.yoxo.client.invoker.models.*;
+import software.yoxo.client.api.ApiJavaApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.yoxo.software");
+    
+    // Configure OAuth2 access token for authorization: oauth2_client_credentials
+    OAuth oauth2_client_credentials = (OAuth) defaultClient.getAuthentication("oauth2_client_credentials");
+    oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
+    ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
+    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
+    try {
+      PillageCountry result = apiInstance.getPillageCountry(date, javaServer);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ApiJavaApi#getPillageCountry");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+
+### Return type
+
+[**PillageCountry**](PillageCountry.md)
 
 ### Authorization
 
@@ -1325,6 +1396,77 @@ public class Example {
 ### Return type
 
 [**NoelMegagift2025**](NoelMegagift2025.md)
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+<a id="postPillageCountry"></a>
+# **postPillageCountry**
+> PillageCountry postPillageCountry(date, javaServer, postQueryBody)
+
+Pillage Country
+
+Permet d&#39;obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+
+### Example
+```java
+// Import classes:
+import software.yoxo.client.invoker.ApiClient;
+import software.yoxo.client.invoker.ApiException;
+import software.yoxo.client.invoker.Configuration;
+import software.yoxo.client.invoker.auth.*;
+import software.yoxo.client.invoker.models.*;
+import software.yoxo.client.api.ApiJavaApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.yoxo.software");
+    
+    // Configure OAuth2 access token for authorization: oauth2_client_credentials
+    OAuth oauth2_client_credentials = (OAuth) defaultClient.getAuthentication("oauth2_client_credentials");
+    oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
+    ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
+    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
+    PostQueryBody postQueryBody = new PostQueryBody(); // PostQueryBody | 
+    try {
+      PillageCountry result = apiInstance.postPillageCountry(date, javaServer, postQueryBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ApiJavaApi#postPillageCountry");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **postQueryBody** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] |
+
+### Return type
+
+[**PillageCountry**](PillageCountry.md)
 
 ### Authorization
 

@@ -13,16 +13,15 @@
  */
 
 
+// May contain unused imports in some cases
+// @ts-ignore
+import type { Metadata } from './metadata';
+// May contain unused imports in some cases
+// @ts-ignore
+import type { PillageCountryEntry } from './pillage-country-entry';
 
-/**
- * Coordonnées X,Y et Z
- */
-export interface CountryCoordinates {
-    'x'?: number;
-    /**
-     * Coordonnée Y (Disponible depuis le 17/02/2026)
-     */
-    'y'?: number;
-    'z'?: number;
+export interface PillageCountry {
+    'data'?: Array<PillageCountryEntry>;
+    'metadata'?: Metadata;
 }
 

@@ -17,19 +17,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class CountryCoordinates(BaseModel):
+class PillageCountryEntry(BaseModel):
     """
-    Coordonnées X,Y et Z
+    Données d'un pays en pillage
     """ # noqa: E501
-    x: Optional[StrictInt] = None
-    y: Optional[StrictInt] = Field(default=None, description="Coordonnée Y (Disponible depuis le 17/02/2026)")
-    z: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["x", "y", "z"]
+    name: Optional[StrictStr] = Field(default=None, description="Le nom du pays")
+    level: Optional[StrictInt] = Field(default=None, description="Le niveau du pays")
+    players: Optional[StrictInt] = Field(default=None, description="Le nombre de joueur total dans le pays")
+    notation_position: Optional[StrictInt] = Field(default=None, description="La position dans le classement du serveur aux dernières notation", alias="notationPosition")
+    power: Optional[StrictInt] = Field(default=None, description="Le power actuel du pays")
+    power_max: Optional[StrictInt] = Field(default=None, description="Le power max du pays", alias="powerMax")
+    __properties: ClassVar[List[str]] = ["name", "level", "players", "notationPosition", "power", "powerMax"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +52,7 @@ class CountryCoordinates(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CountryCoordinates from a JSON string"""
+        """Create an instance of PillageCountryEntry from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,7 +77,7 @@ class CountryCoordinates(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CountryCoordinates from a dict"""
+        """Create an instance of PillageCountryEntry from a dict"""
         if obj is None:
             return None
 
@@ -82,9 +85,12 @@ class CountryCoordinates(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "x": obj.get("x"),
-            "y": obj.get("y"),
-            "z": obj.get("z")
+            "name": obj.get("name"),
+            "level": obj.get("level"),
+            "players": obj.get("players"),
+            "notationPosition": obj.get("notationPosition"),
+            "power": obj.get("power"),
+            "powerMax": obj.get("powerMax")
         })
         return _obj
 

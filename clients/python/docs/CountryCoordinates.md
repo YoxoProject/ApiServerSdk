@@ -1,12 +1,13 @@
 # CountryCoordinates
 
-Coordonnées X,Z
+Coordonnées X,Y et Z
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **x** | **int** |  | [optional] 
+**y** | **int** | Coordonnée Y (Disponible depuis le 17/02/2026) | [optional] 
 **z** | **int** |  | [optional] 
 
 ## Example

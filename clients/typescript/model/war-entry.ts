@@ -95,6 +95,7 @@ export const WarEntryReasonEnum = {
     KillWilderness: 'KILL_WILDERNESS',
     Provocation: 'PROVOCATION',
     TerritorialExpansion: 'TERRITORIAL_EXPANSION',
+    TerritorialDefense: 'TERRITORIAL_DEFENSE',
     Treason: 'TREASON',
     Intrusion: 'INTRUSION',
     Scam: 'SCAM',

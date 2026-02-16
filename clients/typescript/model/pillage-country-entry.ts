@@ -15,14 +15,32 @@
 
 
 /**
- * Coordonnées X,Y et Z
+ * Données d\'un pays en pillage
  */
-export interface CountryCoordinates {
-    'x'?: number;
+export interface PillageCountryEntry {
     /**
-     * Coordonnée Y (Disponible depuis le 17/02/2026)
+     * Le nom du pays
      */
-    'y'?: number;
-    'z'?: number;
+    'name'?: string;
+    /**
+     * Le niveau du pays
+     */
+    'level'?: number;
+    /**
+     * Le nombre de joueur total dans le pays
+     */
+    'players'?: number;
+    /**
+     * La position dans le classement du serveur aux dernières notation
+     */
+    'notationPosition'?: number;
+    /**
+     * Le power actuel du pays
+     */
+    'power'?: number;
+    /**
+     * Le power max du pays
+     */
+    'powerMax'?: number;
 }
 

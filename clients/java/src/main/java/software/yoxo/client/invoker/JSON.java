@@ -153,6 +153,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.NoelMegagift2025Entry.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.Parcelle.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.PermissionEntry.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.PillageCountry.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.PillageCountryEntry.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.PlayerList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.PlayerListEntry.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.PostQueryBody.CustomTypeAdapterFactory());

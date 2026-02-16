@@ -17,19 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
+from yoxo_api_client.models.metadata import Metadata
+from yoxo_api_client.models.pillage_country_entry import PillageCountryEntry
 from typing import Optional, Set
 from typing_extensions import Self
 
-class CountryCoordinates(BaseModel):
+class PillageCountry(BaseModel):
     """
-    Coordonnées X,Y et Z
+    PillageCountry
     """ # noqa: E501
-    x: Optional[StrictInt] = None
-    y: Optional[StrictInt] = Field(default=None, description="Coordonnée Y (Disponible depuis le 17/02/2026)")
-    z: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["x", "y", "z"]
+    data: Optional[List[PillageCountryEntry]] = None
+    metadata: Optional[Metadata] = None
+    __properties: ClassVar[List[str]] = ["data", "metadata"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +50,7 @@ class CountryCoordinates(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CountryCoordinates from a JSON string"""
+        """Create an instance of PillageCountry from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,11 +71,21 @@ class CountryCoordinates(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
+        _items = []
+        if self.data:
+            for _item_data in self.data:
+                if _item_data:
+                    _items.append(_item_data.to_dict())
+            _dict['data'] = _items
+        # override the default output from pydantic by calling `to_dict()` of metadata
+        if self.metadata:
+            _dict['metadata'] = self.metadata.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CountryCoordinates from a dict"""
+        """Create an instance of PillageCountry from a dict"""
         if obj is None:
             return None
 
@@ -82,9 +93,8 @@ class CountryCoordinates(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "x": obj.get("x"),
-            "y": obj.get("y"),
-            "z": obj.get("z")
+            "data": [PillageCountryEntry.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
+            "metadata": Metadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None
         })
         return _obj
 

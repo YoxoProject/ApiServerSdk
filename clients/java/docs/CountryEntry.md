@@ -42,9 +42,12 @@ Données d'un pays
 |**bank** | [**CountryBankEntry**](CountryBankEntry.md) |  |  [optional] |
 |**actions** | [**CountryActionsEntry**](CountryActionsEntry.md) |  |  [optional] |
 |**settings** | [**CountrySettingsEntry**](CountrySettingsEntry.md) |  |  [optional] |
+|**allies** | **List&lt;String&gt;** | Pays alliés (Disponible depuis le 17/02/2026) |  [optional] |
+|**enemies** | **List&lt;String&gt;** | Pays enemies (Disponible depuis le 17/02/2026) |  [optional] |
+|**annexions** | **List&lt;String&gt;** | Pays annexés (Disponible depuis le 17/02/2026) |  [optional] |
+|**topWarzone** | **Boolean** |  |  [optional] |
 |**restrictAssault** | **Boolean** |  |  [optional] |
 |**restrictMissile** | **Boolean** |  |  [optional] |
-|**topWarzone** | **Boolean** |  |  [optional] |
 |**empire** | **Boolean** |  |  [optional] |
 |**referent** | **Boolean** |  |  [optional] |
 

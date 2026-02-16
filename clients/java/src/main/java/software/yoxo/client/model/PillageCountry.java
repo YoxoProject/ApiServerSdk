@@ -20,7 +20,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import software.yoxo.client.model.Metadata;
+import software.yoxo.client.model.PillageCountryEntry;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,82 +50,66 @@ import java.util.Set;
 import software.yoxo.client.invoker.JSON;
 
 /**
- * Coordonnées X,Y et Z
+ * PillageCountry
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
-public class CountryCoordinates {
-  public static final String SERIALIZED_NAME_X = "x";
-  @SerializedName(SERIALIZED_NAME_X)
+public class PillageCountry {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private Integer x;
+  private List<PillageCountryEntry> data = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_Y = "y";
-  @SerializedName(SERIALIZED_NAME_Y)
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
   @javax.annotation.Nullable
-  private Integer y;
+  private Metadata metadata;
 
-  public static final String SERIALIZED_NAME_Z = "z";
-  @SerializedName(SERIALIZED_NAME_Z)
-  @javax.annotation.Nullable
-  private Integer z;
-
-  public CountryCoordinates() {
+  public PillageCountry() {
   }
 
-  public CountryCoordinates x(@javax.annotation.Nullable Integer x) {
-    this.x = x;
+  public PillageCountry data(@javax.annotation.Nullable List<PillageCountryEntry> data) {
+    this.data = data;
+    return this;
+  }
+
+  public PillageCountry addDataItem(PillageCountryEntry dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<>();
+    }
+    this.data.add(dataItem);
     return this;
   }
 
   /**
-   * Get x
-   * @return x
+   * Get data
+   * @return data
    */
   @javax.annotation.Nullable
-  public Integer getX() {
-    return x;
+  public List<PillageCountryEntry> getData() {
+    return data;
   }
 
-  public void setX(@javax.annotation.Nullable Integer x) {
-    this.x = x;
+  public void setData(@javax.annotation.Nullable List<PillageCountryEntry> data) {
+    this.data = data;
   }
 
 
-  public CountryCoordinates y(@javax.annotation.Nullable Integer y) {
-    this.y = y;
+  public PillageCountry metadata(@javax.annotation.Nullable Metadata metadata) {
+    this.metadata = metadata;
     return this;
   }
 
   /**
-   * Coordonnée Y (Disponible depuis le 17/02/2026)
-   * @return y
+   * Get metadata
+   * @return metadata
    */
   @javax.annotation.Nullable
-  public Integer getY() {
-    return y;
+  public Metadata getMetadata() {
+    return metadata;
   }
 
-  public void setY(@javax.annotation.Nullable Integer y) {
-    this.y = y;
-  }
-
-
-  public CountryCoordinates z(@javax.annotation.Nullable Integer z) {
-    this.z = z;
-    return this;
-  }
-
-  /**
-   * Get z
-   * @return z
-   */
-  @javax.annotation.Nullable
-  public Integer getZ() {
-    return z;
-  }
-
-  public void setZ(@javax.annotation.Nullable Integer z) {
-    this.z = z;
+  public void setMetadata(@javax.annotation.Nullable Metadata metadata) {
+    this.metadata = metadata;
   }
 
 
@@ -134,24 +122,22 @@ public class CountryCoordinates {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CountryCoordinates countryCoordinates = (CountryCoordinates) o;
-    return Objects.equals(this.x, countryCoordinates.x) &&
-        Objects.equals(this.y, countryCoordinates.y) &&
-        Objects.equals(this.z, countryCoordinates.z);
+    PillageCountry pillageCountry = (PillageCountry) o;
+    return Objects.equals(this.data, pillageCountry.data) &&
+        Objects.equals(this.metadata, pillageCountry.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(x, y, z);
+    return Objects.hash(data, metadata);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CountryCoordinates {\n");
-    sb.append("    x: ").append(toIndentedString(x)).append("\n");
-    sb.append("    y: ").append(toIndentedString(y)).append("\n");
-    sb.append("    z: ").append(toIndentedString(z)).append("\n");
+    sb.append("class PillageCountry {\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -173,7 +159,7 @@ public class CountryCoordinates {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("x", "y", "z"));
+    openapiFields = new HashSet<String>(Arrays.asList("data", "metadata"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -183,45 +169,63 @@ public class CountryCoordinates {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CountryCoordinates
+   * @throws IOException if the JSON Element is invalid with respect to PillageCountry
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!CountryCoordinates.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CountryCoordinates is not found in the empty JSON string", CountryCoordinates.openapiRequiredFields.toString()));
+        if (!PillageCountry.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in PillageCountry is not found in the empty JSON string", PillageCountry.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CountryCoordinates.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CountryCoordinates` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!PillageCountry.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `PillageCountry` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
+        if (jsonArraydata != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("data").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
+          }
+
+          // validate the optional field `data` (array)
+          for (int i = 0; i < jsonArraydata.size(); i++) {
+            PillageCountryEntry.validateJsonElement(jsonArraydata.get(i));
+          };
+        }
+      }
+      // validate the optional field `metadata`
+      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
+        Metadata.validateJsonElement(jsonObj.get("metadata"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CountryCoordinates.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CountryCoordinates' and its subtypes
+       if (!PillageCountry.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PillageCountry' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CountryCoordinates> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CountryCoordinates.class));
+       final TypeAdapter<PillageCountry> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PillageCountry.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CountryCoordinates>() {
+       return (TypeAdapter<T>) new TypeAdapter<PillageCountry>() {
            @Override
-           public void write(JsonWriter out, CountryCoordinates value) throws IOException {
+           public void write(JsonWriter out, PillageCountry value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public CountryCoordinates read(JsonReader in) throws IOException {
+           public PillageCountry read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -232,18 +236,18 @@ public class CountryCoordinates {
   }
 
   /**
-   * Create an instance of CountryCoordinates given an JSON string
+   * Create an instance of PillageCountry given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of CountryCoordinates
-   * @throws IOException if the JSON string is invalid with respect to CountryCoordinates
+   * @return An instance of PillageCountry
+   * @throws IOException if the JSON string is invalid with respect to PillageCountry
    */
-  public static CountryCoordinates fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CountryCoordinates.class);
+  public static PillageCountry fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PillageCountry.class);
   }
 
   /**
-   * Convert an instance of CountryCoordinates to an JSON string
+   * Convert an instance of PillageCountry to an JSON string
    *
    * @return JSON string
    */

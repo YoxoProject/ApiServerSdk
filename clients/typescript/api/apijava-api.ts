@@ -34,6 +34,8 @@ import type { NoelMegagift2024 } from '../model';
 // @ts-ignore
 import type { NoelMegagift2025 } from '../model';
 // @ts-ignore
+import type { PillageCountry } from '../model';
+// @ts-ignore
 import type { PlayerList } from '../model';
 // @ts-ignore
 import type { PostQueryBody } from '../model';
@@ -362,6 +364,48 @@ export const APIJavaApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('getNoelMegagift2025', 'date', date)
             const localVarPath = `/v2/java/noelmegagift-2025/{date}`
                 .replace(`{${"date"}}`, encodeURIComponent(String(date)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2_client_credentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2_client_credentials", [], configuration)
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Permet d\'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+         * @summary Pillage Country
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {GetPillageCountryJavaServerEnum} javaServer Serveur
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPillageCountry: async (date: string, javaServer: GetPillageCountryJavaServerEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'date' is not null or undefined
+            assertParamExists('getPillageCountry', 'date', date)
+            // verify required parameter 'javaServer' is not null or undefined
+            assertParamExists('getPillageCountry', 'javaServer', javaServer)
+            const localVarPath = `/v2/java/pillage-country/{date}/{javaServer}`
+                .replace(`{${"date"}}`, encodeURIComponent(String(date)))
+                .replace(`{${"javaServer"}}`, encodeURIComponent(String(javaServer)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -850,6 +894,51 @@ export const APIJavaApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Permet d\'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+         * @summary Pillage Country
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {PostPillageCountryJavaServerEnum} javaServer Serveur
+         * @param {PostQueryBody} [postQueryBody] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postPillageCountry: async (date: string, javaServer: PostPillageCountryJavaServerEnum, postQueryBody?: PostQueryBody, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'date' is not null or undefined
+            assertParamExists('postPillageCountry', 'date', date)
+            // verify required parameter 'javaServer' is not null or undefined
+            assertParamExists('postPillageCountry', 'javaServer', javaServer)
+            const localVarPath = `/v2/java/pillage-country/{date}/{javaServer}`
+                .replace(`{${"date"}}`, encodeURIComponent(String(date)))
+                .replace(`{${"javaServer"}}`, encodeURIComponent(String(javaServer)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2_client_credentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2_client_credentials", [], configuration)
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(postQueryBody, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Permet d\'obtenir la liste des joueurs s\'étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (avec filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
          * @summary Player List
          * @param {string} date Date (yyyy-MM-dd)
@@ -1151,6 +1240,20 @@ export const APIJavaApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Permet d\'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+         * @summary Pillage Country
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {GetPillageCountryJavaServerEnum} javaServer Serveur
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPillageCountry(date: string, javaServer: GetPillageCountryJavaServerEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PillageCountry>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPillageCountry(date, javaServer, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['APIJavaApi.getPillageCountry']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Permet d\'obtenir la liste des joueurs s\'étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (aucun filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
          * @summary Player List
          * @param {string} date Date (yyyy-MM-dd)
@@ -1303,6 +1406,21 @@ export const APIJavaApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.postNoelMegagift2025(date, postQueryBody, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['APIJavaApi.postNoelMegagift2025']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Permet d\'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+         * @summary Pillage Country
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {PostPillageCountryJavaServerEnum} javaServer Serveur
+         * @param {PostQueryBody} [postQueryBody] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postPillageCountry(date: string, javaServer: PostPillageCountryJavaServerEnum, postQueryBody?: PostQueryBody, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PillageCountry>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postPillageCountry(date, javaServer, postQueryBody, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['APIJavaApi.postPillageCountry']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1463,6 +1581,17 @@ export const APIJavaApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.getNoelMegagift2025(date, options).then((request) => request(axios, basePath));
         },
         /**
+         * Permet d\'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+         * @summary Pillage Country
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {GetPillageCountryJavaServerEnum} javaServer Serveur
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPillageCountry(date: string, javaServer: GetPillageCountryJavaServerEnum, options?: RawAxiosRequestConfig): AxiosPromise<PillageCountry> {
+            return localVarFp.getPillageCountry(date, javaServer, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Permet d\'obtenir la liste des joueurs s\'étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (aucun filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
          * @summary Player List
          * @param {string} date Date (yyyy-MM-dd)
@@ -1583,6 +1712,18 @@ export const APIJavaApiFactory = function (configuration?: Configuration, basePa
          */
         postNoelMegagift2025(date: string, postQueryBody?: PostQueryBody, options?: RawAxiosRequestConfig): AxiosPromise<NoelMegagift2025> {
             return localVarFp.postNoelMegagift2025(date, postQueryBody, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Permet d\'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+         * @summary Pillage Country
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {PostPillageCountryJavaServerEnum} javaServer Serveur
+         * @param {PostQueryBody} [postQueryBody] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postPillageCountry(date: string, javaServer: PostPillageCountryJavaServerEnum, postQueryBody?: PostQueryBody, options?: RawAxiosRequestConfig): AxiosPromise<PillageCountry> {
+            return localVarFp.postPillageCountry(date, javaServer, postQueryBody, options).then((request) => request(axios, basePath));
         },
         /**
          * Permet d\'obtenir la liste des joueurs s\'étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (avec filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
@@ -1736,6 +1877,18 @@ export class APIJavaApi extends BaseAPI {
     }
 
     /**
+     * Permet d\'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+     * @summary Pillage Country
+     * @param {string} date Date (yyyy-MM-dd)
+     * @param {GetPillageCountryJavaServerEnum} javaServer Serveur
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public getPillageCountry(date: string, javaServer: GetPillageCountryJavaServerEnum, options?: RawAxiosRequestConfig) {
+        return APIJavaApiFp(this.configuration).getPillageCountry(date, javaServer, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Permet d\'obtenir la liste des joueurs s\'étant connectés au moins une fois au cours des 14 derniers jours sur un serveur à une date donnée (aucun filtrage possible).  **Fréquence de mise à jour :** Les données sont actualisées quotidiennement, généralement la nuit. 
      * @summary Player List
      * @param {string} date Date (yyyy-MM-dd)
@@ -1866,6 +2019,19 @@ export class APIJavaApi extends BaseAPI {
      */
     public postNoelMegagift2025(date: string, postQueryBody?: PostQueryBody, options?: RawAxiosRequestConfig) {
         return APIJavaApiFp(this.configuration).postNoelMegagift2025(date, postQueryBody, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Permet d\'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+     * @summary Pillage Country
+     * @param {string} date Date (yyyy-MM-dd)
+     * @param {PostPillageCountryJavaServerEnum} javaServer Serveur
+     * @param {PostQueryBody} [postQueryBody] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public postPillageCountry(date: string, javaServer: PostPillageCountryJavaServerEnum, postQueryBody?: PostQueryBody, options?: RawAxiosRequestConfig) {
+        return APIJavaApiFp(this.configuration).postPillageCountry(date, javaServer, postQueryBody, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2042,6 +2208,23 @@ export const GetEnterprises1EnterpriseTypeEnum = {
     Farm: 'farm'
 } as const;
 export type GetEnterprises1EnterpriseTypeEnum = typeof GetEnterprises1EnterpriseTypeEnum[keyof typeof GetEnterprises1EnterpriseTypeEnum];
+export const GetPillageCountryJavaServerEnum = {
+    Blue: 'blue',
+    Orange: 'orange',
+    Yellow: 'yellow',
+    White: 'white',
+    Black: 'black',
+    Cyan: 'cyan',
+    Lime: 'lime',
+    Coral: 'coral',
+    Pink: 'pink',
+    Purple: 'purple',
+    Green: 'green',
+    Red: 'red',
+    Mocha: 'mocha',
+    Jade: 'jade'
+} as const;
+export type GetPillageCountryJavaServerEnum = typeof GetPillageCountryJavaServerEnum[keyof typeof GetPillageCountryJavaServerEnum];
 export const GetPlayerListJavaServerEnum = {
     Blue: 'blue',
     Orange: 'orange',
@@ -2161,6 +2344,23 @@ export const PostEnterprisesJavaServerEnum = {
     Jade: 'jade'
 } as const;
 export type PostEnterprisesJavaServerEnum = typeof PostEnterprisesJavaServerEnum[keyof typeof PostEnterprisesJavaServerEnum];
+export const PostPillageCountryJavaServerEnum = {
+    Blue: 'blue',
+    Orange: 'orange',
+    Yellow: 'yellow',
+    White: 'white',
+    Black: 'black',
+    Cyan: 'cyan',
+    Lime: 'lime',
+    Coral: 'coral',
+    Pink: 'pink',
+    Purple: 'purple',
+    Green: 'green',
+    Red: 'red',
+    Mocha: 'mocha',
+    Jade: 'jade'
+} as const;
+export type PostPillageCountryJavaServerEnum = typeof PostPillageCountryJavaServerEnum[keyof typeof PostPillageCountryJavaServerEnum];
 export const PostPlayerListJavaServerEnum = {
     Blue: 'blue',
     Orange: 'orange',

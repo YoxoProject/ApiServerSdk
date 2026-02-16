@@ -829,6 +829,131 @@ paths:
       x-content-type: application/json
       x-accepts:
       - application/json
+  /v2/java/pillage-country/{date}/{javaServer}:
+    get:
+      description: |
+        Permet d'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (aucun filtrage possible).
+
+        **Documentation :**
+        https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées les mercredi, samedi et dimanche vers 14h30.
+      operationId: getPillageCountry
+      parameters:
+      - description: Date (yyyy-MM-dd)
+        example: 2025-10-28
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: Serveur
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PillageCountry"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Pillage Country
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+    post:
+      description: |
+        Permet d'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (avec filtrage possible).
+
+        **Documentation :**
+        https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées les mercredi, samedi et dimanche vers 14h30.
+      operationId: postPillageCountry
+      parameters:
+      - description: Date (yyyy-MM-dd)
+        example: 2025-10-28
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: Serveur
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostQueryBody"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PillageCountry"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Pillage Country
+      tags:
+      - API Java
+      x-content-type: application/json
+      x-accepts:
+      - application/json
   /v2/java/player-list/{date}/{javaServer}:
     get:
       description: |
@@ -1952,6 +2077,7 @@ components:
           - KILL_WILDERNESS
           - PROVOCATION
           - TERRITORIAL_EXPANSION
+          - TERRITORIAL_DEFENSE
           - TREASON
           - INTRUSION
           - SCAM
@@ -2484,6 +2610,80 @@ components:
             es depuis le 1er janvier 1970, minuit UTC"
           example: 1760939974755
           format: int64
+          type: integer
+      type: object
+    PillageCountry:
+      example:
+        metadata:
+          date: 2025-10-21
+          filteredCount: 42
+          server: red
+          dataType: example
+          executionTimeMs: 210
+          totalPages: 3
+          pageSize: 20
+          totalCount: 50
+          currentPage: 1
+          timestamp: 1760939974755
+        data:
+        - powerMax: 150
+          level: 10
+          notationPosition: 1
+          players: 5
+          name: France
+          power: 100
+        - powerMax: 150
+          level: 10
+          notationPosition: 1
+          players: 5
+          name: France
+          power: 100
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/PillageCountryEntry"
+          type: array
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      type: object
+    PillageCountryEntry:
+      description: Données d'un pays en pillage
+      example:
+        powerMax: 150
+        level: 10
+        notationPosition: 1
+        players: 5
+        name: France
+        power: 100
+      properties:
+        name:
+          description: Le nom du pays
+          example: France
+          type: string
+        level:
+          description: Le niveau du pays
+          example: 10
+          format: int32
+          type: integer
+        players:
+          description: Le nombre de joueur total dans le pays
+          example: 5
+          format: int32
+          type: integer
+        notationPosition:
+          description: La position dans le classement du serveur aux dernières notation
+          example: 1
+          format: int32
+          type: integer
+        power:
+          description: Le power actuel du pays
+          example: 100
+          format: int32
+          type: integer
+        powerMax:
+          description: Le power max du pays
+          example: 150
+          format: int32
           type: integer
       type: object
     NoelMegagift2025:
@@ -3397,7 +3597,7 @@ components:
     BankLogEntry:
       description: Log bancaire
       example:
-        amount: 2.8841621266687802
+        amount: 6.778324963048013
         pseudo: pseudo
         timestamp: 6
       properties:
@@ -3435,10 +3635,11 @@ components:
           referent: true
           fhomeCoord:
             x: 5
-            z: 5
+            "y": 5
+            z: 2
           description: description
           bank:
-            balance: 1
+            balance: 2
             members:
             - members
             - members
@@ -3446,44 +3647,44 @@ components:
             - owners
             - owners
             logs:
-            - amount: 2.8841621266687802
+            - amount: 6.778324963048013
               pseudo: pseudo
               timestamp: 6
-            - amount: 2.8841621266687802
+            - amount: 6.778324963048013
               pseudo: pseudo
               timestamp: 6
-          mmr: 3
+          mmr: 2
           members:
           - members
           - members
           newMembers:
-          - playedTime: 1
-            rewardMoneyMax: 9
-            rewardPowerMax: 5
-            step: 6
+          - playedTime: 4
+            rewardMoneyMax: 6
+            rewardPowerMax: 9
+            step: 8
             pseudo: pseudo
             rewardMoney: 9
-            rewardPower: 4
-          - playedTime: 1
-            rewardMoneyMax: 9
-            rewardPowerMax: 5
-            step: 6
+            rewardPower: 5
+          - playedTime: 4
+            rewardMoneyMax: 6
+            rewardPowerMax: 9
+            step: 8
             pseudo: pseudo
             rewardMoney: 9
-            rewardPower: 4
+            rewardPower: 5
           allianceName: allianceName
-          powerboostMalusAssault: 7
+          powerboostMalusAssault: 1
           empire: true
           restrictAssault: true
           entryMsg: entryMsg
-          power: 4
+          power: 7
           researchesLevel:
-            general: 8
-            resource: 9
-            military: 6
-            industry: 3
-            technology: 6
-          powerboostNewMember: 6
+            general: 9
+            resource: 6
+            military: 3
+            industry: 6
+            technology: 1
+          powerboostNewMember: 7
           officers:
           - officers
           - officers
@@ -3516,13 +3717,16 @@ components:
             - action: action
               user: user
               target: target
-              timestamp: 0
+              timestamp: 7
             - action: action
               user: user
               target: target
-              timestamp: 0
-          level: 2
-          notationsPosition: 9
+              timestamp: 7
+          level: 7
+          notationsPosition: 3
+          enemies:
+          - enemies
+          - enemies
           countMembers: 6
           tags:
           - tags
@@ -3531,38 +3735,44 @@ components:
           restrictMissile: true
           name: France
           countNewMembers: 1
-          claims: 2
-          progress: 7
-          maxPower: 7
+          claims: 4
+          progress: 9
+          maxPower: 1
           wars:
           - wars
           - wars
+          allies:
+          - allies
+          - allies
           recruits:
           - recruits
           - recruits
           actions:
-            availableActions: 5
-            actionPrice: 6
-            totalDividendes: 6.878052220127876
+            availableActions: 6
+            actionPrice: 3
+            totalDividendes: 5.944895607614016
             dividendesHistory:
-            - montant: 3.0937452626664474
+            - montant: 7.143538047012306
               pays: pays
-              timestamp: 7
-            - montant: 3.0937452626664474
+              timestamp: 0
+            - montant: 7.143538047012306
               pays: pays
-              timestamp: 7
+              timestamp: 0
             dividendesClassement:
-            - montant: 3.353193347011243
+            - montant: 3.0937452626664474
               pays: pays
-            - montant: 3.353193347011243
+            - montant: 3.0937452626664474
               pays: pays
             actions:
             - owner: owner
               status: LOCKED
             - owner: owner
               status: LOCKED
+          annexions:
+          - annexions
+          - annexions
           age: 0
-          powerboostUnesco: 1
+          powerboostUnesco: 6
         - leader: leader
           powerboostFixed: 1
           powerboostWarzone: 1
@@ -3571,10 +3781,11 @@ components:
           referent: true
           fhomeCoord:
             x: 5
-            z: 5
+            "y": 5
+            z: 2
           description: description
           bank:
-            balance: 1
+            balance: 2
             members:
             - members
             - members
@@ -3582,44 +3793,44 @@ components:
             - owners
             - owners
             logs:
-            - amount: 2.8841621266687802
+            - amount: 6.778324963048013
               pseudo: pseudo
               timestamp: 6
-            - amount: 2.8841621266687802
+            - amount: 6.778324963048013
               pseudo: pseudo
               timestamp: 6
-          mmr: 3
+          mmr: 2
           members:
           - members
           - members
           newMembers:
-          - playedTime: 1
-            rewardMoneyMax: 9
-            rewardPowerMax: 5
-            step: 6
+          - playedTime: 4
+            rewardMoneyMax: 6
+            rewardPowerMax: 9
+            step: 8
             pseudo: pseudo
             rewardMoney: 9
-            rewardPower: 4
-          - playedTime: 1
-            rewardMoneyMax: 9
-            rewardPowerMax: 5
-            step: 6
+            rewardPower: 5
+          - playedTime: 4
+            rewardMoneyMax: 6
+            rewardPowerMax: 9
+            step: 8
             pseudo: pseudo
             rewardMoney: 9
-            rewardPower: 4
+            rewardPower: 5
           allianceName: allianceName
-          powerboostMalusAssault: 7
+          powerboostMalusAssault: 1
           empire: true
           restrictAssault: true
           entryMsg: entryMsg
-          power: 4
+          power: 7
           researchesLevel:
-            general: 8
-            resource: 9
-            military: 6
-            industry: 3
-            technology: 6
-          powerboostNewMember: 6
+            general: 9
+            resource: 6
+            military: 3
+            industry: 6
+            technology: 1
+          powerboostNewMember: 7
           officers:
           - officers
           - officers
@@ -3652,13 +3863,16 @@ components:
             - action: action
               user: user
               target: target
-              timestamp: 0
+              timestamp: 7
             - action: action
               user: user
               target: target
-              timestamp: 0
-          level: 2
-          notationsPosition: 9
+              timestamp: 7
+          level: 7
+          notationsPosition: 3
+          enemies:
+          - enemies
+          - enemies
           countMembers: 6
           tags:
           - tags
@@ -3667,38 +3881,44 @@ components:
           restrictMissile: true
           name: France
           countNewMembers: 1
-          claims: 2
-          progress: 7
-          maxPower: 7
+          claims: 4
+          progress: 9
+          maxPower: 1
           wars:
           - wars
           - wars
+          allies:
+          - allies
+          - allies
           recruits:
           - recruits
           - recruits
           actions:
-            availableActions: 5
-            actionPrice: 6
-            totalDividendes: 6.878052220127876
+            availableActions: 6
+            actionPrice: 3
+            totalDividendes: 5.944895607614016
             dividendesHistory:
-            - montant: 3.0937452626664474
+            - montant: 7.143538047012306
               pays: pays
-              timestamp: 7
-            - montant: 3.0937452626664474
+              timestamp: 0
+            - montant: 7.143538047012306
               pays: pays
-              timestamp: 7
+              timestamp: 0
             dividendesClassement:
-            - montant: 3.353193347011243
+            - montant: 3.0937452626664474
               pays: pays
-            - montant: 3.353193347011243
+            - montant: 3.0937452626664474
               pays: pays
             actions:
             - owner: owner
               status: LOCKED
             - owner: owner
               status: LOCKED
+          annexions:
+          - annexions
+          - annexions
           age: 0
-          powerboostUnesco: 1
+          powerboostUnesco: 6
       properties:
         data:
           items:
@@ -3710,20 +3930,20 @@ components:
     CountryActionsEntry:
       description: Actions du pays
       example:
-        availableActions: 5
-        actionPrice: 6
-        totalDividendes: 6.878052220127876
+        availableActions: 6
+        actionPrice: 3
+        totalDividendes: 5.944895607614016
         dividendesHistory:
-        - montant: 3.0937452626664474
+        - montant: 7.143538047012306
           pays: pays
-          timestamp: 7
-        - montant: 3.0937452626664474
+          timestamp: 0
+        - montant: 7.143538047012306
           pays: pays
-          timestamp: 7
+          timestamp: 0
         dividendesClassement:
-        - montant: 3.353193347011243
+        - montant: 3.0937452626664474
           pays: pays
-        - montant: 3.353193347011243
+        - montant: 3.0937452626664474
           pays: pays
         actions:
         - owner: owner
@@ -3762,7 +3982,7 @@ components:
     CountryBankEntry:
       description: Banque du pays
       example:
-        balance: 1
+        balance: 2
         members:
         - members
         - members
@@ -3770,10 +3990,10 @@ components:
         - owners
         - owners
         logs:
-        - amount: 2.8841621266687802
+        - amount: 6.778324963048013
           pseudo: pseudo
           timestamp: 6
-        - amount: 2.8841621266687802
+        - amount: 6.778324963048013
           pseudo: pseudo
           timestamp: 6
       properties:
@@ -3800,12 +4020,17 @@ components:
           type: array
       type: object
     CountryCoordinates:
-      description: "Coordonnées X,Z"
+      description: "Coordonnées X,Y et Z"
       example:
         x: 5
-        z: 5
+        "y": 5
+        z: 2
       properties:
         x:
+          format: int32
+          type: integer
+        "y":
+          description: Coordonnée Y (Disponible depuis le 17/02/2026)
           format: int32
           type: integer
         z:
@@ -3823,10 +4048,11 @@ components:
         referent: true
         fhomeCoord:
           x: 5
-          z: 5
+          "y": 5
+          z: 2
         description: description
         bank:
-          balance: 1
+          balance: 2
           members:
           - members
           - members
@@ -3834,44 +4060,44 @@ components:
           - owners
           - owners
           logs:
-          - amount: 2.8841621266687802
+          - amount: 6.778324963048013
             pseudo: pseudo
             timestamp: 6
-          - amount: 2.8841621266687802
+          - amount: 6.778324963048013
             pseudo: pseudo
             timestamp: 6
-        mmr: 3
+        mmr: 2
         members:
         - members
         - members
         newMembers:
-        - playedTime: 1
-          rewardMoneyMax: 9
-          rewardPowerMax: 5
-          step: 6
+        - playedTime: 4
+          rewardMoneyMax: 6
+          rewardPowerMax: 9
+          step: 8
           pseudo: pseudo
           rewardMoney: 9
-          rewardPower: 4
-        - playedTime: 1
-          rewardMoneyMax: 9
-          rewardPowerMax: 5
-          step: 6
+          rewardPower: 5
+        - playedTime: 4
+          rewardMoneyMax: 6
+          rewardPowerMax: 9
+          step: 8
           pseudo: pseudo
           rewardMoney: 9
-          rewardPower: 4
+          rewardPower: 5
         allianceName: allianceName
-        powerboostMalusAssault: 7
+        powerboostMalusAssault: 1
         empire: true
         restrictAssault: true
         entryMsg: entryMsg
-        power: 4
+        power: 7
         researchesLevel:
-          general: 8
-          resource: 9
-          military: 6
-          industry: 3
-          technology: 6
-        powerboostNewMember: 6
+          general: 9
+          resource: 6
+          military: 3
+          industry: 6
+          technology: 1
+        powerboostNewMember: 7
         officers:
         - officers
         - officers
@@ -3904,13 +4130,16 @@ components:
           - action: action
             user: user
             target: target
-            timestamp: 0
+            timestamp: 7
           - action: action
             user: user
             target: target
-            timestamp: 0
-        level: 2
-        notationsPosition: 9
+            timestamp: 7
+        level: 7
+        notationsPosition: 3
+        enemies:
+        - enemies
+        - enemies
         countMembers: 6
         tags:
         - tags
@@ -3919,38 +4148,44 @@ components:
         restrictMissile: true
         name: France
         countNewMembers: 1
-        claims: 2
-        progress: 7
-        maxPower: 7
+        claims: 4
+        progress: 9
+        maxPower: 1
         wars:
         - wars
         - wars
+        allies:
+        - allies
+        - allies
         recruits:
         - recruits
         - recruits
         actions:
-          availableActions: 5
-          actionPrice: 6
-          totalDividendes: 6.878052220127876
+          availableActions: 6
+          actionPrice: 3
+          totalDividendes: 5.944895607614016
           dividendesHistory:
-          - montant: 3.0937452626664474
+          - montant: 7.143538047012306
             pays: pays
-            timestamp: 7
-          - montant: 3.0937452626664474
+            timestamp: 0
+          - montant: 7.143538047012306
             pays: pays
-            timestamp: 7
+            timestamp: 0
           dividendesClassement:
-          - montant: 3.353193347011243
+          - montant: 3.0937452626664474
             pays: pays
-          - montant: 3.353193347011243
+          - montant: 3.0937452626664474
             pays: pays
           actions:
           - owner: owner
             status: LOCKED
           - owner: owner
             status: LOCKED
+        annexions:
+        - annexions
+        - annexions
         age: 0
-        powerboostUnesco: 1
+        powerboostUnesco: 6
       properties:
         name:
           description: Nom du pays
@@ -4082,11 +4317,29 @@ components:
           $ref: "#/components/schemas/CountryActionsEntry"
         settings:
           $ref: "#/components/schemas/CountrySettingsEntry"
+        allies:
+          description: Pays alliés (Disponible depuis le 17/02/2026)
+          items:
+            description: Pays alliés (Disponible depuis le 17/02/2026)
+            type: string
+          type: array
+        enemies:
+          description: Pays enemies (Disponible depuis le 17/02/2026)
+          items:
+            description: Pays enemies (Disponible depuis le 17/02/2026)
+            type: string
+          type: array
+        annexions:
+          description: Pays annexés (Disponible depuis le 17/02/2026)
+          items:
+            description: Pays annexés (Disponible depuis le 17/02/2026)
+            type: string
+          type: array
+        topWarzone:
+          type: boolean
         restrictAssault:
           type: boolean
         restrictMissile:
-          type: boolean
-        topWarzone:
           type: boolean
         empire:
           type: boolean
@@ -4123,11 +4376,11 @@ components:
         - action: action
           user: user
           target: target
-          timestamp: 0
+          timestamp: 7
         - action: action
           user: user
           target: target
-          timestamp: 0
+          timestamp: 7
       properties:
         invitationNeeded:
           description: Invitation obligatoire pour rejoindre le pays
@@ -4157,7 +4410,7 @@ components:
     DividendeClassementEntry:
       description: Classement dividendes
       example:
-        montant: 3.353193347011243
+        montant: 3.0937452626664474
         pays: pays
       properties:
         pays:
@@ -4171,9 +4424,9 @@ components:
     DividendeHistoryEntry:
       description: Historique dividendes
       example:
-        montant: 3.0937452626664474
+        montant: 7.143538047012306
         pays: pays
-        timestamp: 7
+        timestamp: 0
       properties:
         pays:
           description: Pays ayant versé les dividendes
@@ -4190,13 +4443,13 @@ components:
     NewMemberEntry:
       description: Détail sur la formation d'un nouveau joueur
       example:
-        playedTime: 1
-        rewardMoneyMax: 9
-        rewardPowerMax: 5
-        step: 6
+        playedTime: 4
+        rewardMoneyMax: 6
+        rewardPowerMax: 9
+        step: 8
         pseudo: pseudo
         rewardMoney: 9
-        rewardPower: 4
+        rewardPower: 5
       properties:
         pseudo:
           description: Pseudo du nouveau joueur
@@ -4272,11 +4525,11 @@ components:
     ResearchesEntry:
       description: Niveaux de recherches
       example:
-        general: 8
-        resource: 9
-        military: 6
-        industry: 3
-        technology: 6
+        general: 9
+        resource: 6
+        military: 3
+        industry: 6
+        technology: 1
       properties:
         general:
           description: Niveau de recherche sur la branche générale
@@ -4305,7 +4558,7 @@ components:
         action: action
         user: user
         target: target
-        timestamp: 0
+        timestamp: 7
       properties:
         user:
           description: Joueur ayant effectué l'action

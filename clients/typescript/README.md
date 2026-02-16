@@ -1,4 +1,4 @@
-## @yoxoproject/yoxo-api-client@1.0-SNAPSHOT.202601022232
+## @yoxoproject/yoxo-api-client@1.0-SNAPSHOT.202602162220
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @yoxoproject/yoxo-api-client@1.0-SNAPSHOT.202601022232 --save
+npm install @yoxoproject/yoxo-api-client@1.0-SNAPSHOT.202602162220 --save
 ```
 
 _unPublished (not recommended):_
@@ -59,6 +59,7 @@ Class | Method | HTTP request | Description
 *APIJavaApi* | [**getHalloween2025**](docs/APIJavaApi.md#gethalloween2025) | **GET** /v2/java/halloween-2025/{date} | Halloween 2025
 *APIJavaApi* | [**getNoelMegagift2024**](docs/APIJavaApi.md#getnoelmegagift2024) | **GET** /v2/java/noelmegagift-2024 | Noël Megagift 2024
 *APIJavaApi* | [**getNoelMegagift2025**](docs/APIJavaApi.md#getnoelmegagift2025) | **GET** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025
+*APIJavaApi* | [**getPillageCountry**](docs/APIJavaApi.md#getpillagecountry) | **GET** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country
 *APIJavaApi* | [**getPlayerList**](docs/APIJavaApi.md#getplayerlist) | **GET** /v2/java/player-list/{date}/{javaServer} | Player List
 *APIJavaApi* | [**getResearchConfig**](docs/APIJavaApi.md#getresearchconfig) | **GET** /v2/java/research/{date}/config | Research Config
 *APIJavaApi* | [**getResearchServer**](docs/APIJavaApi.md#getresearchserver) | **GET** /v2/java/research/{date}/{javaServer} | Research Server
@@ -70,6 +71,7 @@ Class | Method | HTTP request | Description
 *APIJavaApi* | [**postHalloween2025**](docs/APIJavaApi.md#posthalloween2025) | **POST** /v2/java/halloween-2025/{date} | Halloween 2025
 *APIJavaApi* | [**postNoelMegagift2024**](docs/APIJavaApi.md#postnoelmegagift2024) | **POST** /v2/java/noelmegagift-2024 | Noël Megagift 2024
 *APIJavaApi* | [**postNoelMegagift2025**](docs/APIJavaApi.md#postnoelmegagift2025) | **POST** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025
+*APIJavaApi* | [**postPillageCountry**](docs/APIJavaApi.md#postpillagecountry) | **POST** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country
 *APIJavaApi* | [**postPlayerList**](docs/APIJavaApi.md#postplayerlist) | **POST** /v2/java/player-list/{date}/{javaServer} | Player List
 *APIJavaApi* | [**postResearchServer**](docs/APIJavaApi.md#postresearchserver) | **POST** /v2/java/research/{date}/{javaServer} | Research Server
 *APIJavaApi* | [**postSkill**](docs/APIJavaApi.md#postskill) | **POST** /v2/java/skill/{date}/{javaServer} | Skill
@@ -118,6 +120,8 @@ Class | Method | HTTP request | Description
  - [NoelMegagift2025Entry](docs/NoelMegagift2025Entry.md)
  - [Parcelle](docs/Parcelle.md)
  - [PermissionEntry](docs/PermissionEntry.md)
+ - [PillageCountry](docs/PillageCountry.md)
+ - [PillageCountryEntry](docs/PillageCountryEntry.md)
  - [PlayerList](docs/PlayerList.md)
  - [PlayerListEntry](docs/PlayerListEntry.md)
  - [PostQueryBody](docs/PostQueryBody.md)

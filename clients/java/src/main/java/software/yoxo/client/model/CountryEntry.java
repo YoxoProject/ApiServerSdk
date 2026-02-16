@@ -228,6 +228,26 @@ public class CountryEntry {
   @javax.annotation.Nullable
   private CountrySettingsEntry settings;
 
+  public static final String SERIALIZED_NAME_ALLIES = "allies";
+  @SerializedName(SERIALIZED_NAME_ALLIES)
+  @javax.annotation.Nullable
+  private List<String> allies = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_ENEMIES = "enemies";
+  @SerializedName(SERIALIZED_NAME_ENEMIES)
+  @javax.annotation.Nullable
+  private List<String> enemies = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_ANNEXIONS = "annexions";
+  @SerializedName(SERIALIZED_NAME_ANNEXIONS)
+  @javax.annotation.Nullable
+  private List<String> annexions = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_TOP_WARZONE = "topWarzone";
+  @SerializedName(SERIALIZED_NAME_TOP_WARZONE)
+  @javax.annotation.Nullable
+  private Boolean topWarzone;
+
   public static final String SERIALIZED_NAME_RESTRICT_ASSAULT = "restrictAssault";
   @SerializedName(SERIALIZED_NAME_RESTRICT_ASSAULT)
   @javax.annotation.Nullable
@@ -237,11 +257,6 @@ public class CountryEntry {
   @SerializedName(SERIALIZED_NAME_RESTRICT_MISSILE)
   @javax.annotation.Nullable
   private Boolean restrictMissile;
-
-  public static final String SERIALIZED_NAME_TOP_WARZONE = "topWarzone";
-  @SerializedName(SERIALIZED_NAME_TOP_WARZONE)
-  @javax.annotation.Nullable
-  private Boolean topWarzone;
 
   public static final String SERIALIZED_NAME_EMPIRE = "empire";
   @SerializedName(SERIALIZED_NAME_EMPIRE)
@@ -950,6 +965,106 @@ public class CountryEntry {
   }
 
 
+  public CountryEntry allies(@javax.annotation.Nullable List<String> allies) {
+    this.allies = allies;
+    return this;
+  }
+
+  public CountryEntry addAlliesItem(String alliesItem) {
+    if (this.allies == null) {
+      this.allies = new ArrayList<>();
+    }
+    this.allies.add(alliesItem);
+    return this;
+  }
+
+  /**
+   * Pays alliés (Disponible depuis le 17/02/2026)
+   * @return allies
+   */
+  @javax.annotation.Nullable
+  public List<String> getAllies() {
+    return allies;
+  }
+
+  public void setAllies(@javax.annotation.Nullable List<String> allies) {
+    this.allies = allies;
+  }
+
+
+  public CountryEntry enemies(@javax.annotation.Nullable List<String> enemies) {
+    this.enemies = enemies;
+    return this;
+  }
+
+  public CountryEntry addEnemiesItem(String enemiesItem) {
+    if (this.enemies == null) {
+      this.enemies = new ArrayList<>();
+    }
+    this.enemies.add(enemiesItem);
+    return this;
+  }
+
+  /**
+   * Pays enemies (Disponible depuis le 17/02/2026)
+   * @return enemies
+   */
+  @javax.annotation.Nullable
+  public List<String> getEnemies() {
+    return enemies;
+  }
+
+  public void setEnemies(@javax.annotation.Nullable List<String> enemies) {
+    this.enemies = enemies;
+  }
+
+
+  public CountryEntry annexions(@javax.annotation.Nullable List<String> annexions) {
+    this.annexions = annexions;
+    return this;
+  }
+
+  public CountryEntry addAnnexionsItem(String annexionsItem) {
+    if (this.annexions == null) {
+      this.annexions = new ArrayList<>();
+    }
+    this.annexions.add(annexionsItem);
+    return this;
+  }
+
+  /**
+   * Pays annexés (Disponible depuis le 17/02/2026)
+   * @return annexions
+   */
+  @javax.annotation.Nullable
+  public List<String> getAnnexions() {
+    return annexions;
+  }
+
+  public void setAnnexions(@javax.annotation.Nullable List<String> annexions) {
+    this.annexions = annexions;
+  }
+
+
+  public CountryEntry topWarzone(@javax.annotation.Nullable Boolean topWarzone) {
+    this.topWarzone = topWarzone;
+    return this;
+  }
+
+  /**
+   * Get topWarzone
+   * @return topWarzone
+   */
+  @javax.annotation.Nullable
+  public Boolean getTopWarzone() {
+    return topWarzone;
+  }
+
+  public void setTopWarzone(@javax.annotation.Nullable Boolean topWarzone) {
+    this.topWarzone = topWarzone;
+  }
+
+
   public CountryEntry restrictAssault(@javax.annotation.Nullable Boolean restrictAssault) {
     this.restrictAssault = restrictAssault;
     return this;
@@ -985,25 +1100,6 @@ public class CountryEntry {
 
   public void setRestrictMissile(@javax.annotation.Nullable Boolean restrictMissile) {
     this.restrictMissile = restrictMissile;
-  }
-
-
-  public CountryEntry topWarzone(@javax.annotation.Nullable Boolean topWarzone) {
-    this.topWarzone = topWarzone;
-    return this;
-  }
-
-  /**
-   * Get topWarzone
-   * @return topWarzone
-   */
-  @javax.annotation.Nullable
-  public Boolean getTopWarzone() {
-    return topWarzone;
-  }
-
-  public void setTopWarzone(@javax.annotation.Nullable Boolean topWarzone) {
-    this.topWarzone = topWarzone;
   }
 
 
@@ -1089,16 +1185,19 @@ public class CountryEntry {
         Objects.equals(this.bank, countryEntry.bank) &&
         Objects.equals(this.actions, countryEntry.actions) &&
         Objects.equals(this.settings, countryEntry.settings) &&
+        Objects.equals(this.allies, countryEntry.allies) &&
+        Objects.equals(this.enemies, countryEntry.enemies) &&
+        Objects.equals(this.annexions, countryEntry.annexions) &&
+        Objects.equals(this.topWarzone, countryEntry.topWarzone) &&
         Objects.equals(this.restrictAssault, countryEntry.restrictAssault) &&
         Objects.equals(this.restrictMissile, countryEntry.restrictMissile) &&
-        Objects.equals(this.topWarzone, countryEntry.topWarzone) &&
         Objects.equals(this.empire, countryEntry.empire) &&
         Objects.equals(this.referent, countryEntry.referent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, motd, entryMsg, age, countMembers, countNewMembers, fhomeCoord, level, progress, notationsPosition, tags, discord, allianceName, mmr, claims, power, maxPower, powerboostFixed, powerboostWarzone, powerboostUnesco, powerboostNewMember, powerboostMalusAssault, flag, leader, officers, members, recruits, newMembers, researchesLevel, wars, bank, actions, settings, restrictAssault, restrictMissile, topWarzone, empire, referent);
+    return Objects.hash(name, description, motd, entryMsg, age, countMembers, countNewMembers, fhomeCoord, level, progress, notationsPosition, tags, discord, allianceName, mmr, claims, power, maxPower, powerboostFixed, powerboostWarzone, powerboostUnesco, powerboostNewMember, powerboostMalusAssault, flag, leader, officers, members, recruits, newMembers, researchesLevel, wars, bank, actions, settings, allies, enemies, annexions, topWarzone, restrictAssault, restrictMissile, empire, referent);
   }
 
   @Override
@@ -1139,9 +1238,12 @@ public class CountryEntry {
     sb.append("    bank: ").append(toIndentedString(bank)).append("\n");
     sb.append("    actions: ").append(toIndentedString(actions)).append("\n");
     sb.append("    settings: ").append(toIndentedString(settings)).append("\n");
+    sb.append("    allies: ").append(toIndentedString(allies)).append("\n");
+    sb.append("    enemies: ").append(toIndentedString(enemies)).append("\n");
+    sb.append("    annexions: ").append(toIndentedString(annexions)).append("\n");
+    sb.append("    topWarzone: ").append(toIndentedString(topWarzone)).append("\n");
     sb.append("    restrictAssault: ").append(toIndentedString(restrictAssault)).append("\n");
     sb.append("    restrictMissile: ").append(toIndentedString(restrictMissile)).append("\n");
-    sb.append("    topWarzone: ").append(toIndentedString(topWarzone)).append("\n");
     sb.append("    empire: ").append(toIndentedString(empire)).append("\n");
     sb.append("    referent: ").append(toIndentedString(referent)).append("\n");
     sb.append("}");
@@ -1165,7 +1267,7 @@ public class CountryEntry {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("name", "description", "motd", "entryMsg", "age", "countMembers", "countNewMembers", "fhomeCoord", "level", "progress", "notationsPosition", "tags", "discord", "allianceName", "mmr", "claims", "power", "maxPower", "powerboostFixed", "powerboostWarzone", "powerboostUnesco", "powerboostNewMember", "powerboostMalusAssault", "flag", "leader", "officers", "members", "recruits", "newMembers", "researchesLevel", "wars", "bank", "actions", "settings", "restrictAssault", "restrictMissile", "topWarzone", "empire", "referent"));
+    openapiFields = new HashSet<String>(Arrays.asList("name", "description", "motd", "entryMsg", "age", "countMembers", "countNewMembers", "fhomeCoord", "level", "progress", "notationsPosition", "tags", "discord", "allianceName", "mmr", "claims", "power", "maxPower", "powerboostFixed", "powerboostWarzone", "powerboostUnesco", "powerboostNewMember", "powerboostMalusAssault", "flag", "leader", "officers", "members", "recruits", "newMembers", "researchesLevel", "wars", "bank", "actions", "settings", "allies", "enemies", "annexions", "topWarzone", "restrictAssault", "restrictMissile", "empire", "referent"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -1269,6 +1371,18 @@ public class CountryEntry {
       // validate the optional field `settings`
       if (jsonObj.get("settings") != null && !jsonObj.get("settings").isJsonNull()) {
         CountrySettingsEntry.validateJsonElement(jsonObj.get("settings"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("allies") != null && !jsonObj.get("allies").isJsonNull() && !jsonObj.get("allies").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `allies` to be an array in the JSON string but got `%s`", jsonObj.get("allies").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("enemies") != null && !jsonObj.get("enemies").isJsonNull() && !jsonObj.get("enemies").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `enemies` to be an array in the JSON string but got `%s`", jsonObj.get("enemies").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("annexions") != null && !jsonObj.get("annexions").isJsonNull() && !jsonObj.get("annexions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `annexions` to be an array in the JSON string but got `%s`", jsonObj.get("annexions").toString()));
       }
   }
 

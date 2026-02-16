@@ -1,12 +1,13 @@
 # CountryCoordinates
 
-Coordonnées X,Z
+Coordonnées X,Y et Z
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **x** | **number** |  | [optional] [default to undefined]
+**y** | **number** | Coordonnée Y (Disponible depuis le 17/02/2026) | [optional] [default to undefined]
 **z** | **number** |  | [optional] [default to undefined]
 
 ## Example
@@ -16,6 +17,7 @@ import { CountryCoordinates } from '@yoxoproject/yoxo-api-client';
 
 const instance: CountryCoordinates = {
     x,
+    y,
     z,
 };
 ```

@@ -68,6 +68,8 @@ __all__ = [
     "NoelMegagift2025Entry",
     "Parcelle",
     "PermissionEntry",
+    "PillageCountry",
+    "PillageCountryEntry",
     "PlayerList",
     "PlayerListEntry",
     "PostQueryBody",
@@ -143,6 +145,8 @@ from yoxo_api_client.models.noel_megagift2025 import NoelMegagift2025 as NoelMeg
 from yoxo_api_client.models.noel_megagift2025_entry import NoelMegagift2025Entry as NoelMegagift2025Entry
 from yoxo_api_client.models.parcelle import Parcelle as Parcelle
 from yoxo_api_client.models.permission_entry import PermissionEntry as PermissionEntry
+from yoxo_api_client.models.pillage_country import PillageCountry as PillageCountry
+from yoxo_api_client.models.pillage_country_entry import PillageCountryEntry as PillageCountryEntry
 from yoxo_api_client.models.player_list import PlayerList as PlayerList
 from yoxo_api_client.models.player_list_entry import PlayerListEntry as PlayerListEntry
 from yoxo_api_client.models.post_query_body import PostQueryBody as PostQueryBody

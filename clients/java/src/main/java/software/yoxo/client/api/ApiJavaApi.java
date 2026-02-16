@@ -34,6 +34,7 @@ import software.yoxo.client.model.Halloween2025;
 import java.time.LocalDate;
 import software.yoxo.client.model.NoelMegagift2024;
 import software.yoxo.client.model.NoelMegagift2025;
+import software.yoxo.client.model.PillageCountry;
 import software.yoxo.client.model.PlayerList;
 import software.yoxo.client.model.PostQueryBody;
 import software.yoxo.client.model.ResearchConfig;
@@ -1173,6 +1174,143 @@ public class ApiJavaApi {
 
         okhttp3.Call localVarCall = getNoelMegagift2025ValidateBeforeCall(date, _callback);
         Type localVarReturnType = new TypeToken<NoelMegagift2025>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getPillageCountry
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPillageCountryCall(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/java/pillage-country/{date}/{javaServer}"
+            .replace("{" + "date" + "}", localVarApiClient.escapeString(date.toString()))
+            .replace("{" + "javaServer" + "}", localVarApiClient.escapeString(javaServer.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2_client_credentials" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPillageCountryValidateBeforeCall(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'date' is set
+        if (date == null) {
+            throw new ApiException("Missing the required parameter 'date' when calling getPillageCountry(Async)");
+        }
+
+        // verify the required parameter 'javaServer' is set
+        if (javaServer == null) {
+            throw new ApiException("Missing the required parameter 'javaServer' when calling getPillageCountry(Async)");
+        }
+
+        return getPillageCountryCall(date, javaServer, _callback);
+
+    }
+
+    /**
+     * Pillage Country
+     * Permet d&#39;obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @return PillageCountry
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public PillageCountry getPillageCountry(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer) throws ApiException {
+        ApiResponse<PillageCountry> localVarResp = getPillageCountryWithHttpInfo(date, javaServer);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Pillage Country
+     * Permet d&#39;obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @return ApiResponse&lt;PillageCountry&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PillageCountry> getPillageCountryWithHttpInfo(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer) throws ApiException {
+        okhttp3.Call localVarCall = getPillageCountryValidateBeforeCall(date, javaServer, null);
+        Type localVarReturnType = new TypeToken<PillageCountry>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Pillage Country (asynchronously)
+     * Permet d&#39;obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPillageCountryAsync(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, final ApiCallback<PillageCountry> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPillageCountryValidateBeforeCall(date, javaServer, _callback);
+        Type localVarReturnType = new TypeToken<PillageCountry>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2665,6 +2803,148 @@ public class ApiJavaApi {
 
         okhttp3.Call localVarCall = postNoelMegagift2025ValidateBeforeCall(date, postQueryBody, _callback);
         Type localVarReturnType = new TypeToken<NoelMegagift2025>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postPillageCountry
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param postQueryBody  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postPillageCountryCall(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nullable PostQueryBody postQueryBody, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = postQueryBody;
+
+        // create path and map variables
+        String localVarPath = "/v2/java/pillage-country/{date}/{javaServer}"
+            .replace("{" + "date" + "}", localVarApiClient.escapeString(date.toString()))
+            .replace("{" + "javaServer" + "}", localVarApiClient.escapeString(javaServer.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2_client_credentials" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postPillageCountryValidateBeforeCall(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nullable PostQueryBody postQueryBody, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'date' is set
+        if (date == null) {
+            throw new ApiException("Missing the required parameter 'date' when calling postPillageCountry(Async)");
+        }
+
+        // verify the required parameter 'javaServer' is set
+        if (javaServer == null) {
+            throw new ApiException("Missing the required parameter 'javaServer' when calling postPillageCountry(Async)");
+        }
+
+        return postPillageCountryCall(date, javaServer, postQueryBody, _callback);
+
+    }
+
+    /**
+     * Pillage Country
+     * Permet d&#39;obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param postQueryBody  (optional)
+     * @return PillageCountry
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public PillageCountry postPillageCountry(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nullable PostQueryBody postQueryBody) throws ApiException {
+        ApiResponse<PillageCountry> localVarResp = postPillageCountryWithHttpInfo(date, javaServer, postQueryBody);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Pillage Country
+     * Permet d&#39;obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param postQueryBody  (optional)
+     * @return ApiResponse&lt;PillageCountry&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PillageCountry> postPillageCountryWithHttpInfo(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nullable PostQueryBody postQueryBody) throws ApiException {
+        okhttp3.Call localVarCall = postPillageCountryValidateBeforeCall(date, javaServer, postQueryBody, null);
+        Type localVarReturnType = new TypeToken<PillageCountry>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Pillage Country (asynchronously)
+     * Permet d&#39;obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param postQueryBody  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postPillageCountryAsync(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nullable PostQueryBody postQueryBody, final ApiCallback<PillageCountry> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postPillageCountryValidateBeforeCall(date, javaServer, postQueryBody, _callback);
+        Type localVarReturnType = new TypeToken<PillageCountry>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

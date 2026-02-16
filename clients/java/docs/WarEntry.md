@@ -35,6 +35,7 @@ Détails d'une guerre
 | KILL_WILDERNESS | &quot;KILL_WILDERNESS&quot; |
 | PROVOCATION | &quot;PROVOCATION&quot; |
 | TERRITORIAL_EXPANSION | &quot;TERRITORIAL_EXPANSION&quot; |
+| TERRITORIAL_DEFENSE | &quot;TERRITORIAL_DEFENSE&quot; |
 | TREASON | &quot;TREASON&quot; |
 | INTRUSION | &quot;INTRUSION&quot; |
 | SCAM | &quot;SCAM&quot; |

@@ -804,6 +804,145 @@
         ]
       }
     },
+    "/v2/java/pillage-country/{date}/{javaServer}": {
+      "get": {
+        "tags": [
+          "API Java"
+        ],
+        "summary": "Pillage Country",
+        "description": "Permet d'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (aucun filtrage possible).\n\n**Documentation :**\nhttps://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands\n\n**Fréquence de mise à jour :**\nLes données sont actualisées les mercredi, samedi et dimanche vers 14h30.\n",
+        "operationId": "getPillageCountry",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date (yyyy-MM-dd)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2025-10-28"
+          },
+          {
+            "name": "javaServer",
+            "in": "path",
+            "description": "Serveur",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "blue",
+                "orange",
+                "yellow",
+                "white",
+                "black",
+                "cyan",
+                "lime",
+                "coral",
+                "pink",
+                "purple",
+                "green",
+                "red",
+                "mocha",
+                "jade"
+              ]
+            },
+            "example": "red"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PillageCountry"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2_client_credentials": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "API Java"
+        ],
+        "summary": "Pillage Country",
+        "description": "Permet d'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (avec filtrage possible).\n\n**Documentation :**\nhttps://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands\n\n**Fréquence de mise à jour :**\nLes données sont actualisées les mercredi, samedi et dimanche vers 14h30.\n",
+        "operationId": "postPillageCountry",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date (yyyy-MM-dd)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2025-10-28"
+          },
+          {
+            "name": "javaServer",
+            "in": "path",
+            "description": "Serveur",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "blue",
+                "orange",
+                "yellow",
+                "white",
+                "black",
+                "cyan",
+                "lime",
+                "coral",
+                "pink",
+                "purple",
+                "green",
+                "red",
+                "mocha",
+                "jade"
+              ]
+            },
+            "example": "red"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostQueryBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PillageCountry"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2_client_credentials": []
+          }
+        ]
+      }
+    },
     "/v2/java/player-list/{date}/{javaServer}": {
       "get": {
         "tags": [
@@ -1707,6 +1846,7 @@
               "KILL_WILDERNESS",
               "PROVOCATION",
               "TERRITORIAL_EXPANSION",
+              "TERRITORIAL_DEFENSE",
               "TREASON",
               "INTRUSION",
               "SCAM",
@@ -2131,6 +2271,61 @@
             "example": 1760939974755
           }
         }
+      },
+      "PillageCountry": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PillageCountryEntry"
+            }
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          }
+        }
+      },
+      "PillageCountryEntry": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Le nom du pays",
+            "example": "France"
+          },
+          "level": {
+            "type": "integer",
+            "description": "Le niveau du pays",
+            "format": "int32",
+            "example": 10
+          },
+          "players": {
+            "type": "integer",
+            "description": "Le nombre de joueur total dans le pays",
+            "format": "int32",
+            "example": 5
+          },
+          "notationPosition": {
+            "type": "integer",
+            "description": "La position dans le classement du serveur aux dernières notation",
+            "format": "int32",
+            "example": 1
+          },
+          "power": {
+            "type": "integer",
+            "description": "Le power actuel du pays",
+            "format": "int32",
+            "example": 100
+          },
+          "powerMax": {
+            "type": "integer",
+            "description": "Le power max du pays",
+            "format": "int32",
+            "example": 150
+          }
+        },
+        "description": "Données d'un pays en pillage"
       },
       "NoelMegagift2025": {
         "type": "object",
@@ -3031,12 +3226,17 @@
             "type": "integer",
             "format": "int32"
           },
+          "y": {
+            "type": "integer",
+            "description": "Coordonnée Y (Disponible depuis le 17/02/2026)",
+            "format": "int32"
+          },
           "z": {
             "type": "integer",
             "format": "int32"
           }
         },
-        "description": "Coordonnées X,Z"
+        "description": "Coordonnées X,Y et Z"
       },
       "CountryEntry": {
         "type": "object",
@@ -3211,13 +3411,37 @@
           "settings": {
             "$ref": "#/components/schemas/CountrySettingsEntry"
           },
+          "allies": {
+            "type": "array",
+            "description": "Pays alliés (Disponible depuis le 17/02/2026)",
+            "items": {
+              "type": "string",
+              "description": "Pays alliés (Disponible depuis le 17/02/2026)"
+            }
+          },
+          "enemies": {
+            "type": "array",
+            "description": "Pays enemies (Disponible depuis le 17/02/2026)",
+            "items": {
+              "type": "string",
+              "description": "Pays enemies (Disponible depuis le 17/02/2026)"
+            }
+          },
+          "annexions": {
+            "type": "array",
+            "description": "Pays annexés (Disponible depuis le 17/02/2026)",
+            "items": {
+              "type": "string",
+              "description": "Pays annexés (Disponible depuis le 17/02/2026)"
+            }
+          },
+          "topWarzone": {
+            "type": "boolean"
+          },
           "restrictAssault": {
             "type": "boolean"
           },
           "restrictMissile": {
-            "type": "boolean"
-          },
-          "topWarzone": {
             "type": "boolean"
           },
           "empire": {

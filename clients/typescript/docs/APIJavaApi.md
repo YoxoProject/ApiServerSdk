@@ -12,6 +12,7 @@ All URIs are relative to *https://api.yoxo.software*
 |[**getHalloween2025**](#gethalloween2025) | **GET** /v2/java/halloween-2025/{date} | Halloween 2025|
 |[**getNoelMegagift2024**](#getnoelmegagift2024) | **GET** /v2/java/noelmegagift-2024 | Noël Megagift 2024|
 |[**getNoelMegagift2025**](#getnoelmegagift2025) | **GET** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025|
+|[**getPillageCountry**](#getpillagecountry) | **GET** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country|
 |[**getPlayerList**](#getplayerlist) | **GET** /v2/java/player-list/{date}/{javaServer} | Player List|
 |[**getResearchConfig**](#getresearchconfig) | **GET** /v2/java/research/{date}/config | Research Config|
 |[**getResearchServer**](#getresearchserver) | **GET** /v2/java/research/{date}/{javaServer} | Research Server|
@@ -23,6 +24,7 @@ All URIs are relative to *https://api.yoxo.software*
 |[**postHalloween2025**](#posthalloween2025) | **POST** /v2/java/halloween-2025/{date} | Halloween 2025|
 |[**postNoelMegagift2024**](#postnoelmegagift2024) | **POST** /v2/java/noelmegagift-2024 | Noël Megagift 2024|
 |[**postNoelMegagift2025**](#postnoelmegagift2025) | **POST** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025|
+|[**postPillageCountry**](#postpillagecountry) | **POST** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country|
 |[**postPlayerList**](#postplayerlist) | **POST** /v2/java/player-list/{date}/{javaServer} | Player List|
 |[**postResearchServer**](#postresearchserver) | **POST** /v2/java/research/{date}/{javaServer} | Research Server|
 |[**postSkill**](#postskill) | **POST** /v2/java/skill/{date}/{javaServer} | Skill|
@@ -438,6 +440,60 @@ const { status, data } = await apiInstance.getNoelMegagift2025(
 ### Return type
 
 **NoelMegagift2025**
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPillageCountry**
+> PillageCountry getPillageCountry()
+
+Permet d\'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+
+### Example
+
+```typescript
+import {
+    APIJavaApi,
+    Configuration
+} from '@yoxoproject/yoxo-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new APIJavaApi(configuration);
+
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
+
+const { status, data } = await apiInstance.getPillageCountry(
+    date,
+    javaServer
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
+
+
+### Return type
+
+**PillageCountry**
 
 ### Authorization
 
@@ -1040,6 +1096,64 @@ const { status, data } = await apiInstance.postNoelMegagift2025(
 ### Return type
 
 **NoelMegagift2025**
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **postPillageCountry**
+> PillageCountry postPillageCountry()
+
+Permet d\'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
+
+### Example
+
+```typescript
+import {
+    APIJavaApi,
+    Configuration,
+    PostQueryBody
+} from '@yoxoproject/yoxo-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new APIJavaApi(configuration);
+
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
+let postQueryBody: PostQueryBody; // (optional)
+
+const { status, data } = await apiInstance.postPillageCountry(
+    date,
+    javaServer,
+    postQueryBody
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **postQueryBody** | **PostQueryBody**|  | |
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
+
+
+### Return type
+
+**PillageCountry**
 
 ### Authorization
 

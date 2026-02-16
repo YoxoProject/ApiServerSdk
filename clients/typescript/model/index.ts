@@ -38,6 +38,8 @@ export * from './noel-megagift2025';
 export * from './noel-megagift2025-entry';
 export * from './parcelle';
 export * from './permission-entry';
+export * from './pillage-country';
+export * from './pillage-country-entry';
 export * from './player-list';
 export * from './player-list-entry';
 export * from './post-query-body';

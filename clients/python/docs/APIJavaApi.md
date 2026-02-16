@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**get_halloween2025**](APIJavaApi.md#get_halloween2025) | **GET** /v2/java/halloween-2025/{date} | Halloween 2025
 [**get_noel_megagift2024**](APIJavaApi.md#get_noel_megagift2024) | **GET** /v2/java/noelmegagift-2024 | Noël Megagift 2024
 [**get_noel_megagift2025**](APIJavaApi.md#get_noel_megagift2025) | **GET** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025
+[**get_pillage_country**](APIJavaApi.md#get_pillage_country) | **GET** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country
 [**get_player_list**](APIJavaApi.md#get_player_list) | **GET** /v2/java/player-list/{date}/{javaServer} | Player List
 [**get_research_config**](APIJavaApi.md#get_research_config) | **GET** /v2/java/research/{date}/config | Research Config
 [**get_research_server**](APIJavaApi.md#get_research_server) | **GET** /v2/java/research/{date}/{javaServer} | Research Server
@@ -23,6 +24,7 @@ Method | HTTP request | Description
 [**post_halloween2025**](APIJavaApi.md#post_halloween2025) | **POST** /v2/java/halloween-2025/{date} | Halloween 2025
 [**post_noel_megagift2024**](APIJavaApi.md#post_noel_megagift2024) | **POST** /v2/java/noelmegagift-2024 | Noël Megagift 2024
 [**post_noel_megagift2025**](APIJavaApi.md#post_noel_megagift2025) | **POST** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025
+[**post_pillage_country**](APIJavaApi.md#post_pillage_country) | **POST** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country
 [**post_player_list**](APIJavaApi.md#post_player_list) | **POST** /v2/java/player-list/{date}/{javaServer} | Player List
 [**post_research_server**](APIJavaApi.md#post_research_server) | **POST** /v2/java/research/{date}/{javaServer} | Research Server
 [**post_skill**](APIJavaApi.md#post_skill) | **POST** /v2/java/skill/{date}/{javaServer} | Skill
@@ -733,6 +735,90 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**NoelMegagift2025**](NoelMegagift2025.md)
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_pillage_country**
+> PillageCountry get_pillage_country(var_date, java_server)
+
+Pillage Country
+
+Permet d'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (aucun filtrage possible).
+
+**Documentation :**
+https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands
+
+**Fréquence de mise à jour :**
+Les données sont actualisées les mercredi, samedi et dimanche vers 14h30.
+
+
+### Example
+
+* OAuth Authentication (oauth2_client_credentials):
+
+```python
+import yoxo_api_client
+from yoxo_api_client.models.pillage_country import PillageCountry
+from yoxo_api_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.yoxo.software
+# See configuration.py for a list of all supported configuration parameters.
+configuration = yoxo_api_client.Configuration(
+    host = "https://api.yoxo.software"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with yoxo_api_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = yoxo_api_client.APIJavaApi(api_client)
+    var_date = '2025-10-28' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
+
+    try:
+        # Pillage Country
+        api_response = api_instance.get_pillage_country(var_date, java_server)
+        print("The response of APIJavaApi->get_pillage_country:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling APIJavaApi->get_pillage_country: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
+
+### Return type
+
+[**PillageCountry**](PillageCountry.md)
 
 ### Authorization
 
@@ -1710,6 +1796,93 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**NoelMegagift2025**](NoelMegagift2025.md)
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_pillage_country**
+> PillageCountry post_pillage_country(var_date, java_server, post_query_body=post_query_body)
+
+Pillage Country
+
+Permet d'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (avec filtrage possible).
+
+**Documentation :**
+https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands
+
+**Fréquence de mise à jour :**
+Les données sont actualisées les mercredi, samedi et dimanche vers 14h30.
+
+
+### Example
+
+* OAuth Authentication (oauth2_client_credentials):
+
+```python
+import yoxo_api_client
+from yoxo_api_client.models.pillage_country import PillageCountry
+from yoxo_api_client.models.post_query_body import PostQueryBody
+from yoxo_api_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.yoxo.software
+# See configuration.py for a list of all supported configuration parameters.
+configuration = yoxo_api_client.Configuration(
+    host = "https://api.yoxo.software"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with yoxo_api_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = yoxo_api_client.APIJavaApi(api_client)
+    var_date = '2025-10-28' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
+    post_query_body = yoxo_api_client.PostQueryBody() # PostQueryBody |  (optional)
+
+    try:
+        # Pillage Country
+        api_response = api_instance.post_pillage_country(var_date, java_server, post_query_body=post_query_body)
+        print("The response of APIJavaApi->post_pillage_country:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling APIJavaApi->post_pillage_country: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
+ **post_query_body** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] 
+
+### Return type
+
+[**PillageCountry**](PillageCountry.md)
 
 ### Authorization
 

@@ -47,6 +47,8 @@ docs/NoelMegagift2025.md
 docs/NoelMegagift2025Entry.md
 docs/Parcelle.md
 docs/PermissionEntry.md
+docs/PillageCountry.md
+docs/PillageCountryEntry.md
 docs/PlayerList.md
 docs/PlayerListEntry.md
 docs/PostQueryBody.md
@@ -108,6 +110,8 @@ model/noel-megagift2025-entry.ts
 model/noel-megagift2025.ts
 model/parcelle.ts
 model/permission-entry.ts
+model/pillage-country-entry.ts
+model/pillage-country.ts
 model/player-list-entry.ts
 model/player-list.ts
 model/post-query-body.ts

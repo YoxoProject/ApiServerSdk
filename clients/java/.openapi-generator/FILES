@@ -46,6 +46,8 @@ docs/NoelMegagift2025.md
 docs/NoelMegagift2025Entry.md
 docs/Parcelle.md
 docs/PermissionEntry.md
+docs/PillageCountry.md
+docs/PillageCountryEntry.md
 docs/PlayerList.md
 docs/PlayerListEntry.md
 docs/PostQueryBody.md
@@ -136,6 +138,8 @@ src/main/java/software/yoxo/client/model/NoelMegagift2025.java
 src/main/java/software/yoxo/client/model/NoelMegagift2025Entry.java
 src/main/java/software/yoxo/client/model/Parcelle.java
 src/main/java/software/yoxo/client/model/PermissionEntry.java
+src/main/java/software/yoxo/client/model/PillageCountry.java
+src/main/java/software/yoxo/client/model/PillageCountryEntry.java
 src/main/java/software/yoxo/client/model/PlayerList.java
 src/main/java/software/yoxo/client/model/PlayerListEntry.java
 src/main/java/software/yoxo/client/model/PostQueryBody.java
@@ -154,3 +158,5 @@ src/main/java/software/yoxo/client/model/WarEntry.java
 src/main/java/software/yoxo/client/model/WarMissile.java
 src/main/java/software/yoxo/client/model/WarParticipant.java
 src/main/java/software/yoxo/client/model/WarRewards.java
+src/test/java/software/yoxo/client/model/PillageCountryEntryTest.java
+src/test/java/software/yoxo/client/model/PillageCountryTest.java

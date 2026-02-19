@@ -4,6 +4,8 @@ All URIs are relative to *https://api.yoxo.software*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**get_alliance**](APIJavaApi.md#get_alliance) | **GET** /v2/java/alliance/{date}/{javaServer}/{alliance} | Alliance
+[**get_alliance1**](APIJavaApi.md#get_alliance1) | **GET** /v2/java/alliance/{date}/{javaServer} | Alliance
 [**get_cereal_global_market**](APIJavaApi.md#get_cereal_global_market) | **GET** /v2/java/cereal_global_market/{date}/{javaServer} | Cereal Global Market
 [**get_country**](APIJavaApi.md#get_country) | **GET** /v2/java/country/{date}/{javaServer} | Country
 [**get_country1**](APIJavaApi.md#get_country1) | **GET** /v2/java/country/{date}/{javaServer}/{country} | Country
@@ -12,6 +14,8 @@ Method | HTTP request | Description
 [**get_halloween2025**](APIJavaApi.md#get_halloween2025) | **GET** /v2/java/halloween-2025/{date} | Halloween 2025
 [**get_noel_megagift2024**](APIJavaApi.md#get_noel_megagift2024) | **GET** /v2/java/noelmegagift-2024 | Noël Megagift 2024
 [**get_noel_megagift2025**](APIJavaApi.md#get_noel_megagift2025) | **GET** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025
+[**get_notation**](APIJavaApi.md#get_notation) | **GET** /v2/java/notation/{date}/{javaServer} | Notation
+[**get_notation1**](APIJavaApi.md#get_notation1) | **GET** /v2/java/notation/{date}/{javaServer}/{country} | Notation
 [**get_pillage_country**](APIJavaApi.md#get_pillage_country) | **GET** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country
 [**get_player_list**](APIJavaApi.md#get_player_list) | **GET** /v2/java/player-list/{date}/{javaServer} | Player List
 [**get_research_config**](APIJavaApi.md#get_research_config) | **GET** /v2/java/research/{date}/config | Research Config
@@ -19,17 +23,189 @@ Method | HTTP request | Description
 [**get_skill**](APIJavaApi.md#get_skill) | **GET** /v2/java/skill/{date}/{javaServer} | Skill
 [**get_war**](APIJavaApi.md#get_war) | **GET** /v2/java/war/{date}/{javaServer} | War
 [**get_war1**](APIJavaApi.md#get_war1) | **GET** /v2/java/war/{date}/{javaServer}/{warId} | War
+[**post_alliance**](APIJavaApi.md#post_alliance) | **POST** /v2/java/alliance/{date}/{javaServer} | Alliance
 [**post_country**](APIJavaApi.md#post_country) | **POST** /v2/java/country/{date}/{javaServer} | Country
 [**post_enterprises**](APIJavaApi.md#post_enterprises) | **POST** /v2/java/enterprise/{date}/{javaServer} | Enterprise
 [**post_halloween2025**](APIJavaApi.md#post_halloween2025) | **POST** /v2/java/halloween-2025/{date} | Halloween 2025
 [**post_noel_megagift2024**](APIJavaApi.md#post_noel_megagift2024) | **POST** /v2/java/noelmegagift-2024 | Noël Megagift 2024
 [**post_noel_megagift2025**](APIJavaApi.md#post_noel_megagift2025) | **POST** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025
+[**post_notation**](APIJavaApi.md#post_notation) | **POST** /v2/java/notation/{date}/{javaServer} | Notation
 [**post_pillage_country**](APIJavaApi.md#post_pillage_country) | **POST** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country
 [**post_player_list**](APIJavaApi.md#post_player_list) | **POST** /v2/java/player-list/{date}/{javaServer} | Player List
 [**post_research_server**](APIJavaApi.md#post_research_server) | **POST** /v2/java/research/{date}/{javaServer} | Research Server
 [**post_skill**](APIJavaApi.md#post_skill) | **POST** /v2/java/skill/{date}/{javaServer} | Skill
 [**post_war**](APIJavaApi.md#post_war) | **POST** /v2/java/war/{date}/{javaServer} | War
 
+
+# **get_alliance**
+> Alliance get_alliance(var_date, java_server, alliance)
+
+Alliance
+
+Permet d'obtenir la liste et les détails complets de toutes les alliances d'un serveur à une date donnée (aucun filtrage possible).
+
+**Documentation :**
+https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/
+
+**Fréquence de mise à jour :**
+Les données sont actualisées tous les jours, généralement la nuit.
+
+
+### Example
+
+* OAuth Authentication (oauth2_client_credentials):
+
+```python
+import yoxo_api_client
+from yoxo_api_client.models.alliance import Alliance
+from yoxo_api_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.yoxo.software
+# See configuration.py for a list of all supported configuration parameters.
+configuration = yoxo_api_client.Configuration(
+    host = "https://api.yoxo.software"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with yoxo_api_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = yoxo_api_client.APIJavaApi(api_client)
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
+    alliance = 'alliance_example' # str | Nom de l'alliance (optionnel)
+
+    try:
+        # Alliance
+        api_response = api_instance.get_alliance(var_date, java_server, alliance)
+        print("The response of APIJavaApi->get_alliance:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling APIJavaApi->get_alliance: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
+ **alliance** | **str**| Nom de l&#39;alliance (optionnel) | 
+
+### Return type
+
+[**Alliance**](Alliance.md)
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_alliance1**
+> Alliance get_alliance1(var_date, java_server)
+
+Alliance
+
+Permet d'obtenir la liste et les détails complets de toutes les alliances d'un serveur à une date donnée (aucun filtrage possible).
+
+**Documentation :**
+https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/
+
+**Fréquence de mise à jour :**
+Les données sont actualisées tous les jours, généralement la nuit.
+
+
+### Example
+
+* OAuth Authentication (oauth2_client_credentials):
+
+```python
+import yoxo_api_client
+from yoxo_api_client.models.alliance import Alliance
+from yoxo_api_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.yoxo.software
+# See configuration.py for a list of all supported configuration parameters.
+configuration = yoxo_api_client.Configuration(
+    host = "https://api.yoxo.software"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with yoxo_api_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = yoxo_api_client.APIJavaApi(api_client)
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
+
+    try:
+        # Alliance
+        api_response = api_instance.get_alliance1(var_date, java_server)
+        print("The response of APIJavaApi->get_alliance1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling APIJavaApi->get_alliance1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
+
+### Return type
+
+[**Alliance**](Alliance.md)
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_cereal_global_market**
 > CerealGlobalMarket get_cereal_global_market(var_date, java_server)
@@ -753,6 +929,176 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_notation**
+> Notation get_notation(var_date, java_server)
+
+Notation
+
+Permet d'obtenir les notations d'un pays sur un serveur à une date donnée (sans filtrage).
+
+**Documentation :**
+https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/
+
+**Fréquence de mise à jour :**
+Les données sont actualisées tous les lundis matin.
+
+
+### Example
+
+* OAuth Authentication (oauth2_client_credentials):
+
+```python
+import yoxo_api_client
+from yoxo_api_client.models.notation import Notation
+from yoxo_api_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.yoxo.software
+# See configuration.py for a list of all supported configuration parameters.
+configuration = yoxo_api_client.Configuration(
+    host = "https://api.yoxo.software"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with yoxo_api_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = yoxo_api_client.APIJavaApi(api_client)
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
+
+    try:
+        # Notation
+        api_response = api_instance.get_notation(var_date, java_server)
+        print("The response of APIJavaApi->get_notation:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling APIJavaApi->get_notation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
+
+### Return type
+
+[**Notation**](Notation.md)
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_notation1**
+> Notation get_notation1(var_date, java_server, country)
+
+Notation
+
+Permet d'obtenir les notations d'un pays sur un serveur à une date donnée (sans filtrage).
+
+**Documentation :**
+https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/
+
+**Fréquence de mise à jour :**
+Les données sont actualisées tous les lundis matin.
+
+
+### Example
+
+* OAuth Authentication (oauth2_client_credentials):
+
+```python
+import yoxo_api_client
+from yoxo_api_client.models.notation import Notation
+from yoxo_api_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.yoxo.software
+# See configuration.py for a list of all supported configuration parameters.
+configuration = yoxo_api_client.Configuration(
+    host = "https://api.yoxo.software"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with yoxo_api_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = yoxo_api_client.APIJavaApi(api_client)
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
+    country = 'country_example' # str | Nom du pays (optionnel)
+
+    try:
+        # Notation
+        api_response = api_instance.get_notation1(var_date, java_server, country)
+        print("The response of APIJavaApi->get_notation1:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling APIJavaApi->get_notation1: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
+ **country** | **str**| Nom du pays (optionnel) | 
+
+### Return type
+
+[**Notation**](Notation.md)
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_pillage_country**
 > PillageCountry get_pillage_country(var_date, java_server)
 
@@ -1356,6 +1702,93 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **post_alliance**
+> Alliance post_alliance(var_date, java_server, post_query_body=post_query_body)
+
+Alliance
+
+Permet d'obtenir la liste et les détails complets de toutes les alliances d'un serveur à une date donnée (avec filtrage possible).
+
+**Documentation :**
+https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/
+
+**Fréquence de mise à jour :**
+Les données sont actualisées tous les jours, généralement la nuit.
+
+
+### Example
+
+* OAuth Authentication (oauth2_client_credentials):
+
+```python
+import yoxo_api_client
+from yoxo_api_client.models.alliance import Alliance
+from yoxo_api_client.models.post_query_body import PostQueryBody
+from yoxo_api_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.yoxo.software
+# See configuration.py for a list of all supported configuration parameters.
+configuration = yoxo_api_client.Configuration(
+    host = "https://api.yoxo.software"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with yoxo_api_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = yoxo_api_client.APIJavaApi(api_client)
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
+    post_query_body = yoxo_api_client.PostQueryBody() # PostQueryBody |  (optional)
+
+    try:
+        # Alliance
+        api_response = api_instance.post_alliance(var_date, java_server, post_query_body=post_query_body)
+        print("The response of APIJavaApi->post_alliance:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling APIJavaApi->post_alliance: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
+ **post_query_body** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] 
+
+### Return type
+
+[**Alliance**](Alliance.md)
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **post_country**
 > Country post_country(var_date, java_server, post_query_body=post_query_body)
 
@@ -1796,6 +2229,93 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**NoelMegagift2025**](NoelMegagift2025.md)
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **post_notation**
+> Notation post_notation(var_date, java_server, post_query_body=post_query_body)
+
+Notation
+
+Permet d'obtenir les notations d'un pays sur un serveur à une date donnée (avec filtrage possible).
+
+**Documentation :**
+https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/
+
+**Fréquence de mise à jour :**
+Les données sont actualisées tous les lundis matin.
+
+
+### Example
+
+* OAuth Authentication (oauth2_client_credentials):
+
+```python
+import yoxo_api_client
+from yoxo_api_client.models.notation import Notation
+from yoxo_api_client.models.post_query_body import PostQueryBody
+from yoxo_api_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.yoxo.software
+# See configuration.py for a list of all supported configuration parameters.
+configuration = yoxo_api_client.Configuration(
+    host = "https://api.yoxo.software"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with yoxo_api_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = yoxo_api_client.APIJavaApi(api_client)
+    var_date = '2025-11-24' # date | Date (yyyy-MM-dd)
+    java_server = 'red' # str | Serveur
+    post_query_body = yoxo_api_client.PostQueryBody() # PostQueryBody |  (optional)
+
+    try:
+        # Notation
+        api_response = api_instance.post_notation(var_date, java_server, post_query_body=post_query_body)
+        print("The response of APIJavaApi->post_notation:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling APIJavaApi->post_notation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **var_date** | **date**| Date (yyyy-MM-dd) | 
+ **java_server** | **str**| Serveur | 
+ **post_query_body** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] 
+
+### Return type
+
+[**Notation**](Notation.md)
 
 ### Authorization
 

@@ -22,6 +22,8 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
+import type { Alliance } from '../model';
+// @ts-ignore
 import type { CerealGlobalMarket } from '../model';
 // @ts-ignore
 import type { Country } from '../model';
@@ -33,6 +35,8 @@ import type { Halloween2025 } from '../model';
 import type { NoelMegagift2024 } from '../model';
 // @ts-ignore
 import type { NoelMegagift2025 } from '../model';
+// @ts-ignore
+import type { Notation } from '../model';
 // @ts-ignore
 import type { PillageCountry } from '../model';
 // @ts-ignore
@@ -52,6 +56,94 @@ import type { War } from '../model';
  */
 export const APIJavaApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * Permet d\'obtenir la liste et les détails complets de toutes les alliances d\'un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+         * @summary Alliance
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {GetAllianceJavaServerEnum} javaServer Serveur
+         * @param {string} alliance Nom de l\&#39;alliance (optionnel)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAlliance: async (date: string, javaServer: GetAllianceJavaServerEnum, alliance: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'date' is not null or undefined
+            assertParamExists('getAlliance', 'date', date)
+            // verify required parameter 'javaServer' is not null or undefined
+            assertParamExists('getAlliance', 'javaServer', javaServer)
+            // verify required parameter 'alliance' is not null or undefined
+            assertParamExists('getAlliance', 'alliance', alliance)
+            const localVarPath = `/v2/java/alliance/{date}/{javaServer}/{alliance}`
+                .replace(`{${"date"}}`, encodeURIComponent(String(date)))
+                .replace(`{${"javaServer"}}`, encodeURIComponent(String(javaServer)))
+                .replace(`{${"alliance"}}`, encodeURIComponent(String(alliance)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2_client_credentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2_client_credentials", [], configuration)
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Permet d\'obtenir la liste et les détails complets de toutes les alliances d\'un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+         * @summary Alliance
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {GetAlliance1JavaServerEnum} javaServer Serveur
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAlliance1: async (date: string, javaServer: GetAlliance1JavaServerEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'date' is not null or undefined
+            assertParamExists('getAlliance1', 'date', date)
+            // verify required parameter 'javaServer' is not null or undefined
+            assertParamExists('getAlliance1', 'javaServer', javaServer)
+            const localVarPath = `/v2/java/alliance/{date}/{javaServer}`
+                .replace(`{${"date"}}`, encodeURIComponent(String(date)))
+                .replace(`{${"javaServer"}}`, encodeURIComponent(String(javaServer)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2_client_credentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2_client_credentials", [], configuration)
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * Permet d\'obtenir les données du marché global des céréales pour un serveur spécifique à une date donnée.  Ces données incluent : - Les graphiques de l\'évolution des prix, des ventes et des stocks - L\'historique des prix, ventes et stocks par type de céréale - Les prix actuels des céréales  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Note :** Ces données représentent un objet unique (pas une liste), donc le filtrage et la pagination ne sont pas applicables. 
          * @summary Cereal Global Market
@@ -391,6 +483,94 @@ export const APIJavaApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Permet d\'obtenir les notations d\'un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+         * @summary Notation
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {GetNotationJavaServerEnum} javaServer Serveur
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotation: async (date: string, javaServer: GetNotationJavaServerEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'date' is not null or undefined
+            assertParamExists('getNotation', 'date', date)
+            // verify required parameter 'javaServer' is not null or undefined
+            assertParamExists('getNotation', 'javaServer', javaServer)
+            const localVarPath = `/v2/java/notation/{date}/{javaServer}`
+                .replace(`{${"date"}}`, encodeURIComponent(String(date)))
+                .replace(`{${"javaServer"}}`, encodeURIComponent(String(javaServer)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2_client_credentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2_client_credentials", [], configuration)
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Permet d\'obtenir les notations d\'un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+         * @summary Notation
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {GetNotation1JavaServerEnum} javaServer Serveur
+         * @param {string} country Nom du pays (optionnel)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotation1: async (date: string, javaServer: GetNotation1JavaServerEnum, country: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'date' is not null or undefined
+            assertParamExists('getNotation1', 'date', date)
+            // verify required parameter 'javaServer' is not null or undefined
+            assertParamExists('getNotation1', 'javaServer', javaServer)
+            // verify required parameter 'country' is not null or undefined
+            assertParamExists('getNotation1', 'country', country)
+            const localVarPath = `/v2/java/notation/{date}/{javaServer}/{country}`
+                .replace(`{${"date"}}`, encodeURIComponent(String(date)))
+                .replace(`{${"javaServer"}}`, encodeURIComponent(String(javaServer)))
+                .replace(`{${"country"}}`, encodeURIComponent(String(country)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2_client_credentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2_client_credentials", [], configuration)
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Permet d\'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
          * @summary Pillage Country
          * @param {string} date Date (yyyy-MM-dd)
@@ -685,6 +865,51 @@ export const APIJavaApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Permet d\'obtenir la liste et les détails complets de toutes les alliances d\'un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+         * @summary Alliance
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {PostAllianceJavaServerEnum} javaServer Serveur
+         * @param {PostQueryBody} [postQueryBody] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postAlliance: async (date: string, javaServer: PostAllianceJavaServerEnum, postQueryBody?: PostQueryBody, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'date' is not null or undefined
+            assertParamExists('postAlliance', 'date', date)
+            // verify required parameter 'javaServer' is not null or undefined
+            assertParamExists('postAlliance', 'javaServer', javaServer)
+            const localVarPath = `/v2/java/alliance/{date}/{javaServer}`
+                .replace(`{${"date"}}`, encodeURIComponent(String(date)))
+                .replace(`{${"javaServer"}}`, encodeURIComponent(String(javaServer)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2_client_credentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2_client_credentials", [], configuration)
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(postQueryBody, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Permet d\'obtenir la liste et les détails complets de tous les pays d\'un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
          * @summary Country
          * @param {string} date Date (yyyy-MM-dd)
@@ -865,6 +1090,51 @@ export const APIJavaApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('postNoelMegagift2025', 'date', date)
             const localVarPath = `/v2/java/noelmegagift-2025/{date}`
                 .replace(`{${"date"}}`, encodeURIComponent(String(date)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth2_client_credentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth2_client_credentials", [], configuration)
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(postQueryBody, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Permet d\'obtenir les notations d\'un pays sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+         * @summary Notation
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {PostNotationJavaServerEnum} javaServer Serveur
+         * @param {PostQueryBody} [postQueryBody] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postNotation: async (date: string, javaServer: PostNotationJavaServerEnum, postQueryBody?: PostQueryBody, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'date' is not null or undefined
+            assertParamExists('postNotation', 'date', date)
+            // verify required parameter 'javaServer' is not null or undefined
+            assertParamExists('postNotation', 'javaServer', javaServer)
+            const localVarPath = `/v2/java/notation/{date}/{javaServer}`
+                .replace(`{${"date"}}`, encodeURIComponent(String(date)))
+                .replace(`{${"javaServer"}}`, encodeURIComponent(String(javaServer)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1128,6 +1398,35 @@ export const APIJavaApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = APIJavaApiAxiosParamCreator(configuration)
     return {
         /**
+         * Permet d\'obtenir la liste et les détails complets de toutes les alliances d\'un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+         * @summary Alliance
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {GetAllianceJavaServerEnum} javaServer Serveur
+         * @param {string} alliance Nom de l\&#39;alliance (optionnel)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAlliance(date: string, javaServer: GetAllianceJavaServerEnum, alliance: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Alliance>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAlliance(date, javaServer, alliance, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['APIJavaApi.getAlliance']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Permet d\'obtenir la liste et les détails complets de toutes les alliances d\'un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+         * @summary Alliance
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {GetAlliance1JavaServerEnum} javaServer Serveur
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAlliance1(date: string, javaServer: GetAlliance1JavaServerEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Alliance>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAlliance1(date, javaServer, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['APIJavaApi.getAlliance1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Permet d\'obtenir les données du marché global des céréales pour un serveur spécifique à une date donnée.  Ces données incluent : - Les graphiques de l\'évolution des prix, des ventes et des stocks - L\'historique des prix, ventes et stocks par type de céréale - Les prix actuels des céréales  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Note :** Ces données représentent un objet unique (pas une liste), donc le filtrage et la pagination ne sont pas applicables. 
          * @summary Cereal Global Market
          * @param {string} date Date (yyyy-MM-dd)
@@ -1240,6 +1539,35 @@ export const APIJavaApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Permet d\'obtenir les notations d\'un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+         * @summary Notation
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {GetNotationJavaServerEnum} javaServer Serveur
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getNotation(date: string, javaServer: GetNotationJavaServerEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Notation>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getNotation(date, javaServer, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['APIJavaApi.getNotation']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Permet d\'obtenir les notations d\'un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+         * @summary Notation
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {GetNotation1JavaServerEnum} javaServer Serveur
+         * @param {string} country Nom du pays (optionnel)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getNotation1(date: string, javaServer: GetNotation1JavaServerEnum, country: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Notation>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getNotation1(date, javaServer, country, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['APIJavaApi.getNotation1']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Permet d\'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
          * @summary Pillage Country
          * @param {string} date Date (yyyy-MM-dd)
@@ -1338,6 +1666,21 @@ export const APIJavaApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Permet d\'obtenir la liste et les détails complets de toutes les alliances d\'un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+         * @summary Alliance
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {PostAllianceJavaServerEnum} javaServer Serveur
+         * @param {PostQueryBody} [postQueryBody] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postAlliance(date: string, javaServer: PostAllianceJavaServerEnum, postQueryBody?: PostQueryBody, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Alliance>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postAlliance(date, javaServer, postQueryBody, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['APIJavaApi.postAlliance']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Permet d\'obtenir la liste et les détails complets de tous les pays d\'un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
          * @summary Country
          * @param {string} date Date (yyyy-MM-dd)
@@ -1406,6 +1749,21 @@ export const APIJavaApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.postNoelMegagift2025(date, postQueryBody, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['APIJavaApi.postNoelMegagift2025']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Permet d\'obtenir les notations d\'un pays sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+         * @summary Notation
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {PostNotationJavaServerEnum} javaServer Serveur
+         * @param {PostQueryBody} [postQueryBody] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postNotation(date: string, javaServer: PostNotationJavaServerEnum, postQueryBody?: PostQueryBody, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Notation>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postNotation(date, javaServer, postQueryBody, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['APIJavaApi.postNotation']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -1492,6 +1850,29 @@ export const APIJavaApiFp = function(configuration?: Configuration) {
 export const APIJavaApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = APIJavaApiFp(configuration)
     return {
+        /**
+         * Permet d\'obtenir la liste et les détails complets de toutes les alliances d\'un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+         * @summary Alliance
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {GetAllianceJavaServerEnum} javaServer Serveur
+         * @param {string} alliance Nom de l\&#39;alliance (optionnel)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAlliance(date: string, javaServer: GetAllianceJavaServerEnum, alliance: string, options?: RawAxiosRequestConfig): AxiosPromise<Alliance> {
+            return localVarFp.getAlliance(date, javaServer, alliance, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Permet d\'obtenir la liste et les détails complets de toutes les alliances d\'un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+         * @summary Alliance
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {GetAlliance1JavaServerEnum} javaServer Serveur
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAlliance1(date: string, javaServer: GetAlliance1JavaServerEnum, options?: RawAxiosRequestConfig): AxiosPromise<Alliance> {
+            return localVarFp.getAlliance1(date, javaServer, options).then((request) => request(axios, basePath));
+        },
         /**
          * Permet d\'obtenir les données du marché global des céréales pour un serveur spécifique à une date donnée.  Ces données incluent : - Les graphiques de l\'évolution des prix, des ventes et des stocks - L\'historique des prix, ventes et stocks par type de céréale - Les prix actuels des céréales  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Note :** Ces données représentent un objet unique (pas une liste), donc le filtrage et la pagination ne sont pas applicables. 
          * @summary Cereal Global Market
@@ -1581,6 +1962,29 @@ export const APIJavaApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.getNoelMegagift2025(date, options).then((request) => request(axios, basePath));
         },
         /**
+         * Permet d\'obtenir les notations d\'un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+         * @summary Notation
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {GetNotationJavaServerEnum} javaServer Serveur
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotation(date: string, javaServer: GetNotationJavaServerEnum, options?: RawAxiosRequestConfig): AxiosPromise<Notation> {
+            return localVarFp.getNotation(date, javaServer, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Permet d\'obtenir les notations d\'un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+         * @summary Notation
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {GetNotation1JavaServerEnum} javaServer Serveur
+         * @param {string} country Nom du pays (optionnel)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getNotation1(date: string, javaServer: GetNotation1JavaServerEnum, country: string, options?: RawAxiosRequestConfig): AxiosPromise<Notation> {
+            return localVarFp.getNotation1(date, javaServer, country, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Permet d\'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
          * @summary Pillage Country
          * @param {string} date Date (yyyy-MM-dd)
@@ -1658,6 +2062,18 @@ export const APIJavaApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.getWar1(date, javaServer, warId, options).then((request) => request(axios, basePath));
         },
         /**
+         * Permet d\'obtenir la liste et les détails complets de toutes les alliances d\'un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+         * @summary Alliance
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {PostAllianceJavaServerEnum} javaServer Serveur
+         * @param {PostQueryBody} [postQueryBody] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postAlliance(date: string, javaServer: PostAllianceJavaServerEnum, postQueryBody?: PostQueryBody, options?: RawAxiosRequestConfig): AxiosPromise<Alliance> {
+            return localVarFp.postAlliance(date, javaServer, postQueryBody, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Permet d\'obtenir la liste et les détails complets de tous les pays d\'un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
          * @summary Country
          * @param {string} date Date (yyyy-MM-dd)
@@ -1712,6 +2128,18 @@ export const APIJavaApiFactory = function (configuration?: Configuration, basePa
          */
         postNoelMegagift2025(date: string, postQueryBody?: PostQueryBody, options?: RawAxiosRequestConfig): AxiosPromise<NoelMegagift2025> {
             return localVarFp.postNoelMegagift2025(date, postQueryBody, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Permet d\'obtenir les notations d\'un pays sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+         * @summary Notation
+         * @param {string} date Date (yyyy-MM-dd)
+         * @param {PostNotationJavaServerEnum} javaServer Serveur
+         * @param {PostQueryBody} [postQueryBody] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postNotation(date: string, javaServer: PostNotationJavaServerEnum, postQueryBody?: PostQueryBody, options?: RawAxiosRequestConfig): AxiosPromise<Notation> {
+            return localVarFp.postNotation(date, javaServer, postQueryBody, options).then((request) => request(axios, basePath));
         },
         /**
          * Permet d\'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
@@ -1780,6 +2208,31 @@ export const APIJavaApiFactory = function (configuration?: Configuration, basePa
  * APIJavaApi - object-oriented interface
  */
 export class APIJavaApi extends BaseAPI {
+    /**
+     * Permet d\'obtenir la liste et les détails complets de toutes les alliances d\'un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+     * @summary Alliance
+     * @param {string} date Date (yyyy-MM-dd)
+     * @param {GetAllianceJavaServerEnum} javaServer Serveur
+     * @param {string} alliance Nom de l\&#39;alliance (optionnel)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public getAlliance(date: string, javaServer: GetAllianceJavaServerEnum, alliance: string, options?: RawAxiosRequestConfig) {
+        return APIJavaApiFp(this.configuration).getAlliance(date, javaServer, alliance, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Permet d\'obtenir la liste et les détails complets de toutes les alliances d\'un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+     * @summary Alliance
+     * @param {string} date Date (yyyy-MM-dd)
+     * @param {GetAlliance1JavaServerEnum} javaServer Serveur
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public getAlliance1(date: string, javaServer: GetAlliance1JavaServerEnum, options?: RawAxiosRequestConfig) {
+        return APIJavaApiFp(this.configuration).getAlliance1(date, javaServer, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * Permet d\'obtenir les données du marché global des céréales pour un serveur spécifique à une date donnée.  Ces données incluent : - Les graphiques de l\'évolution des prix, des ventes et des stocks - L\'historique des prix, ventes et stocks par type de céréale - Les prix actuels des céréales  **Fréquence de mise à jour :** Les données sont actualisées tous les jours impairs du mois (environ une fois tous les 2 jours), généralement la nuit.  **Note :** Ces données représentent un objet unique (pas une liste), donc le filtrage et la pagination ne sont pas applicables. 
      * @summary Cereal Global Market
@@ -1877,6 +2330,31 @@ export class APIJavaApi extends BaseAPI {
     }
 
     /**
+     * Permet d\'obtenir les notations d\'un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+     * @summary Notation
+     * @param {string} date Date (yyyy-MM-dd)
+     * @param {GetNotationJavaServerEnum} javaServer Serveur
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public getNotation(date: string, javaServer: GetNotationJavaServerEnum, options?: RawAxiosRequestConfig) {
+        return APIJavaApiFp(this.configuration).getNotation(date, javaServer, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Permet d\'obtenir les notations d\'un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+     * @summary Notation
+     * @param {string} date Date (yyyy-MM-dd)
+     * @param {GetNotation1JavaServerEnum} javaServer Serveur
+     * @param {string} country Nom du pays (optionnel)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public getNotation1(date: string, javaServer: GetNotation1JavaServerEnum, country: string, options?: RawAxiosRequestConfig) {
+        return APIJavaApiFp(this.configuration).getNotation1(date, javaServer, country, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Permet d\'obtenir la liste des pays ayant été en mode pillage entre 14h et 18h, sur un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/gerer-son-pays-java-1hcq6io/#2-fonctionnement-des-disbands  **Fréquence de mise à jour :** Les données sont actualisées les mercredi, samedi et dimanche vers 14h30. 
      * @summary Pillage Country
      * @param {string} date Date (yyyy-MM-dd)
@@ -1961,6 +2439,19 @@ export class APIJavaApi extends BaseAPI {
     }
 
     /**
+     * Permet d\'obtenir la liste et les détails complets de toutes les alliances d\'un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+     * @summary Alliance
+     * @param {string} date Date (yyyy-MM-dd)
+     * @param {PostAllianceJavaServerEnum} javaServer Serveur
+     * @param {PostQueryBody} [postQueryBody] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public postAlliance(date: string, javaServer: PostAllianceJavaServerEnum, postQueryBody?: PostQueryBody, options?: RawAxiosRequestConfig) {
+        return APIJavaApiFp(this.configuration).postAlliance(date, javaServer, postQueryBody, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Permet d\'obtenir la liste et les détails complets de tous les pays d\'un serveur à une date donnée (avec filtrage possible).  **Données exposées :** - Informations générales (nom, description, niveau, power, claims...) - Relations (alliance, guerres) - Membres (liste, rôles, recrues) - Économie (banque, actions) - Paramètres et permissions  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
      * @summary Country
      * @param {string} date Date (yyyy-MM-dd)
@@ -2019,6 +2510,19 @@ export class APIJavaApi extends BaseAPI {
      */
     public postNoelMegagift2025(date: string, postQueryBody?: PostQueryBody, options?: RawAxiosRequestConfig) {
         return APIJavaApiFp(this.configuration).postNoelMegagift2025(date, postQueryBody, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Permet d\'obtenir les notations d\'un pays sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+     * @summary Notation
+     * @param {string} date Date (yyyy-MM-dd)
+     * @param {PostNotationJavaServerEnum} javaServer Serveur
+     * @param {PostQueryBody} [postQueryBody] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public postNotation(date: string, javaServer: PostNotationJavaServerEnum, postQueryBody?: PostQueryBody, options?: RawAxiosRequestConfig) {
+        return APIJavaApiFp(this.configuration).postNotation(date, javaServer, postQueryBody, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2087,6 +2591,40 @@ export class APIJavaApi extends BaseAPI {
     }
 }
 
+export const GetAllianceJavaServerEnum = {
+    Blue: 'blue',
+    Orange: 'orange',
+    Yellow: 'yellow',
+    White: 'white',
+    Black: 'black',
+    Cyan: 'cyan',
+    Lime: 'lime',
+    Coral: 'coral',
+    Pink: 'pink',
+    Purple: 'purple',
+    Green: 'green',
+    Red: 'red',
+    Mocha: 'mocha',
+    Jade: 'jade'
+} as const;
+export type GetAllianceJavaServerEnum = typeof GetAllianceJavaServerEnum[keyof typeof GetAllianceJavaServerEnum];
+export const GetAlliance1JavaServerEnum = {
+    Blue: 'blue',
+    Orange: 'orange',
+    Yellow: 'yellow',
+    White: 'white',
+    Black: 'black',
+    Cyan: 'cyan',
+    Lime: 'lime',
+    Coral: 'coral',
+    Pink: 'pink',
+    Purple: 'purple',
+    Green: 'green',
+    Red: 'red',
+    Mocha: 'mocha',
+    Jade: 'jade'
+} as const;
+export type GetAlliance1JavaServerEnum = typeof GetAlliance1JavaServerEnum[keyof typeof GetAlliance1JavaServerEnum];
 export const GetCerealGlobalMarketJavaServerEnum = {
     Blue: 'blue',
     Orange: 'orange',
@@ -2208,6 +2746,40 @@ export const GetEnterprises1EnterpriseTypeEnum = {
     Farm: 'farm'
 } as const;
 export type GetEnterprises1EnterpriseTypeEnum = typeof GetEnterprises1EnterpriseTypeEnum[keyof typeof GetEnterprises1EnterpriseTypeEnum];
+export const GetNotationJavaServerEnum = {
+    Blue: 'blue',
+    Orange: 'orange',
+    Yellow: 'yellow',
+    White: 'white',
+    Black: 'black',
+    Cyan: 'cyan',
+    Lime: 'lime',
+    Coral: 'coral',
+    Pink: 'pink',
+    Purple: 'purple',
+    Green: 'green',
+    Red: 'red',
+    Mocha: 'mocha',
+    Jade: 'jade'
+} as const;
+export type GetNotationJavaServerEnum = typeof GetNotationJavaServerEnum[keyof typeof GetNotationJavaServerEnum];
+export const GetNotation1JavaServerEnum = {
+    Blue: 'blue',
+    Orange: 'orange',
+    Yellow: 'yellow',
+    White: 'white',
+    Black: 'black',
+    Cyan: 'cyan',
+    Lime: 'lime',
+    Coral: 'coral',
+    Pink: 'pink',
+    Purple: 'purple',
+    Green: 'green',
+    Red: 'red',
+    Mocha: 'mocha',
+    Jade: 'jade'
+} as const;
+export type GetNotation1JavaServerEnum = typeof GetNotation1JavaServerEnum[keyof typeof GetNotation1JavaServerEnum];
 export const GetPillageCountryJavaServerEnum = {
     Blue: 'blue',
     Orange: 'orange',
@@ -2310,6 +2882,23 @@ export const GetWar1JavaServerEnum = {
     Jade: 'jade'
 } as const;
 export type GetWar1JavaServerEnum = typeof GetWar1JavaServerEnum[keyof typeof GetWar1JavaServerEnum];
+export const PostAllianceJavaServerEnum = {
+    Blue: 'blue',
+    Orange: 'orange',
+    Yellow: 'yellow',
+    White: 'white',
+    Black: 'black',
+    Cyan: 'cyan',
+    Lime: 'lime',
+    Coral: 'coral',
+    Pink: 'pink',
+    Purple: 'purple',
+    Green: 'green',
+    Red: 'red',
+    Mocha: 'mocha',
+    Jade: 'jade'
+} as const;
+export type PostAllianceJavaServerEnum = typeof PostAllianceJavaServerEnum[keyof typeof PostAllianceJavaServerEnum];
 export const PostCountryJavaServerEnum = {
     Blue: 'blue',
     Orange: 'orange',
@@ -2344,6 +2933,23 @@ export const PostEnterprisesJavaServerEnum = {
     Jade: 'jade'
 } as const;
 export type PostEnterprisesJavaServerEnum = typeof PostEnterprisesJavaServerEnum[keyof typeof PostEnterprisesJavaServerEnum];
+export const PostNotationJavaServerEnum = {
+    Blue: 'blue',
+    Orange: 'orange',
+    Yellow: 'yellow',
+    White: 'white',
+    Black: 'black',
+    Cyan: 'cyan',
+    Lime: 'lime',
+    Coral: 'coral',
+    Pink: 'pink',
+    Purple: 'purple',
+    Green: 'green',
+    Red: 'red',
+    Mocha: 'mocha',
+    Jade: 'jade'
+} as const;
+export type PostNotationJavaServerEnum = typeof PostNotationJavaServerEnum[keyof typeof PostNotationJavaServerEnum];
 export const PostPillageCountryJavaServerEnum = {
     Blue: 'blue',
     Orange: 'orange',

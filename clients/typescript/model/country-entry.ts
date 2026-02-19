@@ -169,10 +169,10 @@ export interface CountryEntry {
      * Pays annexés (Disponible depuis le 17/02/2026)
      */
     'annexions'?: Array<string>;
-    'topWarzone'?: boolean;
-    'restrictAssault'?: boolean;
-    'restrictMissile'?: boolean;
     'empire'?: boolean;
     'referent'?: boolean;
+    'restrictAssault'?: boolean;
+    'restrictMissile'?: boolean;
+    'topWarzone'?: boolean;
 }
 

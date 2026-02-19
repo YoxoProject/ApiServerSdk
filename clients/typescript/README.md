@@ -1,4 +1,4 @@
-## @yoxoproject/yoxo-api-client@1.0-SNAPSHOT.202602162220
+## @yoxoproject/yoxo-api-client@1.0-SNAPSHOT.202602191611
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @yoxoproject/yoxo-api-client@1.0-SNAPSHOT.202602162220 --save
+npm install @yoxoproject/yoxo-api-client@1.0-SNAPSHOT.202602191611 --save
 ```
 
 _unPublished (not recommended):_
@@ -51,6 +51,8 @@ All URIs are relative to *https://api.yoxo.software*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*APIJavaApi* | [**getAlliance**](docs/APIJavaApi.md#getalliance) | **GET** /v2/java/alliance/{date}/{javaServer}/{alliance} | Alliance
+*APIJavaApi* | [**getAlliance1**](docs/APIJavaApi.md#getalliance1) | **GET** /v2/java/alliance/{date}/{javaServer} | Alliance
 *APIJavaApi* | [**getCerealGlobalMarket**](docs/APIJavaApi.md#getcerealglobalmarket) | **GET** /v2/java/cereal_global_market/{date}/{javaServer} | Cereal Global Market
 *APIJavaApi* | [**getCountry**](docs/APIJavaApi.md#getcountry) | **GET** /v2/java/country/{date}/{javaServer} | Country
 *APIJavaApi* | [**getCountry1**](docs/APIJavaApi.md#getcountry1) | **GET** /v2/java/country/{date}/{javaServer}/{country} | Country
@@ -59,6 +61,8 @@ Class | Method | HTTP request | Description
 *APIJavaApi* | [**getHalloween2025**](docs/APIJavaApi.md#gethalloween2025) | **GET** /v2/java/halloween-2025/{date} | Halloween 2025
 *APIJavaApi* | [**getNoelMegagift2024**](docs/APIJavaApi.md#getnoelmegagift2024) | **GET** /v2/java/noelmegagift-2024 | Noël Megagift 2024
 *APIJavaApi* | [**getNoelMegagift2025**](docs/APIJavaApi.md#getnoelmegagift2025) | **GET** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025
+*APIJavaApi* | [**getNotation**](docs/APIJavaApi.md#getnotation) | **GET** /v2/java/notation/{date}/{javaServer} | Notation
+*APIJavaApi* | [**getNotation1**](docs/APIJavaApi.md#getnotation1) | **GET** /v2/java/notation/{date}/{javaServer}/{country} | Notation
 *APIJavaApi* | [**getPillageCountry**](docs/APIJavaApi.md#getpillagecountry) | **GET** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country
 *APIJavaApi* | [**getPlayerList**](docs/APIJavaApi.md#getplayerlist) | **GET** /v2/java/player-list/{date}/{javaServer} | Player List
 *APIJavaApi* | [**getResearchConfig**](docs/APIJavaApi.md#getresearchconfig) | **GET** /v2/java/research/{date}/config | Research Config
@@ -66,11 +70,13 @@ Class | Method | HTTP request | Description
 *APIJavaApi* | [**getSkill**](docs/APIJavaApi.md#getskill) | **GET** /v2/java/skill/{date}/{javaServer} | Skill
 *APIJavaApi* | [**getWar**](docs/APIJavaApi.md#getwar) | **GET** /v2/java/war/{date}/{javaServer} | War
 *APIJavaApi* | [**getWar1**](docs/APIJavaApi.md#getwar1) | **GET** /v2/java/war/{date}/{javaServer}/{warId} | War
+*APIJavaApi* | [**postAlliance**](docs/APIJavaApi.md#postalliance) | **POST** /v2/java/alliance/{date}/{javaServer} | Alliance
 *APIJavaApi* | [**postCountry**](docs/APIJavaApi.md#postcountry) | **POST** /v2/java/country/{date}/{javaServer} | Country
 *APIJavaApi* | [**postEnterprises**](docs/APIJavaApi.md#postenterprises) | **POST** /v2/java/enterprise/{date}/{javaServer} | Enterprise
 *APIJavaApi* | [**postHalloween2025**](docs/APIJavaApi.md#posthalloween2025) | **POST** /v2/java/halloween-2025/{date} | Halloween 2025
 *APIJavaApi* | [**postNoelMegagift2024**](docs/APIJavaApi.md#postnoelmegagift2024) | **POST** /v2/java/noelmegagift-2024 | Noël Megagift 2024
 *APIJavaApi* | [**postNoelMegagift2025**](docs/APIJavaApi.md#postnoelmegagift2025) | **POST** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025
+*APIJavaApi* | [**postNotation**](docs/APIJavaApi.md#postnotation) | **POST** /v2/java/notation/{date}/{javaServer} | Notation
 *APIJavaApi* | [**postPillageCountry**](docs/APIJavaApi.md#postpillagecountry) | **POST** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country
 *APIJavaApi* | [**postPlayerList**](docs/APIJavaApi.md#postplayerlist) | **POST** /v2/java/player-list/{date}/{javaServer} | Player List
 *APIJavaApi* | [**postResearchServer**](docs/APIJavaApi.md#postresearchserver) | **POST** /v2/java/research/{date}/{javaServer} | Research Server
@@ -81,6 +87,17 @@ Class | Method | HTTP request | Description
 ### Documentation For Models
 
  - [ActionEntry](docs/ActionEntry.md)
+ - [Alliance](docs/Alliance.md)
+ - [AllianceBank](docs/AllianceBank.md)
+ - [AllianceEntry](docs/AllianceEntry.md)
+ - [AllianceModule](docs/AllianceModule.md)
+ - [AllianceModuleCoordinates](docs/AllianceModuleCoordinates.md)
+ - [AlliancePrimeBoost](docs/AlliancePrimeBoost.md)
+ - [AlliancePrimeBooster](docs/AlliancePrimeBooster.md)
+ - [AllianceRelation](docs/AllianceRelation.md)
+ - [AllianceTaxes](docs/AllianceTaxes.md)
+ - [AllianceVoteHistory](docs/AllianceVoteHistory.md)
+ - [ArchitectureEntry](docs/ArchitectureEntry.md)
  - [BankLogEntry](docs/BankLogEntry.md)
  - [CerealGlobalMarket](docs/CerealGlobalMarket.md)
  - [CerealGlobalMarketEntry](docs/CerealGlobalMarketEntry.md)
@@ -118,6 +135,8 @@ Class | Method | HTTP request | Description
  - [NoelMegagift2024Entry](docs/NoelMegagift2024Entry.md)
  - [NoelMegagift2025](docs/NoelMegagift2025.md)
  - [NoelMegagift2025Entry](docs/NoelMegagift2025Entry.md)
+ - [Notation](docs/Notation.md)
+ - [NotationEntry](docs/NotationEntry.md)
  - [Parcelle](docs/Parcelle.md)
  - [PermissionEntry](docs/PermissionEntry.md)
  - [PillageCountry](docs/PillageCountry.md)

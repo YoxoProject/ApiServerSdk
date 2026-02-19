@@ -69,12 +69,12 @@ class CountryEntry(BaseModel):
     allies: Optional[List[StrictStr]] = Field(default=None, description="Pays alliés (Disponible depuis le 17/02/2026)")
     enemies: Optional[List[StrictStr]] = Field(default=None, description="Pays enemies (Disponible depuis le 17/02/2026)")
     annexions: Optional[List[StrictStr]] = Field(default=None, description="Pays annexés (Disponible depuis le 17/02/2026)")
-    top_warzone: Optional[StrictBool] = Field(default=None, alias="topWarzone")
-    restrict_assault: Optional[StrictBool] = Field(default=None, alias="restrictAssault")
-    restrict_missile: Optional[StrictBool] = Field(default=None, alias="restrictMissile")
     empire: Optional[StrictBool] = None
     referent: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["name", "description", "motd", "entryMsg", "age", "countMembers", "countNewMembers", "fhomeCoord", "level", "progress", "notationsPosition", "tags", "discord", "allianceName", "mmr", "claims", "power", "maxPower", "powerboostFixed", "powerboostWarzone", "powerboostUnesco", "powerboostNewMember", "powerboostMalusAssault", "flag", "leader", "officers", "members", "recruits", "newMembers", "researchesLevel", "wars", "bank", "actions", "settings", "allies", "enemies", "annexions", "topWarzone", "restrictAssault", "restrictMissile", "empire", "referent"]
+    restrict_assault: Optional[StrictBool] = Field(default=None, alias="restrictAssault")
+    restrict_missile: Optional[StrictBool] = Field(default=None, alias="restrictMissile")
+    top_warzone: Optional[StrictBool] = Field(default=None, alias="topWarzone")
+    __properties: ClassVar[List[str]] = ["name", "description", "motd", "entryMsg", "age", "countMembers", "countNewMembers", "fhomeCoord", "level", "progress", "notationsPosition", "tags", "discord", "allianceName", "mmr", "claims", "power", "maxPower", "powerboostFixed", "powerboostWarzone", "powerboostUnesco", "powerboostNewMember", "powerboostMalusAssault", "flag", "leader", "officers", "members", "recruits", "newMembers", "researchesLevel", "wars", "bank", "actions", "settings", "allies", "enemies", "annexions", "empire", "referent", "restrictAssault", "restrictMissile", "topWarzone"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -186,11 +186,11 @@ class CountryEntry(BaseModel):
             "allies": obj.get("allies"),
             "enemies": obj.get("enemies"),
             "annexions": obj.get("annexions"),
-            "topWarzone": obj.get("topWarzone"),
+            "empire": obj.get("empire"),
+            "referent": obj.get("referent"),
             "restrictAssault": obj.get("restrictAssault"),
             "restrictMissile": obj.get("restrictMissile"),
-            "empire": obj.get("empire"),
-            "referent": obj.get("referent")
+            "topWarzone": obj.get("topWarzone")
         })
         return _obj
 

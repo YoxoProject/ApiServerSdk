@@ -14,6 +14,17 @@
 
 # import models into model package
 from yoxo_api_client.models.action_entry import ActionEntry
+from yoxo_api_client.models.alliance import Alliance
+from yoxo_api_client.models.alliance_bank import AllianceBank
+from yoxo_api_client.models.alliance_entry import AllianceEntry
+from yoxo_api_client.models.alliance_module import AllianceModule
+from yoxo_api_client.models.alliance_module_coordinates import AllianceModuleCoordinates
+from yoxo_api_client.models.alliance_prime_boost import AlliancePrimeBoost
+from yoxo_api_client.models.alliance_prime_booster import AlliancePrimeBooster
+from yoxo_api_client.models.alliance_relation import AllianceRelation
+from yoxo_api_client.models.alliance_taxes import AllianceTaxes
+from yoxo_api_client.models.alliance_vote_history import AllianceVoteHistory
+from yoxo_api_client.models.architecture_entry import ArchitectureEntry
 from yoxo_api_client.models.bank_log_entry import BankLogEntry
 from yoxo_api_client.models.cereal_global_market import CerealGlobalMarket
 from yoxo_api_client.models.cereal_global_market_entry import CerealGlobalMarketEntry
@@ -51,6 +62,8 @@ from yoxo_api_client.models.noel_megagift2024 import NoelMegagift2024
 from yoxo_api_client.models.noel_megagift2024_entry import NoelMegagift2024Entry
 from yoxo_api_client.models.noel_megagift2025 import NoelMegagift2025
 from yoxo_api_client.models.noel_megagift2025_entry import NoelMegagift2025Entry
+from yoxo_api_client.models.notation import Notation
+from yoxo_api_client.models.notation_entry import NotationEntry
 from yoxo_api_client.models.parcelle import Parcelle
 from yoxo_api_client.models.permission_entry import PermissionEntry
 from yoxo_api_client.models.pillage_country import PillageCountry

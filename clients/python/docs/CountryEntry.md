@@ -43,11 +43,11 @@ Name | Type | Description | Notes
 **allies** | **List[str]** | Pays alliés (Disponible depuis le 17/02/2026) | [optional] 
 **enemies** | **List[str]** | Pays enemies (Disponible depuis le 17/02/2026) | [optional] 
 **annexions** | **List[str]** | Pays annexés (Disponible depuis le 17/02/2026) | [optional] 
-**top_warzone** | **bool** |  | [optional] 
-**restrict_assault** | **bool** |  | [optional] 
-**restrict_missile** | **bool** |  | [optional] 
 **empire** | **bool** |  | [optional] 
 **referent** | **bool** |  | [optional] 
+**restrict_assault** | **bool** |  | [optional] 
+**restrict_missile** | **bool** |  | [optional] 
+**top_warzone** | **bool** |  | [optional] 
 
 ## Example
 

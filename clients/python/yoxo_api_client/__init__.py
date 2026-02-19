@@ -29,6 +29,17 @@ __all__ = [
     "ApiAttributeError",
     "ApiException",
     "ActionEntry",
+    "Alliance",
+    "AllianceBank",
+    "AllianceEntry",
+    "AllianceModule",
+    "AllianceModuleCoordinates",
+    "AlliancePrimeBoost",
+    "AlliancePrimeBooster",
+    "AllianceRelation",
+    "AllianceTaxes",
+    "AllianceVoteHistory",
+    "ArchitectureEntry",
     "BankLogEntry",
     "CerealGlobalMarket",
     "CerealGlobalMarketEntry",
@@ -66,6 +77,8 @@ __all__ = [
     "NoelMegagift2024Entry",
     "NoelMegagift2025",
     "NoelMegagift2025Entry",
+    "Notation",
+    "NotationEntry",
     "Parcelle",
     "PermissionEntry",
     "PillageCountry",
@@ -106,6 +119,17 @@ from yoxo_api_client.exceptions import ApiException as ApiException
 
 # import models into sdk package
 from yoxo_api_client.models.action_entry import ActionEntry as ActionEntry
+from yoxo_api_client.models.alliance import Alliance as Alliance
+from yoxo_api_client.models.alliance_bank import AllianceBank as AllianceBank
+from yoxo_api_client.models.alliance_entry import AllianceEntry as AllianceEntry
+from yoxo_api_client.models.alliance_module import AllianceModule as AllianceModule
+from yoxo_api_client.models.alliance_module_coordinates import AllianceModuleCoordinates as AllianceModuleCoordinates
+from yoxo_api_client.models.alliance_prime_boost import AlliancePrimeBoost as AlliancePrimeBoost
+from yoxo_api_client.models.alliance_prime_booster import AlliancePrimeBooster as AlliancePrimeBooster
+from yoxo_api_client.models.alliance_relation import AllianceRelation as AllianceRelation
+from yoxo_api_client.models.alliance_taxes import AllianceTaxes as AllianceTaxes
+from yoxo_api_client.models.alliance_vote_history import AllianceVoteHistory as AllianceVoteHistory
+from yoxo_api_client.models.architecture_entry import ArchitectureEntry as ArchitectureEntry
 from yoxo_api_client.models.bank_log_entry import BankLogEntry as BankLogEntry
 from yoxo_api_client.models.cereal_global_market import CerealGlobalMarket as CerealGlobalMarket
 from yoxo_api_client.models.cereal_global_market_entry import CerealGlobalMarketEntry as CerealGlobalMarketEntry
@@ -143,6 +167,8 @@ from yoxo_api_client.models.noel_megagift2024 import NoelMegagift2024 as NoelMeg
 from yoxo_api_client.models.noel_megagift2024_entry import NoelMegagift2024Entry as NoelMegagift2024Entry
 from yoxo_api_client.models.noel_megagift2025 import NoelMegagift2025 as NoelMegagift2025
 from yoxo_api_client.models.noel_megagift2025_entry import NoelMegagift2025Entry as NoelMegagift2025Entry
+from yoxo_api_client.models.notation import Notation as Notation
+from yoxo_api_client.models.notation_entry import NotationEntry as NotationEntry
 from yoxo_api_client.models.parcelle import Parcelle as Parcelle
 from yoxo_api_client.models.permission_entry import PermissionEntry as PermissionEntry
 from yoxo_api_client.models.pillage_country import PillageCountry as PillageCountry

@@ -4,6 +4,8 @@ All URIs are relative to *https://api.yoxo.software*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**getAlliance**](ApiJavaApi.md#getAlliance) | **GET** /v2/java/alliance/{date}/{javaServer}/{alliance} | Alliance |
+| [**getAlliance1**](ApiJavaApi.md#getAlliance1) | **GET** /v2/java/alliance/{date}/{javaServer} | Alliance |
 | [**getCerealGlobalMarket**](ApiJavaApi.md#getCerealGlobalMarket) | **GET** /v2/java/cereal_global_market/{date}/{javaServer} | Cereal Global Market |
 | [**getCountry**](ApiJavaApi.md#getCountry) | **GET** /v2/java/country/{date}/{javaServer} | Country |
 | [**getCountry1**](ApiJavaApi.md#getCountry1) | **GET** /v2/java/country/{date}/{javaServer}/{country} | Country |
@@ -12,6 +14,8 @@ All URIs are relative to *https://api.yoxo.software*
 | [**getHalloween2025**](ApiJavaApi.md#getHalloween2025) | **GET** /v2/java/halloween-2025/{date} | Halloween 2025 |
 | [**getNoelMegagift2024**](ApiJavaApi.md#getNoelMegagift2024) | **GET** /v2/java/noelmegagift-2024 | Noël Megagift 2024 |
 | [**getNoelMegagift2025**](ApiJavaApi.md#getNoelMegagift2025) | **GET** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025 |
+| [**getNotation**](ApiJavaApi.md#getNotation) | **GET** /v2/java/notation/{date}/{javaServer} | Notation |
+| [**getNotation1**](ApiJavaApi.md#getNotation1) | **GET** /v2/java/notation/{date}/{javaServer}/{country} | Notation |
 | [**getPillageCountry**](ApiJavaApi.md#getPillageCountry) | **GET** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country |
 | [**getPlayerList**](ApiJavaApi.md#getPlayerList) | **GET** /v2/java/player-list/{date}/{javaServer} | Player List |
 | [**getResearchConfig**](ApiJavaApi.md#getResearchConfig) | **GET** /v2/java/research/{date}/config | Research Config |
@@ -19,17 +23,159 @@ All URIs are relative to *https://api.yoxo.software*
 | [**getSkill**](ApiJavaApi.md#getSkill) | **GET** /v2/java/skill/{date}/{javaServer} | Skill |
 | [**getWar**](ApiJavaApi.md#getWar) | **GET** /v2/java/war/{date}/{javaServer} | War |
 | [**getWar1**](ApiJavaApi.md#getWar1) | **GET** /v2/java/war/{date}/{javaServer}/{warId} | War |
+| [**postAlliance**](ApiJavaApi.md#postAlliance) | **POST** /v2/java/alliance/{date}/{javaServer} | Alliance |
 | [**postCountry**](ApiJavaApi.md#postCountry) | **POST** /v2/java/country/{date}/{javaServer} | Country |
 | [**postEnterprises**](ApiJavaApi.md#postEnterprises) | **POST** /v2/java/enterprise/{date}/{javaServer} | Enterprise |
 | [**postHalloween2025**](ApiJavaApi.md#postHalloween2025) | **POST** /v2/java/halloween-2025/{date} | Halloween 2025 |
 | [**postNoelMegagift2024**](ApiJavaApi.md#postNoelMegagift2024) | **POST** /v2/java/noelmegagift-2024 | Noël Megagift 2024 |
 | [**postNoelMegagift2025**](ApiJavaApi.md#postNoelMegagift2025) | **POST** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025 |
+| [**postNotation**](ApiJavaApi.md#postNotation) | **POST** /v2/java/notation/{date}/{javaServer} | Notation |
 | [**postPillageCountry**](ApiJavaApi.md#postPillageCountry) | **POST** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country |
 | [**postPlayerList**](ApiJavaApi.md#postPlayerList) | **POST** /v2/java/player-list/{date}/{javaServer} | Player List |
 | [**postResearchServer**](ApiJavaApi.md#postResearchServer) | **POST** /v2/java/research/{date}/{javaServer} | Research Server |
 | [**postSkill**](ApiJavaApi.md#postSkill) | **POST** /v2/java/skill/{date}/{javaServer} | Skill |
 | [**postWar**](ApiJavaApi.md#postWar) | **POST** /v2/java/war/{date}/{javaServer} | War |
 
+
+<a id="getAlliance"></a>
+# **getAlliance**
+> Alliance getAlliance(date, javaServer, alliance)
+
+Alliance
+
+Permet d&#39;obtenir la liste et les détails complets de toutes les alliances d&#39;un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+
+### Example
+```java
+// Import classes:
+import software.yoxo.client.invoker.ApiClient;
+import software.yoxo.client.invoker.ApiException;
+import software.yoxo.client.invoker.Configuration;
+import software.yoxo.client.invoker.auth.*;
+import software.yoxo.client.invoker.models.*;
+import software.yoxo.client.api.ApiJavaApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.yoxo.software");
+    
+    // Configure OAuth2 access token for authorization: oauth2_client_credentials
+    OAuth oauth2_client_credentials = (OAuth) defaultClient.getAuthentication("oauth2_client_credentials");
+    oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
+    ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
+    String alliance = "alliance_example"; // String | Nom de l'alliance (optionnel)
+    try {
+      Alliance result = apiInstance.getAlliance(date, javaServer, alliance);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ApiJavaApi#getAlliance");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **alliance** | **String**| Nom de l&#39;alliance (optionnel) | |
+
+### Return type
+
+[**Alliance**](Alliance.md)
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+<a id="getAlliance1"></a>
+# **getAlliance1**
+> Alliance getAlliance1(date, javaServer)
+
+Alliance
+
+Permet d&#39;obtenir la liste et les détails complets de toutes les alliances d&#39;un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+
+### Example
+```java
+// Import classes:
+import software.yoxo.client.invoker.ApiClient;
+import software.yoxo.client.invoker.ApiException;
+import software.yoxo.client.invoker.Configuration;
+import software.yoxo.client.invoker.auth.*;
+import software.yoxo.client.invoker.models.*;
+import software.yoxo.client.api.ApiJavaApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.yoxo.software");
+    
+    // Configure OAuth2 access token for authorization: oauth2_client_credentials
+    OAuth oauth2_client_credentials = (OAuth) defaultClient.getAuthentication("oauth2_client_credentials");
+    oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
+    ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
+    try {
+      Alliance result = apiInstance.getAlliance1(date, javaServer);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ApiJavaApi#getAlliance1");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+
+### Return type
+
+[**Alliance**](Alliance.md)
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
 
 <a id="getCerealGlobalMarket"></a>
 # **getCerealGlobalMarket**
@@ -581,6 +727,146 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
 
+<a id="getNotation"></a>
+# **getNotation**
+> Notation getNotation(date, javaServer)
+
+Notation
+
+Permet d&#39;obtenir les notations d&#39;un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+
+### Example
+```java
+// Import classes:
+import software.yoxo.client.invoker.ApiClient;
+import software.yoxo.client.invoker.ApiException;
+import software.yoxo.client.invoker.Configuration;
+import software.yoxo.client.invoker.auth.*;
+import software.yoxo.client.invoker.models.*;
+import software.yoxo.client.api.ApiJavaApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.yoxo.software");
+    
+    // Configure OAuth2 access token for authorization: oauth2_client_credentials
+    OAuth oauth2_client_credentials = (OAuth) defaultClient.getAuthentication("oauth2_client_credentials");
+    oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
+    ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
+    try {
+      Notation result = apiInstance.getNotation(date, javaServer);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ApiJavaApi#getNotation");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+
+### Return type
+
+[**Notation**](Notation.md)
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+<a id="getNotation1"></a>
+# **getNotation1**
+> Notation getNotation1(date, javaServer, country)
+
+Notation
+
+Permet d&#39;obtenir les notations d&#39;un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+
+### Example
+```java
+// Import classes:
+import software.yoxo.client.invoker.ApiClient;
+import software.yoxo.client.invoker.ApiException;
+import software.yoxo.client.invoker.Configuration;
+import software.yoxo.client.invoker.auth.*;
+import software.yoxo.client.invoker.models.*;
+import software.yoxo.client.api.ApiJavaApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.yoxo.software");
+    
+    // Configure OAuth2 access token for authorization: oauth2_client_credentials
+    OAuth oauth2_client_credentials = (OAuth) defaultClient.getAuthentication("oauth2_client_credentials");
+    oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
+    ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
+    String country = "country_example"; // String | Nom du pays (optionnel)
+    try {
+      Notation result = apiInstance.getNotation1(date, javaServer, country);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ApiJavaApi#getNotation1");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **country** | **String**| Nom du pays (optionnel) | |
+
+### Return type
+
+[**Notation**](Notation.md)
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
 <a id="getPillageCountry"></a>
 # **getPillageCountry**
 > PillageCountry getPillageCountry(date, javaServer)
@@ -1064,6 +1350,77 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
 
+<a id="postAlliance"></a>
+# **postAlliance**
+> Alliance postAlliance(date, javaServer, postQueryBody)
+
+Alliance
+
+Permet d&#39;obtenir la liste et les détails complets de toutes les alliances d&#39;un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+
+### Example
+```java
+// Import classes:
+import software.yoxo.client.invoker.ApiClient;
+import software.yoxo.client.invoker.ApiException;
+import software.yoxo.client.invoker.Configuration;
+import software.yoxo.client.invoker.auth.*;
+import software.yoxo.client.invoker.models.*;
+import software.yoxo.client.api.ApiJavaApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.yoxo.software");
+    
+    // Configure OAuth2 access token for authorization: oauth2_client_credentials
+    OAuth oauth2_client_credentials = (OAuth) defaultClient.getAuthentication("oauth2_client_credentials");
+    oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
+    ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
+    PostQueryBody postQueryBody = new PostQueryBody(); // PostQueryBody | 
+    try {
+      Alliance result = apiInstance.postAlliance(date, javaServer, postQueryBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ApiJavaApi#postAlliance");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **postQueryBody** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] |
+
+### Return type
+
+[**Alliance**](Alliance.md)
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
 <a id="postCountry"></a>
 # **postCountry**
 > Country postCountry(date, javaServer, postQueryBody)
@@ -1396,6 +1753,77 @@ public class Example {
 ### Return type
 
 [**NoelMegagift2025**](NoelMegagift2025.md)
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+<a id="postNotation"></a>
+# **postNotation**
+> Notation postNotation(date, javaServer, postQueryBody)
+
+Notation
+
+Permet d&#39;obtenir les notations d&#39;un pays sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+
+### Example
+```java
+// Import classes:
+import software.yoxo.client.invoker.ApiClient;
+import software.yoxo.client.invoker.ApiException;
+import software.yoxo.client.invoker.Configuration;
+import software.yoxo.client.invoker.auth.*;
+import software.yoxo.client.invoker.models.*;
+import software.yoxo.client.api.ApiJavaApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.yoxo.software");
+    
+    // Configure OAuth2 access token for authorization: oauth2_client_credentials
+    OAuth oauth2_client_credentials = (OAuth) defaultClient.getAuthentication("oauth2_client_credentials");
+    oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
+
+    ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
+    String javaServer = "blue"; // String | Serveur
+    PostQueryBody postQueryBody = new PostQueryBody(); // PostQueryBody | 
+    try {
+      Notation result = apiInstance.postNotation(date, javaServer, postQueryBody);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ApiJavaApi#postNotation");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **date** | **LocalDate**| Date (yyyy-MM-dd) | |
+| **javaServer** | **String**| Serveur | [enum: blue, orange, yellow, white, black, cyan, lime, coral, pink, purple, green, red, mocha, jade] |
+| **postQueryBody** | [**PostQueryBody**](PostQueryBody.md)|  | [optional] |
+
+### Return type
+
+[**Notation**](Notation.md)
 
 ### Authorization
 

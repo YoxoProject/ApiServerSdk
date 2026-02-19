@@ -114,6 +114,17 @@ public class JSON {
         gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
         gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.ActionEntry.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.Alliance.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.AllianceBank.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.AllianceEntry.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.AllianceModule.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.AllianceModuleCoordinates.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.AlliancePrimeBoost.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.AlliancePrimeBooster.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.AllianceRelation.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.AllianceTaxes.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.AllianceVoteHistory.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.ArchitectureEntry.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.BankLogEntry.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.CerealGlobalMarket.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.CerealGlobalMarketEntry.CustomTypeAdapterFactory());
@@ -151,6 +162,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.NoelMegagift2024Entry.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.NoelMegagift2025.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.NoelMegagift2025Entry.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.Notation.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.NotationEntry.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.Parcelle.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.PermissionEntry.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new software.yoxo.client.model.PillageCountry.CustomTypeAdapterFactory());

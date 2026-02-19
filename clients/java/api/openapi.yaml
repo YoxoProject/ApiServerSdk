@@ -43,6 +43,199 @@ tags:
     aux divers usages.
   name: API Java
 paths:
+  /v2/java/alliance/{date}/{javaServer}:
+    get:
+      description: |
+        Permet d'obtenir la liste et les détails complets de toutes les alliances d'un serveur à une date donnée (aucun filtrage possible).
+
+        **Documentation :**
+        https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les jours, généralement la nuit.
+      operationId: getAlliance_1
+      parameters:
+      - description: Date (yyyy-MM-dd)
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: Serveur
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Alliance"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Alliance
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+    post:
+      description: |
+        Permet d'obtenir la liste et les détails complets de toutes les alliances d'un serveur à une date donnée (avec filtrage possible).
+
+        **Documentation :**
+        https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les jours, généralement la nuit.
+      operationId: postAlliance
+      parameters:
+      - description: Date (yyyy-MM-dd)
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: Serveur
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostQueryBody"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Alliance"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Alliance
+      tags:
+      - API Java
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /v2/java/alliance/{date}/{javaServer}/{alliance}:
+    get:
+      description: |
+        Permet d'obtenir la liste et les détails complets de toutes les alliances d'un serveur à une date donnée (aucun filtrage possible).
+
+        **Documentation :**
+        https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les jours, généralement la nuit.
+      operationId: getAlliance
+      parameters:
+      - description: Date (yyyy-MM-dd)
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: Serveur
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      - description: Nom de l'alliance (optionnel)
+        explode: false
+        in: path
+        name: alliance
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Alliance"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Alliance
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
   /v2/java/cereal_global_market/{date}/{javaServer}:
     get:
       description: |
@@ -827,6 +1020,199 @@ paths:
       tags:
       - API Java
       x-content-type: application/json
+      x-accepts:
+      - application/json
+  /v2/java/notation/{date}/{javaServer}:
+    get:
+      description: |
+        Permet d'obtenir les notations d'un pays sur un serveur à une date donnée (sans filtrage).
+
+        **Documentation :**
+        https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les lundis matin.
+      operationId: getNotation
+      parameters:
+      - description: Date (yyyy-MM-dd)
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: Serveur
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Notation"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Notation
+      tags:
+      - API Java
+      x-accepts:
+      - application/json
+    post:
+      description: |
+        Permet d'obtenir les notations d'un pays sur un serveur à une date donnée (avec filtrage possible).
+
+        **Documentation :**
+        https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les lundis matin.
+      operationId: postNotation
+      parameters:
+      - description: Date (yyyy-MM-dd)
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: Serveur
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostQueryBody"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Notation"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Notation
+      tags:
+      - API Java
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+  /v2/java/notation/{date}/{javaServer}/{country}:
+    get:
+      description: |
+        Permet d'obtenir les notations d'un pays sur un serveur à une date donnée (sans filtrage).
+
+        **Documentation :**
+        https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/
+
+        **Fréquence de mise à jour :**
+        Les données sont actualisées tous les lundis matin.
+      operationId: getNotation_1
+      parameters:
+      - description: Date (yyyy-MM-dd)
+        example: 2025-11-24
+        explode: false
+        in: path
+        name: date
+        required: true
+        schema:
+          format: date
+          type: string
+        style: simple
+      - description: Serveur
+        example: red
+        explode: false
+        in: path
+        name: javaServer
+        required: true
+        schema:
+          enum:
+          - blue
+          - orange
+          - yellow
+          - white
+          - black
+          - cyan
+          - lime
+          - coral
+          - pink
+          - purple
+          - green
+          - red
+          - mocha
+          - jade
+          type: string
+        style: simple
+      - description: Nom du pays (optionnel)
+        explode: false
+        in: path
+        name: country
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Notation"
+          description: OK
+      security:
+      - oauth2_client_credentials: []
+      summary: Notation
+      tags:
+      - API Java
       x-accepts:
       - application/json
   /v2/java/pillage-country/{date}/{javaServer}:
@@ -2686,6 +3072,333 @@ components:
           format: int32
           type: integer
       type: object
+    ArchitectureEntry:
+      example:
+        surfaceConstruite: 1.5
+        batimentsAbandonnes: 1
+        coherenceStyle: 2
+        blocsCatalogue: 2
+        staff: Romaindu35
+        coherenceLumieres: 1
+        activiteRecente: 3
+        roleplayPays: 1
+        trouMissiles: 0
+        biomeCoherent: 1
+        utilisationSchematica: 0
+        beauteGenerale: 3.5
+        terraforming: 2
+        habitabiliteMaison: 2
+        organics: 1
+      properties:
+        terraforming:
+          description: Terraforming (entre 0 et 2)
+          example: 2
+          format: int32
+          type: integer
+        coherenceStyle:
+          description: Cohérence du style (entre 0 et 2)
+          example: 2
+          format: int32
+          type: integer
+        activiteRecente:
+          description: Activité récente (entre 0 et 4)
+          example: 3
+          format: int32
+          type: integer
+        blocsCatalogue:
+          description: Utilisation de blocs du catalogue (entre 0 et 2)
+          example: 2
+          format: int32
+          type: integer
+        trouMissiles:
+          description: Présence de trous de missiles (entre 0 et -4)
+          example: 0
+          format: int32
+          type: integer
+        beauteGenerale:
+          description: Beauté générale du pays (entre 0 et 4)
+          example: 3.5
+          format: double
+          type: number
+        habitabiliteMaison:
+          description: Habitabilité des maisons (entre 0 et 2)
+          example: 2
+          format: int32
+          type: integer
+        biomeCoherent:
+          description: Cohérence avec le biome (entre 0 et 1)
+          example: 1
+          format: int32
+          type: integer
+        batimentsAbandonnes:
+          description: "Absence de bâtiments abandonnés (1 si aucun, 0 sinon)"
+          example: 1
+          format: int32
+          type: integer
+        utilisationSchematica:
+          description: "Utilisation de schematica (0 si non, -1 si oui)"
+          example: 0
+          format: int32
+          type: integer
+        coherenceLumieres:
+          description: Cohérence des lumières (entre 0 et 1)
+          example: 1
+          format: int32
+          type: integer
+        roleplayPays:
+          description: Respect du roleplay du pays (entre 0 et 1)
+          example: 1
+          format: int32
+          type: integer
+        organics:
+          description: Présence d'organics (entre 0 et 1)
+          example: 1
+          format: int32
+          type: integer
+        surfaceConstruite:
+          description: Multiplicateur de surface construite (entre x0 et x2.0)
+          example: 1.5
+          format: double
+          type: number
+        staff:
+          description: Le username du staff qui a noté le pays
+          example: Romaindu35
+          type: string
+      type: object
+    Notation:
+      example:
+        metadata:
+          date: 2025-10-21
+          filteredCount: 42
+          server: red
+          dataType: example
+          executionTimeMs: 210
+          totalPages: 3
+          pageSize: 20
+          totalCount: 50
+          currentPage: 1
+          timestamp: 1760939974755
+        data:
+        - country: France
+          server: blue
+          activity: 4.5
+          noteArchitecturale: 35.5
+          economy: 9
+          rangInterserv: 5
+          gestion: 8
+          skills: 3.5
+          total: 85
+          bourse: 32000
+          bourseUnesco: 8000
+          unesco: 3
+          endbringer: 0
+          from: 2026-02-15
+          military: 7.5
+          to: 2026-02-09
+          antimatter: 2
+          spatial: 1
+          rang: 1
+          redmatter: 0
+          architecture:
+            surfaceConstruite: 1.5
+            batimentsAbandonnes: 1
+            coherenceStyle: 2
+            blocsCatalogue: 2
+            staff: Romaindu35
+            coherenceLumieres: 1
+            activiteRecente: 3
+            roleplayPays: 1
+            trouMissiles: 0
+            biomeCoherent: 1
+            utilisationSchematica: 0
+            beauteGenerale: 3.5
+            terraforming: 2
+            habitabiliteMaison: 2
+            organics: 1
+        - country: France
+          server: blue
+          activity: 4.5
+          noteArchitecturale: 35.5
+          economy: 9
+          rangInterserv: 5
+          gestion: 8
+          skills: 3.5
+          total: 85
+          bourse: 32000
+          bourseUnesco: 8000
+          unesco: 3
+          endbringer: 0
+          from: 2026-02-15
+          military: 7.5
+          to: 2026-02-09
+          antimatter: 2
+          spatial: 1
+          rang: 1
+          redmatter: 0
+          architecture:
+            surfaceConstruite: 1.5
+            batimentsAbandonnes: 1
+            coherenceStyle: 2
+            blocsCatalogue: 2
+            staff: Romaindu35
+            coherenceLumieres: 1
+            activiteRecente: 3
+            roleplayPays: 1
+            trouMissiles: 0
+            biomeCoherent: 1
+            utilisationSchematica: 0
+            beauteGenerale: 3.5
+            terraforming: 2
+            habitabiliteMaison: 2
+            organics: 1
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/NotationEntry"
+          type: array
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      type: object
+    NotationEntry:
+      example:
+        country: France
+        server: blue
+        activity: 4.5
+        noteArchitecturale: 35.5
+        economy: 9
+        rangInterserv: 5
+        gestion: 8
+        skills: 3.5
+        total: 85
+        bourse: 32000
+        bourseUnesco: 8000
+        unesco: 3
+        endbringer: 0
+        from: 2026-02-15
+        military: 7.5
+        to: 2026-02-09
+        antimatter: 2
+        spatial: 1
+        rang: 1
+        redmatter: 0
+        architecture:
+          surfaceConstruite: 1.5
+          batimentsAbandonnes: 1
+          coherenceStyle: 2
+          blocsCatalogue: 2
+          staff: Romaindu35
+          coherenceLumieres: 1
+          activiteRecente: 3
+          roleplayPays: 1
+          trouMissiles: 0
+          biomeCoherent: 1
+          utilisationSchematica: 0
+          beauteGenerale: 3.5
+          terraforming: 2
+          habitabiliteMaison: 2
+          organics: 1
+      properties:
+        country:
+          description: Le nom du pays
+          example: France
+          type: string
+        server:
+          description: Le serveur sur lequel est le pays
+          example: blue
+          type: string
+        from:
+          description: La date du début de la semaine notée (yyyy-MM-dd)
+          example: 2026-02-15
+          type: string
+        to:
+          description: La date de fin de la semaine notée (yyyy-MM-dd)
+          example: 2026-02-09
+          type: string
+        activity:
+          description: Activité du pays (entre 0 et 5)
+          example: 4.5
+          format: double
+          type: number
+        gestion:
+          description: Gestion du pays (entre 0 et 10)
+          example: 8
+          format: double
+          type: number
+        skills:
+          description: Skills du pays (entre 0 et 5)
+          example: 3.5
+          format: double
+          type: number
+        economy:
+          description: Economie du pays (entre 0 et 11)
+          example: 9
+          format: double
+          type: number
+        military:
+          description: Militaire du pays (entre 0 et 11)
+          example: 7.5
+          format: double
+          type: number
+        antimatter:
+          description: Possession d'un missile antimatière (0 ou 2)
+          example: 2
+          format: int32
+          type: integer
+        redmatter:
+          description: Possession d'un missile redmatter (0 ou 3)
+          example: 0
+          format: int32
+          type: integer
+        endbringer:
+          description: Possession d'un missile endbringer (0 ou 5)
+          example: 0
+          format: int32
+          type: integer
+        spatial:
+          description: "Points lié au spatiale. 1 points par planète dont il y a plus\
+            \ de 10 chunks. Les planète étant lune, mars et edora (entre 0 et 3)"
+          example: 1
+          format: int32
+          type: integer
+        unesco:
+          description: "Points lié à la possession d'un batiment classé unesco. 3\
+            \ points si 1 batiment, 5 points si 2 ou plus (entre 0 et 5)"
+          example: 3
+          format: int32
+          type: integer
+        noteArchitecturale:
+          description: Note totale en architecture (entre 0 et 42)
+          example: 35.5
+          format: double
+          type: number
+        architecture:
+          $ref: "#/components/schemas/ArchitectureEntry"
+        total:
+          description: Le total de la note (entre 0 et 102)
+          example: 85
+          format: double
+          type: number
+        rang:
+          description: Le rang du pays sur le serveur
+          example: 1
+          format: int32
+          type: integer
+        rangInterserv:
+          description: Le rang du pays à l'interserveur
+          example: 5
+          format: int32
+          type: integer
+        bourse:
+          description: La bourse versée au pays
+          example: 32000
+          format: double
+          type: number
+        bourseUnesco:
+          description: La bourse obtenue grâce aux UNESCO
+          example: 8000
+          format: double
+          type: number
+      type: object
     NoelMegagift2025:
       example:
         metadata:
@@ -3631,8 +4344,8 @@ components:
           powerboostFixed: 1
           powerboostWarzone: 1
           flag: flag
-          topWarzone: true
           referent: true
+          topWarzone: true
           fhomeCoord:
             x: 5
             "y": 5
@@ -3777,8 +4490,8 @@ components:
           powerboostFixed: 1
           powerboostWarzone: 1
           flag: flag
-          topWarzone: true
           referent: true
+          topWarzone: true
           fhomeCoord:
             x: 5
             "y": 5
@@ -4044,8 +4757,8 @@ components:
         powerboostFixed: 1
         powerboostWarzone: 1
         flag: flag
-        topWarzone: true
         referent: true
+        topWarzone: true
         fhomeCoord:
           x: 5
           "y": 5
@@ -4335,15 +5048,15 @@ components:
             description: Pays annexés (Disponible depuis le 17/02/2026)
             type: string
           type: array
-        topWarzone:
+        empire:
+          type: boolean
+        referent:
           type: boolean
         restrictAssault:
           type: boolean
         restrictMissile:
           type: boolean
-        empire:
-          type: boolean
-        referent:
+        topWarzone:
           type: boolean
       type: object
     CountrySettingsEntry:
@@ -4573,6 +5286,732 @@ components:
         timestamp:
           description: Timestamp de l'action
           format: int64
+          type: integer
+      type: object
+    Alliance:
+      example:
+        metadata:
+          date: 2025-10-21
+          filteredCount: 42
+          server: red
+          dataType: example
+          executionTimeMs: 210
+          totalPages: 3
+          pageSize: 20
+          totalCount: 50
+          currentPage: 1
+          timestamp: 1760939974755
+        data:
+        - youtube: youtube
+          color: "#FDC700"
+          bannerUrl: bannerUrl
+          description: description
+          taxes:
+            hdvTax: 0.1
+            moonTeleportCost: 250
+            weeklySalary: 500
+            stationTicket: 1000
+            joinTax: 50000
+            notationTax: 10
+            fuelCost: 100
+          primeBoost:
+            primeBoosters:
+            - boostValue: 1
+              boostType: PREMIUM
+              username: Romaindu35
+            - boostValue: 1
+              boostType: PREMIUM
+              username: Romaindu35
+            boostPercent: 8
+            hasBoostActive: false
+            boostPoints: 27
+          rules: rules
+          prestigePoints: 6980
+          leaders:
+          - EmpireMongol
+          - Touva
+          - Grece
+          createdAt: 1764342680849
+          bank:
+            blockedAccountBalance: 125000
+            currentAccountBalance: 5000
+          members:
+          - Papouasie
+          - Brésil
+          stationModuleCount: 5
+          countryCount: 7
+          protectorats:
+          - France
+          - Italie
+          countMembers: 176
+          modules:
+          - coordinates:
+              x: 0
+              z: 6
+            name: Générateur électrique
+            description: description
+            id: generator
+            direction: NORTH
+          - coordinates:
+              x: 0
+              z: 6
+            name: Générateur électrique
+            description: description
+            id: generator
+            direction: NORTH
+          tags:
+          - PVP
+          - FARMER
+          discord: discord
+          name: Poufsouffle
+          blazon: blazon
+          claims: 642
+          votesHistory:
+          - newValue: newValue
+            yesVotes: 3
+            initiator: Romaindu35
+            initiatorCountry: EmpireMongol
+            oldValue: oldValue
+            type: OTHER_COUNTRY_JOIN_ALLIANCE
+            message: Adhésion d'un pays
+            timestamp: 1771364198349
+            targetCountry: Papouasie
+            noVotes: 1
+          - newValue: newValue
+            yesVotes: 3
+            initiator: Romaindu35
+            initiatorCountry: EmpireMongol
+            oldValue: oldValue
+            type: OTHER_COUNTRY_JOIN_ALLIANCE
+            message: Adhésion d'un pays
+            timestamp: 1771364198349
+            targetCountry: Papouasie
+            noVotes: 1
+          ranking: 1
+          relations:
+          - hasEmbargoFrom: true
+            surchargeValueTo: 5
+            hasEmbargoTo: false
+            name: Serdaigle
+            surchargeValueFrom: 1
+            relation: neutral
+          - hasEmbargoFrom: true
+            surchargeValueTo: 5
+            hasEmbargoTo: false
+            name: Serdaigle
+            surchargeValueFrom: 1
+            relation: neutral
+          open: true
+        - youtube: youtube
+          color: "#FDC700"
+          bannerUrl: bannerUrl
+          description: description
+          taxes:
+            hdvTax: 0.1
+            moonTeleportCost: 250
+            weeklySalary: 500
+            stationTicket: 1000
+            joinTax: 50000
+            notationTax: 10
+            fuelCost: 100
+          primeBoost:
+            primeBoosters:
+            - boostValue: 1
+              boostType: PREMIUM
+              username: Romaindu35
+            - boostValue: 1
+              boostType: PREMIUM
+              username: Romaindu35
+            boostPercent: 8
+            hasBoostActive: false
+            boostPoints: 27
+          rules: rules
+          prestigePoints: 6980
+          leaders:
+          - EmpireMongol
+          - Touva
+          - Grece
+          createdAt: 1764342680849
+          bank:
+            blockedAccountBalance: 125000
+            currentAccountBalance: 5000
+          members:
+          - Papouasie
+          - Brésil
+          stationModuleCount: 5
+          countryCount: 7
+          protectorats:
+          - France
+          - Italie
+          countMembers: 176
+          modules:
+          - coordinates:
+              x: 0
+              z: 6
+            name: Générateur électrique
+            description: description
+            id: generator
+            direction: NORTH
+          - coordinates:
+              x: 0
+              z: 6
+            name: Générateur électrique
+            description: description
+            id: generator
+            direction: NORTH
+          tags:
+          - PVP
+          - FARMER
+          discord: discord
+          name: Poufsouffle
+          blazon: blazon
+          claims: 642
+          votesHistory:
+          - newValue: newValue
+            yesVotes: 3
+            initiator: Romaindu35
+            initiatorCountry: EmpireMongol
+            oldValue: oldValue
+            type: OTHER_COUNTRY_JOIN_ALLIANCE
+            message: Adhésion d'un pays
+            timestamp: 1771364198349
+            targetCountry: Papouasie
+            noVotes: 1
+          - newValue: newValue
+            yesVotes: 3
+            initiator: Romaindu35
+            initiatorCountry: EmpireMongol
+            oldValue: oldValue
+            type: OTHER_COUNTRY_JOIN_ALLIANCE
+            message: Adhésion d'un pays
+            timestamp: 1771364198349
+            targetCountry: Papouasie
+            noVotes: 1
+          ranking: 1
+          relations:
+          - hasEmbargoFrom: true
+            surchargeValueTo: 5
+            hasEmbargoTo: false
+            name: Serdaigle
+            surchargeValueFrom: 1
+            relation: neutral
+          - hasEmbargoFrom: true
+            surchargeValueTo: 5
+            hasEmbargoTo: false
+            name: Serdaigle
+            surchargeValueFrom: 1
+            relation: neutral
+          open: true
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/AllianceEntry"
+          type: array
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      type: object
+    AllianceBank:
+      description: Banque de l'alliance
+      example:
+        blockedAccountBalance: 125000
+        currentAccountBalance: 5000
+      properties:
+        currentAccountBalance:
+          description: L'argent sur le compte courant de l'alliance
+          example: 5000
+          format: double
+          type: number
+        blockedAccountBalance:
+          description: L'argent sur le compte bloqué de l'alliance
+          example: 125000
+          format: double
+          type: number
+      type: object
+    AllianceEntry:
+      description: Données d'une alliance
+      example:
+        youtube: youtube
+        color: "#FDC700"
+        bannerUrl: bannerUrl
+        description: description
+        taxes:
+          hdvTax: 0.1
+          moonTeleportCost: 250
+          weeklySalary: 500
+          stationTicket: 1000
+          joinTax: 50000
+          notationTax: 10
+          fuelCost: 100
+        primeBoost:
+          primeBoosters:
+          - boostValue: 1
+            boostType: PREMIUM
+            username: Romaindu35
+          - boostValue: 1
+            boostType: PREMIUM
+            username: Romaindu35
+          boostPercent: 8
+          hasBoostActive: false
+          boostPoints: 27
+        rules: rules
+        prestigePoints: 6980
+        leaders:
+        - EmpireMongol
+        - Touva
+        - Grece
+        createdAt: 1764342680849
+        bank:
+          blockedAccountBalance: 125000
+          currentAccountBalance: 5000
+        members:
+        - Papouasie
+        - Brésil
+        stationModuleCount: 5
+        countryCount: 7
+        protectorats:
+        - France
+        - Italie
+        countMembers: 176
+        modules:
+        - coordinates:
+            x: 0
+            z: 6
+          name: Générateur électrique
+          description: description
+          id: generator
+          direction: NORTH
+        - coordinates:
+            x: 0
+            z: 6
+          name: Générateur électrique
+          description: description
+          id: generator
+          direction: NORTH
+        tags:
+        - PVP
+        - FARMER
+        discord: discord
+        name: Poufsouffle
+        blazon: blazon
+        claims: 642
+        votesHistory:
+        - newValue: newValue
+          yesVotes: 3
+          initiator: Romaindu35
+          initiatorCountry: EmpireMongol
+          oldValue: oldValue
+          type: OTHER_COUNTRY_JOIN_ALLIANCE
+          message: Adhésion d'un pays
+          timestamp: 1771364198349
+          targetCountry: Papouasie
+          noVotes: 1
+        - newValue: newValue
+          yesVotes: 3
+          initiator: Romaindu35
+          initiatorCountry: EmpireMongol
+          oldValue: oldValue
+          type: OTHER_COUNTRY_JOIN_ALLIANCE
+          message: Adhésion d'un pays
+          timestamp: 1771364198349
+          targetCountry: Papouasie
+          noVotes: 1
+        ranking: 1
+        relations:
+        - hasEmbargoFrom: true
+          surchargeValueTo: 5
+          hasEmbargoTo: false
+          name: Serdaigle
+          surchargeValueFrom: 1
+          relation: neutral
+        - hasEmbargoFrom: true
+          surchargeValueTo: 5
+          hasEmbargoTo: false
+          name: Serdaigle
+          surchargeValueFrom: 1
+          relation: neutral
+        open: true
+      properties:
+        name:
+          description: Le nom de l'alliance
+          example: Poufsouffle
+          type: string
+        description:
+          description: La description de l'alliance
+          type: string
+        createdAt:
+          description: Le timestamp en ms à la date dont l'alliance a été créer
+          example: 1764342680849
+          format: int64
+          type: integer
+        color:
+          description: La couleur de l'alliance au format héxadécimale. La couleur
+            représente l'alliance et est unique à l'échelle du serveur
+          example: "#FDC700"
+          type: string
+        tags:
+          description: La liste des tags de l'alliance
+          example:
+          - PVP
+          - FARMER
+          items:
+            description: La liste des tags de l'alliance
+            example: "[\"PVP\",\"FARMER\"]"
+            type: string
+          type: array
+        discord:
+          description: Le lien menant au discord de l'alliance
+          type: string
+        youtube:
+          description: Le lien menant à la chaine youtube de l'alliance
+          type: string
+        rules:
+          description: Les règles de l'alliance
+          type: string
+        bannerUrl:
+          description: L'url de la banière affiché sur la page de l'alliance
+          type: string
+        blazon:
+          description: "Le blazon représentant l'alliance. Image en base64, de dimension\
+            \ 78x78"
+          type: string
+        ranking:
+          description: Le classement de l'alliance sur le mois en cours. Calculé en
+            fonction du nombre de points de prestiges
+          example: 1
+          format: int32
+          type: integer
+        prestigePoints:
+          description: Les points de prestige de l'alliance. La documentation du prestige
+            est consultable à l'adresse https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/#1-prestige-classement
+          example: 6980
+          format: int32
+          type: integer
+        stationModuleCount:
+          description: Le nombre de module dans la station spatiale de l'alliance
+          example: 5
+          format: int32
+          type: integer
+        countryCount:
+          description: Le nombre de pays dans l'alliance
+          example: 7
+          format: int32
+          type: integer
+        leaders:
+          description: La liste des pays leader de l'alliance
+          example:
+          - EmpireMongol
+          - Touva
+          - Grece
+          items:
+            description: La liste des pays leader de l'alliance
+            example: "[\"EmpireMongol\",\"Touva\",\"Grece\"]"
+            type: string
+          type: array
+        members:
+          description: La liste des pays membres de l'alliance
+          example:
+          - Papouasie
+          - Brésil
+          items:
+            description: La liste des pays membres de l'alliance
+            example: "[\"Papouasie\",\"Brésil\"]"
+            type: string
+          type: array
+        protectorats:
+          description: La liste des pays sous le statut de protectorat dans l'alliance
+          example:
+          - France
+          - Italie
+          items:
+            description: La liste des pays sous le statut de protectorat dans l'alliance
+            example: "[\"France\",\"Italie\"]"
+            type: string
+          type: array
+        claims:
+          description: Le nombre de claims cumulé des pays de l'alliance
+          example: 642
+          format: int32
+          type: integer
+        countMembers:
+          description: Le nombre de membres cumulés des pays de l'alliance
+          example: 176
+          format: int32
+          type: integer
+        taxes:
+          $ref: "#/components/schemas/AllianceTaxes"
+        modules:
+          description: Les modules construits dans la station spatiale
+          items:
+            $ref: "#/components/schemas/AllianceModule"
+          type: array
+        bank:
+          $ref: "#/components/schemas/AllianceBank"
+        votesHistory:
+          description: L'historique des votes de l'alliance. Nécessite d'être membre
+            de l'alliance pour y avoir accès
+          items:
+            $ref: "#/components/schemas/AllianceVoteHistory"
+          type: array
+        relations:
+          description: Les relations avec les autres alliances
+          items:
+            $ref: "#/components/schemas/AllianceRelation"
+          type: array
+        primeBoost:
+          $ref: "#/components/schemas/AlliancePrimeBoost"
+        open:
+          type: boolean
+      type: object
+    AllianceModule:
+      description: Module de la station spatiale
+      example:
+        coordinates:
+          x: 0
+          z: 6
+        name: Générateur électrique
+        description: description
+        id: generator
+        direction: NORTH
+      properties:
+        id:
+          description: L'id du module
+          example: generator
+          type: string
+        direction:
+          description: La direction dans laquelle est orienté le module
+          example: NORTH
+          type: string
+        coordinates:
+          $ref: "#/components/schemas/AllianceModuleCoordinates"
+        name:
+          description: Le nom du module
+          example: Générateur électrique
+          type: string
+        description:
+          description: La description du module
+          type: string
+      type: object
+    AllianceModuleCoordinates:
+      description: Coordonnées d'un module
+      example:
+        x: 0
+        z: 6
+      properties:
+        x:
+          format: int32
+          type: integer
+        z:
+          format: int32
+          type: integer
+      type: object
+    AlliancePrimeBoost:
+      description: Prime Boost de l'alliance
+      example:
+        primeBoosters:
+        - boostValue: 1
+          boostType: PREMIUM
+          username: Romaindu35
+        - boostValue: 1
+          boostType: PREMIUM
+          username: Romaindu35
+        boostPercent: 8
+        hasBoostActive: false
+        boostPoints: 27
+      properties:
+        hasBoostActive:
+          description: Si l'alliance possède le boost premium (+20% de joueur premium)
+          example: false
+          type: boolean
+        boostPercent:
+          description: Le pourcentage de joueur premium dans l'alliance
+          example: 8
+          format: double
+          type: number
+        boostPoints:
+          description: "Le nombre de joueurs premium (en réalité, les joueurs premium_plus\
+            \ compte comme 2 joueurs)"
+          example: 27
+          format: int32
+          type: integer
+        primeBoosters:
+          description: La liste de TOUS les membres de l'alliance (premium ou non)
+          items:
+            $ref: "#/components/schemas/AlliancePrimeBooster"
+          type: array
+      type: object
+    AlliancePrimeBooster:
+      description: Membre de l'alliance
+      example:
+        boostValue: 1
+        boostType: PREMIUM
+        username: Romaindu35
+      properties:
+        username:
+          description: Le pseudonyme du joueur
+          example: Romaindu35
+          type: string
+        boostType:
+          description: Le type de boost
+          example: PREMIUM
+          type: string
+        boostValue:
+          description: Le nombre de joueur pour lequel compte ce joueur au total de
+            boostPoints de AlliancePrimeBoost.
+          example: 1
+          format: int32
+          type: integer
+      type: object
+    AllianceRelation:
+      description: Relation entre alliances
+      example:
+        hasEmbargoFrom: true
+        surchargeValueTo: 5
+        hasEmbargoTo: false
+        name: Serdaigle
+        surchargeValueFrom: 1
+        relation: neutral
+      properties:
+        name:
+          description: Le nom de l'alliance concerné par la relation
+          example: Serdaigle
+          type: string
+        relation:
+          description: Le type de relation (neutral/enemy)
+          example: neutral
+          type: string
+        surchargeValueFrom:
+          description: Le pourcentage de surcharge appliqué par l'alliance de la relation
+            sur l'alliance dont l'export est fait
+          example: 1
+          format: double
+          type: number
+        hasEmbargoFrom:
+          description: Si l'alliance de la relation a appliqué un embargo sur l'alliance
+            dont l'export est fait
+          example: true
+          type: boolean
+        surchargeValueTo:
+          description: Le pourcentage de surcharge appliqué par l'alliance dont l'export
+            est fait sur l'alliance de la relation
+          example: 5
+          format: double
+          type: number
+        hasEmbargoTo:
+          description: Si l'alliance dont l'export est fait a appliqué un embargo
+            sur l'alliance de la relation
+          example: false
+          type: boolean
+      type: object
+    AllianceTaxes:
+      description: Taxes de l'alliance
+      example:
+        hdvTax: 0.1
+        moonTeleportCost: 250
+        weeklySalary: 500
+        stationTicket: 1000
+        joinTax: 50000
+        notationTax: 10
+        fuelCost: 100
+      properties:
+        hdvTax:
+          description: La taxe en pourcentage appliqué à chaque vente réalisé par
+            un membre de l'alliance à l'hotel des ventes
+          example: 0.1
+          format: double
+          type: number
+        weeklySalary:
+          description: Le salaire hebdomadaire données automatiquement à tous les
+            pays membres chaque semaine. L'argent est prélevé dans le compte bloqué
+          example: 500
+          format: double
+          type: number
+        stationTicket:
+          description: Le cout de téléportation à la station spatiale pour les personnes
+            extérieur à l'alliance
+          example: 1000
+          format: double
+          type: number
+        notationTax:
+          description: La taxe en pourcentage prélevé chaque semaine sur les notation
+            des pays membres
+          example: 10
+          format: double
+          type: number
+        joinTax:
+          description: Le prix demandé aux pays souhaitant rejoindre l'alliance
+          example: 50000
+          format: double
+          type: number
+        moonTeleportCost:
+          description: Prix de la téléportation vers la lune. Accessible uniquement
+            si l'alliance à construit le statioport lunaire
+          example: 250
+          format: double
+          type: number
+        fuelCost:
+          description: "Tarif d'achat de 100L de pétrole à l'alliance, par un pays\
+            \ membre"
+          example: 100
+          format: double
+          type: number
+      type: object
+    AllianceVoteHistory:
+      description: Historique d'un vote
+      example:
+        newValue: newValue
+        yesVotes: 3
+        initiator: Romaindu35
+        initiatorCountry: EmpireMongol
+        oldValue: oldValue
+        type: OTHER_COUNTRY_JOIN_ALLIANCE
+        message: Adhésion d'un pays
+        timestamp: 1771364198349
+        targetCountry: Papouasie
+        noVotes: 1
+      properties:
+        type:
+          description: Le type de vote
+          example: OTHER_COUNTRY_JOIN_ALLIANCE
+          type: string
+        initiator:
+          description: Le joueur ayant déclenché le vote
+          example: Romaindu35
+          type: string
+        initiatorCountry:
+          description: Le pays du joueur qui a initié le vote
+          example: EmpireMongol
+          type: string
+        timestamp:
+          description: Le timestamp de création du vote
+          example: 1771364198349
+          format: int64
+          type: integer
+        message:
+          description: Le message du vote tel qu'indiqué en jeu
+          example: Adhésion d'un pays
+          type: string
+        oldValue:
+          description: "Donnée optionnelle, dans certains vote, montre la valeur avant\
+            \ l'acceptation du vote"
+          type: string
+        newValue:
+          description: "Donnée optionnelle, montre la valeur validé ou refusé par\
+            \ le résultat du vote"
+          type: string
+        targetCountry:
+          description: Indique qui est concerné par le résultat du vote. Peut-être
+            le nom d'un pays ou alors le nom de l'alliance
+          example: Papouasie
+          type: string
+        yesVotes:
+          description: Le nombre de vote oui
+          example: 3
+          format: int32
+          type: integer
+        noVotes:
+          description: Le nombre de vote non
+          example: 1
+          format: int32
           type: integer
       type: object
     ResearchConfig:

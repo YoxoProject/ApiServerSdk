@@ -4,6 +4,8 @@ All URIs are relative to *https://api.yoxo.software*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
+|[**getAlliance**](#getalliance) | **GET** /v2/java/alliance/{date}/{javaServer}/{alliance} | Alliance|
+|[**getAlliance1**](#getalliance1) | **GET** /v2/java/alliance/{date}/{javaServer} | Alliance|
 |[**getCerealGlobalMarket**](#getcerealglobalmarket) | **GET** /v2/java/cereal_global_market/{date}/{javaServer} | Cereal Global Market|
 |[**getCountry**](#getcountry) | **GET** /v2/java/country/{date}/{javaServer} | Country|
 |[**getCountry1**](#getcountry1) | **GET** /v2/java/country/{date}/{javaServer}/{country} | Country|
@@ -12,6 +14,8 @@ All URIs are relative to *https://api.yoxo.software*
 |[**getHalloween2025**](#gethalloween2025) | **GET** /v2/java/halloween-2025/{date} | Halloween 2025|
 |[**getNoelMegagift2024**](#getnoelmegagift2024) | **GET** /v2/java/noelmegagift-2024 | Noël Megagift 2024|
 |[**getNoelMegagift2025**](#getnoelmegagift2025) | **GET** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025|
+|[**getNotation**](#getnotation) | **GET** /v2/java/notation/{date}/{javaServer} | Notation|
+|[**getNotation1**](#getnotation1) | **GET** /v2/java/notation/{date}/{javaServer}/{country} | Notation|
 |[**getPillageCountry**](#getpillagecountry) | **GET** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country|
 |[**getPlayerList**](#getplayerlist) | **GET** /v2/java/player-list/{date}/{javaServer} | Player List|
 |[**getResearchConfig**](#getresearchconfig) | **GET** /v2/java/research/{date}/config | Research Config|
@@ -19,16 +23,129 @@ All URIs are relative to *https://api.yoxo.software*
 |[**getSkill**](#getskill) | **GET** /v2/java/skill/{date}/{javaServer} | Skill|
 |[**getWar**](#getwar) | **GET** /v2/java/war/{date}/{javaServer} | War|
 |[**getWar1**](#getwar1) | **GET** /v2/java/war/{date}/{javaServer}/{warId} | War|
+|[**postAlliance**](#postalliance) | **POST** /v2/java/alliance/{date}/{javaServer} | Alliance|
 |[**postCountry**](#postcountry) | **POST** /v2/java/country/{date}/{javaServer} | Country|
 |[**postEnterprises**](#postenterprises) | **POST** /v2/java/enterprise/{date}/{javaServer} | Enterprise|
 |[**postHalloween2025**](#posthalloween2025) | **POST** /v2/java/halloween-2025/{date} | Halloween 2025|
 |[**postNoelMegagift2024**](#postnoelmegagift2024) | **POST** /v2/java/noelmegagift-2024 | Noël Megagift 2024|
 |[**postNoelMegagift2025**](#postnoelmegagift2025) | **POST** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025|
+|[**postNotation**](#postnotation) | **POST** /v2/java/notation/{date}/{javaServer} | Notation|
 |[**postPillageCountry**](#postpillagecountry) | **POST** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country|
 |[**postPlayerList**](#postplayerlist) | **POST** /v2/java/player-list/{date}/{javaServer} | Player List|
 |[**postResearchServer**](#postresearchserver) | **POST** /v2/java/research/{date}/{javaServer} | Research Server|
 |[**postSkill**](#postskill) | **POST** /v2/java/skill/{date}/{javaServer} | Skill|
 |[**postWar**](#postwar) | **POST** /v2/java/war/{date}/{javaServer} | War|
+
+# **getAlliance**
+> Alliance getAlliance()
+
+Permet d\'obtenir la liste et les détails complets de toutes les alliances d\'un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+
+### Example
+
+```typescript
+import {
+    APIJavaApi,
+    Configuration
+} from '@yoxoproject/yoxo-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new APIJavaApi(configuration);
+
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
+let alliance: string; //Nom de l\'alliance (optionnel) (default to undefined)
+
+const { status, data } = await apiInstance.getAlliance(
+    date,
+    javaServer,
+    alliance
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
+| **alliance** | [**string**] | Nom de l\&#39;alliance (optionnel) | defaults to undefined|
+
+
+### Return type
+
+**Alliance**
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAlliance1**
+> Alliance getAlliance1()
+
+Permet d\'obtenir la liste et les détails complets de toutes les alliances d\'un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+
+### Example
+
+```typescript
+import {
+    APIJavaApi,
+    Configuration
+} from '@yoxoproject/yoxo-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new APIJavaApi(configuration);
+
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
+
+const { status, data } = await apiInstance.getAlliance1(
+    date,
+    javaServer
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
+
+
+### Return type
+
+**Alliance**
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCerealGlobalMarket**
 > CerealGlobalMarket getCerealGlobalMarket()
@@ -458,6 +575,117 @@ const { status, data } = await apiInstance.getNoelMegagift2025(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getNotation**
+> Notation getNotation()
+
+Permet d\'obtenir les notations d\'un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+
+### Example
+
+```typescript
+import {
+    APIJavaApi,
+    Configuration
+} from '@yoxoproject/yoxo-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new APIJavaApi(configuration);
+
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
+
+const { status, data } = await apiInstance.getNotation(
+    date,
+    javaServer
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
+
+
+### Return type
+
+**Notation**
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getNotation1**
+> Notation getNotation1()
+
+Permet d\'obtenir les notations d\'un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+
+### Example
+
+```typescript
+import {
+    APIJavaApi,
+    Configuration
+} from '@yoxoproject/yoxo-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new APIJavaApi(configuration);
+
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
+let country: string; //Nom du pays (optionnel) (default to undefined)
+
+const { status, data } = await apiInstance.getNotation1(
+    date,
+    javaServer,
+    country
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
+| **country** | [**string**] | Nom du pays (optionnel) | defaults to undefined|
+
+
+### Return type
+
+**Notation**
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getPillageCountry**
 > PillageCountry getPillageCountry()
 
@@ -836,6 +1064,64 @@ const { status, data } = await apiInstance.getWar1(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **postAlliance**
+> Alliance postAlliance()
+
+Permet d\'obtenir la liste et les détails complets de toutes les alliances d\'un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+
+### Example
+
+```typescript
+import {
+    APIJavaApi,
+    Configuration,
+    PostQueryBody
+} from '@yoxoproject/yoxo-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new APIJavaApi(configuration);
+
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
+let postQueryBody: PostQueryBody; // (optional)
+
+const { status, data } = await apiInstance.postAlliance(
+    date,
+    javaServer,
+    postQueryBody
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **postQueryBody** | **PostQueryBody**|  | |
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
+
+
+### Return type
+
+**Alliance**
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **postCountry**
 > Country postCountry()
 
@@ -1096,6 +1382,64 @@ const { status, data } = await apiInstance.postNoelMegagift2025(
 ### Return type
 
 **NoelMegagift2025**
+
+### Authorization
+
+[oauth2_client_credentials](../README.md#oauth2_client_credentials)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **postNotation**
+> Notation postNotation()
+
+Permet d\'obtenir les notations d\'un pays sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+
+### Example
+
+```typescript
+import {
+    APIJavaApi,
+    Configuration,
+    PostQueryBody
+} from '@yoxoproject/yoxo-api-client';
+
+const configuration = new Configuration();
+const apiInstance = new APIJavaApi(configuration);
+
+let date: string; //Date (yyyy-MM-dd) (default to undefined)
+let javaServer: 'blue' | 'orange' | 'yellow' | 'white' | 'black' | 'cyan' | 'lime' | 'coral' | 'pink' | 'purple' | 'green' | 'red' | 'mocha' | 'jade'; //Serveur (default to undefined)
+let postQueryBody: PostQueryBody; // (optional)
+
+const { status, data } = await apiInstance.postNotation(
+    date,
+    javaServer,
+    postQueryBody
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **postQueryBody** | **PostQueryBody**|  | |
+| **date** | [**string**] | Date (yyyy-MM-dd) | defaults to undefined|
+| **javaServer** | [**&#39;blue&#39; | &#39;orange&#39; | &#39;yellow&#39; | &#39;white&#39; | &#39;black&#39; | &#39;cyan&#39; | &#39;lime&#39; | &#39;coral&#39; | &#39;pink&#39; | &#39;purple&#39; | &#39;green&#39; | &#39;red&#39; | &#39;mocha&#39; | &#39;jade&#39;**]**Array<&#39;blue&#39; &#124; &#39;orange&#39; &#124; &#39;yellow&#39; &#124; &#39;white&#39; &#124; &#39;black&#39; &#124; &#39;cyan&#39; &#124; &#39;lime&#39; &#124; &#39;coral&#39; &#124; &#39;pink&#39; &#124; &#39;purple&#39; &#124; &#39;green&#39; &#124; &#39;red&#39; &#124; &#39;mocha&#39; &#124; &#39;jade&#39;>** | Serveur | defaults to undefined|
+
+
+### Return type
+
+**Notation**
 
 ### Authorization
 

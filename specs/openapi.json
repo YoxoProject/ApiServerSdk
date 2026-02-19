@@ -23,6 +23,220 @@
     }
   ],
   "paths": {
+    "/v2/java/alliance/{date}/{javaServer}": {
+      "get": {
+        "tags": [
+          "API Java"
+        ],
+        "summary": "Alliance",
+        "description": "Permet d'obtenir la liste et les détails complets de toutes les alliances d'un serveur à une date donnée (aucun filtrage possible).\n\n**Documentation :**\nhttps://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/\n\n**Fréquence de mise à jour :**\nLes données sont actualisées tous les jours, généralement la nuit.\n",
+        "operationId": "getAlliance_1",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date (yyyy-MM-dd)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2025-11-24"
+          },
+          {
+            "name": "javaServer",
+            "in": "path",
+            "description": "Serveur",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "blue",
+                "orange",
+                "yellow",
+                "white",
+                "black",
+                "cyan",
+                "lime",
+                "coral",
+                "pink",
+                "purple",
+                "green",
+                "red",
+                "mocha",
+                "jade"
+              ]
+            },
+            "example": "red"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Alliance"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2_client_credentials": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "API Java"
+        ],
+        "summary": "Alliance",
+        "description": "Permet d'obtenir la liste et les détails complets de toutes les alliances d'un serveur à une date donnée (avec filtrage possible).\n\n**Documentation :**\nhttps://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/\n\n**Fréquence de mise à jour :**\nLes données sont actualisées tous les jours, généralement la nuit.\n",
+        "operationId": "postAlliance",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date (yyyy-MM-dd)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2025-11-24"
+          },
+          {
+            "name": "javaServer",
+            "in": "path",
+            "description": "Serveur",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "blue",
+                "orange",
+                "yellow",
+                "white",
+                "black",
+                "cyan",
+                "lime",
+                "coral",
+                "pink",
+                "purple",
+                "green",
+                "red",
+                "mocha",
+                "jade"
+              ]
+            },
+            "example": "red"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostQueryBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Alliance"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2_client_credentials": []
+          }
+        ]
+      }
+    },
+    "/v2/java/alliance/{date}/{javaServer}/{alliance}": {
+      "get": {
+        "tags": [
+          "API Java"
+        ],
+        "summary": "Alliance",
+        "description": "Permet d'obtenir la liste et les détails complets de toutes les alliances d'un serveur à une date donnée (aucun filtrage possible).\n\n**Documentation :**\nhttps://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/\n\n**Fréquence de mise à jour :**\nLes données sont actualisées tous les jours, généralement la nuit.\n",
+        "operationId": "getAlliance",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date (yyyy-MM-dd)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2025-11-24"
+          },
+          {
+            "name": "javaServer",
+            "in": "path",
+            "description": "Serveur",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "blue",
+                "orange",
+                "yellow",
+                "white",
+                "black",
+                "cyan",
+                "lime",
+                "coral",
+                "pink",
+                "purple",
+                "green",
+                "red",
+                "mocha",
+                "jade"
+              ]
+            },
+            "example": "red"
+          },
+          {
+            "name": "alliance",
+            "in": "path",
+            "description": "Nom de l'alliance (optionnel)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Alliance"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2_client_credentials": []
+          }
+        ]
+      }
+    },
     "/v2/java/cereal_global_market/{date}/{javaServer}": {
       "get": {
         "tags": [
@@ -792,6 +1006,220 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/NoelMegagift2025"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2_client_credentials": []
+          }
+        ]
+      }
+    },
+    "/v2/java/notation/{date}/{javaServer}": {
+      "get": {
+        "tags": [
+          "API Java"
+        ],
+        "summary": "Notation",
+        "description": "Permet d'obtenir les notations d'un pays sur un serveur à une date donnée (sans filtrage).\n\n**Documentation :**\nhttps://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/\n\n**Fréquence de mise à jour :**\nLes données sont actualisées tous les lundis matin.\n",
+        "operationId": "getNotation",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date (yyyy-MM-dd)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2025-11-24"
+          },
+          {
+            "name": "javaServer",
+            "in": "path",
+            "description": "Serveur",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "blue",
+                "orange",
+                "yellow",
+                "white",
+                "black",
+                "cyan",
+                "lime",
+                "coral",
+                "pink",
+                "purple",
+                "green",
+                "red",
+                "mocha",
+                "jade"
+              ]
+            },
+            "example": "red"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Notation"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2_client_credentials": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "API Java"
+        ],
+        "summary": "Notation",
+        "description": "Permet d'obtenir les notations d'un pays sur un serveur à une date donnée (avec filtrage possible).\n\n**Documentation :**\nhttps://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/\n\n**Fréquence de mise à jour :**\nLes données sont actualisées tous les lundis matin.\n",
+        "operationId": "postNotation",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date (yyyy-MM-dd)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2025-11-24"
+          },
+          {
+            "name": "javaServer",
+            "in": "path",
+            "description": "Serveur",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "blue",
+                "orange",
+                "yellow",
+                "white",
+                "black",
+                "cyan",
+                "lime",
+                "coral",
+                "pink",
+                "purple",
+                "green",
+                "red",
+                "mocha",
+                "jade"
+              ]
+            },
+            "example": "red"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostQueryBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Notation"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2_client_credentials": []
+          }
+        ]
+      }
+    },
+    "/v2/java/notation/{date}/{javaServer}/{country}": {
+      "get": {
+        "tags": [
+          "API Java"
+        ],
+        "summary": "Notation",
+        "description": "Permet d'obtenir les notations d'un pays sur un serveur à une date donnée (sans filtrage).\n\n**Documentation :**\nhttps://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/\n\n**Fréquence de mise à jour :**\nLes données sont actualisées tous les lundis matin.\n",
+        "operationId": "getNotation_1",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Date (yyyy-MM-dd)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2025-11-24"
+          },
+          {
+            "name": "javaServer",
+            "in": "path",
+            "description": "Serveur",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "blue",
+                "orange",
+                "yellow",
+                "white",
+                "black",
+                "cyan",
+                "lime",
+                "coral",
+                "pink",
+                "purple",
+                "green",
+                "red",
+                "mocha",
+                "jade"
+              ]
+            },
+            "example": "red"
+          },
+          {
+            "name": "country",
+            "in": "path",
+            "description": "Nom du pays (optionnel)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Notation"
                 }
               }
             }
@@ -2327,6 +2755,238 @@
         },
         "description": "Données d'un pays en pillage"
       },
+      "ArchitectureEntry": {
+        "type": "object",
+        "properties": {
+          "terraforming": {
+            "type": "integer",
+            "description": "Terraforming (entre 0 et 2)",
+            "format": "int32",
+            "example": 2
+          },
+          "coherenceStyle": {
+            "type": "integer",
+            "description": "Cohérence du style (entre 0 et 2)",
+            "format": "int32",
+            "example": 2
+          },
+          "activiteRecente": {
+            "type": "integer",
+            "description": "Activité récente (entre 0 et 4)",
+            "format": "int32",
+            "example": 3
+          },
+          "blocsCatalogue": {
+            "type": "integer",
+            "description": "Utilisation de blocs du catalogue (entre 0 et 2)",
+            "format": "int32",
+            "example": 2
+          },
+          "trouMissiles": {
+            "type": "integer",
+            "description": "Présence de trous de missiles (entre 0 et -4)",
+            "format": "int32",
+            "example": 0
+          },
+          "beauteGenerale": {
+            "type": "number",
+            "description": "Beauté générale du pays (entre 0 et 4)",
+            "format": "double",
+            "example": 3.5
+          },
+          "habitabiliteMaison": {
+            "type": "integer",
+            "description": "Habitabilité des maisons (entre 0 et 2)",
+            "format": "int32",
+            "example": 2
+          },
+          "biomeCoherent": {
+            "type": "integer",
+            "description": "Cohérence avec le biome (entre 0 et 1)",
+            "format": "int32",
+            "example": 1
+          },
+          "batimentsAbandonnes": {
+            "type": "integer",
+            "description": "Absence de bâtiments abandonnés (1 si aucun, 0 sinon)",
+            "format": "int32",
+            "example": 1
+          },
+          "utilisationSchematica": {
+            "type": "integer",
+            "description": "Utilisation de schematica (0 si non, -1 si oui)",
+            "format": "int32",
+            "example": 0
+          },
+          "coherenceLumieres": {
+            "type": "integer",
+            "description": "Cohérence des lumières (entre 0 et 1)",
+            "format": "int32",
+            "example": 1
+          },
+          "roleplayPays": {
+            "type": "integer",
+            "description": "Respect du roleplay du pays (entre 0 et 1)",
+            "format": "int32",
+            "example": 1
+          },
+          "organics": {
+            "type": "integer",
+            "description": "Présence d'organics (entre 0 et 1)",
+            "format": "int32",
+            "example": 1
+          },
+          "surfaceConstruite": {
+            "type": "number",
+            "description": "Multiplicateur de surface construite (entre x0 et x2.0)",
+            "format": "double",
+            "example": 1.5
+          },
+          "staff": {
+            "type": "string",
+            "description": "Le username du staff qui a noté le pays",
+            "example": "Romaindu35"
+          }
+        }
+      },
+      "Notation": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NotationEntry"
+            }
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          }
+        }
+      },
+      "NotationEntry": {
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "string",
+            "description": "Le nom du pays",
+            "example": "France"
+          },
+          "server": {
+            "type": "string",
+            "description": "Le serveur sur lequel est le pays",
+            "example": "blue"
+          },
+          "from": {
+            "type": "string",
+            "description": "La date du début de la semaine notée (yyyy-MM-dd)",
+            "example": "2026-02-15"
+          },
+          "to": {
+            "type": "string",
+            "description": "La date de fin de la semaine notée (yyyy-MM-dd)",
+            "example": "2026-02-09"
+          },
+          "activity": {
+            "type": "number",
+            "description": "Activité du pays (entre 0 et 5)",
+            "format": "double",
+            "example": 4.5
+          },
+          "gestion": {
+            "type": "number",
+            "description": "Gestion du pays (entre 0 et 10)",
+            "format": "double",
+            "example": 8
+          },
+          "skills": {
+            "type": "number",
+            "description": "Skills du pays (entre 0 et 5)",
+            "format": "double",
+            "example": 3.5
+          },
+          "economy": {
+            "type": "number",
+            "description": "Economie du pays (entre 0 et 11)",
+            "format": "double",
+            "example": 9
+          },
+          "military": {
+            "type": "number",
+            "description": "Militaire du pays (entre 0 et 11)",
+            "format": "double",
+            "example": 7.5
+          },
+          "antimatter": {
+            "type": "integer",
+            "description": "Possession d'un missile antimatière (0 ou 2)",
+            "format": "int32",
+            "example": 2
+          },
+          "redmatter": {
+            "type": "integer",
+            "description": "Possession d'un missile redmatter (0 ou 3)",
+            "format": "int32",
+            "example": 0
+          },
+          "endbringer": {
+            "type": "integer",
+            "description": "Possession d'un missile endbringer (0 ou 5)",
+            "format": "int32",
+            "example": 0
+          },
+          "spatial": {
+            "type": "integer",
+            "description": "Points lié au spatiale. 1 points par planète dont il y a plus de 10 chunks. Les planète étant lune, mars et edora (entre 0 et 3)",
+            "format": "int32",
+            "example": 1
+          },
+          "unesco": {
+            "type": "integer",
+            "description": "Points lié à la possession d'un batiment classé unesco. 3 points si 1 batiment, 5 points si 2 ou plus (entre 0 et 5)",
+            "format": "int32",
+            "example": 3
+          },
+          "noteArchitecturale": {
+            "type": "number",
+            "description": "Note totale en architecture (entre 0 et 42)",
+            "format": "double",
+            "example": 35.5
+          },
+          "architecture": {
+            "$ref": "#/components/schemas/ArchitectureEntry"
+          },
+          "total": {
+            "type": "number",
+            "description": "Le total de la note (entre 0 et 102)",
+            "format": "double",
+            "example": 85
+          },
+          "rang": {
+            "type": "integer",
+            "description": "Le rang du pays sur le serveur",
+            "format": "int32",
+            "example": 1
+          },
+          "rangInterserv": {
+            "type": "integer",
+            "description": "Le rang du pays à l'interserveur",
+            "format": "int32",
+            "example": 5
+          },
+          "bourse": {
+            "type": "number",
+            "description": "La bourse versée au pays",
+            "format": "double",
+            "example": 32000
+          },
+          "bourseUnesco": {
+            "type": "number",
+            "description": "La bourse obtenue grâce aux UNESCO",
+            "format": "double",
+            "example": 8000
+          }
+        }
+      },
       "NoelMegagift2025": {
         "type": "object",
         "properties": {
@@ -3435,7 +4095,10 @@
               "description": "Pays annexés (Disponible depuis le 17/02/2026)"
             }
           },
-          "topWarzone": {
+          "empire": {
+            "type": "boolean"
+          },
+          "referent": {
             "type": "boolean"
           },
           "restrictAssault": {
@@ -3444,10 +4107,7 @@
           "restrictMissile": {
             "type": "boolean"
           },
-          "empire": {
-            "type": "boolean"
-          },
-          "referent": {
+          "topWarzone": {
             "type": "boolean"
           }
         },
@@ -3660,6 +4320,443 @@
           }
         },
         "description": "Log de pays"
+      },
+      "Alliance": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AllianceEntry"
+            }
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          }
+        }
+      },
+      "AllianceBank": {
+        "type": "object",
+        "properties": {
+          "currentAccountBalance": {
+            "type": "number",
+            "description": "L'argent sur le compte courant de l'alliance",
+            "format": "double",
+            "example": 5000
+          },
+          "blockedAccountBalance": {
+            "type": "number",
+            "description": "L'argent sur le compte bloqué de l'alliance",
+            "format": "double",
+            "example": 125000
+          }
+        },
+        "description": "Banque de l'alliance"
+      },
+      "AllianceEntry": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Le nom de l'alliance",
+            "example": "Poufsouffle"
+          },
+          "description": {
+            "type": "string",
+            "description": "La description de l'alliance"
+          },
+          "createdAt": {
+            "type": "integer",
+            "description": "Le timestamp en ms à la date dont l'alliance a été créer",
+            "format": "int64",
+            "example": 1764342680849
+          },
+          "color": {
+            "type": "string",
+            "description": "La couleur de l'alliance au format héxadécimale. La couleur représente l'alliance et est unique à l'échelle du serveur",
+            "example": "#FDC700"
+          },
+          "tags": {
+            "type": "array",
+            "description": "La liste des tags de l'alliance",
+            "example": [
+              "PVP",
+              "FARMER"
+            ],
+            "items": {
+              "type": "string",
+              "description": "La liste des tags de l'alliance",
+              "example": "[\"PVP\",\"FARMER\"]"
+            }
+          },
+          "discord": {
+            "type": "string",
+            "description": "Le lien menant au discord de l'alliance"
+          },
+          "youtube": {
+            "type": "string",
+            "description": "Le lien menant à la chaine youtube de l'alliance"
+          },
+          "rules": {
+            "type": "string",
+            "description": "Les règles de l'alliance"
+          },
+          "bannerUrl": {
+            "type": "string",
+            "description": "L'url de la banière affiché sur la page de l'alliance"
+          },
+          "blazon": {
+            "type": "string",
+            "description": "Le blazon représentant l'alliance. Image en base64, de dimension 78x78"
+          },
+          "ranking": {
+            "type": "integer",
+            "description": "Le classement de l'alliance sur le mois en cours. Calculé en fonction du nombre de points de prestiges",
+            "format": "int32",
+            "example": 1
+          },
+          "prestigePoints": {
+            "type": "integer",
+            "description": "Les points de prestige de l'alliance. La documentation du prestige est consultable à l'adresse https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/#1-prestige-classement",
+            "format": "int32",
+            "example": 6980
+          },
+          "stationModuleCount": {
+            "type": "integer",
+            "description": "Le nombre de module dans la station spatiale de l'alliance",
+            "format": "int32",
+            "example": 5
+          },
+          "countryCount": {
+            "type": "integer",
+            "description": "Le nombre de pays dans l'alliance",
+            "format": "int32",
+            "example": 7
+          },
+          "leaders": {
+            "type": "array",
+            "description": "La liste des pays leader de l'alliance",
+            "example": [
+              "EmpireMongol",
+              "Touva",
+              "Grece"
+            ],
+            "items": {
+              "type": "string",
+              "description": "La liste des pays leader de l'alliance",
+              "example": "[\"EmpireMongol\",\"Touva\",\"Grece\"]"
+            }
+          },
+          "members": {
+            "type": "array",
+            "description": "La liste des pays membres de l'alliance",
+            "example": [
+              "Papouasie",
+              "Brésil"
+            ],
+            "items": {
+              "type": "string",
+              "description": "La liste des pays membres de l'alliance",
+              "example": "[\"Papouasie\",\"Brésil\"]"
+            }
+          },
+          "protectorats": {
+            "type": "array",
+            "description": "La liste des pays sous le statut de protectorat dans l'alliance",
+            "example": [
+              "France",
+              "Italie"
+            ],
+            "items": {
+              "type": "string",
+              "description": "La liste des pays sous le statut de protectorat dans l'alliance",
+              "example": "[\"France\",\"Italie\"]"
+            }
+          },
+          "claims": {
+            "type": "integer",
+            "description": "Le nombre de claims cumulé des pays de l'alliance",
+            "format": "int32",
+            "example": 642
+          },
+          "countMembers": {
+            "type": "integer",
+            "description": "Le nombre de membres cumulés des pays de l'alliance",
+            "format": "int32",
+            "example": 176
+          },
+          "taxes": {
+            "$ref": "#/components/schemas/AllianceTaxes"
+          },
+          "modules": {
+            "type": "array",
+            "description": "Les modules construits dans la station spatiale",
+            "items": {
+              "$ref": "#/components/schemas/AllianceModule"
+            }
+          },
+          "bank": {
+            "$ref": "#/components/schemas/AllianceBank"
+          },
+          "votesHistory": {
+            "type": "array",
+            "description": "L'historique des votes de l'alliance. Nécessite d'être membre de l'alliance pour y avoir accès",
+            "items": {
+              "$ref": "#/components/schemas/AllianceVoteHistory"
+            }
+          },
+          "relations": {
+            "type": "array",
+            "description": "Les relations avec les autres alliances",
+            "items": {
+              "$ref": "#/components/schemas/AllianceRelation"
+            }
+          },
+          "primeBoost": {
+            "$ref": "#/components/schemas/AlliancePrimeBoost"
+          },
+          "open": {
+            "type": "boolean"
+          }
+        },
+        "description": "Données d'une alliance"
+      },
+      "AllianceModule": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "L'id du module",
+            "example": "generator"
+          },
+          "direction": {
+            "type": "string",
+            "description": "La direction dans laquelle est orienté le module",
+            "example": "NORTH"
+          },
+          "coordinates": {
+            "$ref": "#/components/schemas/AllianceModuleCoordinates"
+          },
+          "name": {
+            "type": "string",
+            "description": "Le nom du module",
+            "example": "Générateur électrique"
+          },
+          "description": {
+            "type": "string",
+            "description": "La description du module"
+          }
+        },
+        "description": "Module de la station spatiale"
+      },
+      "AllianceModuleCoordinates": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "z": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "Coordonnées d'un module"
+      },
+      "AlliancePrimeBoost": {
+        "type": "object",
+        "properties": {
+          "hasBoostActive": {
+            "type": "boolean",
+            "description": "Si l'alliance possède le boost premium (+20% de joueur premium)",
+            "example": false
+          },
+          "boostPercent": {
+            "type": "number",
+            "description": "Le pourcentage de joueur premium dans l'alliance",
+            "format": "double",
+            "example": 8
+          },
+          "boostPoints": {
+            "type": "integer",
+            "description": "Le nombre de joueurs premium (en réalité, les joueurs premium_plus compte comme 2 joueurs)",
+            "format": "int32",
+            "example": 27
+          },
+          "primeBoosters": {
+            "type": "array",
+            "description": "La liste de TOUS les membres de l'alliance (premium ou non)",
+            "items": {
+              "$ref": "#/components/schemas/AlliancePrimeBooster"
+            }
+          }
+        },
+        "description": "Prime Boost de l'alliance"
+      },
+      "AlliancePrimeBooster": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "Le pseudonyme du joueur",
+            "example": "Romaindu35"
+          },
+          "boostType": {
+            "type": "string",
+            "description": "Le type de boost",
+            "example": "PREMIUM"
+          },
+          "boostValue": {
+            "type": "integer",
+            "description": "Le nombre de joueur pour lequel compte ce joueur au total de boostPoints de AlliancePrimeBoost.",
+            "format": "int32",
+            "example": 1
+          }
+        },
+        "description": "Membre de l'alliance"
+      },
+      "AllianceRelation": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Le nom de l'alliance concerné par la relation",
+            "example": "Serdaigle"
+          },
+          "relation": {
+            "type": "string",
+            "description": "Le type de relation (neutral/enemy)",
+            "example": "neutral"
+          },
+          "surchargeValueFrom": {
+            "type": "number",
+            "description": "Le pourcentage de surcharge appliqué par l'alliance de la relation sur l'alliance dont l'export est fait",
+            "format": "double",
+            "example": 1
+          },
+          "hasEmbargoFrom": {
+            "type": "boolean",
+            "description": "Si l'alliance de la relation a appliqué un embargo sur l'alliance dont l'export est fait",
+            "example": true
+          },
+          "surchargeValueTo": {
+            "type": "number",
+            "description": "Le pourcentage de surcharge appliqué par l'alliance dont l'export est fait sur l'alliance de la relation",
+            "format": "double",
+            "example": 5
+          },
+          "hasEmbargoTo": {
+            "type": "boolean",
+            "description": "Si l'alliance dont l'export est fait a appliqué un embargo sur l'alliance de la relation",
+            "example": false
+          }
+        },
+        "description": "Relation entre alliances"
+      },
+      "AllianceTaxes": {
+        "type": "object",
+        "properties": {
+          "hdvTax": {
+            "type": "number",
+            "description": "La taxe en pourcentage appliqué à chaque vente réalisé par un membre de l'alliance à l'hotel des ventes",
+            "format": "double",
+            "example": 0.1
+          },
+          "weeklySalary": {
+            "type": "number",
+            "description": "Le salaire hebdomadaire données automatiquement à tous les pays membres chaque semaine. L'argent est prélevé dans le compte bloqué",
+            "format": "double",
+            "example": 500
+          },
+          "stationTicket": {
+            "type": "number",
+            "description": "Le cout de téléportation à la station spatiale pour les personnes extérieur à l'alliance",
+            "format": "double",
+            "example": 1000
+          },
+          "notationTax": {
+            "type": "number",
+            "description": "La taxe en pourcentage prélevé chaque semaine sur les notation des pays membres",
+            "format": "double",
+            "example": 10
+          },
+          "joinTax": {
+            "type": "number",
+            "description": "Le prix demandé aux pays souhaitant rejoindre l'alliance",
+            "format": "double",
+            "example": 50000
+          },
+          "moonTeleportCost": {
+            "type": "number",
+            "description": "Prix de la téléportation vers la lune. Accessible uniquement si l'alliance à construit le statioport lunaire",
+            "format": "double",
+            "example": 250
+          },
+          "fuelCost": {
+            "type": "number",
+            "description": "Tarif d'achat de 100L de pétrole à l'alliance, par un pays membre",
+            "format": "double",
+            "example": 100
+          }
+        },
+        "description": "Taxes de l'alliance"
+      },
+      "AllianceVoteHistory": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Le type de vote",
+            "example": "OTHER_COUNTRY_JOIN_ALLIANCE"
+          },
+          "initiator": {
+            "type": "string",
+            "description": "Le joueur ayant déclenché le vote",
+            "example": "Romaindu35"
+          },
+          "initiatorCountry": {
+            "type": "string",
+            "description": "Le pays du joueur qui a initié le vote",
+            "example": "EmpireMongol"
+          },
+          "timestamp": {
+            "type": "integer",
+            "description": "Le timestamp de création du vote",
+            "format": "int64",
+            "example": 1771364198349
+          },
+          "message": {
+            "type": "string",
+            "description": "Le message du vote tel qu'indiqué en jeu",
+            "example": "Adhésion d'un pays"
+          },
+          "oldValue": {
+            "type": "string",
+            "description": "Donnée optionnelle, dans certains vote, montre la valeur avant l'acceptation du vote"
+          },
+          "newValue": {
+            "type": "string",
+            "description": "Donnée optionnelle, montre la valeur validé ou refusé par le résultat du vote"
+          },
+          "targetCountry": {
+            "type": "string",
+            "description": "Indique qui est concerné par le résultat du vote. Peut-être le nom d'un pays ou alors le nom de l'alliance",
+            "example": "Papouasie"
+          },
+          "yesVotes": {
+            "type": "integer",
+            "description": "Le nombre de vote oui",
+            "format": "int32",
+            "example": 3
+          },
+          "noVotes": {
+            "type": "integer",
+            "description": "Le nombre de vote non",
+            "format": "int32",
+            "example": 1
+          }
+        },
+        "description": "Historique d'un vote"
       },
       "ResearchConfig": {
         "type": "object",

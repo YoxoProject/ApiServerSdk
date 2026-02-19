@@ -43,11 +43,11 @@ Name | Type | Description | Notes
 **allies** | **Array&lt;string&gt;** | Pays alliés (Disponible depuis le 17/02/2026) | [optional] [default to undefined]
 **enemies** | **Array&lt;string&gt;** | Pays enemies (Disponible depuis le 17/02/2026) | [optional] [default to undefined]
 **annexions** | **Array&lt;string&gt;** | Pays annexés (Disponible depuis le 17/02/2026) | [optional] [default to undefined]
-**topWarzone** | **boolean** |  | [optional] [default to undefined]
-**restrictAssault** | **boolean** |  | [optional] [default to undefined]
-**restrictMissile** | **boolean** |  | [optional] [default to undefined]
 **empire** | **boolean** |  | [optional] [default to undefined]
 **referent** | **boolean** |  | [optional] [default to undefined]
+**restrictAssault** | **boolean** |  | [optional] [default to undefined]
+**restrictMissile** | **boolean** |  | [optional] [default to undefined]
+**topWarzone** | **boolean** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -92,11 +92,11 @@ const instance: CountryEntry = {
     allies,
     enemies,
     annexions,
-    topWarzone,
-    restrictAssault,
-    restrictMissile,
     empire,
     referent,
+    restrictAssault,
+    restrictMissile,
+    topWarzone,
 };
 ```
 

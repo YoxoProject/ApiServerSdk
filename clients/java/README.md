@@ -126,13 +126,14 @@ public class Example {
     oauth2_client_credentials.setAccessToken("YOUR ACCESS TOKEN");
 
     ApiJavaApi apiInstance = new ApiJavaApi(defaultClient);
-    LocalDate date = LocalDate.parse("2025-10-28"); // LocalDate | Date (yyyy-MM-dd)
+    LocalDate date = LocalDate.parse("2025-11-24"); // LocalDate | Date (yyyy-MM-dd)
     String javaServer = "blue"; // String | Serveur
+    String alliance = "alliance_example"; // String | Nom de l'alliance (optionnel)
     try {
-      CerealGlobalMarket result = apiInstance.getCerealGlobalMarket(date, javaServer);
+      Alliance result = apiInstance.getAlliance(date, javaServer, alliance);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling ApiJavaApi#getCerealGlobalMarket");
+      System.err.println("Exception when calling ApiJavaApi#getAlliance");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -149,6 +150,8 @@ All URIs are relative to *https://api.yoxo.software*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ApiJavaApi* | [**getAlliance**](docs/ApiJavaApi.md#getAlliance) | **GET** /v2/java/alliance/{date}/{javaServer}/{alliance} | Alliance
+*ApiJavaApi* | [**getAlliance1**](docs/ApiJavaApi.md#getAlliance1) | **GET** /v2/java/alliance/{date}/{javaServer} | Alliance
 *ApiJavaApi* | [**getCerealGlobalMarket**](docs/ApiJavaApi.md#getCerealGlobalMarket) | **GET** /v2/java/cereal_global_market/{date}/{javaServer} | Cereal Global Market
 *ApiJavaApi* | [**getCountry**](docs/ApiJavaApi.md#getCountry) | **GET** /v2/java/country/{date}/{javaServer} | Country
 *ApiJavaApi* | [**getCountry1**](docs/ApiJavaApi.md#getCountry1) | **GET** /v2/java/country/{date}/{javaServer}/{country} | Country
@@ -157,6 +160,8 @@ Class | Method | HTTP request | Description
 *ApiJavaApi* | [**getHalloween2025**](docs/ApiJavaApi.md#getHalloween2025) | **GET** /v2/java/halloween-2025/{date} | Halloween 2025
 *ApiJavaApi* | [**getNoelMegagift2024**](docs/ApiJavaApi.md#getNoelMegagift2024) | **GET** /v2/java/noelmegagift-2024 | Noël Megagift 2024
 *ApiJavaApi* | [**getNoelMegagift2025**](docs/ApiJavaApi.md#getNoelMegagift2025) | **GET** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025
+*ApiJavaApi* | [**getNotation**](docs/ApiJavaApi.md#getNotation) | **GET** /v2/java/notation/{date}/{javaServer} | Notation
+*ApiJavaApi* | [**getNotation1**](docs/ApiJavaApi.md#getNotation1) | **GET** /v2/java/notation/{date}/{javaServer}/{country} | Notation
 *ApiJavaApi* | [**getPillageCountry**](docs/ApiJavaApi.md#getPillageCountry) | **GET** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country
 *ApiJavaApi* | [**getPlayerList**](docs/ApiJavaApi.md#getPlayerList) | **GET** /v2/java/player-list/{date}/{javaServer} | Player List
 *ApiJavaApi* | [**getResearchConfig**](docs/ApiJavaApi.md#getResearchConfig) | **GET** /v2/java/research/{date}/config | Research Config
@@ -164,11 +169,13 @@ Class | Method | HTTP request | Description
 *ApiJavaApi* | [**getSkill**](docs/ApiJavaApi.md#getSkill) | **GET** /v2/java/skill/{date}/{javaServer} | Skill
 *ApiJavaApi* | [**getWar**](docs/ApiJavaApi.md#getWar) | **GET** /v2/java/war/{date}/{javaServer} | War
 *ApiJavaApi* | [**getWar1**](docs/ApiJavaApi.md#getWar1) | **GET** /v2/java/war/{date}/{javaServer}/{warId} | War
+*ApiJavaApi* | [**postAlliance**](docs/ApiJavaApi.md#postAlliance) | **POST** /v2/java/alliance/{date}/{javaServer} | Alliance
 *ApiJavaApi* | [**postCountry**](docs/ApiJavaApi.md#postCountry) | **POST** /v2/java/country/{date}/{javaServer} | Country
 *ApiJavaApi* | [**postEnterprises**](docs/ApiJavaApi.md#postEnterprises) | **POST** /v2/java/enterprise/{date}/{javaServer} | Enterprise
 *ApiJavaApi* | [**postHalloween2025**](docs/ApiJavaApi.md#postHalloween2025) | **POST** /v2/java/halloween-2025/{date} | Halloween 2025
 *ApiJavaApi* | [**postNoelMegagift2024**](docs/ApiJavaApi.md#postNoelMegagift2024) | **POST** /v2/java/noelmegagift-2024 | Noël Megagift 2024
 *ApiJavaApi* | [**postNoelMegagift2025**](docs/ApiJavaApi.md#postNoelMegagift2025) | **POST** /v2/java/noelmegagift-2025/{date} | Noël Megagift 2025
+*ApiJavaApi* | [**postNotation**](docs/ApiJavaApi.md#postNotation) | **POST** /v2/java/notation/{date}/{javaServer} | Notation
 *ApiJavaApi* | [**postPillageCountry**](docs/ApiJavaApi.md#postPillageCountry) | **POST** /v2/java/pillage-country/{date}/{javaServer} | Pillage Country
 *ApiJavaApi* | [**postPlayerList**](docs/ApiJavaApi.md#postPlayerList) | **POST** /v2/java/player-list/{date}/{javaServer} | Player List
 *ApiJavaApi* | [**postResearchServer**](docs/ApiJavaApi.md#postResearchServer) | **POST** /v2/java/research/{date}/{javaServer} | Research Server
@@ -179,6 +186,17 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [ActionEntry](docs/ActionEntry.md)
+ - [Alliance](docs/Alliance.md)
+ - [AllianceBank](docs/AllianceBank.md)
+ - [AllianceEntry](docs/AllianceEntry.md)
+ - [AllianceModule](docs/AllianceModule.md)
+ - [AllianceModuleCoordinates](docs/AllianceModuleCoordinates.md)
+ - [AlliancePrimeBoost](docs/AlliancePrimeBoost.md)
+ - [AlliancePrimeBooster](docs/AlliancePrimeBooster.md)
+ - [AllianceRelation](docs/AllianceRelation.md)
+ - [AllianceTaxes](docs/AllianceTaxes.md)
+ - [AllianceVoteHistory](docs/AllianceVoteHistory.md)
+ - [ArchitectureEntry](docs/ArchitectureEntry.md)
  - [BankLogEntry](docs/BankLogEntry.md)
  - [CerealGlobalMarket](docs/CerealGlobalMarket.md)
  - [CerealGlobalMarketEntry](docs/CerealGlobalMarketEntry.md)
@@ -216,6 +234,8 @@ Class | Method | HTTP request | Description
  - [NoelMegagift2024Entry](docs/NoelMegagift2024Entry.md)
  - [NoelMegagift2025](docs/NoelMegagift2025.md)
  - [NoelMegagift2025Entry](docs/NoelMegagift2025Entry.md)
+ - [Notation](docs/Notation.md)
+ - [NotationEntry](docs/NotationEntry.md)
  - [Parcelle](docs/Parcelle.md)
  - [PermissionEntry](docs/PermissionEntry.md)
  - [PillageCountry](docs/PillageCountry.md)

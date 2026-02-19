@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import software.yoxo.client.model.Alliance;
 import software.yoxo.client.model.CerealGlobalMarket;
 import software.yoxo.client.model.Country;
 import software.yoxo.client.model.Enterprise;
@@ -34,6 +35,7 @@ import software.yoxo.client.model.Halloween2025;
 import java.time.LocalDate;
 import software.yoxo.client.model.NoelMegagift2024;
 import software.yoxo.client.model.NoelMegagift2025;
+import software.yoxo.client.model.Notation;
 import software.yoxo.client.model.PillageCountry;
 import software.yoxo.client.model.PlayerList;
 import software.yoxo.client.model.PostQueryBody;
@@ -85,6 +87,290 @@ public class ApiJavaApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for getAlliance
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param alliance Nom de l&#39;alliance (optionnel) (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAllianceCall(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nonnull String alliance, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/java/alliance/{date}/{javaServer}/{alliance}"
+            .replace("{" + "date" + "}", localVarApiClient.escapeString(date.toString()))
+            .replace("{" + "javaServer" + "}", localVarApiClient.escapeString(javaServer.toString()))
+            .replace("{" + "alliance" + "}", localVarApiClient.escapeString(alliance.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2_client_credentials" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAllianceValidateBeforeCall(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nonnull String alliance, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'date' is set
+        if (date == null) {
+            throw new ApiException("Missing the required parameter 'date' when calling getAlliance(Async)");
+        }
+
+        // verify the required parameter 'javaServer' is set
+        if (javaServer == null) {
+            throw new ApiException("Missing the required parameter 'javaServer' when calling getAlliance(Async)");
+        }
+
+        // verify the required parameter 'alliance' is set
+        if (alliance == null) {
+            throw new ApiException("Missing the required parameter 'alliance' when calling getAlliance(Async)");
+        }
+
+        return getAllianceCall(date, javaServer, alliance, _callback);
+
+    }
+
+    /**
+     * Alliance
+     * Permet d&#39;obtenir la liste et les détails complets de toutes les alliances d&#39;un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param alliance Nom de l&#39;alliance (optionnel) (required)
+     * @return Alliance
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public Alliance getAlliance(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nonnull String alliance) throws ApiException {
+        ApiResponse<Alliance> localVarResp = getAllianceWithHttpInfo(date, javaServer, alliance);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Alliance
+     * Permet d&#39;obtenir la liste et les détails complets de toutes les alliances d&#39;un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param alliance Nom de l&#39;alliance (optionnel) (required)
+     * @return ApiResponse&lt;Alliance&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Alliance> getAllianceWithHttpInfo(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nonnull String alliance) throws ApiException {
+        okhttp3.Call localVarCall = getAllianceValidateBeforeCall(date, javaServer, alliance, null);
+        Type localVarReturnType = new TypeToken<Alliance>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Alliance (asynchronously)
+     * Permet d&#39;obtenir la liste et les détails complets de toutes les alliances d&#39;un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param alliance Nom de l&#39;alliance (optionnel) (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAllianceAsync(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nonnull String alliance, final ApiCallback<Alliance> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAllianceValidateBeforeCall(date, javaServer, alliance, _callback);
+        Type localVarReturnType = new TypeToken<Alliance>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAlliance1
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAlliance1Call(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/java/alliance/{date}/{javaServer}"
+            .replace("{" + "date" + "}", localVarApiClient.escapeString(date.toString()))
+            .replace("{" + "javaServer" + "}", localVarApiClient.escapeString(javaServer.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2_client_credentials" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAlliance1ValidateBeforeCall(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'date' is set
+        if (date == null) {
+            throw new ApiException("Missing the required parameter 'date' when calling getAlliance1(Async)");
+        }
+
+        // verify the required parameter 'javaServer' is set
+        if (javaServer == null) {
+            throw new ApiException("Missing the required parameter 'javaServer' when calling getAlliance1(Async)");
+        }
+
+        return getAlliance1Call(date, javaServer, _callback);
+
+    }
+
+    /**
+     * Alliance
+     * Permet d&#39;obtenir la liste et les détails complets de toutes les alliances d&#39;un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @return Alliance
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public Alliance getAlliance1(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer) throws ApiException {
+        ApiResponse<Alliance> localVarResp = getAlliance1WithHttpInfo(date, javaServer);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Alliance
+     * Permet d&#39;obtenir la liste et les détails complets de toutes les alliances d&#39;un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @return ApiResponse&lt;Alliance&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Alliance> getAlliance1WithHttpInfo(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer) throws ApiException {
+        okhttp3.Call localVarCall = getAlliance1ValidateBeforeCall(date, javaServer, null);
+        Type localVarReturnType = new TypeToken<Alliance>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Alliance (asynchronously)
+     * Permet d&#39;obtenir la liste et les détails complets de toutes les alliances d&#39;un serveur à une date donnée (aucun filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAlliance1Async(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, final ApiCallback<Alliance> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAlliance1ValidateBeforeCall(date, javaServer, _callback);
+        Type localVarReturnType = new TypeToken<Alliance>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for getCerealGlobalMarket
      * @param date Date (yyyy-MM-dd) (required)
@@ -1178,6 +1464,290 @@ public class ApiJavaApi {
         return localVarCall;
     }
     /**
+     * Build call for getNotation
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getNotationCall(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/java/notation/{date}/{javaServer}"
+            .replace("{" + "date" + "}", localVarApiClient.escapeString(date.toString()))
+            .replace("{" + "javaServer" + "}", localVarApiClient.escapeString(javaServer.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2_client_credentials" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getNotationValidateBeforeCall(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'date' is set
+        if (date == null) {
+            throw new ApiException("Missing the required parameter 'date' when calling getNotation(Async)");
+        }
+
+        // verify the required parameter 'javaServer' is set
+        if (javaServer == null) {
+            throw new ApiException("Missing the required parameter 'javaServer' when calling getNotation(Async)");
+        }
+
+        return getNotationCall(date, javaServer, _callback);
+
+    }
+
+    /**
+     * Notation
+     * Permet d&#39;obtenir les notations d&#39;un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @return Notation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public Notation getNotation(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer) throws ApiException {
+        ApiResponse<Notation> localVarResp = getNotationWithHttpInfo(date, javaServer);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Notation
+     * Permet d&#39;obtenir les notations d&#39;un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @return ApiResponse&lt;Notation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Notation> getNotationWithHttpInfo(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer) throws ApiException {
+        okhttp3.Call localVarCall = getNotationValidateBeforeCall(date, javaServer, null);
+        Type localVarReturnType = new TypeToken<Notation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Notation (asynchronously)
+     * Permet d&#39;obtenir les notations d&#39;un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getNotationAsync(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, final ApiCallback<Notation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getNotationValidateBeforeCall(date, javaServer, _callback);
+        Type localVarReturnType = new TypeToken<Notation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getNotation1
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param country Nom du pays (optionnel) (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getNotation1Call(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nonnull String country, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v2/java/notation/{date}/{javaServer}/{country}"
+            .replace("{" + "date" + "}", localVarApiClient.escapeString(date.toString()))
+            .replace("{" + "javaServer" + "}", localVarApiClient.escapeString(javaServer.toString()))
+            .replace("{" + "country" + "}", localVarApiClient.escapeString(country.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2_client_credentials" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getNotation1ValidateBeforeCall(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nonnull String country, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'date' is set
+        if (date == null) {
+            throw new ApiException("Missing the required parameter 'date' when calling getNotation1(Async)");
+        }
+
+        // verify the required parameter 'javaServer' is set
+        if (javaServer == null) {
+            throw new ApiException("Missing the required parameter 'javaServer' when calling getNotation1(Async)");
+        }
+
+        // verify the required parameter 'country' is set
+        if (country == null) {
+            throw new ApiException("Missing the required parameter 'country' when calling getNotation1(Async)");
+        }
+
+        return getNotation1Call(date, javaServer, country, _callback);
+
+    }
+
+    /**
+     * Notation
+     * Permet d&#39;obtenir les notations d&#39;un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param country Nom du pays (optionnel) (required)
+     * @return Notation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public Notation getNotation1(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nonnull String country) throws ApiException {
+        ApiResponse<Notation> localVarResp = getNotation1WithHttpInfo(date, javaServer, country);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Notation
+     * Permet d&#39;obtenir les notations d&#39;un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param country Nom du pays (optionnel) (required)
+     * @return ApiResponse&lt;Notation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Notation> getNotation1WithHttpInfo(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nonnull String country) throws ApiException {
+        okhttp3.Call localVarCall = getNotation1ValidateBeforeCall(date, javaServer, country, null);
+        Type localVarReturnType = new TypeToken<Notation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Notation (asynchronously)
+     * Permet d&#39;obtenir les notations d&#39;un pays sur un serveur à une date donnée (sans filtrage).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param country Nom du pays (optionnel) (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getNotation1Async(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nonnull String country, final ApiCallback<Notation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getNotation1ValidateBeforeCall(date, javaServer, country, _callback);
+        Type localVarReturnType = new TypeToken<Notation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getPillageCountry
      * @param date Date (yyyy-MM-dd) (required)
      * @param javaServer Serveur (required)
@@ -2137,6 +2707,148 @@ public class ApiJavaApi {
         return localVarCall;
     }
     /**
+     * Build call for postAlliance
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param postQueryBody  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAllianceCall(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nullable PostQueryBody postQueryBody, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = postQueryBody;
+
+        // create path and map variables
+        String localVarPath = "/v2/java/alliance/{date}/{javaServer}"
+            .replace("{" + "date" + "}", localVarApiClient.escapeString(date.toString()))
+            .replace("{" + "javaServer" + "}", localVarApiClient.escapeString(javaServer.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2_client_credentials" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postAllianceValidateBeforeCall(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nullable PostQueryBody postQueryBody, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'date' is set
+        if (date == null) {
+            throw new ApiException("Missing the required parameter 'date' when calling postAlliance(Async)");
+        }
+
+        // verify the required parameter 'javaServer' is set
+        if (javaServer == null) {
+            throw new ApiException("Missing the required parameter 'javaServer' when calling postAlliance(Async)");
+        }
+
+        return postAllianceCall(date, javaServer, postQueryBody, _callback);
+
+    }
+
+    /**
+     * Alliance
+     * Permet d&#39;obtenir la liste et les détails complets de toutes les alliances d&#39;un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param postQueryBody  (optional)
+     * @return Alliance
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public Alliance postAlliance(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nullable PostQueryBody postQueryBody) throws ApiException {
+        ApiResponse<Alliance> localVarResp = postAllianceWithHttpInfo(date, javaServer, postQueryBody);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Alliance
+     * Permet d&#39;obtenir la liste et les détails complets de toutes les alliances d&#39;un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param postQueryBody  (optional)
+     * @return ApiResponse&lt;Alliance&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Alliance> postAllianceWithHttpInfo(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nullable PostQueryBody postQueryBody) throws ApiException {
+        okhttp3.Call localVarCall = postAllianceValidateBeforeCall(date, javaServer, postQueryBody, null);
+        Type localVarReturnType = new TypeToken<Alliance>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Alliance (asynchronously)
+     * Permet d&#39;obtenir la liste et les détails complets de toutes les alliances d&#39;un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-alliances-java-1ju6vju/  **Fréquence de mise à jour :** Les données sont actualisées tous les jours, généralement la nuit. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param postQueryBody  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAllianceAsync(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nullable PostQueryBody postQueryBody, final ApiCallback<Alliance> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postAllianceValidateBeforeCall(date, javaServer, postQueryBody, _callback);
+        Type localVarReturnType = new TypeToken<Alliance>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for postCountry
      * @param date Date (yyyy-MM-dd) (required)
      * @param javaServer Serveur (required)
@@ -2803,6 +3515,148 @@ public class ApiJavaApi {
 
         okhttp3.Call localVarCall = postNoelMegagift2025ValidateBeforeCall(date, postQueryBody, _callback);
         Type localVarReturnType = new TypeToken<NoelMegagift2025>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postNotation
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param postQueryBody  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postNotationCall(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nullable PostQueryBody postQueryBody, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = postQueryBody;
+
+        // create path and map variables
+        String localVarPath = "/v2/java/notation/{date}/{javaServer}"
+            .replace("{" + "date" + "}", localVarApiClient.escapeString(date.toString()))
+            .replace("{" + "javaServer" + "}", localVarApiClient.escapeString(javaServer.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2_client_credentials" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postNotationValidateBeforeCall(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nullable PostQueryBody postQueryBody, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'date' is set
+        if (date == null) {
+            throw new ApiException("Missing the required parameter 'date' when calling postNotation(Async)");
+        }
+
+        // verify the required parameter 'javaServer' is set
+        if (javaServer == null) {
+            throw new ApiException("Missing the required parameter 'javaServer' when calling postNotation(Async)");
+        }
+
+        return postNotationCall(date, javaServer, postQueryBody, _callback);
+
+    }
+
+    /**
+     * Notation
+     * Permet d&#39;obtenir les notations d&#39;un pays sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param postQueryBody  (optional)
+     * @return Notation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public Notation postNotation(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nullable PostQueryBody postQueryBody) throws ApiException {
+        ApiResponse<Notation> localVarResp = postNotationWithHttpInfo(date, javaServer, postQueryBody);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Notation
+     * Permet d&#39;obtenir les notations d&#39;un pays sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param postQueryBody  (optional)
+     * @return ApiResponse&lt;Notation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Notation> postNotationWithHttpInfo(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nullable PostQueryBody postQueryBody) throws ApiException {
+        okhttp3.Call localVarCall = postNotationValidateBeforeCall(date, javaServer, postQueryBody, null);
+        Type localVarReturnType = new TypeToken<Notation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Notation (asynchronously)
+     * Permet d&#39;obtenir les notations d&#39;un pays sur un serveur à une date donnée (avec filtrage possible).  **Documentation :** https://wiki.nationsglory.fr/fr/article/les-notations-java-1jdjuqt/  **Fréquence de mise à jour :** Les données sont actualisées tous les lundis matin. 
+     * @param date Date (yyyy-MM-dd) (required)
+     * @param javaServer Serveur (required)
+     * @param postQueryBody  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postNotationAsync(@javax.annotation.Nonnull LocalDate date, @javax.annotation.Nonnull String javaServer, @javax.annotation.Nullable PostQueryBody postQueryBody, final ApiCallback<Notation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postNotationValidateBeforeCall(date, javaServer, postQueryBody, _callback);
+        Type localVarReturnType = new TypeToken<Notation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
